@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+2014-04-03 12:35:01,984 INFO GNlogger: logging configured
+2014-04-03 12:35:01,984 INFO __main__: start this module
 2014-04-07 16:44:48,272 INFO GNlogger: logging configured
 2014-04-07 16:44:48,272 INFO simuladormac.py: __main__ start
 2014-04-07 16:44:48,273 INFO GNlogger: logging configured
@@ -48,7 +49,3 @@
 2014-04-07 16:44:49,286 INFO ieee80211mac.ieee80211mac: 100 Receive ACK
 2014-04-07 16:44:49,286 ERROR ieee80211mac.ieee80211mac: 102 Default transition for symbol: ACK, state: IDLE
 2014-04-07 16:44:49,286 DEBUG ieee80211mac.ieee80211mac: 100 Receive ACK (for me)
-=======
-2014-04-03 12:35:01,984 INFO GNlogger: logging configured
-2014-04-03 12:35:01,984 INFO __main__: start this module
->>>>>>> 1612bf0f6c7bd652898e7b743a6c35953562b6ad
