@@ -18,8 +18,15 @@ import ieee80211mac as Mac
 import libvirtualchannel.virtualchannel as virtualchannel
 import libvirtualchannel.EventSimulator as eventsimulator
 import libvirtualchannel.EventConsumer as eventconsumer
+import libutils.gnlogger as gnlogger
+import logging
+module_logger = logging.getLogger(__name__)
 
 def simulates():
+
+    logger = logging.getLogger( str( __file__ ) )
+    gnlogger.logconf()         # initializes the logging facility
+    logger.info( __name__ + ' start' )
 
     "-------------------NODE 1: MAC Addr 100-------------------------------------------------------"    
     " Layer 3 packet queues"
@@ -164,11 +171,10 @@ def simulates():
     vc.start()
 	
     # rx_event = frame_tx_q1.get()
-    print "Start Simulator"
     mySimulator = eventsimulator.EventSimulator( 100,"DataData", pkt_rx_q1,"100","101")
     mySimulator.start()
 
-    print "Start Consumers"
+    logger.info( __name__ + ' Start Consumers' )
     myConsumer1 = eventconsumer.EventConsumer( "Node1-L3", pkt_tx_q1 )
     myConsumer1.start()
 
@@ -183,5 +189,3 @@ if __name__ == '__main__':
         simulates()
     except KeyboardInterrupt:
         pass
-
-
