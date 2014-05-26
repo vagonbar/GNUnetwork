@@ -19,6 +19,7 @@ sys.path += ['..']
 import events as events
 # event modules, for different types of events
 import evtimer
+import evrequest
 import evframes80211
 
 from libframes.mac_frmbld import MacFrameException # as MacFrameException
@@ -65,6 +66,9 @@ def mkevent(nickname, **kwargs):
         ev = eventclass(nickname, ev_type, ev_subtype, frmpkt, ev_dc)
         ev.payload = payload
         return ev
+    elif evrequest.dc_nicknames.has_key(nickname):
+        ptype, psubtype, eventclass = evrequest.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')
 

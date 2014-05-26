@@ -1,0 +1,131 @@
+
+A) MODIFICACIONES AL COMPANION:
+En primer lugar explico lo que hice con el grc (companion en la nomenclatura gnu radio companion)
+
+Copie de los fuentes del directorio de gnuradio/grc a gn/grc 
+
+Explico ahora los archivos que modifiqué en nuestra instalación de grc
+
+En ... /grc/python/Cosntants.py
+
+Eliminé de la definición de BLOCKS_DIR la siguiente instrucción 
+#           _gr_prefs.get_string('grc', 'global_blocks_path', ''),
+para que no me traiga todos los bloques de gnuradio y solo traiga los de local_blocks_path que es una constante definida en el archivo config.conf debajo del directorio ~/.grc_gnuradio.Este directorio se puede cambiar también en Constants.py, en el futuro hay que cambiarlo para que lea de algún directorio que no haga referencia a
+gnuradio.
+
+En el archivo .grc_gnuradio puse el directorio donde están mis bloques xml local_blocks_path=/home/belza/Desktop/Dropbox/gn/gn/xml
+
+Supongo que la variable global_blocks_path se debe poder modificar (en lugar de eliminar esa línea) para que apunte a otro directorio
+pero no tengo claro donde tocar aún.
+
+2. Fue necesario mover el bloque options.xml al directorio donde tengo mis bloques.xml. Este bloque options.xml siempre tiene que estar y lo levanta el companion
+porque es donde se especifica el nombre del programa python al que genera código, todos los imports que siempre deben aparecer en el código generado y algunas otras opciones 
+del código y de la configuración del companion. También traje el bloque variable.xml y parameters.xml de la instalación de gnuradio.
+
+También en Constants.py agregué los nuevos tipos: nuestros eventos. A CORE_TYPES le agregué líneas de la siguiente forma:
+   ('Event', 'Event', '123,124', '#777777'),
+   ('Timer', 'Timer', '124', '#C0C0C0'),
+No eliminé por ahora los tipos de gnuradio. 
+
+Para chequear que se puedan conectar dos bloques lo que se chequeaba es que el largo del tipo ( tercer parámetro) sea el mismo (antes era un entero y no un string como en elej.anterior).
+El largo lo transformé para nuestros tipos en strings que los manejo como listas de números en el código para que un puerto de un tipo de evento se pueda conectar con otro el mismo
+"número" o el numero de uno debe aparecer en la lista del otro.
+Ver el código de chequeo agregado a .. /grc/python/Connections.py mas abajo.
+
+en ..../grc/python/Platform.py le cambié el título a la aplicación.
+
+en .../grc/scripts/gnuradio_comapnion
+importaba de referencias fijas a donde está instalado gnuradio (/user/local/share) las clases Platform.py y ActionHandler.py
+Yo lo referí a los directorios de esta instalación es decir:
+agregué
+import sys
+sys.path +=['../..']
+
+y esas referencias al importar las puse como:
+	from grc.python.Platform import Platform
+	from grc.gui.ActionHandler import ActionHandler
+
+
+Modifiqué el bloque options.xml y eliminé todos los imports ya que hacían referencia a gnuradio.
+
+Otro archivo clave es /grc/python/flow_graph.tmpl
+Que tiene el tempalte del código a generar.
+Este archivo lo modifiqué para que genere un código acorde a lo que se necesita.
+
+
+
+En /grc/python/Block.py agregué dos métodos función. Las funciones que se necesitan para arrancar y parar nuestro bloques.
+Para eso use la lista de callbacks que ya tenía el grc y que se puede definir en el xml para cada bloque. <callback> .... </callback>  
+La primera callback que se define en el xml definí que es  la función a la  que se debe llamar para que comience a correr el bloque y
+la segunda callback es la que se debe llamar para detener el bloque. 
+  def get_start(self):
+        aux= self.get_callbacks()
+        if aux:
+            print aux
+        else:
+            aux.append('')
+        return aux[0]
+agregué también la función get_stop(self) de manera similar es la segunda callback.
+
+ En /grc/python/Port.py Gnuradio no permite conectar varias fuentes a un sink por temas de memoria compartida. En nuestro caso 
+esto no es un problema y deberíamos permitirlo. Para habilitar eso en el Companion comenté en este
+archivo ese chequeo:
+#if not self.is_source() and (not self.get_type() == "message") and len(self.get_enabled_connections()) > 1:
+#			self.add_error_message('Port has too many connections.')
+
+
+En ,. /grc/python/Connection.py
+Cambie el código de validación de conexiones entre bloques:
+el código que puse es este:
+		Element.validate(self)
+		source_size = Constants.TYPE_TO_SIZEOF[self.get_source().get_type()] * self.get_source().get_vlen()
+		list_source = source_size.split(',')
+		print list_source
+		sink_size = Constants.TYPE_TO_SIZEOF[self.get_sink().get_type()] * self.get_sink().get_vlen()
+		list_sink = sink_size.split(',')
+		print list_sink		
+		intersec = set(list_source).intersection(list_sink)
+		print intersec
+		print "length  ", len(intersec) 
+		if len(intersec) ==0: 
+			self.add_error_message('Source IO size "%s" does not match sink IO size "%s".'%(source_size, sink_size))
+
+
+
+B) NUEVAS CLASES E INTRFAZ CREADAS.
+
+He creado dos clases nuevas que son las dos clases base para nuestros bloques y nuestros programas:
+Estas clases están en .../gn/libgwnBlocks y se llaman gwnBlock.py y gwnTopBlock.py
+También modifiqué para adaptar a la arquitectura 4 bloques:
+
+En libtimer he creado el módulo timer2.py  ( la interfaz está en /gc/xml/timer.xml)
+En libutils he creado el módulo gwnscheduler2.py ( clase general sin interfaz xml, no implementable)
+En libutils he creado el módulo gwnEvtypeClassifier2.py ( la interfaz para 5 salidas está en .. /gn/xml/evtype_clasifier.xml
+En libvirtualchannel he creado el módulo EventSimulator2.py (la interfaz es en ... /gn/xml/EventSimulator.xml)
+En libvirtualchannel he creado el módulo EventConsumer2.py (la interfaz es en ... /gn/xml/EventConsumer.xml)
+
+OTROS:
+he creado el directorio scripts donde estoy poniendo los tests de las clases y donde genera el código el nuevo companion 
+para correr desde allí. Esto implica para que ande poner una linea en ... /gn/grc/python/flow_graph.tmpl
+ indicando que se pare en ese directorio el programa a correr: os.chdir("/home/belza/Desktop/Dropbox/gn/gn/scripts/")
+Esto de futuro hay que arreglarlo pero ahora no se me ocurrió otra más fácil.
+
+C) Problemas y consideraciones para discutir:
+
+1)Composición de bloques. Hay que estudiar como generar Hierarchical blocks creo que hace algo parecido a esto
+2)Como hacer que un tipo padre consuma eventos de un tipo hijo.... Arreglado agregar varios Events a la lista de Constants.py con el mismo numero.
+3 puertos de configuración y eventos de configuración, puertos de estatus y de log. Enacaminado discutirlo.
+
+4. Muchas colas de entrada ..... muchos threads? minimizar entradas? como manejarlo e imponerlo? en la salida no hay drama.
+5. no me gusta que en events si se agrega un tipo hay que agregar código en ifevents 
+6. critico que maten bien los threads.
+7. Al imprimir un timertimer me aparece un frame_length?
+5. GRC creacion dinamica de entradas y salidas
+6. Tengo que agregar los tipos de los eventos en la lista de Constants.py para chequear los tipos de puerto que se pueden
+conectar pero también los nicknames parentemente para manejar los parámetros ( esto hay que verlo). ¿ Necesito los nicks relamente 
+en esta lista? ¿Puede ser que en un puerto vaya mas abajo de los tipos? Por ahora los comenté los nicks.El caso a ver es  
+ por ej. el eventsimulator que puede sacar un cts y en ese caso es el subtipo. Por ahora genera event y el 
+subtipo (nick) lo paso como parametro.
+7. Los eventos cuando van a multiples colas se pasa la misma instancia o se duplican? ahora se pasa la misma instancia.
+
+
