@@ -129,3 +129,18 @@ subtipo (nick) lo paso como parametro.
 7. Los eventos cuando van a multiples colas se pasa la misma instancia o se duplican? ahora se pasa la misma instancia.
 
 
+
+2014-05-27  Modificaciones para correr gnuradio-companion sin GNU Radio.
+Modificaciones:
+  eliminar referencias a GNU Radio innecesarias.
+  modificar para usar path relativo e independizar de paths del usuario.
+Archivos tocados:
+  gn/grc/python
+    flowgraph_tmpl
+    Param.Py
+    Constants.py
+    Platform.py
+  gn/grc/scripts
+    gwn-companion.py, ex gnuradio-companion
+Agregado archivo
+  gn/gwn-companion.sh, script en bash para invocar en el directorio correcto.
