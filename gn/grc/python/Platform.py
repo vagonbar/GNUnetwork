@@ -18,7 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
 
 import os
-from gnuradio import gr
+#from gnuradio import gr
 from .. base.Platform import Platform as _Platform
 from .. gui.Platform import Platform as _GUIPlatform
 from FlowGraph import FlowGraph as _FlowGraph
@@ -50,7 +50,8 @@ class Platform(_Platform, _GUIPlatform):
         _Platform.__init__(
                 self,
                 name='GNU Wireless Network-- The Artes Companion',
-                version=gr.version(),
+                #version= gr.version(),
+                version='1',
                 key='grc',
                 license=__doc__.strip(),
                 website='http://gnuradio.org/redmine/wiki/gnuradio/GNURadioCompanion',

@@ -19,19 +19,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
 import os
 import stat
-from gnuradio import gr
+#from gnuradio import gr
 
-_gr_prefs = gr.prefs()
+#_gr_prefs = gr.prefs()
 
 #setup paths
 PATH_SEP = {'/':':', '\\':';'}[os.path.sep]
 HIER_BLOCKS_LIB_DIR = os.path.join(os.path.expanduser('~'), '.grc_gnuradio')
+"""
 BLOCKS_DIRS = filter( #filter blank strings
 	lambda x: x, PATH_SEP.join([
 		os.environ.get('GRC_BLOCKS_PATH', ''),
 		_gr_prefs.get_string('grc', 'local_blocks_path', ''),
 	]).split(PATH_SEP),
 ) + [HIER_BLOCKS_LIB_DIR]
+"""
+BLOCKS_DIRS = ['../../xml'] #, '~/.grc_gnuradio']
+#BLOCKS_DIRS = ['/homensk/victor/IIE/GNUnetwork/gn/xml', '/homensk/victor/.grc_gnuradio']
 #           _gr_prefs.get_string('grc', 'global_blocks_path', ''),
 #
 #file creation modes

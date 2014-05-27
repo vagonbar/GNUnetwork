@@ -26,9 +26,9 @@ import os
 import pygtk
 pygtk.require('2.0')
 import gtk
-from gnuradio import eng_notation
+#from gnuradio import eng_notation
 import re
-from gnuradio import gr
+#from gnuradio import gr
 
 _check_id_matcher = re.compile('^[a-z|A-Z]\w*$')
 _show_id_matcher = re.compile('^(variable\w*|parameter|options|notebook)$')
@@ -71,8 +71,8 @@ class FileParam(EntryParam):
 
 #blacklist certain ids, its not complete, but should help
 import __builtin__
-ID_BLACKLIST = ['self', 'options', 'gr', 'blks2', 'wxgui', 'wx', 'math', 'forms', 'firdes'] + \
-	filter(lambda x: not x.startswith('_'), dir(gr.top_block())) + dir(__builtin__)
+ID_BLACKLIST = ['self', 'options', 'gr', 'blks2', 'wxgui', 'wx', 'math', 'forms', 'firdes'] #+ \
+	#filter(lambda x: not x.startswith('_'), dir(gr.top_block())) + dir(__builtin__)
 #define types, native python + numpy
 VECTOR_TYPES = (tuple, list, set, numpy.ndarray)
 COMPLEX_TYPES = [complex, numpy.complex, numpy.complex64, numpy.complex128]
@@ -129,15 +129,23 @@ class Param(_Param, _GUIParam):
 		##################################################
 		# display logic for numbers
 		##################################################
+
+
 		def num_to_str(num):
 			if isinstance(num, COMPLEX_TYPES):
 				num = complex(num) #cast to python complex
 				if num == 0: return '0' #value is zero
-				elif num.imag == 0: return '%s'%eng_notation.num_to_str(num.real) #value is real
-				elif num.real == 0: return '%sj'%eng_notation.num_to_str(num.imag) #value is imaginary
-				elif num.imag < 0: return '%s-%sj'%(eng_notation.num_to_str(num.real), eng_notation.num_to_str(abs(num.imag)))
-				else: return '%s+%sj'%(eng_notation.num_to_str(num.real), eng_notation.num_to_str(num.imag))
+				#elif num.imag == 0: return '%s'%eng_notation.num_to_str(num.real) #value is real
+				elif num.imag == 0: return '%s'% str(num.real) #value is real
+				#elif num.real == 0: return '%sj'%eng_notation.num_to_str(num.imag) #value is imaginary
+				elif num.real == 0: return '%sj'% str(num.imag) #value is imaginary
+				#elif num.imag < 0: return '%s-%sj'%(eng_notation.num_to_str(num.real), eng_notation.num_to_str(abs(num.imag)))
+				elif num.imag < 0: return '%s-%sj'%(str(num.real), str(abs(num.imag)))
+				#else: return '%s+%sj'%(eng_notation.num_to_str(num.real), eng_notation.num_to_str(num.imag))
+				else: return '%s+%sj'%(str(num.real), str(num.imag))
 			else: return str(num)
+
+
 		##################################################
 		# split up formatting by type
 		##################################################
@@ -159,6 +167,7 @@ class Param(_Param, _GUIParam):
 		# done
 		##################################################
 		return _truncate(dt_str, truncate)
+
 
 	def get_input(self, *args, **kwargs):
 		if self.get_type() in ('file_open', 'file_save'): return FileParam(self, *args, **kwargs)

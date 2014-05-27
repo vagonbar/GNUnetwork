@@ -2,10 +2,10 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Mon May 26 13:26:57 2014
+# Generated: Tue May 27 11:43:09 2014
 ##################################################
 import os
-os.chdir("/home/belza/Desktop/Dropbox/gn/gn/scripts/")
+os.chdir("../../scripts/")
 print os.getcwd()
 
 import sys
