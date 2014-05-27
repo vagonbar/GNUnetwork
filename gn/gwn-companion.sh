@@ -3,5 +3,5 @@
 
 THISDIR=`pwd`
 cd ./grc/scripts
-python ./gnuradio-companion.py
+python ./gwn-companion.py
 cd $THISDIR
