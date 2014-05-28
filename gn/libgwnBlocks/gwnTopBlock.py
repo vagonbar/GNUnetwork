@@ -57,6 +57,8 @@ def test():
     tb.source_0.ports_out[0].put('Hello')
     aux = tb.sink_0.ports_in[0].get()    
     print aux
+
+
 if __name__ == '__main__':
     try:
         test()
