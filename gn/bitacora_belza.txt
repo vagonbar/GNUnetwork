@@ -153,6 +153,32 @@ ip que espera el os y da un error a pantalla pero sigue. Luego que desde una ter
 que el so manda a la interfaz de protocolos hambrientos de interfaz para escupir cosas.
 
 
- 
+2014-05-29 Arquitectura (Belza, VGB)
+
+Bloques:
+  - toda la comunicación por los conectores, ningún bloque recibe nada por otra vía. Un bloque usa clases, funciones, variables, etc. de bibliotecas; esto se resuelve a través de "import", no es una "comunicación" con el bloque.
+  - muchos bloques tienen una máquina de estados (FSM, Finite State Machine). Puede convenir tener un bloque gwnBlockFSM que incluya una máquina de estados, la que esté siendo usada en el framework.
+  - todos los conectores envían y reciben objetos de tipo Event, y de ningún otro tipo (pueden recibir de subclases de Event, son de tipo Event).
+  - un objeto Event puede tener un campo "frame", lleno o vacío. Cuando los bloques deben recibir frames, van siempre dentro de un objeto Event, el único tipo intercambiado entre bloques. Un bloque puede invocar las funciones en bibliotecas de empaquetado para empaquetar en un frame o para desempaquetar un frame y generar un Event.
+  - existen bloques que intercambian otros tipos de dato (no Event) con otras capas, por ejemplo:
+    - bloque de interacción con GNU Radio
+    - bloque de interacción con sistema operativo, u otra capa
+Estos bloques NO TIENEN ninguna indicación visual de que intercambian datos con otras capas o entidades.
+  - definir una clase gwnConnector, para que los conectores de un bloque sean instancias de esta clase. Motivación: poder cambiar Queue por otra cosa.
+
+Eventos:
+  - estudiar estructura, jerarquía de clases, tipos de eventos, ...
+
+Empaquetado:
+  - separar el empaquetado del resto.
+
+Componentes del framework:
+  - bibliotecas, con su propia ordenación jerárquica; un paquete sería el empaquetado, otro quizás los eventos, otros más.
+  - biblioteca de bloques gwnblocks, contiene los bloques no instanciables gwnTopBlock, gwnBlock, el proyectado gwnBlockFSM, del cual heredan los bloques definidos en el framework o extensiones de los usuarios.
+  - estudiar una estructura para bibliotecas, y para todo el framework.
+
+Organizativos:
+  - convención de nombres, algunas cuestiones de estilo, definir. 
+
 
 
