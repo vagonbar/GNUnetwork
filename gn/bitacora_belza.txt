@@ -139,3 +139,20 @@ Archivos tocados:
 Agregado archivo
   gn/gwn-companion.sh, script en bash para invocar en el directorio correcto.
 
+
+2014-05-29 Belza Nuevo bloque e interfaz TUN/TAP
+Se adaptó un nuevo bloque a la arquitectura nueva TUN/TAP.
+El fuente del controlador TUN/TAP se encuentra en gn/libadaptationlayer/TunTapInterface.py
+La interfaz xml para el companion se encuentra en gn/xml/TunTapInterface.xml
+
+También en gn/scripts/tun_tap_test.grc es un programa del Companion para probar el módulo.
+obs: 
+1. si se va a utilizar este módulo el companion hay que levantarlo con sudo
+2. Como no hay una fuente nula (hoy le encontré utilidad a tener una) le conecté la entrada del bloque a un simulador de eventos que obviamente no envia payload con el formato
+ip que espera el os y da un error a pantalla pero sigue. Luego que desde una terminal se le configura la ip al dispositivo se eve en pantalla todos los paquetes
+que el so manda a la interfaz de protocolos hambrientos de interfaz para escupir cosas.
+
+
+ 
+
+
