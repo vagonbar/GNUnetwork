@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Tue May 27 11:43:09 2014
+# Generated: Tue May 27 11:54:14 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -39,7 +39,7 @@ class top_block1(gwnTB.gwnTopBlock):
 		self.timer_1 = timer.Timer(5, 4,"TimerTOR2")	
 		self.evtype_classifier_0 = classifier.EvtypeClassifier(5,["Data","Request","Ctrl","Mgmt","Timer"])	
 		self.eventsim_0_0 = simulator.EventSimulator('TimerConfig',"1","10","TOH")	
-		self.eventsim_0 = simulator.EventSimulator('DataData',"10:2:20:35","10:2:20:36","5")	
+		self.eventsim_0 = simulator.EventSimulator('DataData',"10:10:10:10:10:10","11:11:11:11:11:11","5")	
 		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
 
 

@@ -44,8 +44,7 @@ class Platform(_Platform, _GUIPlatform):
         if not os.path.exists(HIER_BLOCKS_LIB_DIR): os.mkdir(HIER_BLOCKS_LIB_DIR)
         #convert block paths to absolute paths
         block_paths = set(map(os.path.abspath, BLOCKS_DIRS))
-        print "directorio: ", block_paths
-        print "block dtd :", BLOCK_DTD
+
         #init
         _Platform.__init__(
                 self,

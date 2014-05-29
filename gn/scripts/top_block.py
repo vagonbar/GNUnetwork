@@ -2,14 +2,16 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block
-# Generated: Fri May 23 20:25:00 2014
+# Author: ARTES
+# Generated: Thu May 29 10:30:51 2014
 ##################################################
 import os
-os.chdir("/home/belza/Dropbox/gn/gn/scripts/")
+os.chdir("../../scripts/")
 print os.getcwd()
 
 import sys
 sys.path +=['..']
+import libadaptationlayer.TunTapInterface as tun_tap
 import libgwnBlocks.gwnTopBlock as gwnTB
 import libtimer.timer2 as timer
 import libvirtualchannel.EventConsumer2 as consumer
@@ -18,27 +20,21 @@ import libvirtualchannel.EventSimulator2 as simulator
 class top_block(gwnTB.gwnTopBlock):
 
 
-	def __init__(self, parametro1=12):
+	def __init__(self):
 		gwnTB.gwnTopBlock.__init__(self)
 
 
 		##################################################
-		# Parameters
-		##################################################
-		self.parametro1 = parametro1
-
-		##################################################
 		# Variables
 		##################################################
-		self.variable_0 = variable_0 = 0.5
+		self.samp_rate = samp_rate = 32000
 
 		##################################################
 		# Blocks
 		##################################################
-		self.timer_1 = timer.Timer(5, 30,"TimerTOR2")	
-		self.timer_0 = timer.Timer(variable_0, 2,"TimerTOR1")	
-		self.eventsim_0 = simulator.EventSimulator('TimerConfig',"3","1","TimerTimer")	
-		self.eventconsumer_1 = consumer.EventConsumer("nickname2") 	
+		self.tun_tap_0 = tun_tap.TunTapInterface("/dev/net/tun","10:10:10:10:10:10","11:11:11:11:11:11")	
+		self.timer_0 = timer.Timer(1000, 0,"Timer")	
+		self.eventsim_0 = simulator.EventSimulator('DataData',"1010101","101010","10")	
 		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
 
 
@@ -47,19 +43,17 @@ class top_block(gwnTB.gwnTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.timer_0, 0), (self.eventconsumer_0, 0))
-		self.connect((self.eventsim_0, 0), (self.timer_0, 0))
-		self.connect((self.timer_1, 0), (self.eventsim_0, 0))
-		self.connect((self.timer_0, 0), (self.eventconsumer_1, 0))
+		self.connect((self.timer_0, 0), (self.eventsim_0, 0))
+		self.connect((self.eventsim_0, 0), (self.tun_tap_0, 0))
+		self.connect((self.tun_tap_0, 0), (self.eventconsumer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.timer_1.start()
+		self.tun_tap_0.start()
 		self.timer_0.start()
 		self.eventsim_0.start()
-		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
 
 
@@ -68,10 +62,9 @@ class top_block(gwnTB.gwnTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.timer_1.stop()
+		self.tun_tap_0.stop()
 		self.timer_0.stop()
 		self.eventsim_0.stop()
-		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
 
 
