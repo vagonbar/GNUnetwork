@@ -38,6 +38,7 @@ class EventFrame(Event):
             'peerlinkId': 0, \
             }
         self.payload = ''
+        self.frame=''
         self.ev_dc.update(ev_dc)
         return
 
@@ -45,6 +46,7 @@ class EventFrame(Event):
         ss = Event.__str__(self)
         ss += '\n  Frame packet: ' + str(self.frmpkt)
         ss += '\n  Payload: ' + repr(self.payload)
+        ss += '\n  Frame: ' + repr(self.frame)
         return ss
 
     def __eq__(self, other):
