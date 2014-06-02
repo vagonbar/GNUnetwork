@@ -15,19 +15,19 @@
 	<param>
 		<name>interval</name>
 		<key>interval</key>
-		<value>interval</value>
+		<value>5</value>
 		<type>real</type>
 	</param>
 	<param>
 		<name>retry</name>
 		<key>retry</key>
-		<value>retry</value>
+		<value>2</value>
 		<type>int</type>
 	</param>
 	<param>
 		<name>nickname1</name>
 		<key>nickname1</key>
-		<value>nickname1</value>
+		<value>TimerTimer</value>
 		<type>string</type>
 	</param>
 

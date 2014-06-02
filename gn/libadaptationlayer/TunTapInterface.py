@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-# sched-bytype.py
-#
+
+'''
+Created on Thu Dec 13 14:31:45 2012
+
+@author: belza
+'''
 
 
 '''A layer 3 to layer 2 Interface.

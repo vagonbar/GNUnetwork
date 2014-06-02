@@ -11,22 +11,14 @@ sys.path +=sys.path + ['..']
 from gwnscheduler2 import Scheduler
 
 class EvtypeClassifier(Scheduler):
-    '''A timerthat waits an interval and generates a Timer Event.
-    This class is a timer that waits for a given interval. After that generates an event of Yype TIMER and Subtype the name given in subTypeEvent1.
-    The timer retries the number of times gven in the parameter retry. After the given number of retries it generates the event of Type TIMER and subtype given in subTypeEvent2 if it is not None.
+    '''
     '''
 
     def __init__(self, n_out=1,list_types=[]):
         '''  
         Constructor.
         
-        @param interval: The interval of time.
-        @param retry: The number of retries.
-        @param nickname1: The nickname of the event that must be called after each retry.
-        @param nickname2: The nickname of the event that must be called after the given number of retries.
-        @param add_info: additional information that will be send with the Timer Event.
         '''        
-        "The Timer has one output and 0 inputs so we must call the father constructor with parameters (0,1)"
         super(EvtypeClassifier,self).__init__(1,n_out)        
         self.list_types =list_types
         self.finished = False

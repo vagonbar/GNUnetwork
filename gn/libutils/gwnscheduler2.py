@@ -4,7 +4,7 @@
 # scheduler: a generic scheduler
 
 '''Classes and Functions to implement a generic scheduler.
-
+TODO CHANGE DOC
 How to use:
   1. Create a subclass of Scheduler.
   2. Overwrite fn_sched() in the subclass.

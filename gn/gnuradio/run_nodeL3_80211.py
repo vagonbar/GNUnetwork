@@ -197,6 +197,9 @@ def main():
     for mod in mods.values():
         mod.add_options(expert_grp)
     (options, args) = parser.parse_args ()
+    print "########################################"
+    print options
+    print "########################################"
     if len(args) != 0:
         parser.print_help()
         sys.exit(1)           

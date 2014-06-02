@@ -273,7 +273,6 @@ def main():
     demods = digital.modulation_utils.type_1_demods()
     parser = OptionParser(option_class=eng_option, conflict_handler="resolve")
     expert_grp = parser.add_option_group("Expert")
-
     parser.add_option("-m", "--modulation", type="choice", choices=mods.keys(),
                       default='bpsk',
                       help="Select modulation from: %s [default=%%default]"
@@ -305,11 +304,19 @@ def main():
     rp37.add_options(parser, expert_grp)
     uhd_receiver.add_options(parser)
 
-    for mod in demods.values():
-        mod.add_options(expert_grp)
-    for mod in mods.values():
-        mod.add_options(expert_grp)
+#    for mod in demods.values():
+#        mod.add_options(expert_grp)
+#    for mod in mods.values():
+#        mod.add_options(expert_grp)
     (options, args) = parser.parse_args ()
+    print "#########################################################"     
+    print options
+    print "#########################################################"     
+    print args
+    print "#########################################################"     
+    print demods
+    print "#########################################################"     
+    
     if len(args) != 0:
         parser.print_help()
         sys.exit(1)           

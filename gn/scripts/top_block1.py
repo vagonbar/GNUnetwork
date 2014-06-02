@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Tue May 27 11:54:14 2014
+# Generated: Mon Jun  2 10:36:51 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -10,11 +10,13 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
+import libadaptlay80211.gwnDeframer as deframer
+import libadaptlay80211.gwnFramer as framer
 import libgwnBlocks.gwnTopBlock as gwnTB
 import libtimer.timer2 as timer
-import libutils.gwnEvtypeClassifier2 as classifier
 import libvirtualchannel.EventConsumer2 as consumer
 import libvirtualchannel.EventSimulator2 as simulator
+import libvirtualchannel.gwnVirtualChannel as channel
 
 class top_block1(gwnTB.gwnTopBlock):
 
@@ -36,11 +38,13 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.timer_1 = timer.Timer(5, 4,"TimerTOR2")	
-		self.evtype_classifier_0 = classifier.EvtypeClassifier(5,["Data","Request","Ctrl","Mgmt","Timer"])	
-		self.eventsim_0_0 = simulator.EventSimulator('TimerConfig',"1","10","TOH")	
+		self.virtualchannel_0 = channel.gwnVirtualChannel(0.1)	
+		self.timer_0 = timer.Timer(5, 2,"TimerTimer")	
+		self.framer80211_0 = framer.gwnFramer()	
 		self.eventsim_0 = simulator.EventSimulator('DataData',"10:10:10:10:10:10","11:11:11:11:11:11","5")	
-		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
+		self.eventconsumer_1 = consumer.EventConsumer("Consumer 2") 	
+		self.eventconsumer_0 = consumer.EventConsumer("Consumer 1") 	
+		self.deframer80211_0 = deframer.gwnDeframer()	
 
 
 
@@ -48,22 +52,24 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.timer_1, 0), (self.eventsim_0, 0))
-		self.connect((self.evtype_classifier_0, 0), (self.eventconsumer_0, 0))
-		self.connect((self.timer_1, 0), (self.eventsim_0_0, 0))
-		self.connect((self.eventsim_0_0, 0), (self.evtype_classifier_0, 0))
-		self.connect((self.eventsim_0, 0), (self.evtype_classifier_0, 0))
-		self.connect((self.evtype_classifier_0, 1), (self.eventconsumer_0, 0))
+		self.connect((self.timer_0, 0), (self.eventsim_0, 0))
+		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
+		self.connect((self.framer80211_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.deframer80211_0, 0), (self.eventconsumer_1, 0))
+		self.connect((self.framer80211_0, 0), (self.virtualchannel_0, 0))
+		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.timer_1.start()
-		self.evtype_classifier_0.start()
-		self.eventsim_0_0.start()
+		self.virtualchannel_0.start()
+		self.timer_0.start()
+		self.framer80211_0.start()
 		self.eventsim_0.start()
+		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
+		self.deframer80211_0.start()
 
 
 	def stop(self):
@@ -71,11 +77,13 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.timer_1.stop()
-		self.evtype_classifier_0.stop()
-		self.eventsim_0_0.stop()
+		self.virtualchannel_0.stop()
+		self.timer_0.stop()
+		self.framer80211_0.stop()
 		self.eventsim_0.stop()
+		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
+		self.deframer80211_0.stop()
 
 
 
