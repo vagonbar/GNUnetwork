@@ -27,7 +27,11 @@
      </param>      
 
 	<sink>
-		<name>in</name>
+		<name>in DL</name>
+		<type>Event</type>            
+	</sink>
+      <sink>
+		<name>in UL</name>
 		<type>Event</type>            
 	</sink>
 	<sink>
@@ -36,7 +40,11 @@
            <optional>1</optional>            
 	</sink>
      	<source>
-		<name>out</name>
+		<name>out DL</name>
+		<type>Event</type>
+	</source>
+     	<source>
+		<name>out UL</name>
 		<type>Event</type>
 	</source>
      	<source>
