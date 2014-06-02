@@ -70,7 +70,7 @@ class gwnGnuRadiopsk(gwn.gwnBlock):
                 print ' an empty frame from  L1 '
             else:
                 event = if_events.mkevent("DataData")
-                event.frame = frame
+                event.frmpkt = frame
                 try:
                     for q in self.ports_out[0]:
                         q.put(event, False)   # add to queue, don't block  
@@ -118,7 +118,7 @@ class gwnGnuRadiopsk(gwn.gwnBlock):
             '''
             while not self.finished :
                 event = self.in_queue.get()
-                frame = event.frame
+                frame = event.frmpkt
                 self.out_queue.put(frame)
             return
         def stop(self):

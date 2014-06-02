@@ -41,7 +41,7 @@ class gwnDeframer(gwn.gwnBlock):
             in_qu = self.ports_in[0]
             evframe = in_qu.get(True)
             #print " recibi frame : ", repr(frame)
-            frm_obj = if_frames.objfrompkt(evframe.frame)
+            frm_obj = if_frames.objfrompkt(evframe.frmpkt)
             event = if_events.frmtoev(frm_obj)
             #print "recibi event : ", event
             if event != None:
@@ -66,6 +66,3 @@ if __name__ == '__main__':
         doctest.testfile(testfilename)
     except:      # no text file present
         pass
-
-
-

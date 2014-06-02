@@ -41,8 +41,8 @@ class gwnFramer(gwn.gwnBlock):
             event = in_qu.get(True)
             
             frmobj = if_events.evtofrm(event)
-            frame = frmobj.mkpkt()       
-            event.frame = frame
+            framepkt = frmobj.mkpkt()
+            event.frmpkt = framepkt
             for q in self.ports_out[0]:
                 q.put(event, False)   # add to queue, don't block  
             in_qu.task_done()
