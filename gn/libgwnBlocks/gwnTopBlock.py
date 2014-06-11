@@ -39,16 +39,16 @@ class gwnTopBlock():
 class top_block_test(gwnTopBlock):
 
 	def __init__(self):
-		gwnTopBlock.__init__(self)
-		##################################################
-		# Blocks
-		##################################################
-		self.source_0 = gwn.gwnBlock(0,1) 
-           	self.sink_0 = gwn.gwnBlock(1,0) 
-		##################################################
-		# Connections
-		##################################################
-		self.connect((self.source_0, 0), (self.sink_0, 0))
+         gwnTopBlock.__init__(self)
+         ##################################################
+         # Blocks
+         ##################################################
+         self.source_0 = gwn.gwnBlock(0,1) 
+         self.sink_0 = gwn.gwnBlock(1,0) 
+         ##################################################
+         # Connections
+         ##################################################
+         self.connect((self.source_0, 0), (self.sink_0, 0))
 
 def test():
     '''A test function.

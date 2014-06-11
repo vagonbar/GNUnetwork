@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Jun  2 11:19:20 2014</timestamp>
+  <timestamp>Tue Jun  3 17:37:05 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -53,30 +53,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(-1, 11)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>var_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(31, 82)</value>
+      <value>(18, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -111,7 +88,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(21, 149)</value>
+      <value>(535, 19)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -119,18 +96,22 @@
     </param>
   </block>
   <block>
-    <key>framer80211</key>
+    <key>variable</key>
     <param>
       <key>id</key>
-      <value>framer80211_0</value>
+      <value>var_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(558, 63)</value>
+      <value>(661, 25)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -138,30 +119,66 @@
     </param>
   </block>
   <block>
-    <key>timer</key>
+    <key>gnuradio_psk</key>
     <param>
       <key>id</key>
-      <value>timer_0</value>
+      <value>gnuradio_psk_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>interval</key>
-      <value>5</value>
+      <key>version</key>
+      <value>6</value>
     </param>
     <param>
-      <key>retry</key>
+      <key>args</key>
+      <value>serial=E0R11Y0B1</value>
+    </param>
+    <param>
+      <key>antenna</key>
+      <value>'TX/RX'</value>
+    </param>
+    <param>
+      <key>spec</key>
+      <value>A:0</value>
+    </param>
+    <param>
+      <key>rx_freq</key>
+      <value>850000000.0</value>
+    </param>
+    <param>
+      <key>rx_gain</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>tx_gain</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>tx_freq</key>
+      <value>851000000.0</value>
+    </param>
+    <param>
+      <key>tx_amplitude</key>
+      <value>0.25</value>
+    </param>
+    <param>
+      <key>bitrate</key>
+      <value>100000</value>
+    </param>
+    <param>
+      <key>sps</key>
       <value>2</value>
     </param>
     <param>
-      <key>nickname1</key>
-      <value>TimerTimer</value>
+      <key>modulation</key>
+      <value>bpsk</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(145, 243)</value>
+      <value>(358, 416)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -188,11 +205,11 @@
     </param>
     <param>
       <key>param2</key>
-      <value>11:11:11:11:11:11</value>
+      <value>10:10:10:10:10:11</value>
     </param>
     <param>
       <key>param3</key>
-      <value>5</value>
+      <value>10</value>
     </param>
     <param>
       <key>itype</key>
@@ -204,7 +221,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(257, 21)</value>
+      <value>(330, 1)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -212,26 +229,26 @@
     </param>
   </block>
   <block>
-    <key>eventconsumer</key>
+    <key>simplefdma</key>
     <param>
       <key>id</key>
-      <value>eventconsumer_1</value>
+      <value>simplefdma_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>nickname1</key>
-      <value>Consumer 2</value>
+      <key>bandDL1</key>
+      <value>851000000.0</value>
     </param>
     <param>
-      <key>itype</key>
-      <value>Event</value>
+      <key>bandUL1</key>
+      <value>850000000.0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(802, 288)</value>
+      <value>(326, 210)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -239,26 +256,18 @@
     </param>
   </block>
   <block>
-    <key>eventconsumer</key>
+    <key>framer80211</key>
     <param>
       <key>id</key>
-      <value>eventconsumer_0</value>
+      <value>framer80211_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>nickname1</key>
-      <value>Consumer 1</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
       <key>_coordinate</key>
-      <value>(804, 179)</value>
+      <value>(731, 287)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -277,7 +286,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(469, 342)</value>
+      <value>(58, 301)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -285,28 +294,87 @@
     </param>
   </block>
   <block>
-    <key>virtualchannel</key>
+    <key>eventconsumer</key>
     <param>
       <key>id</key>
-      <value>virtualchannel_0</value>
+      <value>eventconsumer_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>frame_loss</key>
-      <value>0.01</value>
+      <key>nickname1</key>
+      <value>nickname1</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(492, 193)</value>
+      <value>(732, 125)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
   </block>
+  <block>
+    <key>timer</key>
+    <param>
+      <key>id</key>
+      <value>timer_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>300</value>
+    </param>
+    <param>
+      <key>nickname1</key>
+      <value>TimerTimer</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(34, 71)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <connection>
+    <source_block_id>simplefdma_0</source_block_id>
+    <sink_block_id>framer80211_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>framer80211_0</source_block_id>
+    <sink_block_id>gnuradio_psk_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>gnuradio_psk_0</source_block_id>
+    <sink_block_id>deframer80211_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>deframer80211_0</source_block_id>
+    <sink_block_id>simplefdma_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
   <connection>
     <source_block_id>timer_0</source_block_id>
     <sink_block_id>eventsim_0</sink_block_id>
@@ -315,32 +383,14 @@
   </connection>
   <connection>
     <source_block_id>eventsim_0</source_block_id>
-    <sink_block_id>framer80211_0</sink_block_id>
+    <sink_block_id>simplefdma_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>framer80211_0</source_block_id>
+    <source_block_id>simplefdma_0</source_block_id>
     <sink_block_id>eventconsumer_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>deframer80211_0</source_block_id>
-    <sink_block_id>eventconsumer_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>framer80211_0</source_block_id>
-    <sink_block_id>virtualchannel_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>virtualchannel_0</source_block_id>
-    <sink_block_id>deframer80211_0</sink_block_id>
-    <source_key>0</source_key>
+    <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
 </flow_graph>

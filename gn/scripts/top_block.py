@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Thu May 29 13:54:28 2014
+# Generated: Tue Jun  3 11:45:10 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -11,11 +11,13 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import libadaptationlayer.TunTapInterface as tun_tap
+import libadaptlay80211.gwnDeframer as deframer
+import libadaptlay80211.gwnFramer as framer
 import libgwnBlocks.gwnTopBlock as gwnTB
 import libtimer.timer2 as timer
 import libvirtualchannel.EventConsumer2 as consumer
 import libvirtualchannel.EventSimulator2 as simulator
+import libvirtualchannel.gwnVirtualChannel as channel
 
 class top_block(gwnTB.gwnTopBlock):
 
@@ -25,17 +27,14 @@ class top_block(gwnTB.gwnTopBlock):
 
 
 		##################################################
-		# Variables
-		##################################################
-		self.samp_rate = samp_rate = 32000
-
-		##################################################
 		# Blocks
 		##################################################
-		self.tun_tap_0 = tun_tap.TunTapInterface("/dev/net/tun","10:10:10:10:10:10","11:11:11:11:11:11")	
-		self.timer_0 = timer.Timer(1000, 0,"Timer")	
-		self.eventsim_0 = simulator.EventSimulator('DataData',"1010101","101010","10")	
-		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
+		self.virtualchannel_0 = channel.gwnVirtualChannel(0.01)	
+		self.timer_0 = timer.Timer(5, 3,"TimerTimer")	
+		self.framer80211_0 = framer.gwnFramer()	
+		self.eventsim_0 = simulator.EventSimulator('DataData',"100000","101000","10")	
+		self.eventconsumer_0 = consumer.EventConsumer("Consumer Node 1") 	
+		self.deframer80211_0 = deframer.gwnDeframer()	
 
 
 
@@ -43,18 +42,22 @@ class top_block(gwnTB.gwnTopBlock):
 		##################################################
 		# Connections
 		##################################################
+		self.connect((self.framer80211_0, 0), (self.virtualchannel_0, 0))
 		self.connect((self.timer_0, 0), (self.eventsim_0, 0))
-		self.connect((self.eventsim_0, 0), (self.tun_tap_0, 0))
-		self.connect((self.tun_tap_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0, 0))
+		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
+		self.connect((self.deframer80211_0, 0), (self.eventconsumer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.tun_tap_0.start()
+		self.virtualchannel_0.start()
 		self.timer_0.start()
+		self.framer80211_0.start()
 		self.eventsim_0.start()
 		self.eventconsumer_0.start()
+		self.deframer80211_0.start()
 
 
 	def stop(self):
@@ -62,10 +65,12 @@ class top_block(gwnTB.gwnTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.tun_tap_0.stop()
+		self.virtualchannel_0.stop()
 		self.timer_0.stop()
+		self.framer80211_0.stop()
 		self.eventsim_0.stop()
 		self.eventconsumer_0.stop()
+		self.deframer80211_0.stop()
 
 
 

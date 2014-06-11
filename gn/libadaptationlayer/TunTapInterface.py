@@ -110,10 +110,10 @@ class TunTapInterface(gwn.gwnBlock):
                     module_logger.debug(str(self.my_addr) +' Layer 3 to Layer 2 queue is full, packet loss   ' )
 
         return
-    def stop(self):        
-       self.finished = True
-       self._Thread__stop()
-       self.sch2.stop()
+    def stop(self):      
+        self.sch2.stop() 
+        self.finished = True
+        self._Thread__stop()
         
         
     class ReadLayer2(threading.Thread):

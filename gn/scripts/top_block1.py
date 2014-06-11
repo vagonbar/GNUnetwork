@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Mon Jun  2 10:36:51 2014
+# Generated: Tue Jun  3 17:40:38 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -10,13 +10,14 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
+import libMAC.gwnSimpleFDMA as fdma
 import libadaptlay80211.gwnDeframer as deframer
 import libadaptlay80211.gwnFramer as framer
+import libgnuradio.gwnGnuRadiopsk as psk
 import libgwnBlocks.gwnTopBlock as gwnTB
 import libtimer.timer2 as timer
 import libvirtualchannel.EventConsumer2 as consumer
 import libvirtualchannel.EventSimulator2 as simulator
-import libvirtualchannel.gwnVirtualChannel as channel
 
 class top_block1(gwnTB.gwnTopBlock):
 
@@ -38,12 +39,12 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.virtualchannel_0 = channel.gwnVirtualChannel(0.1)	
-		self.timer_0 = timer.Timer(5, 2,"TimerTimer")	
+		self.timer_0 = timer.Timer(1, 300,"TimerTimer")	
+		self.simplefdma_0 = fdma.gwnSimpleFDMA(851000000.0,850000000.0)	
+		self.gnuradio_psk_0 = psk.gwnGnuRadiopsk( 2, "6", 'TX/RX', 850000000.0, 15, "A:0", 15, 'bpsk', "serial=E0R11Y0B1",  100000, 851000000.0, 0.25)	
 		self.framer80211_0 = framer.gwnFramer()	
-		self.eventsim_0 = simulator.EventSimulator('DataData',"10:10:10:10:10:10","11:11:11:11:11:11","5")	
-		self.eventconsumer_1 = consumer.EventConsumer("Consumer 2") 	
-		self.eventconsumer_0 = consumer.EventConsumer("Consumer 1") 	
+		self.eventsim_0 = simulator.EventSimulator('DataData',"10:10:10:10:10:10","10:10:10:10:10:11","10")	
+		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
 		self.deframer80211_0 = deframer.gwnDeframer()	
 
 
@@ -52,22 +53,23 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Connections
 		##################################################
+		self.connect((self.simplefdma_0, 0), (self.framer80211_0, 0))
+		self.connect((self.framer80211_0, 0), (self.gnuradio_psk_0, 0))
+		self.connect((self.gnuradio_psk_0, 0), (self.deframer80211_0, 0))
+		self.connect((self.deframer80211_0, 0), (self.simplefdma_0, 1))
 		self.connect((self.timer_0, 0), (self.eventsim_0, 0))
-		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
-		self.connect((self.framer80211_0, 0), (self.eventconsumer_0, 0))
-		self.connect((self.deframer80211_0, 0), (self.eventconsumer_1, 0))
-		self.connect((self.framer80211_0, 0), (self.virtualchannel_0, 0))
-		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0, 0))
+		self.connect((self.eventsim_0, 0), (self.simplefdma_0, 0))
+		self.connect((self.simplefdma_0, 1), (self.eventconsumer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.virtualchannel_0.start()
 		self.timer_0.start()
+		self.simplefdma_0.start()
+		self.gnuradio_psk_0.start()
 		self.framer80211_0.start()
 		self.eventsim_0.start()
-		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
 		self.deframer80211_0.start()
 
@@ -77,11 +79,11 @@ class top_block1(gwnTB.gwnTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.virtualchannel_0.stop()
 		self.timer_0.stop()
+		self.simplefdma_0.stop()
+		self.gnuradio_psk_0.stop()
 		self.framer80211_0.stop()
 		self.eventsim_0.stop()
-		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
 		self.deframer80211_0.stop()
 

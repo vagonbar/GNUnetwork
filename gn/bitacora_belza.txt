@@ -119,7 +119,8 @@ C) Problemas y consideraciones para discutir:
 
 9. Tengo que agregar los tipos de los eventos en la lista de Constants.py para chequear los tipos de puerto que se pueden conectar pero también los nicknames parentemente para manejar los parámetros (esto hay que verlo). ¿ Necesito los nicks relamente en esta lista? ¿Puede ser que en un puerto vaya mas abajo de los tipos? Por ahora los comenté los nicks. El caso a ver es por ej. el eventsimulator que puede sacar un CTS y en ese caso es el subtipo. Por ahora genera event y el subtipo (nick) lo paso como parametro.
 
-10. Los eventos cuando van a multiples colas se pasa la misma instancia o se duplican? ahora se pasa la misma instancia.
+10. Los eventos cuando van a multiples colas se pasa la misma instancia o se duplican? ahora se pasa la misma instancia. Poner lectura y escritura en el bloque 
+generico y agregar un parámetro en el bloque generico que cuando se crea se define si duplica o no.
 
 
 D) OTROS

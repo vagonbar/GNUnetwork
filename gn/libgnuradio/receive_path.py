@@ -36,8 +36,8 @@ class receive_path(gr.hier_block2):
 	gr.hier_block2.__init__(self, "receive_path",
 				gr.io_signature(1, 1, gr.sizeof_gr_complex),
 				gr.io_signature(0, 0, 0))
-        
-        options = copy.copy(options)    # make a copy so we can destructively modify
+        print options
+        #options = copy.copy(options)    # make a copy so we can destructively modify
 
         self._verbose     = options.verbose
         self._bitrate     = options.bitrate  # desired bit rate

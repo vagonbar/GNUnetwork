@@ -39,7 +39,7 @@ class transmit_path(gr.hier_block2):
 				gr.io_signature(0,0,0),
 				gr.io_signature(1,1,gr.sizeof_gr_complex))
         
-        options = copy.copy(options)    # make a copy so we can destructively modify
+        #options = copy.copy(options)    # make a copy so we can destructively modify
 
         self._verbose      = options.verbose
         self._tx_amplitude = options.tx_amplitude   # digital amplitude sent to USRP
@@ -80,6 +80,7 @@ class transmit_path(gr.hier_block2):
         """
         Calls the transmitter method to send a packet
         """
+        print "SEND #"
         return self.packet_transmitter.send_pkt(payload, eof)
         
     def bitrate(self):

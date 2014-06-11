@@ -14,14 +14,14 @@
 	<callback>stop()</callback>
 	<param>
 		<name>Downlink Band (Hz)</name>
-		<key>dlband1</key>
+		<key>bandDL1</key>
 		<value>851000000.0</value>
 		<type>real</type>
      </param>      
 
 	<param>
 		<name>Uplink Band 1 (Hz)</name>
-		<key>ulband1</key>
+		<key>bandUL1</key>
 		<value>850000000.0</value>
 		<type>real</type>
      </param>      

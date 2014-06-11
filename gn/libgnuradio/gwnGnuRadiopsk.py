@@ -15,7 +15,7 @@ from gnuradio import digital
 import Queue
 import threading
 import libevents.if_events as if_events
-import TxRxLayer1
+import TxRxLayer1 as TxRxLayer1
 import libgwnBlocks.gwnBlock as gwn
 
         
@@ -59,11 +59,11 @@ class gwnGnuRadiopsk(gwn.gwnBlock):
         self.tb_tx = TxRxLayer1.my_top_block_tx(self.modulator, self.options,self.tx_queue)
         self.tb_rx.start()        # start flow graph
         self.tb_tx.start()
-        self.readl2= self.ReadLayer2(self.ports_in[0], self.tx_queue)
-        self.readl2.start()
         return
 
     def run(self):
+        self.readl2= self.ReadLayer2(self.ports_in[0], self.tx_queue)
+        self.readl2.start()
         while not self.finished :
             frame = self.rx_queue.get()
             if not frame:
