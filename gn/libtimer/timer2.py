@@ -18,8 +18,7 @@ class Timer(gwn.gwnBlock):
     The timer retries the number of times gven in the parameter retry. After the given number of retries it generates the event of Type TIMER and subtype given in subTypeEvent2 if it is not None.
     '''
 
-    def __init__(self, interval, retry,nickname1, \
-            add_info=None, nickname2=None):
+    def __init__(self):
         '''  
         Constructor.
         
@@ -30,71 +29,98 @@ class Timer(gwn.gwnBlock):
         @param add_info: additional information that will be send with the Timer Event.
         '''        
         "The Timer has one output and 0 inputs so we must call the father constructor with parameters (0,1)"
-        super(Timer,self).__init__(1,1)        
-        self.interval = interval
-        self.retry = retry
-        self.nickname1=nickname1
-        self.nickname2=nickname2
-        self.add_info = add_info
-        self.finished = False
+        super(Timer,self).__init__(1,"Timer1",1,1)        
+        self.interval = 1
+        self.retry = 1
+        self.nickname1= None
+        self.nickname2=None
+        self.add_info = None
+
         
-    def run(self):
+    def process_data(self, port_nr, ev):
         '''This is the private thread that generates.
         '''
+        if ev.nickname == 'TimerConfig':
+            #print "Receive configuration event ",  event
+            self.set_config(ev)
+        else:
+            print " \n Receives event %s in configuration port %d:" % (ev, port_nr)
+            return        
         i=1
-        while not self.finished :       
-            while i <= self.retry: 
-                i=i+1
-                time.sleep(self.interval)
-                if self.finished:
-                    return
-                self.tout1()
-            if self.nickname2 is not None:
-                self.tout2()
-            if self.ports_in[0]:                
-                event = self.ports_in[0].get()
-                if event.nickname == 'TimerConfig':
-                    #print "Receive configuration event ",  event
-                    self.set_config(event)
-                    i=1
-                else:
-                    print " Receives the following event in the configuration port :", event
-                    self.finished=True
-            else :
-                self.finished=True
-    
-
+        while i <= self.retry: 
+            i=i+1
+            time.sleep(self.interval)
+            self.tout1()
+        if self.nickname2 is not None:
+            self.tout2()
+                
     def tout1(self):      
-            event= if_events.mkevent(self.nickname1)
-            event.ev_dc['add_info'] =  self.add_info
-            for q in self.ports_out[0]:
-                q.put(event,False)
-
+        event = if_events.mkevent(self.nickname1)
+        event.ev_dc['add_info'] = self.add_info
+        self.write_out(0,event)
 
     def tout2(self):
-            event= if_events.mkevent(self.nickname2)
-            event.ev_dc['add_info'] =  self.add_info
-            for q in self.ports_out[0]:
-                q.put(event,False)
-                
+        event= if_events.mkevent(self.nickname2)
+        event.ev_dc['add_info'] =  self.add_info
+        self.write_out(0,event) 
+               
     def stop(self):
-            self.finished = True
-            self._Thread__stop()
+        self.finished = True
+        self._Thread__stop()
 
     def set_config(self,event):
-            if 'interval' in event.ev_dc:
-                self.interval=event.ev_dc['interval']
-            if 'retry' in event.ev_dc:
-                self.retry = event.ev_dc['retry']
-            if 'nickname1' in event.ev_dc:
-                self.nickname1=event.ev_dc['nickname1']
-            if 'nickname2' in event.ev_dc:
-                self.nickname2=event.ev_dc['nickname2']
-            else:
-                self.nickname2=None
-            if 'add_info' in event.ev_dc:
-                self.add_info = event.ev_dc['add_info']
-            else:
-                self.add_info = None
+        if 'interval' in event.ev_dc:
+            self.interval=event.ev_dc['interval']
+        if 'retry' in event.ev_dc:
+            self.retry = event.ev_dc['retry']
+        if 'nickname1' in event.ev_dc:
+            self.nickname1=event.ev_dc['nickname1']
+        if 'nickname2' in event.ev_dc:
+            self.nickname2=event.ev_dc['nickname2']
+        else:
+            self.nickname2=None
+        if 'add_info' in event.ev_dc:
+            self.add_info = event.ev_dc['add_info']
+        else:
+            self.add_info = None
+
+
+
+
+
+
+
+def test2():
+    '''Test InPort, Block classses.
+    '''
+    blk1 = Timer()
+    print blk1
+    connector1 = gwn.AQueueConnector()
+    connector2 = gwn.AQueueConnector()
+    #blk1.start()
+    #time.sleep(2)
+    blk1.set_connection_in(connector1,0)
+    blk1.set_connection_out(connector1,0)
+    event = if_events.mkevent("TimerConfig")
+    event.ev_dc['interval']=1
+    event.ev_dc['retry']= 5
+    event.ev_dc['nickname1']= "TimerTOR1"
+    connector1.put(event)
+        
+    blk1.start()
+    time.sleep(10)
+    blk1.stop()
+    blk1.join()
+    #blk1.stop()
+
+ 
+    
+
+if __name__ == '__main__':
+    try:
+        test2()
+    except KeyboardInterrupt:
+        pass
+
 
 

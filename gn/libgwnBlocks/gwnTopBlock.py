@@ -31,7 +31,7 @@ class gwnTopBlock():
          if port:
              tuple1[0].set_connection_out(port,tuple1[1])
          else:
-             queue=Queue.Queue(self.queues_size)
+             queue=gwn.AQueueConnector(self.queues_size)
              tuple1[0].set_connection_out(queue,tuple1[1])
              tuple2[0].set_connection_in(queue,tuple2[1])
   

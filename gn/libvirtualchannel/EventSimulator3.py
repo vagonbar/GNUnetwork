@@ -7,7 +7,7 @@ Created on Tue May  7 11:05:17 2013
 @author: belza
 '''
 
-import sys
+import sys,time
 sys.path +=['..']
 import libevents.if_events as if_events
 import libgwnBlocks.gwnBlock as gwn
@@ -18,17 +18,18 @@ class EventSimulator(gwn.gwnBlock) :
     
     '''
 
-    def __init__(self,nickname,param1=0,param2=0,param3=0):
+    def __init__(self,timeout,nickname,param1=0,param2=0,param3=0):
         '''  
         Constructor.
         
         '''
-        super(EventSimulator,self).__init__(0,1)        
+        super(EventSimulator,self).__init__(1,"Simulator1",0,1)        
         self.finished = False    
         self.nickname =nickname
         self.param1 = param1
         self.param2 =param2
         self.param3 = param3
+        self.timeout = timeout
 
        
         
@@ -44,10 +45,9 @@ class EventSimulator(gwn.gwnBlock) :
                 event = self.event_ACK()
             if self.nickname=="TimerConfig":      
                 event= self.event_timer_config()
-            for q in self.ports_out[0]:
-                q.put(event,False)
+            self.write_out(0,event)
             "Wait for the next timer event to generate a new event"            
-            event = self.ports_in[0].get()
+            time.sleep(self.timeout)
     
     def stop(self):
         self.finished = True
@@ -110,3 +110,36 @@ class EventSimulator(gwn.gwnBlock) :
                 except ValueError:
                     return(0)
         return(0)
+        
+
+def test2():
+    '''Test InPort, Block classses.
+    '''
+    blk1 = EventSimulator(2,"CtrlRTS",100,101)
+    print blk1
+    connector2 = gwn.AQueueConnector()
+    #blk1.start()
+    #time.sleep(2)
+
+    blk1.set_connection_out(connector2,0)
+    blk1.start()
+    i=1    
+    while i < 10:
+        i=i+1    
+        print connector2.get()
+        
+   
+    time.sleep(10)
+    blk1.stop()
+    blk1.join()
+    #blk1.stop()
+
+ 
+    
+
+if __name__ == '__main__':
+    try:
+        test2()
+    except KeyboardInterrupt:
+        pass
+
