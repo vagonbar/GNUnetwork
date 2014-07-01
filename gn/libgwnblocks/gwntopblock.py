@@ -33,7 +33,7 @@ class GWNTopBlock():
         '''        
         self.queues_size = queues_size
         
-    def connect(self, tuple1, tuple2):
+    def connec1t(self, tuple1, tuple2):
          if debug:
             print tuple1
             print tuple2
@@ -46,7 +46,7 @@ class GWNTopBlock():
              tuple1[0].set_connection_out(queue, tuple1[1])
              tuple2[0].set_connection_in(queue, tuple2[1])
 
-    def connect1(self, tuple1, tuple2):
+    def connect(self, tuple1, tuple2):
         ''' Connects source port out to sink port in.
 
         source_out  ---->  sink_in
@@ -59,19 +59,17 @@ class GWNTopBlock():
         sink, sink_in = tuple2
 
         #port = tuple2[0].get_port_in(tuple2[1])
-        port_in = sink.get_port_in(sink_in)
-        print port_in
-        if port_in:
+        conn_in = sink.get_connector_in(sink_in)
+        #print conn_in
+        if conn_in:
             #tuple1[0].set_connection_out(port, tuple1[1])
-            sink.set_connection_out(port_in, sink_in)
+            source.set_connection_out(conn_in, sink_in)
         else:
             connector = gwninport.AQueueConnector(self.queues_size)
-
+            sink.set_connection_in(connector, sink_in)
             #tuple1[0].set_connection_out(queue, tuple1[1])
             source.set_connection_out(connector, source_out)
             #tuple2[0].set_connection_in(queue, tuple2[1])
-            sink.set_connection_in(queue, sink_in)
-            
 
 
 
@@ -100,7 +98,7 @@ def test():
 
     #tb.source_0.ports_out[0].put('Hello')
     tb.source_0.write_out(0, 'Hello')
-    aux = tb.sink_0.ports_in[0].get()    
+    aux = tb.sink_0.ports_in[0].conn.get()    
     print aux
 
 
