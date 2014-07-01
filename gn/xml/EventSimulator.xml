@@ -8,8 +8,8 @@
 	<name>Event Simulator</name>
 	<key>eventsim</key>
      <category>Sources</category>
-	<import>import libvirtualchannel.EventSimulator2 as simulator </import>
-	<make>simulator.EventSimulator('$nick',$param1,$param2,$param3)</make>
+	<import>import libvirtualchannel.EventSimulator3 as simulator </import>
+	<make>simulator.EventSimulator($timeout, '$nick',$param1,$param2,$param3)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
 	<param>
@@ -40,6 +40,12 @@
 
 	</param>
 	<param>
+		<name>timeout</name>
+		<key>timeout</key>
+		<value>1</value>
+		<type>int</type>
+	</param>
+	<param>
 		<name>param1</name>
 		<key>param1</key>
 		<value></value>
@@ -60,15 +66,6 @@
 
 
       <param>
-		<name>Input Type</name>
-		<key>itype</key>
-		<type>enum</type>
-           <option>
-			<name>Timer Event</name>
-			<key>Timer</key>
-		</option>
-	</param>
-      <param>
 		<name>Output Type</name>
 		<key>otype</key>
 		<type>enum</type>
@@ -79,11 +76,7 @@
 	</param>
 
 
-	<sink>
-		<name>Timer</name>
-		<type>$itype</type>
-	</sink>
-     	<source>
+   	<source>
 		<name>Event</name>
 		<type>$otype</type>
 	</source>

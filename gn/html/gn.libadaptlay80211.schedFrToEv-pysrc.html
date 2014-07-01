@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
@@ -42,7 +39,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="gn-module.html">Package&nbsp;gn</a> ::
+        Package&nbsp;gn ::
         <a href="gn.libadaptlay80211-module.html">Package&nbsp;libadaptlay80211</a> ::
         Module&nbsp;schedFrToEv
       </span>
@@ -96,23 +93,33 @@
 <a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">        out_queues: a dictionary of {nm_queue: (out_queue)}; nm_queue is a name for the queue, out_queue is the output queue.</tt> </tt>
 <a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
 <a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">in_queues</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
-<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">frm_obj</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="gn.libframes.if_frames" class="py-name" href="#" onclick="return doclink('link-9', 'if_frames', 'link-7');">if_frames</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Function gn.libframes.if_frames.objfrompkt()=gn.libframes.if_frames-module.html#objfrompkt"><a title="gn.libframes.if_frames.objfrompkt" class="py-name" href="#" onclick="return doclink('link-10', 'objfrompkt', 'link-10');">objfrompkt</a></tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">)</tt> </tt>
-<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">event</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-11', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Function gn.libevents.if_events.frmtoev()=gn.libevents.if_events-module.html#frmtoev"><a title="gn.libevents.if_events.frmtoev" class="py-name" href="#" onclick="return doclink('link-12', 'frmtoev', 'link-12');">frmtoev</a></tt><tt class="py-op">(</tt><tt class="py-name">frm_obj</tt><tt class="py-op">)</tt> </tt>
-<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.get()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.get()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.Connector.get()=gn.libgwnBlocks.gwnBlock.Connector-class.html#get,Method gn.libgwnblocks.gwninport.AListConnector.get()=gn.libgwnblocks.gwninport.AListConnector-class.html#get,Method gn.libgwnblocks.gwninport.AQueueConnector.get()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#get,Method gn.libgwnblocks.gwninport.Connector.get()=gn.libgwnblocks.gwninport.Connector-class.html#get"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.get
+gn.libgwnBlocks.gwnBlock.AQueueConnector.get
+gn.libgwnBlocks.gwnBlock.Connector.get
+gn.libgwnblocks.gwninport.AListConnector.get
+gn.libgwnblocks.gwninport.AQueueConnector.get
+gn.libgwnblocks.gwninport.Connector.get" class="py-name" href="#" onclick="return doclink('link-9', 'get', 'link-9');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-comment">#print " recibi frame : ", repr(frame)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">frm_obj</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="gn.libframes.if_frames" class="py-name" href="#" onclick="return doclink('link-10', 'if_frames', 'link-7');">if_frames</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Function gn.libframes.if_frames.objfrompkt()=gn.libframes.if_frames-module.html#objfrompkt"><a title="gn.libframes.if_frames.objfrompkt" class="py-name" href="#" onclick="return doclink('link-11', 'objfrompkt', 'link-11');">objfrompkt</a></tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">event</tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-12', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Function gn.libevents.if_events.frmtoev()=gn.libevents.if_events-module.html#frmtoev"><a title="gn.libevents.if_events.frmtoev" class="py-name" href="#" onclick="return doclink('link-13', 'frmtoev', 'link-13');">frmtoev</a></tt><tt class="py-op">(</tt><tt class="py-name">frm_obj</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-comment">#print "recibi event : ", event</tt> </tt>
 <a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">event</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
 <a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">item_type</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">out_queues</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 <a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt>  <tt class="py-name">event</tt><tt class="py-op">.</tt><tt class="py-name">ev_type</tt> <tt class="py-op">==</tt> <tt class="py-name">item_type</tt><tt class="py-op">:</tt> </tt>
 <a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">                    <tt class="py-comment"># function to execute, output queue</tt> </tt>
 <a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                    <tt class="py-name">out_queue</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">out_queues</tt><tt class="py-op">[</tt><tt class="py-name">item_type</tt><tt class="py-op">]</tt> </tt>
-<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                    <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                    <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.put()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.put()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.Connector.put()=gn.libgwnBlocks.gwnBlock.Connector-class.html#put,Method gn.libgwnblocks.gwninport.AListConnector.put()=gn.libgwnblocks.gwninport.AListConnector-class.html#put,Method gn.libgwnblocks.gwninport.AQueueConnector.put()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#put,Method gn.libgwnblocks.gwninport.Connector.put()=gn.libgwnblocks.gwninport.Connector-class.html#put"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.put
+gn.libgwnBlocks.gwnBlock.AQueueConnector.put
+gn.libgwnBlocks.gwnBlock.Connector.put
+gn.libgwnblocks.gwninport.AListConnector.put
+gn.libgwnblocks.gwninport.AQueueConnector.put
+gn.libgwnblocks.gwninport.Connector.put" class="py-name" href="#" onclick="return doclink('link-14', 'put', 'link-14');">put</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
 <a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">                    <tt class="py-keyword">break</tt> </tt>
 <a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-13" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-13', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Class gn.libevents.if_events.EventFrameException=gn.libevents.if_events.EventFrameException-class.html"><a title="gn.libevents.if_events.EventFrameException" class="py-name" href="#" onclick="return doclink('link-14', 'EventFrameException', 'link-14');">EventFrameException</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scheduler, event type \</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-15" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-15', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Class gn.libevents.if_events.EventFrameException=gn.libevents.if_events.EventFrameException-class.html"><a title="gn.libevents.if_events.EventFrameException" class="py-name" href="#" onclick="return doclink('link-16', 'EventFrameException', 'link-16');">EventFrameException</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scheduler, event type \</tt> </tt>
 <a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-string">                    not recognized: '</tt><tt class="py-op">,</tt> <tt class="py-name">event</tt><tt class="py-op">.</tt><tt class="py-name">ev_type</tt><tt class="py-op">)</tt> </tt>
 <a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-15" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-15', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="gn.libevents.if_events.EventFrameException" class="py-name" href="#" onclick="return doclink('link-16', 'EventFrameException', 'link-14');">EventFrameException</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scheduler, error in \</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-17" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-17', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="gn.libevents.if_events.EventFrameException" class="py-name" href="#" onclick="return doclink('link-18', 'EventFrameException', 'link-16');">EventFrameException</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scheduler, error in \</tt> </tt>
 <a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-string">                    frame'</tt><tt class="py-op">)</tt> </tt>
 <a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">task_done</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
@@ -137,9 +144,6 @@ expandto(location.href);
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -157,14 +161,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Mar  7 12:20:32 2014
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:10:50 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
@@ -42,7 +39,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="gn-module.html">Package&nbsp;gn</a> ::
+        Package&nbsp;gn ::
         <a href="gn.libadaptlay80211-module.html">Package&nbsp;libadaptlay80211</a> ::
         Module&nbsp;schedEvToFr
       </span>
@@ -95,24 +92,35 @@
 <a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">        out_queues: a dictionary. </tt> </tt>
 <a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
 <a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">in_queues</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">event</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
-<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">frmobj</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-6', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Function gn.libevents.if_events.evtofrm()=gn.libevents.if_events-module.html#evtofrm"><a title="gn.libevents.if_events.evtofrm" class="py-name" href="#" onclick="return doclink('link-7', 'evtofrm', 'link-7');">evtofrm</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">frmobj</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method gn.libframes.frames.Frame.mkpkt()=gn.libframes.frames.Frame-class.html#mkpkt"><a title="gn.libframes.frames.Frame.mkpkt" class="py-name" href="#" onclick="return doclink('link-8', 'mkpkt', 'link-8');">mkpkt</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt>        </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">event</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.get()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.get()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.Connector.get()=gn.libgwnBlocks.gwnBlock.Connector-class.html#get,Method gn.libgwnblocks.gwninport.AListConnector.get()=gn.libgwnblocks.gwninport.AListConnector-class.html#get,Method gn.libgwnblocks.gwninport.AQueueConnector.get()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#get,Method gn.libgwnblocks.gwninport.Connector.get()=gn.libgwnblocks.gwninport.Connector-class.html#get"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.get
+gn.libgwnBlocks.gwnBlock.AQueueConnector.get
+gn.libgwnBlocks.gwnBlock.Connector.get
+gn.libgwnblocks.gwninport.AListConnector.get
+gn.libgwnblocks.gwninport.AQueueConnector.get
+gn.libgwnblocks.gwninport.Connector.get" class="py-name" href="#" onclick="return doclink('link-6', 'get', 'link-6');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">         </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">frmobj</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-7', 'if_events', 'link-4');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Function gn.libevents.if_events.evtofrm()=gn.libevents.if_events-module.html#evtofrm"><a title="gn.libevents.if_events.evtofrm" class="py-name" href="#" onclick="return doclink('link-8', 'evtofrm', 'link-8');">evtofrm</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">frame</tt> <tt class="py-op">=</tt> <tt class="py-name">frmobj</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method gn.libframes.frames.Frame.mkpkt()=gn.libframes.frames.Frame-class.html#mkpkt"><a title="gn.libframes.frames.Frame.mkpkt" class="py-name" href="#" onclick="return doclink('link-9', 'mkpkt', 'link-9');">mkpkt</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt>        </tt>
 <a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
 <a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">out_queue</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">out_queues</tt><tt class="py-op">[</tt><tt class="py-string">'frames'</tt><tt class="py-op">]</tt> </tt>
-<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
-<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">task_done</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
-<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
-<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt class="py-name">testfilename</tt> <tt class="py-op">=</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'txt'</tt> </tt>
-<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
-<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testfile</tt><tt class="py-op">(</tt><tt class="py-name">testfilename</tt><tt class="py-op">)</tt> </tt>
-<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt>      <tt class="py-comment"># no text file present</tt> </tt>
-<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
-<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.put()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.put()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.Connector.put()=gn.libgwnBlocks.gwnBlock.Connector-class.html#put,Method gn.libgwnblocks.gwninport.AListConnector.put()=gn.libgwnblocks.gwninport.AListConnector-class.html#put,Method gn.libgwnblocks.gwninport.AQueueConnector.put()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#put,Method gn.libgwnblocks.gwninport.Connector.put()=gn.libgwnblocks.gwninport.Connector-class.html#put"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.put
+gn.libgwnBlocks.gwnBlock.AQueueConnector.put
+gn.libgwnBlocks.gwnBlock.Connector.put
+gn.libgwnblocks.gwninport.AListConnector.put
+gn.libgwnblocks.gwninport.AQueueConnector.put
+gn.libgwnblocks.gwninport.Connector.put" class="py-name" href="#" onclick="return doclink('link-10', 'put', 'link-10');">put</a></tt><tt class="py-op">(</tt><tt class="py-name">frame</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-comment">#print "frame : ", repr(frame)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">task_done</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-name">testfilename</tt> <tt class="py-op">=</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'txt'</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testfile</tt><tt class="py-op">(</tt><tt class="py-name">testfilename</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt>      <tt class="py-comment"># no text file present</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -123,9 +131,6 @@ expandto(location.href);
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -143,14 +148,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Mar  7 12:20:32 2014
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:10:49 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

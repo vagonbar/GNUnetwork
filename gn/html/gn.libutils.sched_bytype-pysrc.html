@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -34,7 +31,7 @@
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
@@ -42,7 +39,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="gn-module.html">Package&nbsp;gn</a> ::
+        Package&nbsp;gn ::
         <a href="gn.libutils-module.html">Package&nbsp;libutils</a> ::
         Module&nbsp;sched_bytype
       </span>
@@ -76,9 +73,9 @@
 <a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#sys.path += ['..']</tt> </tt>
 <a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">Queue</tt> </tt>
 <a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
-<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module gn.libutils.gnscheduler=gn.libutils.gnscheduler-module.html"><a title="gn.libutils.gnscheduler" class="py-name" href="#" onclick="return doclink('link-0', 'gnscheduler', 'link-0');">gnscheduler</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class gn.libadaptationlayer.scheduler.Scheduler=gn.libadaptationlayer.scheduler.Scheduler-class.html,Class gn.libadaptlay80211.scheduler.Scheduler=gn.libadaptlay80211.scheduler.Scheduler-class.html,Class gn.libutils.gnscheduler.Scheduler=gn.libutils.gnscheduler.Scheduler-class.html"><a title="gn.libadaptationlayer.scheduler.Scheduler
-gn.libadaptlay80211.scheduler.Scheduler
-gn.libutils.gnscheduler.Scheduler" class="py-name" href="#" onclick="return doclink('link-1', 'Scheduler', 'link-1');">Scheduler</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module gn.libutils.gnscheduler=gn.libutils.gnscheduler-module.html"><a title="gn.libutils.gnscheduler" class="py-name" href="#" onclick="return doclink('link-0', 'gnscheduler', 'link-0');">gnscheduler</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class gn.libadaptlay80211.scheduler.Scheduler=gn.libadaptlay80211.scheduler.Scheduler-class.html,Class gn.libutils.gnscheduler.Scheduler=gn.libutils.gnscheduler.Scheduler-class.html,Class gn.libutils.gwnscheduler2.Scheduler=gn.libutils.gwnscheduler2.Scheduler-class.html"><a title="gn.libadaptlay80211.scheduler.Scheduler
+gn.libutils.gnscheduler.Scheduler
+gn.libutils.gwnscheduler2.Scheduler" class="py-name" href="#" onclick="return doclink('link-1', 'Scheduler', 'link-1');">Scheduler</a></tt> </tt>
 <a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
 <a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
 <a name="SchedItemType"></a><div id="SchedItemType-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="SchedItemType-toggle" onclick="return toggle('SchedItemType');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gn.libutils.sched_bytype.SchedItemType-class.html">SchedItemType</a><tt class="py-op">(</tt><tt class="py-base-class">Scheduler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
@@ -93,18 +90,28 @@ gn.libutils.gnscheduler.Scheduler" class="py-name" href="#" onclick="return docl
 <a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
 <a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">in_qu</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">in_queues</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
 <a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">empty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-name">in_item</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-name">in_item</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.get()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.get()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.Connector.get()=gn.libgwnBlocks.gwnBlock.Connector-class.html#get,Method gn.libgwnblocks.gwninport.AListConnector.get()=gn.libgwnblocks.gwninport.AListConnector-class.html#get,Method gn.libgwnblocks.gwninport.AQueueConnector.get()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#get,Method gn.libgwnblocks.gwninport.Connector.get()=gn.libgwnblocks.gwninport.Connector-class.html#get"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.get
+gn.libgwnBlocks.gwnBlock.AQueueConnector.get
+gn.libgwnBlocks.gwnBlock.Connector.get
+gn.libgwnblocks.gwninport.AListConnector.get
+gn.libgwnblocks.gwninport.AQueueConnector.get
+gn.libgwnblocks.gwninport.Connector.get" class="py-name" href="#" onclick="return doclink('link-2', 'get', 'link-2');">get</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">item_type</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">out_queues</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">in_item</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method gn.libevents.events.Event.getname()=gn.libevents.events.Event-class.html#getname,Method gn.libutils.sched_bytype.Item.getname()=gn.libutils.sched_bytype.Item-class.html#getname"><a title="gn.libevents.events.Event.getname
-gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return doclink('link-2', 'getname', 'link-2');">getname</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">item_type</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">in_item</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method gn.libevents.events.Event.getname()=gn.libevents.events.Event-class.html#getname,Method gn.libutils.sched_bytype.Item.getname()=gn.libutils.sched_bytype.Item-class.html#getname"><a title="gn.libevents.events.Event.getname
+gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return doclink('link-3', 'getname', 'link-3');">getname</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">item_type</tt><tt class="py-op">:</tt> </tt>
 <a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                    <tt class="py-comment"># function to execute, output queue</tt> </tt>
 <a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                    <tt class="py-name">fn_in_item</tt><tt class="py-op">,</tt> <tt class="py-name">out_queue</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">out_queues</tt><tt class="py-op">[</tt><tt class="py-name">item_type</tt><tt class="py-op">]</tt> </tt>
 <a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">                    <tt class="py-name">out_item</tt> <tt class="py-op">=</tt> <tt class="py-name">fn_in_item</tt><tt class="py-op">(</tt><tt class="py-name">in_item</tt><tt class="py-op">)</tt>   <tt class="py-comment"># exec fn, make out_item</tt> </tt>
-<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                    <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-name">out_item</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                    <tt class="py-name">out_queue</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.put()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.put()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.Connector.put()=gn.libgwnBlocks.gwnBlock.Connector-class.html#put,Method gn.libgwnblocks.gwninport.AListConnector.put()=gn.libgwnblocks.gwninport.AListConnector-class.html#put,Method gn.libgwnblocks.gwninport.AQueueConnector.put()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#put,Method gn.libgwnblocks.gwninport.Connector.put()=gn.libgwnblocks.gwninport.Connector-class.html#put"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.put
+gn.libgwnBlocks.gwnBlock.AQueueConnector.put
+gn.libgwnBlocks.gwnBlock.Connector.put
+gn.libgwnblocks.gwninport.AListConnector.put
+gn.libgwnblocks.gwninport.AQueueConnector.put
+gn.libgwnblocks.gwninport.Connector.put" class="py-name" href="#" onclick="return doclink('link-4', 'put', 'link-4');">put</a></tt><tt class="py-op">(</tt><tt class="py-name">out_item</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block </tt> </tt>
 <a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                    <tt class="py-keyword">break</tt> </tt>
 <a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">'Scheduler, item type not recognized:'</tt><tt class="py-op">,</tt> <tt class="py-name">in_item</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="gn.libevents.events.Event.getname
-gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return doclink('link-3', 'getname', 'link-2');">getname</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">'Scheduler, item type not recognized:'</tt><tt class="py-op">,</tt> <tt class="py-name">in_item</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="gn.libevents.events.Event.getname
+gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return doclink('link-5', 'getname', 'link-3');">getname</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">task_done</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
 <a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'input queue empty!'</tt>   <tt class="py-comment"># shows sometimes...</tt> </tt>
@@ -140,10 +147,10 @@ gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return 
 <a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-name">ctrl_q</tt><tt class="py-op">,</tt> <tt class="py-name">mgmt_q</tt><tt class="py-op">,</tt> <tt class="py-name">data_q</tt> <tt class="py-op">=</tt> <tt class="py-name">Queue</tt><tt class="py-op">.</tt><tt class="py-name">Queue</tt><tt class="py-op">(</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Queue</tt><tt class="py-op">.</tt><tt class="py-name">Queue</tt><tt class="py-op">(</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">Queue</tt><tt class="py-op">.</tt><tt class="py-name">Queue</tt><tt class="py-op">(</tt><tt class="py-number">10</tt><tt class="py-op">)</tt> </tt>
 <a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-name">ls_out_queues</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">ctrl_q</tt><tt class="py-op">,</tt> <tt class="py-name">mgmt_q</tt><tt class="py-op">,</tt> <tt class="py-name">data_q</tt><tt class="py-op">]</tt> </tt>
 <a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-name">out_queues</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> \ </tt>
-<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-string">'CtrlRTS'</tt><tt class="py-op">:</tt>    <tt class="py-op">(</tt><tt id="link-4" class="py-name" targets="Function gn.libutils.sched_bytype.fn_item()=gn.libutils.sched_bytype-module.html#fn_item"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-4', 'fn_item', 'link-4');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">ctrl_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
-<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-string">'CtrlCTS'</tt><tt class="py-op">:</tt>    <tt class="py-op">(</tt><tt id="link-5" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-5', 'fn_item', 'link-4');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">ctrl_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
-<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-string">'MgmtBeacon'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt id="link-6" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-6', 'fn_item', 'link-4');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">mgmt_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
-<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-string">'DataData'</tt><tt class="py-op">:</tt>   <tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-7', 'fn_item', 'link-4');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">data_q</tt><tt class="py-op">)</tt>  \ </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-string">'CtrlRTS'</tt><tt class="py-op">:</tt>    <tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Function gn.libutils.sched_bytype.fn_item()=gn.libutils.sched_bytype-module.html#fn_item"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-6', 'fn_item', 'link-6');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">ctrl_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-string">'CtrlCTS'</tt><tt class="py-op">:</tt>    <tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-7', 'fn_item', 'link-6');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">ctrl_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-string">'MgmtBeacon'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-8', 'fn_item', 'link-6');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">mgmt_q</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-string">'DataData'</tt><tt class="py-op">:</tt>   <tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="gn.libutils.sched_bytype.fn_item" class="py-name" href="#" onclick="return doclink('link-9', 'fn_item', 'link-6');">fn_item</a></tt><tt class="py-op">,</tt> <tt class="py-name">data_q</tt><tt class="py-op">)</tt>  \ </tt>
 <a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
 <a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
 <a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-comment"># create input queue</tt> </tt>
@@ -151,25 +158,63 @@ gn.libutils.sched_bytype.Item.getname" class="py-name" href="#" onclick="return 
 <a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
 <a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt class="py-comment"># put events in input queue</tt> </tt>
 <a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">name</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'MgmtBeacon'</tt><tt class="py-op">,</tt> <tt class="py-string">'CtrlRTS'</tt><tt class="py-op">,</tt> <tt class="py-string">'CtrlCTS'</tt><tt class="py-op">,</tt> <tt class="py-string">'DataData'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
-<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name" targets="Class gn.libutils.sched_bytype.Item=gn.libutils.sched_bytype.Item-class.html"><a title="gn.libutils.sched_bytype.Item" class="py-name" href="#" onclick="return doclink('link-8', 'Item', 'link-8');">Item</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
-<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">frame_q</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="gn.libutils.sched_bytype.Item" class="py-name" href="#" onclick="return doclink('link-9', 'Item', 'link-8');">Item</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name" targets="Class gn.libutils.sched_bytype.Item=gn.libutils.sched_bytype.Item-class.html"><a title="gn.libutils.sched_bytype.Item" class="py-name" href="#" onclick="return doclink('link-10', 'Item', 'link-10');">Item</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">frame_q</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.put
+gn.libgwnBlocks.gwnBlock.AQueueConnector.put
+gn.libgwnBlocks.gwnBlock.Connector.put
+gn.libgwnblocks.gwninport.AListConnector.put
+gn.libgwnblocks.gwninport.AQueueConnector.put
+gn.libgwnblocks.gwninport.Connector.put" class="py-name" href="#" onclick="return doclink('link-11', 'put', 'link-4');">put</a></tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="gn.libutils.sched_bytype.Item" class="py-name" href="#" onclick="return doclink('link-12', 'Item', 'link-10');">Item</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
 <a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'=== Scheduler based on item type ==='</tt> </tt>
 <a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">'Input queue size'</tt><tt class="py-op">,</tt> <tt class="py-name">frame_q</tt><tt class="py-op">.</tt><tt class="py-name">qsize</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
 <a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-comment"># create and start scheduler</tt> </tt>
-<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">sch</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name" targets="Class gn.libutils.sched_bytype.SchedItemType=gn.libutils.sched_bytype.SchedItemType-class.html"><a title="gn.libutils.sched_bytype.SchedItemType" class="py-name" href="#" onclick="return doclink('link-10', 'SchedItemType', 'link-10');">SchedItemType</a></tt><tt class="py-op">(</tt><tt class="py-name">frame_q</tt><tt class="py-op">,</tt> <tt class="py-name">out_queues</tt><tt class="py-op">)</tt> </tt>
-<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name">sch</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-name">sch</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name" targets="Class gn.libutils.sched_bytype.SchedItemType=gn.libutils.sched_bytype.SchedItemType-class.html"><a title="gn.libutils.sched_bytype.SchedItemType" class="py-name" href="#" onclick="return doclink('link-13', 'SchedItemType', 'link-13');">SchedItemType</a></tt><tt class="py-op">(</tt><tt class="py-name">frame_q</tt><tt class="py-op">,</tt> <tt class="py-name">out_queues</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-name">sch</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method gn.libgnuradio.run_TDMA_L3.StartL1.start()=gn.libgnuradio.run_TDMA_L3.StartL1-class.html#start,Method gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.start()=gn.libgnuradio.run_TDMA_L3.StartL2Mgmt-class.html#start,Method gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.start()=gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2-class.html#start,Method gn.libgnuradio.run_node.StartL1.start()=gn.libgnuradio.run_node.StartL1-class.html#start,Method gn.libgnuradio.run_node.StartL2.start()=gn.libgnuradio.run_node.StartL2-class.html#start,Method gn.libgnuradio.run_nodeL3.StartL1.start()=gn.libgnuradio.run_nodeL3.StartL1-class.html#start,Method gn.libgnuradio.run_nodeL3.StartL2Mgmt.start()=gn.libgnuradio.run_nodeL3.StartL2Mgmt-class.html#start,Method gn.libgnuradio.run_nodeL3.StartSchedL1_L2.start()=gn.libgnuradio.run_nodeL3.StartSchedL1_L2-class.html#start,Method gn.libgnuradio.run_nodeL3_80211.StartL1.start()=gn.libgnuradio.run_nodeL3_80211.StartL1-class.html#start,Method gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.start()=gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt-class.html#start,Method gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.start()=gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2-class.html#start"><a title="gn.libgnuradio.run_TDMA_L3.StartL1.start
+gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.start
+gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.start
+gn.libgnuradio.run_node.StartL1.start
+gn.libgnuradio.run_node.StartL2.start
+gn.libgnuradio.run_nodeL3.StartL1.start
+gn.libgnuradio.run_nodeL3.StartL2Mgmt.start
+gn.libgnuradio.run_nodeL3.StartSchedL1_L2.start
+gn.libgnuradio.run_nodeL3_80211.StartL1.start
+gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.start
+gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.start" class="py-name" href="#" onclick="return doclink('link-14', 'start', 'link-14');">start</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-name">frame_q</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">sch</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method gn.libadaptationlayer.schedLayer3.Layer3.stop()=gn.libadaptationlayer.schedLayer3.Layer3-class.html#stop,Method gn.libadaptationlayer.schedLayer3.ReadLayer2.stop()=gn.libadaptationlayer.schedLayer3.ReadLayer2-class.html#stop,Method gn.libadaptationlayer.schedLayer3.ReadLayer3.stop()=gn.libadaptationlayer.schedLayer3.ReadLayer3-class.html#stop,Method gn.libadaptationlayer.scheduler.Scheduler.stop()=gn.libadaptationlayer.scheduler.Scheduler-class.html#stop,Method gn.libadaptationlayer.transmitFrame.TransmitFrame.stop()=gn.libadaptationlayer.transmitFrame.TransmitFrame-class.html#stop,Method gn.libadaptlay80211.schedLayer3.Layer3.stop()=gn.libadaptlay80211.schedLayer3.Layer3-class.html#stop,Method gn.libadaptlay80211.schedLayer3.ReadLayer2.stop()=gn.libadaptlay80211.schedLayer3.ReadLayer2-class.html#stop,Method gn.libadaptlay80211.schedLayer3.ReadLayer3.stop()=gn.libadaptlay80211.schedLayer3.ReadLayer3-class.html#stop,Method gn.libadaptlay80211.scheduler.Scheduler.stop()=gn.libadaptlay80211.scheduler.Scheduler-class.html#stop,Method gn.libadaptlay80211.transmitFrame.TransmitFrame.stop()=gn.libadaptlay80211.transmitFrame.TransmitFrame-class.html#stop,Method gn.libmacTDMA.ControlChannel.ControlChannel.stop()=gn.libmacTDMA.ControlChannel.ControlChannel-class.html#stop,Method gn.libmacTDMA.MacTdma.MacTdma.stop()=gn.libmacTDMA.MacTdma.MacTdma-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.stop()=gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.stop()=gn.libmacTDMA.MacTdma.ProcessingL1DataEvents-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL2Events.stop()=gn.libmacTDMA.MacTdma.ProcessingL2Events-class.html#stop,Method gn.libmanagement.Beacon.Beacon.stop()=gn.libmanagement.Beacon.Beacon-class.html#stop,Method gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.stop()=gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController-class.html#stop,Method gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.stop()=gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator-class.html#stop,Method gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.stop()=gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator-class.html#stop,Method gn.libtimer.timer.Timer.stop()=gn.libtimer.timer.Timer-class.html#stop,Method gn.libutils.gnscheduler.Scheduler.stop()=gn.libutils.gnscheduler.Scheduler-class.html#stop,Method gn.libvirtualchannel.EventConsumer.EventConsumer.stop()=gn.libvirtualchannel.EventConsumer.EventConsumer-class.html#stop,Method gn.libvirtualchannel.EventSimulator.EventSimulator.stop()=gn.libvirtualchannel.EventSimulator.EventSimulator-class.html#stop,Method gn.libvirtualchannel.virtualchannel.VirtualChannel.stop()=gn.libvirtualchannel.virtualchannel.VirtualChannel-class.html#stop"><a title="gn.libadaptationlayer.schedLayer3.Layer3.stop
-gn.libadaptationlayer.schedLayer3.ReadLayer2.stop
-gn.libadaptationlayer.schedLayer3.ReadLayer3.stop
-gn.libadaptationlayer.scheduler.Scheduler.stop
-gn.libadaptationlayer.transmitFrame.TransmitFrame.stop
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-name">sch</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.stop()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL-class.html#stop,Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.stop()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA-class.html#stop,Method gn.libadaptlay80211.gwnDeframer.gwnDeframer.stop()=gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#stop,Method gn.libadaptlay80211.gwnFramer.gwnFramer.stop()=gn.libadaptlay80211.gwnFramer.gwnFramer-class.html#stop,Method gn.libadaptlay80211.schedLayer3.Layer3.stop()=gn.libadaptlay80211.schedLayer3.Layer3-class.html#stop,Method gn.libadaptlay80211.schedLayer3.ReadLayer2.stop()=gn.libadaptlay80211.schedLayer3.ReadLayer2-class.html#stop,Method gn.libadaptlay80211.schedLayer3.ReadLayer3.stop()=gn.libadaptlay80211.schedLayer3.ReadLayer3-class.html#stop,Method gn.libadaptlay80211.scheduler.Scheduler.stop()=gn.libadaptlay80211.scheduler.Scheduler-class.html#stop,Method gn.libadaptlay80211.transmitFrame.TransmitFrame.stop()=gn.libadaptlay80211.transmitFrame.TransmitFrame-class.html#stop,Method gn.libgnuradio.TxRxLayer1.TxL1.stop()=gn.libgnuradio.TxRxLayer1.TxL1-class.html#stop,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.stop()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2-class.html#stop,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.stop()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk-class.html#stop,Method gn.libgnuradio.run_TDMA_L3.StartL1.stop()=gn.libgnuradio.run_TDMA_L3.StartL1-class.html#stop,Method gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.stop()=gn.libgnuradio.run_TDMA_L3.StartL2Mgmt-class.html#stop,Method gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.stop()=gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2-class.html#stop,Method gn.libgnuradio.run_node.StartL1.stop()=gn.libgnuradio.run_node.StartL1-class.html#stop,Method gn.libgnuradio.run_node.StartL2.stop()=gn.libgnuradio.run_node.StartL2-class.html#stop,Method gn.libgnuradio.run_node.TestLayer1Rx.stop()=gn.libgnuradio.run_node.TestLayer1Rx-class.html#stop,Method gn.libgnuradio.run_node.TestLayer1Tx.stop()=gn.libgnuradio.run_node.TestLayer1Tx-class.html#stop,Method gn.libgnuradio.run_node.TestLayer2Rx.stop()=gn.libgnuradio.run_node.TestLayer2Rx-class.html#stop,Method gn.libgnuradio.run_node.TestLayer2Tx.stop()=gn.libgnuradio.run_node.TestLayer2Tx-class.html#stop,Method gn.libgnuradio.run_nodeL3.StartL1.stop()=gn.libgnuradio.run_nodeL3.StartL1-class.html#stop,Method gn.libgnuradio.run_nodeL3.StartL2Mgmt.stop()=gn.libgnuradio.run_nodeL3.StartL2Mgmt-class.html#stop,Method gn.libgnuradio.run_nodeL3.StartSchedL1_L2.stop()=gn.libgnuradio.run_nodeL3.StartSchedL1_L2-class.html#stop,Method gn.libgnuradio.run_nodeL3_80211.StartL1.stop()=gn.libgnuradio.run_nodeL3_80211.StartL1-class.html#stop,Method gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.stop()=gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt-class.html#stop,Method gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.stop()=gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2-class.html#stop,Method gn.libgwnBlocks.gwnBlock.InPort.stop()=gn.libgwnBlocks.gwnBlock.InPort-class.html#stop,Method gn.libgwnBlocks.gwnBlock.gwnBlock.stop()=gn.libgwnBlocks.gwnBlock.gwnBlock-class.html#stop,Method gn.libgwnBlocks.gwnBlockOld.gwnBlock.stop()=gn.libgwnBlocks.gwnBlockOld.gwnBlock-class.html#stop,Method gn.libgwnblocks.gwnblock.GWNBlock.stop()=gn.libgwnblocks.gwnblock.GWNBlock-class.html#stop,Method gn.libgwnblocks.gwninport.InPort.stop()=gn.libgwnblocks.gwninport.InPort-class.html#stop,Method gn.libgwnblocks.gwntimer.InTimer.stop()=gn.libgwnblocks.gwntimer.InTimer-class.html#stop,Method gn.libmacTDMA.ControlChannel.ControlChannel.stop()=gn.libmacTDMA.ControlChannel.ControlChannel-class.html#stop,Method gn.libmacTDMA.MacTdma.MacTdma.stop()=gn.libmacTDMA.MacTdma.MacTdma-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.stop()=gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.stop()=gn.libmacTDMA.MacTdma.ProcessingL1DataEvents-class.html#stop,Method gn.libmacTDMA.MacTdma.ProcessingL2Events.stop()=gn.libmacTDMA.MacTdma.ProcessingL2Events-class.html#stop,Method gn.libmanagement.Beacon.Beacon.stop()=gn.libmanagement.Beacon.Beacon-class.html#stop,Method gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.stop()=gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController-class.html#stop,Method gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.stop()=gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator-class.html#stop,Method gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.stop()=gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator-class.html#stop,Method gn.libtimer.timer.Timer.stop()=gn.libtimer.timer.Timer-class.html#stop,Method gn.libtimer.timer2.Timer.stop()=gn.libtimer.timer2.Timer-class.html#stop,Method gn.libutils.gnscheduler.Scheduler.stop()=gn.libutils.gnscheduler.Scheduler-class.html#stop,Method gn.libutils.gwnscheduler2.Scheduler.stop()=gn.libutils.gwnscheduler2.Scheduler-class.html#stop,Method gn.libvirtualchannel.EventConsumer.EventConsumer.stop()=gn.libvirtualchannel.EventConsumer.EventConsumer-class.html#stop,Method gn.libvirtualchannel.EventConsumer2.EventConsumer.stop()=gn.libvirtualchannel.EventConsumer2.EventConsumer-class.html#stop,Method gn.libvirtualchannel.EventSimulator.EventSimulator.stop()=gn.libvirtualchannel.EventSimulator.EventSimulator-class.html#stop,Method gn.libvirtualchannel.EventSimulator2.EventSimulator.stop()=gn.libvirtualchannel.EventSimulator2.EventSimulator-class.html#stop,Method gn.libvirtualchannel.EventSimulator3.EventSimulator.stop()=gn.libvirtualchannel.EventSimulator3.EventSimulator-class.html#stop,Method gn.libvirtualchannel.virtualchannel.VirtualChannel.stop()=gn.libvirtualchannel.virtualchannel.VirtualChannel-class.html#stop"><a title="gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.stop
+gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.stop
+gn.libadaptlay80211.gwnDeframer.gwnDeframer.stop
+gn.libadaptlay80211.gwnFramer.gwnFramer.stop
 gn.libadaptlay80211.schedLayer3.Layer3.stop
 gn.libadaptlay80211.schedLayer3.ReadLayer2.stop
 gn.libadaptlay80211.schedLayer3.ReadLayer3.stop
 gn.libadaptlay80211.scheduler.Scheduler.stop
 gn.libadaptlay80211.transmitFrame.TransmitFrame.stop
+gn.libgnuradio.TxRxLayer1.TxL1.stop
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.stop
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.stop
+gn.libgnuradio.run_TDMA_L3.StartL1.stop
+gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.stop
+gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.stop
+gn.libgnuradio.run_node.StartL1.stop
+gn.libgnuradio.run_node.StartL2.stop
+gn.libgnuradio.run_node.TestLayer1Rx.stop
+gn.libgnuradio.run_node.TestLayer1Tx.stop
+gn.libgnuradio.run_node.TestLayer2Rx.stop
+gn.libgnuradio.run_node.TestLayer2Tx.stop
+gn.libgnuradio.run_nodeL3.StartL1.stop
+gn.libgnuradio.run_nodeL3.StartL2Mgmt.stop
+gn.libgnuradio.run_nodeL3.StartSchedL1_L2.stop
+gn.libgnuradio.run_nodeL3_80211.StartL1.stop
+gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.stop
+gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.stop
+gn.libgwnBlocks.gwnBlock.InPort.stop
+gn.libgwnBlocks.gwnBlock.gwnBlock.stop
+gn.libgwnBlocks.gwnBlockOld.gwnBlock.stop
+gn.libgwnblocks.gwnblock.GWNBlock.stop
+gn.libgwnblocks.gwninport.InPort.stop
+gn.libgwnblocks.gwntimer.InTimer.stop
 gn.libmacTDMA.ControlChannel.ControlChannel.stop
 gn.libmacTDMA.MacTdma.MacTdma.stop
 gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.stop
@@ -180,10 +225,15 @@ gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.stop
 gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.stop
 gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.stop
 gn.libtimer.timer.Timer.stop
+gn.libtimer.timer2.Timer.stop
 gn.libutils.gnscheduler.Scheduler.stop
+gn.libutils.gwnscheduler2.Scheduler.stop
 gn.libvirtualchannel.EventConsumer.EventConsumer.stop
+gn.libvirtualchannel.EventConsumer2.EventConsumer.stop
 gn.libvirtualchannel.EventSimulator.EventSimulator.stop
-gn.libvirtualchannel.virtualchannel.VirtualChannel.stop" class="py-name" href="#" onclick="return doclink('link-11', 'stop', 'link-11');">stop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+gn.libvirtualchannel.EventSimulator2.EventSimulator.stop
+gn.libvirtualchannel.EventSimulator3.EventSimulator.stop
+gn.libvirtualchannel.virtualchannel.VirtualChannel.stop" class="py-name" href="#" onclick="return doclink('link-15', 'stop', 'link-15');">stop</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-name">sch</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>         </tt>
 <a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
 <a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">     </tt>
@@ -194,7 +244,12 @@ gn.libvirtualchannel.virtualchannel.VirtualChannel.stop" class="py-name" href="#
 <a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">qu</tt> <tt class="py-keyword">in</tt> <tt class="py-name">ls_out_queues</tt><tt class="py-op">:</tt> </tt>
 <a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'Queue size:'</tt><tt class="py-op">,</tt> <tt class="py-name">qu</tt><tt class="py-op">.</tt><tt class="py-name">qsize</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-keyword">not</tt> <tt class="py-name">qu</tt><tt class="py-op">.</tt><tt class="py-name">empty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">qu</tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">qu</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.get
+gn.libgwnBlocks.gwnBlock.AQueueConnector.get
+gn.libgwnBlocks.gwnBlock.Connector.get
+gn.libgwnblocks.gwninport.AListConnector.get
+gn.libgwnblocks.gwninport.AQueueConnector.get
+gn.libgwnblocks.gwninport.Connector.get" class="py-name" href="#" onclick="return doclink('link-16', 'get', 'link-2');">get</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">item</tt> </tt>
 <a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> </tt>
 </div><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">     </tt>
@@ -202,15 +257,14 @@ gn.libvirtualchannel.virtualchannel.VirtualChannel.stop" class="py-name" href="#
 <a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
 <a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
 <a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
-<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt id="link-12" class="py-name" targets="Function gn.libadaptationlayer.schedEvToFr.test()=gn.libadaptationlayer.schedEvToFr-module.html#test,Function gn.libadaptationlayer.schedFrToEv.test()=gn.libadaptationlayer.schedFrToEv-module.html#test,Function gn.libadaptationlayer.schedLayer3.test()=gn.libadaptationlayer.schedLayer3-module.html#test,Function gn.libadaptationlayer.scheduler.test()=gn.libadaptationlayer.scheduler-module.html#test,Function gn.libadaptationlayer.transmitFrame.test()=gn.libadaptationlayer.transmitFrame-module.html#test,Function gn.libadaptlay80211.schedLayer3.test()=gn.libadaptlay80211.schedLayer3-module.html#test,Function gn.libadaptlay80211.scheduler.test()=gn.libadaptlay80211.scheduler-module.html#test,Function gn.libadaptlay80211.transmitFrame.test()=gn.libadaptlay80211.transmitFrame-module.html#test,Function gn.libframes.if_frames.test()=gn.libframes.if_frames-module.html#test,Function gn.libmacTDMA.ControlChannel.test()=gn.libmacTDMA.ControlChannel-module.html#test,Function gn.libmanagement.Beacon.test()=gn.libmanagement.Beacon-module.html#test,Function gn.libmanagement.DiscoveryPeeringController.test()=gn.libmanagement.DiscoveryPeeringController-module.html#test,Function gn.libmanagement.DiscoveryPeeringFSM.test()=gn.libmanagement.DiscoveryPeeringFSM-module.html#test,Function gn.libmanagement.NetworkConfiguration.test()=gn.libmanagement.NetworkConfiguration-module.html#test,Function gn.libmanagement.PeersTable.test()=gn.libmanagement.PeersTable-module.html#test,Function gn.libmanagement.Profile.test()=gn.libmanagement.Profile-module.html#test,Function gn.libtimer.timer.test()=gn.libtimer.timer-module.html#test,Function gn.libutils.sched_bylen.test()=gn.libutils.sched_bylen-module.html#test,Function gn.libutils.sched_bytype.test()=gn.libutils.sched_bytype-module.html#test,Function gn.libvirtualchannel.EventConsumer.test()=gn.libvirtualchannel.EventConsumer-module.html#test,Function gn.libvirtualchannel.EventSimulator.test()=gn.libvirtualchannel.EventSimulator-module.html#test,Function gn.libvirtualchannel.virtualchannel.test()=gn.libvirtualchannel.virtualchannel-module.html#test"><a title="gn.libadaptationlayer.schedEvToFr.test
-gn.libadaptationlayer.schedFrToEv.test
-gn.libadaptationlayer.schedLayer3.test
-gn.libadaptationlayer.scheduler.test
-gn.libadaptationlayer.transmitFrame.test
-gn.libadaptlay80211.schedLayer3.test
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt id="link-17" class="py-name" targets="Function gn.libadaptlay80211.schedLayer3.test()=gn.libadaptlay80211.schedLayer3-module.html#test,Function gn.libadaptlay80211.scheduler.test()=gn.libadaptlay80211.scheduler-module.html#test,Function gn.libadaptlay80211.transmitFrame.test()=gn.libadaptlay80211.transmitFrame-module.html#test,Function gn.libframes.if_frames.test()=gn.libframes.if_frames-module.html#test,Function gn.libgwnBlocks.gwnBlockOld.test()=gn.libgwnBlocks.gwnBlockOld-module.html#test,Function gn.libgwnBlocks.gwnTopBlock.test()=gn.libgwnBlocks.gwnTopBlock-module.html#test,Function gn.libgwnblocks.gwntimer.test()=gn.libgwnblocks.gwntimer-module.html#test,Function gn.libgwnblocks.gwntopblock.test()=gn.libgwnblocks.gwntopblock-module.html#test,Function gn.libmacTDMA.ControlChannel.test()=gn.libmacTDMA.ControlChannel-module.html#test,Function gn.libmanagement.Beacon.test()=gn.libmanagement.Beacon-module.html#test,Function gn.libmanagement.DiscoveryPeeringController.test()=gn.libmanagement.DiscoveryPeeringController-module.html#test,Function gn.libmanagement.DiscoveryPeeringFSM.test()=gn.libmanagement.DiscoveryPeeringFSM-module.html#test,Function gn.libmanagement.NetworkConfiguration.test()=gn.libmanagement.NetworkConfiguration-module.html#test,Function gn.libmanagement.PeersTable.test()=gn.libmanagement.PeersTable-module.html#test,Function gn.libmanagement.Profile.test()=gn.libmanagement.Profile-module.html#test,Function gn.libtimer.timer.test()=gn.libtimer.timer-module.html#test,Function gn.libutils.sched_bylen.test()=gn.libutils.sched_bylen-module.html#test,Function gn.libutils.sched_bytype.test()=gn.libutils.sched_bytype-module.html#test,Function gn.libvirtualchannel.EventConsumer.test()=gn.libvirtualchannel.EventConsumer-module.html#test,Function gn.libvirtualchannel.EventSimulator.test()=gn.libvirtualchannel.EventSimulator-module.html#test,Function gn.libvirtualchannel.virtualchannel.test()=gn.libvirtualchannel.virtualchannel-module.html#test"><a title="gn.libadaptlay80211.schedLayer3.test
 gn.libadaptlay80211.scheduler.test
 gn.libadaptlay80211.transmitFrame.test
 gn.libframes.if_frames.test
+gn.libgwnBlocks.gwnBlockOld.test
+gn.libgwnBlocks.gwnTopBlock.test
+gn.libgwnblocks.gwntimer.test
+gn.libgwnblocks.gwntopblock.test
 gn.libmacTDMA.ControlChannel.test
 gn.libmanagement.Beacon.test
 gn.libmanagement.DiscoveryPeeringController.test
@@ -223,7 +277,7 @@ gn.libutils.sched_bylen.test
 gn.libutils.sched_bytype.test
 gn.libvirtualchannel.EventConsumer.test
 gn.libvirtualchannel.EventSimulator.test
-gn.libvirtualchannel.virtualchannel.test" class="py-name" href="#" onclick="return doclink('link-12', 'test', 'link-12');">test</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+gn.libvirtualchannel.virtualchannel.test" class="py-name" href="#" onclick="return doclink('link-17', 'test', 'link-17');">test</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">KeyboardInterrupt</tt><tt class="py-op">:</tt> </tt>
 <a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt><script type="text/javascript">
@@ -237,9 +291,6 @@ expandto(location.href);
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -257,14 +308,14 @@ expandto(location.href);
       <th class="navbar" align="right" width="100%">
         <table border="0" cellpadding="0" cellspacing="0">
           <tr><th class="navbar" align="center"
-            >GNUnetwork</th>
+            >libadaptationlayer</th>
           </tr></table></th>
   </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Mar  7 12:20:32 2014
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:10:49 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
