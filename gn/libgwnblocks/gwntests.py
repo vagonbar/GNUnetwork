@@ -169,7 +169,8 @@ if __name__ == '__main__':
         elif sys.argv[1] == '4':
             test = test4
     else:
-        test = test3        
+        print 'gwntests: please do'
+        print '   python gwntests.py <number of test to run: 2, 3 or 4> '
     try:
         test()
     except KeyboardInterrupt:
