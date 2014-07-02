@@ -7,33 +7,33 @@ Created on Thu Dec 13 14:31:45 2012
 @author: belza
 '''
 
-import sys, Queue
-import gwnblock  #.GWNBlock as gwn
+import sys, Queue, time
+
+import gwnblock
 import gwninport
 
 sys.path +=sys.path + ['..']
 
 
-# constants
-debug = True
 
 class GWNTopBlock():
     '''Defines blocks and connections.
 
-    The main program must create an object of a class that inherits from this class. 
-    In that object is where the blocks and connections are defined.
-    This main can be created with Companion.
-    In this class is where the function that connect two blocks is defined.
-    The blocks in GNU Wireles Network musst inherit from gwmBlock because this class defines the interface and in that way can be called from this class to connect blocks.
+    This class must be subclassed. The main program must create an object of a class that inherits from this class; blocks and connections are defined in that object. The main progam can be created with GWN Companion.
+
+    This class defines the function that connects two blocks. Blocks in GNU Wireles Network must inherit from class GWNBlock, because class GWNBlock defines the interface which this class calls to connect blocks.
+
+    @ivar queues_size: the maximum length of the queue (or other implementation) where events are input.
     '''
 
     def __init__(self,queues_size=10):
-        '''  
-        Constructor.
+        '''Constructor.
+
         '''        
         self.queues_size = queues_size
-        
-    def connec1t(self, tuple1, tuple2):
+
+    """
+    def connectold(self, tuple1, tuple2):
          if debug:
             print tuple1
             print tuple2
@@ -45,18 +45,27 @@ class GWNTopBlock():
              queue = gwninport.AQueueConnector(self.queues_size)
              tuple1[0].set_connection_out(queue, tuple1[1])
              tuple2[0].set_connection_in(queue, tuple2[1])
+    """
 
-    def connect(self, tuple1, tuple2):
-        ''' Connects source port out to sink port in.
+    def connect(self, (source, source_out), (sink, sink_in) ):
+    #def connect(self, tuple1, tuple2):
+        ''' Connects a source block to a sink block.
 
-        source_out  ---->  sink_in
+        The source block ouputs events, the sink block inputs events. The source block writes to the Connector atttached to an InPort in the sink block.
+
+        The source output port is a position in a list of out ports in the source block. On connection, a reference to a sink input Connector object is is placed in this position. A source object writes out an event an each and all of its out ports, i.e. on each and all of the Connector objects in the block's out ports list.
+
+        The sink input port is an InPort object attached to the sink block. The InPort object is attached to a unique Connector object. The sink input contains a list of InPort objects, each attached to a unique Connector object.
+
+        All events are put or got from Connector objects; Connector objects define functions put() and get() to this purpose.
+
+        This function tries to get a reference to the InPut port in the sink object input ports list, in the position indicated as a parameter. If there is a Connector object attached to this input, it obtained. If there is no Connector object attached to this InPort, it is created and attached. In both cases, a reference to a Connector object is obtained. This reference is assigned to the list of ouput ports of the source block, in the position indicated by the parameter.
+
+        @param (source, source_out): source is a Block object, source_out is a position in its output ports list.
+        @param (sink, sink_in): sink is a Block object, sink_in is a position in its input ports list.
         '''
-        if debug:
-            print tuple1
-            print tuple2
-
-        source, source_out = tuple1
-        sink, sink_in = tuple2
+        #source, source_out = tuple1
+        #sink, sink_in = tuple2
 
         #port = tuple2[0].get_port_in(tuple2[1])
         conn_in = sink.get_connector_in(sink_in)
@@ -90,17 +99,20 @@ class top_block_test(GWNTopBlock):
 
 
 def test():
-    '''A test function.
+    '''Transfers events from a source block to a sink block.
     '''
     tb = top_block_test()
     print tb.source_0
     print tb.sink_0
 
     #tb.source_0.ports_out[0].put('Hello')
-    tb.source_0.write_out(0, 'Hello')
-    aux = tb.sink_0.ports_in[0].conn.get()    
-    print aux
-
+    for i in range(0,5):
+        snt_ev = 'Event' + str(i)
+        print '  out from source object event %s ...' % (snt_ev,)
+        tb.source_0.write_out(0, snt_ev)
+        rec_ev = tb.sink_0.ports_in[0].conn.get()    
+        print '  ... got from sink object event %s' % (rec_ev,)
+        time.sleep(1)
 
 
 if __name__ == '__main__':

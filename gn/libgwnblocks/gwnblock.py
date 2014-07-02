@@ -128,11 +128,14 @@ class GWNBlock(threading.Thread):
         print "Starting " + self.blkname
         for port in self.ports_in:
             port.start()
-        for port in self.ports_in:
-            port.join()
 
         for timer in self.timers:
             timer.start()
+
+        for port in self.ports_in:
+            port.join()
+
+
         for timer in self.timers:
             timer.join()
         return
@@ -186,102 +189,6 @@ class GWNBlock(threading.Thread):
 
 
 
-### tests
-
-
-# a single block test
-
-def test2():
-    '''Test InPort, Block classses.
-    '''
-    blk1 = GWNBlock(1, 'BlockOne', 2)
-    print blk1
-    connector1 = AQueueConnector()
-    connector2 = AQueueConnector()
-    #blk1.start()
-    #time.sleep(2)
-    blk1.set_connection_in(connector1,0)
-    blk1.set_connection_in(connector2,1)
-    
-    for i in range(0,5):
-        connector1.put('A' + str(i))
-    for i in range(0,3):
-        connector2.put('B' + str(i))
-    for port in blk1.ports_in:
-        print port.port_nr, port.conn.lsevents, id(port)
-    #sys.exit()
-
-    blk1.start()
-    time.sleep(10)
-    for i in range(5,10):
-        connector1.put('A' + str(i))
-        connector2.put('B' + str(i-2))
-        time.sleep(2)
-    time.sleep(2)
-    blk1.stop()
-    blk1.join()
-    #blk1.stop()
-
-
-# two block test
-
-class BlockCopy(GWNBlock):
-    '''Copies event from input into output.
-    '''
-    def process_data(self, port_nr, ev):
-        print '\nCopying, block %s, port %d, event %s... ' % \
-            (self.blkname, port_nr, ev),
-        self.write_out(0, ev)
-        print 'done.'
-        return
-
-class BlockReceive(GWNBlock):
-    '''Receives an event, informs.
-    '''
-    def process_data(self, port_nr, ev):
-        print 'Received, block %s, port %d, event %s... ' % \
-            (self.blkname, port_nr, ev),
-        #self.write_out(0, ev)
-        print 'done.'
-        return
-
-
-def test3():
-    '''Tests connection from one block to another block.
-    '''
-    blk1 = BlockCopy(1, 'BlkCopy', 1, 1)
-    blk2 = BlockReceive(1, 'BlkReceive', 1, 0)
-
-    conn1 = gwninport.AQueueConnector(10)
-    conn2 =  gwninport.AQueueConnector(10)
-    blk1.set_connection_in(conn1,0)
-    blk2.set_connection_in(conn2,0)
-    blk1.set_connection_out(conn2, 0)
-
-    print blk1
-    print blk2
-
-    blk1.start()
-    blk2.start()
-
-    for i in range(0,5):
-        conn1.put('A' + str(i))
-        time.sleep(1)
-
-    #blk1.ports_in[0].conn.put('EventA1')
-
-    blk1.stop()
-    blk2.stop()
-    blk1.join()
-    blk2.join()
-
-
-
 if __name__ == '__main__':
-    try:
-        #test2()
-        test3()
-    except KeyboardInterrupt:
-        pass
-
-
+    print 'gwnblock: tests in gwntests, please do'
+    print '   python gwntests.py'

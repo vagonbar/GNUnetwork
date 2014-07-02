@@ -71,9 +71,10 @@ class InTimer(threading.Thread):
             ssaccept += ev + ' '
         #return '%s: accepted events: %s, connector empty: %s' % \
         #     (self.__class__, ssaccept, self.conn.is_empty() )
-        return  '  timer [port] %d in block %s, thread %d' % \
-            (self.port_nr, self.block.blkname, self.get_ident())
-
+        #return  '  timer [port] %d in block %s, thread %d' % \
+        #    (self.port_nr, self.block.blkname, self.get_ident())
+        return  '  timer [port] %d in block %s' % \
+            (self.port_nr, self.block.blkname)
 
 
 def test():
