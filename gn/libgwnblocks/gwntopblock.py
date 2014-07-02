@@ -32,22 +32,8 @@ class GWNTopBlock():
         '''        
         self.queues_size = queues_size
 
-    """
-    def connectold(self, tuple1, tuple2):
-         if debug:
-            print tuple1
-            print tuple2
 
-         port = tuple2[0].get_port_in(tuple2[1])
-         if port:
-             tuple1[0].set_connection_out(port, tuple1[1])
-         else:
-             queue = gwninport.AQueueConnector(self.queues_size)
-             tuple1[0].set_connection_out(queue, tuple1[1])
-             tuple2[0].set_connection_in(queue, tuple2[1])
-    """
-
-    def connect(self, (source, source_out), (sink, sink_in) ):
+    def connect(self, tp_source, tp_sink):
     #def connect(self, tuple1, tuple2):
         ''' Connects a source block to a sink block.
 
@@ -61,24 +47,19 @@ class GWNTopBlock():
 
         This function tries to get a reference to the InPut port in the sink object input ports list, in the position indicated as a parameter. If there is a Connector object attached to this input, it obtained. If there is no Connector object attached to this InPort, it is created and attached. In both cases, a reference to a Connector object is obtained. This reference is assigned to the list of ouput ports of the source block, in the position indicated by the parameter.
 
-        @param (source, source_out): source is a Block object, source_out is a position in its output ports list.
-        @param (sink, sink_in): sink is a Block object, sink_in is a position in its input ports list.
+        @param tp_source: a tuple (source, source_out) where source is a Block object, source_out is a position in its output ports list.
+        @param tp_sink: a tuple (sink, sink_in) where sink is a Block object, sink_in is a position in its input ports list.
         '''
-        #source, source_out = tuple1
-        #sink, sink_in = tuple2
-
-        #port = tuple2[0].get_port_in(tuple2[1])
+        source, source_out = tp_source
+        sink, sink_in = tp_sink
         conn_in = sink.get_connector_in(sink_in)
         #print conn_in
         if conn_in:
-            #tuple1[0].set_connection_out(port, tuple1[1])
             source.set_connection_out(conn_in, sink_in)
         else:
             connector = gwninport.AQueueConnector(self.queues_size)
             sink.set_connection_in(connector, sink_in)
-            #tuple1[0].set_connection_out(queue, tuple1[1])
             source.set_connection_out(connector, source_out)
-            #tuple2[0].set_connection_in(queue, tuple2[1])
 
 
 

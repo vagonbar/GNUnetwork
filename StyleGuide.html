@@ -1,12 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
+
+
 <meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>StyleGuidePEP8summary</title></head><body>
 <h2>GNUWiNetwork Code Style Guide</h2>
 Reference: PEP 8, Style Guide for Python Code.<br><a href="http://legacy.python.org/dev/peps/pep-0008/">http://legacy.python.org/dev/peps/pep-0008/</a><br>
 <br>
 Table of contents<br>
 
-<ol id="mozToc"><!--mozToc h3 1 h4 2--><li><a href="#mozTocId386288">Application</a></li><li><a href="#mozTocId113568">Code lay-out</a><ol><li><a href="#mozTocId899474">Indentation</a></li><li><a href="#mozTocId23832">Maximum line length</a></li><li><a href="#mozTocId280901">Blank lines</a></li><li><a href="#mozTocId174707">Source file encoding</a></li><li><a href="#mozTocId4192">Imports</a></li></ol></li><li><a href="#mozTocId353593">Whitespace in expressions and statements</a></li><li><a href="#mozTocId18195">Other recommendations</a></li><li><a href="#mozTocId876864">Comments</a></li><li><a href="#mozTocId651102">Naming Conventions</a></li><li><a href="#mozTocId502538">Other points and notes</a></li></ol>
+<ol id="mozToc"><!--mozToc h3 1 h4 2 h3 3--><li><a href="#mozTocId386288">Application</a></li><li><a href="#mozTocId113568">Code lay-out</a><ol><li><a href="#mozTocId899474">Indentation</a></li><li><a href="#mozTocId23832">Maximum line length</a></li><li><a href="#mozTocId280901">Blank lines</a></li><li><a href="#mozTocId174707">Source file encoding</a></li><li><a href="#mozTocId4192">Imports</a></li></ol></li><li><a href="#mozTocId353593">Whitespace in expressions and statements</a></li><li><a href="#mozTocId18195">Other recommendations</a></li><li><a href="#mozTocId876864">Comments</a></li><li><a href="#mozTocId651102">Naming Conventions</a></li><li><a href="#mozTocId7584">Epydoc documentation</a></li><li><a href="#mozTocId502538">Other points and notes</a></li></ol>
 <br>
 <h3><a class="mozTocH3" name="mozTocId386288"></a>Application</h3>Style guide is about consistency. In some cases, inconsistence is justfied, e.g. not to break backwards compatibility.<br>
 <h3><a class="mozTocH3" name="mozTocId113568"></a>Code lay-out</h3>
@@ -173,6 +175,21 @@ Constants<br>
   <li>define constants at module level.</li>
   <li>name constants in all capital letters with underscores separating words.</li>
 </ul>
+<h3><a class="mozTocH3" name="mozTocId7584"></a>Epydoc documentation</h3>
+Intra code documentation is written in the Epytext markup language from Epydoc:<br>
+<ul>
+  <li>example docstrings may be seen in package <a href="gn/doc">gn.doc</a>, see files <a href="gn/doc/__init__.py">__init__.py</a> and <a href="gn/doc/epydoc_example.py">epydoc_example.py</a></li>
+  <li>generated documentation can be seen in <a href="gn/html/index.html">gn/html/index.html</a>.</li>
+</ul>
+References:
+<ul>
+  <li><a href="http://epydoc.sourceforge.net/manual-epytext.html">The Epytext markup language</a></li>
+  <li><a href="http://epydoc.sourceforge.net/manual-fields.html">Epydoc fields</a></li>
+  <li><a href="http://epydoc.sourceforge.net">The epydoc homepage</a></li>
+</ul>
+
+
+
 <h3><a class="mozTocH3" name="mozTocId502538"></a>Other points and notes</h3>
 <ul>
   <li>versioning, see Version Bookkeeping in PEP 8.</li>
@@ -181,9 +198,6 @@ Constants<br>
   <li>docstrings in PEP 257 Docstring Conventions; examples adopted from Epydoc instead.</li>
   <li>see<code> __all__ </code>attribute to declare names in public API.</li>
   <li>
-see Programming recommendations, select.
-  </li>
-</ul>
-<br>
-<br>
+see Programming recommendations in PEP 8, select.</li>
+</ul><br>
 </body></html>
