@@ -116,7 +116,7 @@ class InPort(threading.Thread):
         #self.conn = AListConnector()
         self.conn = None
         self.block = block
-        self.port_nr = port_nr
+        self.port_nr = ("inport",port_nr)
         self.exit_flag = False
 
 

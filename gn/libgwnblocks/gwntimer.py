@@ -7,13 +7,12 @@ from gwnblock import thread_lock
 
 import threading
 import time
-import sys
-
+import libevents.if_events as if_events
 
 class InTimer(threading.Thread):
     '''Generates timing events.
     '''
-    def __init__(self, block, port_nr, interval=1):
+    def __init__(self, block, port_nr, interval=1,retry=1,nickname1="TimerTimer",nickname2=None,add_info=None):
         '''Constructor.
 
         @param block: the block to which this instance is attached.
@@ -23,11 +22,15 @@ class InTimer(threading.Thread):
         threading.Thread.__init__(self)
         self.accept = []
         self.block = block
-        self.port_nr = port_nr
+        self.port_nr = ("timer",port_nr)
         self.exit_flag = False
         self.interrupt = False
 
         self.interval = interval
+        self.retry = retry
+        self.nickname1 = nickname1
+        self.nickname2 = nickname2 
+        self.add_info = add_info
         self.counter = 0
 
 
@@ -45,6 +48,23 @@ class InTimer(threading.Thread):
             (self.port_nr, self.block.blkname)
         while not self.exit_flag:
             if not self.interrupt:
+                i=1
+                while i <= self.retry: 
+                    i=i+1
+                    time.sleep(self.interval)
+                    if not self.interrupt:
+                        self.tout1()
+                    else:
+                        break    
+                if not self.interrupt:
+                    if self.nickname2 is not None:
+                        self.tout2()
+            else:
+                time.sleep(0.01)
+                
+                
+                
+                
                 ev = 'TimeEv %s %d : %d' % \
                     (self.block.blkname, self.port_nr, self.counter)
                 self.counter += 1
@@ -56,6 +76,28 @@ class InTimer(threading.Thread):
                 thread_lock.release()
             time.sleep(self.interval)
         return
+
+
+    def tout1(self):      
+        ev = if_events.mkevent(self.nickname1)
+        ev.ev_dc['add_info'] = self.add_info
+        thread_lock.acquire()
+        #print '    port %d in block %s generated event %s' % \
+        #    (self.port_nr, self.block.blkname, ev)
+        print '   %s' % (ev,)
+        self.block.process_data(self.port_nr, ev)
+        thread_lock.release()
+     
+
+    def tout2(self):
+        ev= if_events.mkevent(self.nickname2)
+        ev.ev_dc['add_info'] =  self.add_info
+        thread_lock.acquire()
+        #print '    port %d in block %s generated event %s' % \
+        #    (self.port_nr, self.block.blkname, ev)
+        print '   %s' % (ev,)
+        self.block.process_data(self.port_nr, ev)
+        thread_lock.release()
 
 
     def stop(self):
