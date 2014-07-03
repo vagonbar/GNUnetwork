@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>xml.dom</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="xml-module.html">Package&nbsp;xml</a> ::
+        Package&nbsp;dom
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="xml.dom-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="xml.dom-module.html">Package xml.dom</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""W3C Document Object Model implementation for Python.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">The Python mapping of the Document Object Model is documented in the</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">Python Library Reference in the section on the xml.dom package.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">This package contains the following modules:</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">minidom -- A simple implementation of the Level 1 DOM with namespace</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">           support added (based on the Level 2 specification) and other</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">           minor Level 2 functionality.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">pulldom -- DOM builder supporting on-demand tree-building for selected</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">           subtrees of the document.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="Node"></a><div id="Node-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="Node-toggle" onclick="return toggle('Node');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.Node-class.html">Node</a><tt class="py-op">:</tt> </tt>
+</div><div id="Node-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Node-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt class="py-docstring">"""Class giving the NodeType constants."""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-comment"># DOM implementations may use this as a base class for their own</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-comment"># Node implementations.  If they don't, the constants defined here</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-comment"># should still be used as the canonical definitions as they match</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-comment"># the values given in the W3C recommendation.  Client code can</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-comment"># safely refer to these values in all tests of Node.nodeType</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-comment"># values.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable xml.dom.Node.ELEMENT_NODE=xml.dom.Node-class.html#ELEMENT_NODE"><a title="xml.dom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-0', 'ELEMENT_NODE', 'link-0');">ELEMENT_NODE</a></tt>                <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable xml.dom.Node.ATTRIBUTE_NODE=xml.dom.Node-class.html#ATTRIBUTE_NODE"><a title="xml.dom.Node.ATTRIBUTE_NODE" class="py-name" href="#" onclick="return doclink('link-1', 'ATTRIBUTE_NODE', 'link-1');">ATTRIBUTE_NODE</a></tt>              <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable xml.dom.Node.TEXT_NODE=xml.dom.Node-class.html#TEXT_NODE,Variable xml.dom.expatbuilder.TEXT_NODE=xml.dom.expatbuilder-module.html#TEXT_NODE"><a title="xml.dom.Node.TEXT_NODE
+xml.dom.expatbuilder.TEXT_NODE" class="py-name" href="#" onclick="return doclink('link-2', 'TEXT_NODE', 'link-2');">TEXT_NODE</a></tt>                   <tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable xml.dom.Node.CDATA_SECTION_NODE=xml.dom.Node-class.html#CDATA_SECTION_NODE,Variable xml.dom.expatbuilder.CDATA_SECTION_NODE=xml.dom.expatbuilder-module.html#CDATA_SECTION_NODE"><a title="xml.dom.Node.CDATA_SECTION_NODE
+xml.dom.expatbuilder.CDATA_SECTION_NODE" class="py-name" href="#" onclick="return doclink('link-3', 'CDATA_SECTION_NODE', 'link-3');">CDATA_SECTION_NODE</a></tt>          <tt class="py-op">=</tt> <tt class="py-number">4</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable xml.dom.Node.ENTITY_REFERENCE_NODE=xml.dom.Node-class.html#ENTITY_REFERENCE_NODE"><a title="xml.dom.Node.ENTITY_REFERENCE_NODE" class="py-name" href="#" onclick="return doclink('link-4', 'ENTITY_REFERENCE_NODE', 'link-4');">ENTITY_REFERENCE_NODE</a></tt>       <tt class="py-op">=</tt> <tt class="py-number">5</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable xml.dom.Node.ENTITY_NODE=xml.dom.Node-class.html#ENTITY_NODE"><a title="xml.dom.Node.ENTITY_NODE" class="py-name" href="#" onclick="return doclink('link-5', 'ENTITY_NODE', 'link-5');">ENTITY_NODE</a></tt>                 <tt class="py-op">=</tt> <tt class="py-number">6</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable xml.dom.Node.PROCESSING_INSTRUCTION_NODE=xml.dom.Node-class.html#PROCESSING_INSTRUCTION_NODE"><a title="xml.dom.Node.PROCESSING_INSTRUCTION_NODE" class="py-name" href="#" onclick="return doclink('link-6', 'PROCESSING_INSTRUCTION_NODE', 'link-6');">PROCESSING_INSTRUCTION_NODE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">7</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable xml.dom.Node.COMMENT_NODE=xml.dom.Node-class.html#COMMENT_NODE"><a title="xml.dom.Node.COMMENT_NODE" class="py-name" href="#" onclick="return doclink('link-7', 'COMMENT_NODE', 'link-7');">COMMENT_NODE</a></tt>                <tt class="py-op">=</tt> <tt class="py-number">8</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable xml.dom.Node.DOCUMENT_NODE=xml.dom.Node-class.html#DOCUMENT_NODE,Variable xml.dom.expatbuilder.DOCUMENT_NODE=xml.dom.expatbuilder-module.html#DOCUMENT_NODE"><a title="xml.dom.Node.DOCUMENT_NODE
+xml.dom.expatbuilder.DOCUMENT_NODE" class="py-name" href="#" onclick="return doclink('link-8', 'DOCUMENT_NODE', 'link-8');">DOCUMENT_NODE</a></tt>               <tt class="py-op">=</tt> <tt class="py-number">9</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable xml.dom.Node.DOCUMENT_TYPE_NODE=xml.dom.Node-class.html#DOCUMENT_TYPE_NODE"><a title="xml.dom.Node.DOCUMENT_TYPE_NODE" class="py-name" href="#" onclick="return doclink('link-9', 'DOCUMENT_TYPE_NODE', 'link-9');">DOCUMENT_TYPE_NODE</a></tt>          <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable xml.dom.Node.DOCUMENT_FRAGMENT_NODE=xml.dom.Node-class.html#DOCUMENT_FRAGMENT_NODE"><a title="xml.dom.Node.DOCUMENT_FRAGMENT_NODE" class="py-name" href="#" onclick="return doclink('link-10', 'DOCUMENT_FRAGMENT_NODE', 'link-10');">DOCUMENT_FRAGMENT_NODE</a></tt>      <tt class="py-op">=</tt> <tt class="py-number">11</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable xml.dom.Node.NOTATION_NODE=xml.dom.Node-class.html#NOTATION_NODE"><a title="xml.dom.Node.NOTATION_NODE" class="py-name" href="#" onclick="return doclink('link-11', 'NOTATION_NODE', 'link-11');">NOTATION_NODE</a></tt>               <tt class="py-op">=</tt> <tt class="py-number">12</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-comment">#ExceptionCode</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable xml.dom.INDEX_SIZE_ERR=xml.dom-module.html#INDEX_SIZE_ERR"><a title="xml.dom.INDEX_SIZE_ERR" class="py-name" href="#" onclick="return doclink('link-12', 'INDEX_SIZE_ERR', 'link-12');">INDEX_SIZE_ERR</a></tt>                 <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable xml.dom.DOMSTRING_SIZE_ERR=xml.dom-module.html#DOMSTRING_SIZE_ERR"><a title="xml.dom.DOMSTRING_SIZE_ERR" class="py-name" href="#" onclick="return doclink('link-13', 'DOMSTRING_SIZE_ERR', 'link-13');">DOMSTRING_SIZE_ERR</a></tt>             <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable xml.dom.HIERARCHY_REQUEST_ERR=xml.dom-module.html#HIERARCHY_REQUEST_ERR"><a title="xml.dom.HIERARCHY_REQUEST_ERR" class="py-name" href="#" onclick="return doclink('link-14', 'HIERARCHY_REQUEST_ERR', 'link-14');">HIERARCHY_REQUEST_ERR</a></tt>          <tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable xml.dom.WRONG_DOCUMENT_ERR=xml.dom-module.html#WRONG_DOCUMENT_ERR"><a title="xml.dom.WRONG_DOCUMENT_ERR" class="py-name" href="#" onclick="return doclink('link-15', 'WRONG_DOCUMENT_ERR', 'link-15');">WRONG_DOCUMENT_ERR</a></tt>             <tt class="py-op">=</tt> <tt class="py-number">4</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable xml.dom.INVALID_CHARACTER_ERR=xml.dom-module.html#INVALID_CHARACTER_ERR"><a title="xml.dom.INVALID_CHARACTER_ERR" class="py-name" href="#" onclick="return doclink('link-16', 'INVALID_CHARACTER_ERR', 'link-16');">INVALID_CHARACTER_ERR</a></tt>          <tt class="py-op">=</tt> <tt class="py-number">5</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable xml.dom.NO_DATA_ALLOWED_ERR=xml.dom-module.html#NO_DATA_ALLOWED_ERR"><a title="xml.dom.NO_DATA_ALLOWED_ERR" class="py-name" href="#" onclick="return doclink('link-17', 'NO_DATA_ALLOWED_ERR', 'link-17');">NO_DATA_ALLOWED_ERR</a></tt>            <tt class="py-op">=</tt> <tt class="py-number">6</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable xml.dom.NO_MODIFICATION_ALLOWED_ERR=xml.dom-module.html#NO_MODIFICATION_ALLOWED_ERR"><a title="xml.dom.NO_MODIFICATION_ALLOWED_ERR" class="py-name" href="#" onclick="return doclink('link-18', 'NO_MODIFICATION_ALLOWED_ERR', 'link-18');">NO_MODIFICATION_ALLOWED_ERR</a></tt>    <tt class="py-op">=</tt> <tt class="py-number">7</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt id="link-19" class="py-name" targets="Variable xml.dom.NOT_FOUND_ERR=xml.dom-module.html#NOT_FOUND_ERR"><a title="xml.dom.NOT_FOUND_ERR" class="py-name" href="#" onclick="return doclink('link-19', 'NOT_FOUND_ERR', 'link-19');">NOT_FOUND_ERR</a></tt>                  <tt class="py-op">=</tt> <tt class="py-number">8</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable xml.dom.NOT_SUPPORTED_ERR=xml.dom-module.html#NOT_SUPPORTED_ERR"><a title="xml.dom.NOT_SUPPORTED_ERR" class="py-name" href="#" onclick="return doclink('link-20', 'NOT_SUPPORTED_ERR', 'link-20');">NOT_SUPPORTED_ERR</a></tt>              <tt class="py-op">=</tt> <tt class="py-number">9</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable xml.dom.INUSE_ATTRIBUTE_ERR=xml.dom-module.html#INUSE_ATTRIBUTE_ERR"><a title="xml.dom.INUSE_ATTRIBUTE_ERR" class="py-name" href="#" onclick="return doclink('link-21', 'INUSE_ATTRIBUTE_ERR', 'link-21');">INUSE_ATTRIBUTE_ERR</a></tt>            <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable xml.dom.INVALID_STATE_ERR=xml.dom-module.html#INVALID_STATE_ERR"><a title="xml.dom.INVALID_STATE_ERR" class="py-name" href="#" onclick="return doclink('link-22', 'INVALID_STATE_ERR', 'link-22');">INVALID_STATE_ERR</a></tt>              <tt class="py-op">=</tt> <tt class="py-number">11</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt id="link-23" class="py-name" targets="Variable xml.dom.SYNTAX_ERR=xml.dom-module.html#SYNTAX_ERR"><a title="xml.dom.SYNTAX_ERR" class="py-name" href="#" onclick="return doclink('link-23', 'SYNTAX_ERR', 'link-23');">SYNTAX_ERR</a></tt>                     <tt class="py-op">=</tt> <tt class="py-number">12</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable xml.dom.INVALID_MODIFICATION_ERR=xml.dom-module.html#INVALID_MODIFICATION_ERR"><a title="xml.dom.INVALID_MODIFICATION_ERR" class="py-name" href="#" onclick="return doclink('link-24', 'INVALID_MODIFICATION_ERR', 'link-24');">INVALID_MODIFICATION_ERR</a></tt>       <tt class="py-op">=</tt> <tt class="py-number">13</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt id="link-25" class="py-name" targets="Variable xml.dom.NAMESPACE_ERR=xml.dom-module.html#NAMESPACE_ERR"><a title="xml.dom.NAMESPACE_ERR" class="py-name" href="#" onclick="return doclink('link-25', 'NAMESPACE_ERR', 'link-25');">NAMESPACE_ERR</a></tt>                  <tt class="py-op">=</tt> <tt class="py-number">14</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt id="link-26" class="py-name" targets="Variable xml.dom.INVALID_ACCESS_ERR=xml.dom-module.html#INVALID_ACCESS_ERR"><a title="xml.dom.INVALID_ACCESS_ERR" class="py-name" href="#" onclick="return doclink('link-26', 'INVALID_ACCESS_ERR', 'link-26');">INVALID_ACCESS_ERR</a></tt>             <tt class="py-op">=</tt> <tt class="py-number">15</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt id="link-27" class="py-name" targets="Variable xml.dom.VALIDATION_ERR=xml.dom-module.html#VALIDATION_ERR"><a title="xml.dom.VALIDATION_ERR" class="py-name" href="#" onclick="return doclink('link-27', 'VALIDATION_ERR', 'link-27');">VALIDATION_ERR</a></tt>                 <tt class="py-op">=</tt> <tt class="py-number">16</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="DOMException"></a><div id="DOMException-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="DOMException-toggle" onclick="return toggle('DOMException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.DOMException-class.html">DOMException</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DOMException-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DOMException-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-docstring">"""Abstract base class for DOM exceptions.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    Exceptions with specific codes are specializations of this class."""</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="DOMException.__init__"></a><div id="DOMException.__init__-def"><a name="L65"></a><tt class="py-lineno"> 65</tt> <a class="py-toggle" href="#" id="DOMException.__init__-toggle" onclick="return toggle('DOMException.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="xml.dom.DOMException-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DOMException.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="DOMException.__init__-expanded"><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__class__</tt> <tt class="py-keyword">is</tt> <tt id="link-28" class="py-name" targets="Class xml.dom.DOMException=xml.dom.DOMException-class.html"><a title="xml.dom.DOMException" class="py-name" href="#" onclick="return doclink('link-28', 'DOMException', 'link-28');">DOMException</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">RuntimeError</tt><tt class="py-op">(</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                <tt class="py-string">"DOMException should not be instantiated directly"</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-name">Exception</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method gn.draft.libblocks.blocks.Block.__init__()=gn.draft.libblocks.blocks.Block-class.html#__init__,Method gn.draft.libblocks.blocks1.Block.__init__()=gn.draft.libblocks.blocks1.Block-class.html#__init__,Method gn.draft.libblocks.blocks2.Block.__init__()=gn.draft.libblocks.blocks2.Block-class.html#__init__,Method gn.draft.libblocks.blocks2.InPort.__init__()=gn.draft.libblocks.blocks2.InPort-class.html#__init__,Method gn.draft.libblocks.blocks2.InPortConf.__init__()=gn.draft.libblocks.blocks2.InPortConf-class.html#__init__,Method gn.draft.libblocks.blocks2.InPortReceive.__init__()=gn.draft.libblocks.blocks2.InPortReceive-class.html#__init__,Method gn.draft.libblocks.blocks2.InPortSend.__init__()=gn.draft.libblocks.blocks2.InPortSend-class.html#__init__,Method gn.draft.libblocks.blocks3.Block.__init__()=gn.draft.libblocks.blocks3.Block-class.html#__init__,Method gn.draft.libblocks.blocks3.InPort.__init__()=gn.draft.libblocks.blocks3.InPort-class.html#__init__,Method gn.draft.libblocks.blocks3.ReceiveBlock.__init__()=gn.draft.libblocks.blocks3.ReceiveBlock-class.html#__init__,Method gn.draft.libblocks.blocks3.TransmitBlock.__init__()=gn.draft.libblocks.blocks3.TransmitBlock-class.html#__init__,Method gn.draft.libblocks.blocks4.AListConnector.__init__()=gn.draft.libblocks.blocks4.AListConnector-class.html#__init__,Method gn.draft.libblocks.blocks4.Block.__init__()=gn.draft.libblocks.blocks4.Block-class.html#__init__,Method gn.draft.libblocks.blocks4.InPort.__init__()=gn.draft.libblocks.blocks4.InPort-class.html#__init__,Method gn.draft.libblocks.blocks5.AListConnector.__init__()=gn.draft.libblocks.blocks5.AListConnector-class.html#__init__,Method gn.draft.libblocks.blocks5.AQueueConnector.__init__()=gn.draft.libblocks.blocks5.AQueueConnector-class.html#__init__,Method gn.draft.libblocks.blocks5.Block.__init__()=gn.draft.libblocks.blocks5.Block-class.html#__init__,Method gn.draft.libblocks.blocks5.InPort.__init__()=gn.draft.libblocks.blocks5.InPort-class.html#__init__,Method gn.draft.libblocks.gwnBlock.gwnBlock.__init__()=gn.draft.libblocks.gwnBlock.gwnBlock-class.html#__init__,Method gn.draft.libblocks.gwnTopBlock.gwnTopBlock.__init__()=gn.draft.libblocks.gwnTopBlock.gwnTopBlock-class.html#__init__,Method gn.draft.libblocks.gwnTopBlock.top_block_test.__init__()=gn.draft.libblocks.gwnTopBlock.top_block_test-class.html#__init__,Method gn.draft.libblocks.pointex.myThread.__init__()=gn.draft.libblocks.pointex.myThread-class.html#__init__,Method gn.grc.base.Block.Block.__init__()=gn.grc.base.Block.Block-class.html#__init__,Method gn.grc.base.Block.TemplateArg.__init__()=gn.grc.base.Block.TemplateArg-class.html#__init__,Method gn.grc.base.Connection.Connection.__init__()=gn.grc.base.Connection.Connection-class.html#__init__,Method gn.grc.base.Element.Element.__init__()=gn.grc.base.Element.Element-class.html#__init__,Method gn.grc.base.FlowGraph.FlowGraph.__init__()=gn.grc.base.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.base.Param.Option.__init__()=gn.grc.base.Param.Option-class.html#__init__,Method gn.grc.base.Param.Param.__init__()=gn.grc.base.Param.Param-class.html#__init__,Method gn.grc.base.ParseXML.XMLSyntaxError.__init__()=gn.grc.base.ParseXML.XMLSyntaxError-class.html#__init__,Method gn.grc.base.Platform.Platform.__init__()=gn.grc.base.Platform.Platform-class.html#__init__,Method gn.grc.base.Port.Port.__init__()=gn.grc.base.Port.Port-class.html#__init__,Method gn.grc.base.odict'.odict.__init__()=gn.grc.base.odict%27.odict-class.html#__init__,Method gn.grc.gui.ActionHandler.ActionHandler.__init__()=gn.grc.gui.ActionHandler.ActionHandler-class.html#__init__,Method gn.grc.gui.ActionHandler.ExecFlowGraphThread.__init__()=gn.grc.gui.ActionHandler.ExecFlowGraphThread-class.html#__init__,Method gn.grc.gui.Actions.Action.__init__()=gn.grc.gui.Actions.Action-class.html#__init__,Method gn.grc.gui.Bars.MenuBar.__init__()=gn.grc.gui.Bars.MenuBar-class.html#__init__,Method gn.grc.gui.Bars.Toolbar.__init__()=gn.grc.gui.Bars.Toolbar-class.html#__init__,Method gn.grc.gui.Block.Block.__init__()=gn.grc.gui.Block.Block-class.html#__init__,Method gn.grc.gui.BlockTreeWindow.BlockTreeWindow.__init__()=gn.grc.gui.BlockTreeWindow.BlockTreeWindow-class.html#__init__,Method gn.grc.gui.Connection.Connection.__init__()=gn.grc.gui.Connection.Connection-class.html#__init__,Method gn.grc.gui.Dialogs.AboutDialog.__init__()=gn.grc.gui.Dialogs.AboutDialog-class.html#__init__,Method gn.grc.gui.Dialogs.TextDisplay.__init__()=gn.grc.gui.Dialogs.TextDisplay-class.html#__init__,Method gn.grc.gui.DrawingArea.DrawingArea.__init__()=gn.grc.gui.DrawingArea.DrawingArea-class.html#__init__,Method gn.grc.gui.Element.Element.__init__()=gn.grc.gui.Element.Element-class.html#__init__,Method gn.grc.gui.FileDialogs.FileDialog.__init__()=gn.grc.gui.FileDialogs.FileDialog-class.html#__init__,Method gn.grc.gui.FileDialogs.FileDialogHelper.__init__()=gn.grc.gui.FileDialogs.FileDialogHelper-class.html#__init__,Method gn.grc.gui.FlowGraph.FlowGraph.__init__()=gn.grc.gui.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.gui.MainWindow.MainWindow.__init__()=gn.grc.gui.MainWindow.MainWindow-class.html#__init__,Method gn.grc.gui.NotebookPage.NotebookPage.__init__()=gn.grc.gui.NotebookPage.NotebookPage-class.html#__init__,Method gn.grc.gui.Param.EntryParam.__init__()=gn.grc.gui.Param.EntryParam-class.html#__init__,Method gn.grc.gui.Param.EnumEntryParam.__init__()=gn.grc.gui.Param.EnumEntryParam-class.html#__init__,Method gn.grc.gui.Param.EnumParam.__init__()=gn.grc.gui.Param.EnumParam-class.html#__init__,Method gn.grc.gui.Param.InputParam.__init__()=gn.grc.gui.Param.InputParam-class.html#__init__,Method gn.grc.gui.Param.Param.__init__()=gn.grc.gui.Param.Param-class.html#__init__,Method gn.grc.gui.Platform.Platform.__init__()=gn.grc.gui.Platform.Platform-class.html#__init__,Method gn.grc.gui.Port.Port.__init__()=gn.grc.gui.Port.Port-class.html#__init__,Method gn.grc.gui.PropsDialog.PropsDialog.__init__()=gn.grc.gui.PropsDialog.PropsDialog-class.html#__init__,Method gn.grc.gui.StateCache.StateCache.__init__()=gn.grc.gui.StateCache.StateCache-class.html#__init__,Method gn.grc.python.Block.Block.__init__()=gn.grc.python.Block.Block-class.html#__init__,Method gn.grc.python.Connection.Connection.__init__()=gn.grc.python.Connection.Connection-class.html#__init__,Method gn.grc.python.FlowGraph.FlowGraph.__init__()=gn.grc.python.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.python.Generator.Generator.__init__()=gn.grc.python.Generator.Generator-class.html#__init__,Method gn.grc.python.Param.FileParam.__init__()=gn.grc.python.Param.FileParam-class.html#__init__,Method gn.grc.python.Param.Param.__init__()=gn.grc.python.Param.Param-class.html#__init__,Method gn.grc.python.Platform.Platform.__init__()=gn.grc.python.Platform.Platform-class.html#__init__,Method gn.grc.python.Port.Port.__init__()=gn.grc.python.Port.Port-class.html#__init__,Method gn.grc.python.expr_utils.graph.__init__()=gn.grc.python.expr_utils.graph-class.html#__init__,Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.__init__()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL-class.html#__init__,Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.__init__()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA-class.html#__init__,Method gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2.__init__()=gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2-class.html#__init__,Method gn.libadaptationlayer.TunTapInterface.TunTapInterface.__init__()=gn.libadaptationlayer.TunTapInterface.TunTapInterface-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.Layer3.__init__()=gn.libadaptationlayer.schedLayer3.Layer3-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.ReadLayer2.__init__()=gn.libadaptationlayer.schedLayer3.ReadLayer2-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.ReadLayer3.__init__()=gn.libadaptationlayer.schedLayer3.ReadLayer3-class.html#__init__,Method gn.libadaptationlayer.scheduler.Scheduler.__init__()=gn.libadaptationlayer.scheduler.Scheduler-class.html#__init__,Method gn.libadaptationlayer.transmitFrame.TransmitFrame.__init__()=gn.libadaptationlayer.transmitFrame.TransmitFrame-class.html#__init__,Method gn.libadaptlay80211.gwnDeframer.gwnDeframer.__init__()=gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#__init__,Method gn.libadaptlay80211.gwnFramer.gwnFramer.__init__()=gn.libadaptlay80211.gwnFramer.gwnFramer-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.Layer3.__init__()=gn.libadaptlay80211.schedLayer3.Layer3-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.ReadLayer2.__init__()=gn.libadaptlay80211.schedLayer3.ReadLayer2-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.ReadLayer3.__init__()=gn.libadaptlay80211.schedLayer3.ReadLayer3-class.html#__init__,Method gn.libadaptlay80211.scheduler.Scheduler.__init__()=gn.libadaptlay80211.scheduler.Scheduler-class.html#__init__,Method gn.libadaptlay80211.transmitFrame.TransmitFrame.__init__()=gn.libadaptlay80211.transmitFrame.TransmitFrame-class.html#__init__,Method gn.libevents.events.Event.__init__()=gn.libevents.events.Event-class.html#__init__,Method gn.libevents.evframes80211.EventFrame.__init__()=gn.libevents.evframes80211.EventFrame-class.html#__init__,Method gn.libevents.evframes80211.EventFrameMgmt.__init__()=gn.libevents.evframes80211.EventFrameMgmt-class.html#__init__,Method gn.libevents.evrequest.EventRequest.__init__()=gn.libevents.evrequest.EventRequest-class.html#__init__,Method gn.libevents.evtimer.EventTimer.__init__()=gn.libevents.evtimer.EventTimer-class.html#__init__,Method gn.libframes.frames.Frame.__init__()=gn.libframes.frames.Frame-class.html#__init__,Method gn.libframes.frames.FrameException.__init__()=gn.libframes.frames.FrameException-class.html#__init__,Method gn.libframes.mac_frmbld.AFrame.__init__()=gn.libframes.mac_frmbld.AFrame-class.html#__init__,Method gn.libframes.mac_frmbld.AFrameBody.__init__()=gn.libframes.mac_frmbld.AFrameBody-class.html#__init__,Method gn.libframes.mac_frmbld.AFrameControl.__init__()=gn.libframes.mac_frmbld.AFrameControl-class.html#__init__,Method gn.libframes.mac_frmbld.MacFrameException.__init__()=gn.libframes.mac_frmbld.MacFrameException-class.html#__init__,Method gn.libframes.mac_frmspecs.FrameSpecsException.__init__()=gn.libframes.mac_frmspecs.FrameSpecsException-class.html#__init__,Method gn.libfsm.fsm.ExceptionFSM.__init__()=gn.libfsm.fsm.ExceptionFSM-class.html#__init__,Method gn.libfsm.fsm.FSM.__init__()=gn.libfsm.fsm.FSM-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.TxL1.__init__()=gn.libgnuradio.TxRxLayer1.TxL1-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.my_top_block_rx.__init__()=gn.libgnuradio.TxRxLayer1.my_top_block_rx-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.my_top_block_tx.__init__()=gn.libgnuradio.TxRxLayer1.my_top_block_tx-class.html#__init__,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.__init__()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2-class.html#__init__,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.__init__()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk-class.html#__init__,Method gn.libgnuradio.receive_path.receive_path.__init__()=gn.libgnuradio.receive_path.receive_path-class.html#__init__,Method gn.libgnuradio.receive_path3_7.receive_path.__init__()=gn.libgnuradio.receive_path3_7.receive_path-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartL1.__init__()=gn.libgnuradio.run_TDMA_L3.StartL1-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.__init__()=gn.libgnuradio.run_TDMA_L3.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.__init__()=gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.run_node.StartL1.__init__()=gn.libgnuradio.run_node.StartL1-class.html#__init__,Method gn.libgnuradio.run_node.StartL2.__init__()=gn.libgnuradio.run_node.StartL2-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer1Rx.__init__()=gn.libgnuradio.run_node.TestLayer1Rx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer1Tx.__init__()=gn.libgnuradio.run_node.TestLayer1Tx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer2Rx.__init__()=gn.libgnuradio.run_node.TestLayer2Rx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer2Tx.__init__()=gn.libgnuradio.run_node.TestLayer2Tx-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartL1.__init__()=gn.libgnuradio.run_nodeL3.StartL1-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartL2Mgmt.__init__()=gn.libgnuradio.run_nodeL3.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartSchedL1_L2.__init__()=gn.libgnuradio.run_nodeL3.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartL1.__init__()=gn.libgnuradio.run_nodeL3_80211.StartL1-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.__init__()=gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.__init__()=gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.transmit_path.transmit_path.__init__()=gn.libgnuradio.transmit_path.transmit_path-class.html#__init__,Method gn.libgnuradio.transmit_path3_7.transmit_path.__init__()=gn.libgnuradio.transmit_path3_7.transmit_path-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_interface.__init__()=gn.libgnuradio.uhd_interface.uhd_interface-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_receiver.__init__()=gn.libgnuradio.uhd_interface.uhd_receiver-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_transmitter.__init__()=gn.libgnuradio.uhd_interface.uhd_transmitter-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.AListConnector.__init__()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.__init__()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.InPort.__init__()=gn.libgwnBlocks.gwnBlock.InPort-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.gwnBlock.__init__()=gn.libgwnBlocks.gwnBlock.gwnBlock-class.html#__init__,Method gn.libgwnBlocks.gwnBlockOld.gwnBlock.__init__()=gn.libgwnBlocks.gwnBlockOld.gwnBlock-class.html#__init__,Method gn.libgwnBlocks.gwnTopBlock.gwnTopBlock.__init__()=gn.libgwnBlocks.gwnTopBlock.gwnTopBlock-class.html#__init__,Method gn.libgwnBlocks.gwnTopBlock.top_block_test.__init__()=gn.libgwnBlocks.gwnTopBlock.top_block_test-class.html#__init__,Method gn.libgwnBlocks.gwntimerblock.InPortTimer.__init__()=gn.libgwnBlocks.gwntimerblock.InPortTimer-class.html#__init__,Method gn.libgwnblocks.gwnblock.GWNBlock.__init__()=gn.libgwnblocks.gwnblock.GWNBlock-class.html#__init__,Method gn.libgwnblocks.gwninport.AListConnector.__init__()=gn.libgwnblocks.gwninport.AListConnector-class.html#__init__,Method gn.libgwnblocks.gwninport.AQueueConnector.__init__()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#__init__,Method gn.libgwnblocks.gwninport.InPort.__init__()=gn.libgwnblocks.gwninport.InPort-class.html#__init__,Method gn.libgwnblocks.gwntimer.InTimer.__init__()=gn.libgwnblocks.gwntimer.InTimer-class.html#__init__,Method gn.libgwnblocks.gwntopblock.gwnTopBlock.__init__()=gn.libgwnblocks.gwntopblock.gwnTopBlock-class.html#__init__,Method gn.libgwnblocks.gwntopblock.top_block_test.__init__()=gn.libgwnblocks.gwntopblock.top_block_test-class.html#__init__,Method gn.libmacTDMA.ControlChannel.ControlChannel.__init__()=gn.libmacTDMA.ControlChannel.ControlChannel-class.html#__init__,Method gn.libmacTDMA.MacTdma.MacTdma.__init__()=gn.libmacTDMA.MacTdma.MacTdma-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.__init__()=gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.__init__()=gn.libmacTDMA.MacTdma.ProcessingL1DataEvents-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL2Events.__init__()=gn.libmacTDMA.MacTdma.ProcessingL2Events-class.html#__init__,Method gn.libmanagement.Beacon.Beacon.__init__()=gn.libmanagement.Beacon.Beacon-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.__init__()=gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.__init__()=gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM.__init__()=gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.__init__()=gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator-class.html#__init__,Method gn.libmanagement.NetworkConfiguration.NetworkConfiguration.__init__()=gn.libmanagement.NetworkConfiguration.NetworkConfiguration-class.html#__init__,Method gn.libmanagement.PeersTable.PeersTable.__init__()=gn.libmanagement.PeersTable.PeersTable-class.html#__init__,Method gn.libmanagement.Profile.Profile.__init__()=gn.libmanagement.Profile.Profile-class.html#__init__,Method gn.libtimer.timer.Timer.__init__()=gn.libtimer.timer.Timer-class.html#__init__,Method gn.libtimer.timer2.Timer.__init__()=gn.libtimer.timer2.Timer-class.html#__init__,Method gn.libutils.exampletest.AClass.__init__()=gn.libutils.exampletest.AClass-class.html#__init__,Method gn.libutils.gnlogger_test.Auxiliary.__init__()=gn.libutils.gnlogger_test.Auxiliary-class.html#__init__,Method gn.libutils.gnscheduler.Scheduler.__init__()=gn.libutils.gnscheduler.Scheduler-class.html#__init__,Method gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier.__init__()=gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier-class.html#__init__,Method gn.libutils.gwnscheduler2.Scheduler.__init__()=gn.libutils.gwnscheduler2.Scheduler-class.html#__init__,Method gn.libutils.sched_bytype.Item.__init__()=gn.libutils.sched_bytype.Item-class.html#__init__,Method gn.libvirtualchannel.EventConsumer.EventConsumer.__init__()=gn.libvirtualchannel.EventConsumer.EventConsumer-class.html#__init__,Method gn.libvirtualchannel.EventConsumer2.EventConsumer.__init__()=gn.libvirtualchannel.EventConsumer2.EventConsumer-class.html#__init__,Method gn.libvirtualchannel.EventSimulator.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.EventSimulator2.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator2.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.EventSimulator3.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator3.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel.__init__()=gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel-class.html#__init__,Method gn.libvirtualchannel.virtualchannel.VirtualChannel.__init__()=gn.libvirtualchannel.virtualchannel.VirtualChannel-class.html#__init__,Method xml.dom.DOMException.__init__()=xml.dom.DOMException-class.html#__init__,Method xml.dom.expatbuilder.ElementInfo.__init__()=xml.dom.expatbuilder.ElementInfo-class.html#__init__,Method xml.dom.expatbuilder.ExpatBuilder.__init__()=xml.dom.expatbuilder.ExpatBuilder-class.html#__init__,Method xml.dom.expatbuilder.FilterCrutch.__init__()=xml.dom.expatbuilder.FilterCrutch-class.html#__init__,Method xml.dom.expatbuilder.FilterVisibilityController.__init__()=xml.dom.expatbuilder.FilterVisibilityController-class.html#__init__,Method xml.dom.expatbuilder.FragmentBuilder.__init__()=xml.dom.expatbuilder.FragmentBuilder-class.html#__init__,Method xml.dom.expatbuilder.Rejecter.__init__()=xml.dom.expatbuilder.Rejecter-class.html#__init__,Method xml.dom.minidom.Attr.__init__()=xml.dom.minidom.Attr-class.html#__init__,Method xml.dom.minidom.Comment.__init__()=xml.dom.minidom.Comment-class.html#__init__,Method xml.dom.minidom.Document.__init__()=xml.dom.minidom.Document-class.html#__init__,Method xml.dom.minidom.DocumentFragment.__init__()=xml.dom.minidom.DocumentFragment-class.html#__init__,Method xml.dom.minidom.DocumentType.__init__()=xml.dom.minidom.DocumentType-class.html#__init__,Method xml.dom.minidom.Element.__init__()=xml.dom.minidom.Element-class.html#__init__,Method xml.dom.minidom.ElementInfo.__init__()=xml.dom.minidom.ElementInfo-class.html#__init__,Method xml.dom.minidom.Entity.__init__()=xml.dom.minidom.Entity-class.html#__init__,Method xml.dom.minidom.NamedNodeMap.__init__()=xml.dom.minidom.NamedNodeMap-class.html#__init__,Method xml.dom.minidom.Notation.__init__()=xml.dom.minidom.Notation-class.html#__init__,Method xml.dom.minidom.ProcessingInstruction.__init__()=xml.dom.minidom.ProcessingInstruction-class.html#__init__,Method xml.dom.minidom.ReadOnlySequentialNamedNodeMap.__init__()=xml.dom.minidom.ReadOnlySequentialNamedNodeMap-class.html#__init__,Method xml.dom.minidom.TypeInfo.__init__()=xml.dom.minidom.TypeInfo-class.html#__init__,Method xml.dom.pulldom.DOMEventStream.__init__()=xml.dom.pulldom.DOMEventStream-class.html#__init__,Method xml.dom.pulldom.PullDOM.__init__()=xml.dom.pulldom.PullDOM-class.html#__init__,Method xml.dom.xmlbuilder.DOMBuilder.__init__()=xml.dom.xmlbuilder.DOMBuilder-class.html#__init__,Method xml.dom.xmlbuilder.DOMInputSource.__init__()=xml.dom.xmlbuilder.DOMInputSource-class.html#__init__,Method xml.etree.ElementPath._SelectorContext.__init__()=xml.etree.ElementPath._SelectorContext-class.html#__init__,Method xml.etree.ElementTree.Element.__init__()=xml.etree.ElementTree.Element-class.html#__init__,Method xml.etree.ElementTree.ElementTree.__init__()=xml.etree.ElementTree.ElementTree-class.html#__init__,Method xml.etree.ElementTree.QName.__init__()=xml.etree.ElementTree.QName-class.html#__init__,Method xml.etree.ElementTree.TreeBuilder.__init__()=xml.etree.ElementTree.TreeBuilder-class.html#__init__,Method xml.etree.ElementTree.XMLParser.__init__()=xml.etree.ElementTree.XMLParser-class.html#__init__,Method xml.etree.ElementTree._IterParseIterator.__init__()=xml.etree.ElementTree._IterParseIterator-class.html#__init__,Method xml.sax._exceptions.SAXException.__init__()=xml.sax._exceptions.SAXException-class.html#__init__,Method xml.sax._exceptions.SAXParseException.__init__()=xml.sax._exceptions.SAXParseException-class.html#__init__,Method xml.sax.expatreader.ExpatLocator.__init__()=xml.sax.expatreader.ExpatLocator-class.html#__init__,Method xml.sax.expatreader.ExpatParser.__init__()=xml.sax.expatreader.ExpatParser-class.html#__init__,Method xml.sax.handler.ContentHandler.__init__()=xml.sax.handler.ContentHandler-class.html#__init__,Method xml.sax.saxutils.XMLFilterBase.__init__()=xml.sax.saxutils.XMLFilterBase-class.html#__init__,Method xml.sax.saxutils.XMLGenerator.__init__()=xml.sax.saxutils.XMLGenerator-class.html#__init__,Method xml.sax.xmlreader.AttributesImpl.__init__()=xml.sax.xmlreader.AttributesImpl-class.html#__init__,Method xml.sax.xmlreader.AttributesNSImpl.__init__()=xml.sax.xmlreader.AttributesNSImpl-class.html#__init__,Method xml.sax.xmlreader.IncrementalParser.__init__()=xml.sax.xmlreader.IncrementalParser-class.html#__init__,Method xml.sax.xmlreader.InputSource.__init__()=xml.sax.xmlreader.InputSource-class.html#__init__,Method xml.sax.xmlreader.XMLReader.__init__()=xml.sax.xmlreader.XMLReader-class.html#__init__"><a title="gn.draft.libblocks.blocks.Block.__init__
+gn.draft.libblocks.blocks1.Block.__init__
+gn.draft.libblocks.blocks2.Block.__init__
+gn.draft.libblocks.blocks2.InPort.__init__
+gn.draft.libblocks.blocks2.InPortConf.__init__
+gn.draft.libblocks.blocks2.InPortReceive.__init__
+gn.draft.libblocks.blocks2.InPortSend.__init__
+gn.draft.libblocks.blocks3.Block.__init__
+gn.draft.libblocks.blocks3.InPort.__init__
+gn.draft.libblocks.blocks3.ReceiveBlock.__init__
+gn.draft.libblocks.blocks3.TransmitBlock.__init__
+gn.draft.libblocks.blocks4.AListConnector.__init__
+gn.draft.libblocks.blocks4.Block.__init__
+gn.draft.libblocks.blocks4.InPort.__init__
+gn.draft.libblocks.blocks5.AListConnector.__init__
+gn.draft.libblocks.blocks5.AQueueConnector.__init__
+gn.draft.libblocks.blocks5.Block.__init__
+gn.draft.libblocks.blocks5.InPort.__init__
+gn.draft.libblocks.gwnBlock.gwnBlock.__init__
+gn.draft.libblocks.gwnTopBlock.gwnTopBlock.__init__
+gn.draft.libblocks.gwnTopBlock.top_block_test.__init__
+gn.draft.libblocks.pointex.myThread.__init__
+gn.grc.base.Block.Block.__init__
+gn.grc.base.Block.TemplateArg.__init__
+gn.grc.base.Connection.Connection.__init__
+gn.grc.base.Element.Element.__init__
+gn.grc.base.FlowGraph.FlowGraph.__init__
+gn.grc.base.Param.Option.__init__
+gn.grc.base.Param.Param.__init__
+gn.grc.base.ParseXML.XMLSyntaxError.__init__
+gn.grc.base.Platform.Platform.__init__
+gn.grc.base.Port.Port.__init__
+gn.grc.base.odict'.odict.__init__
+gn.grc.gui.ActionHandler.ActionHandler.__init__
+gn.grc.gui.ActionHandler.ExecFlowGraphThread.__init__
+gn.grc.gui.Actions.Action.__init__
+gn.grc.gui.Bars.MenuBar.__init__
+gn.grc.gui.Bars.Toolbar.__init__
+gn.grc.gui.Block.Block.__init__
+gn.grc.gui.BlockTreeWindow.BlockTreeWindow.__init__
+gn.grc.gui.Connection.Connection.__init__
+gn.grc.gui.Dialogs.AboutDialog.__init__
+gn.grc.gui.Dialogs.TextDisplay.__init__
+gn.grc.gui.DrawingArea.DrawingArea.__init__
+gn.grc.gui.Element.Element.__init__
+gn.grc.gui.FileDialogs.FileDialog.__init__
+gn.grc.gui.FileDialogs.FileDialogHelper.__init__
+gn.grc.gui.FlowGraph.FlowGraph.__init__
+gn.grc.gui.MainWindow.MainWindow.__init__
+gn.grc.gui.NotebookPage.NotebookPage.__init__
+gn.grc.gui.Param.EntryParam.__init__
+gn.grc.gui.Param.EnumEntryParam.__init__
+gn.grc.gui.Param.EnumParam.__init__
+gn.grc.gui.Param.InputParam.__init__
+gn.grc.gui.Param.Param.__init__
+gn.grc.gui.Platform.Platform.__init__
+gn.grc.gui.Port.Port.__init__
+gn.grc.gui.PropsDialog.PropsDialog.__init__
+gn.grc.gui.StateCache.StateCache.__init__
+gn.grc.python.Block.Block.__init__
+gn.grc.python.Connection.Connection.__init__
+gn.grc.python.FlowGraph.FlowGraph.__init__
+gn.grc.python.Generator.Generator.__init__
+gn.grc.python.Param.FileParam.__init__
+gn.grc.python.Param.Param.__init__
+gn.grc.python.Platform.Platform.__init__
+gn.grc.python.Port.Port.__init__
+gn.grc.python.expr_utils.graph.__init__
+gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.__init__
+gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.__init__
+gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2.__init__
+gn.libadaptationlayer.TunTapInterface.TunTapInterface.__init__
+gn.libadaptationlayer.schedLayer3.Layer3.__init__
+gn.libadaptationlayer.schedLayer3.ReadLayer2.__init__
+gn.libadaptationlayer.schedLayer3.ReadLayer3.__init__
+gn.libadaptationlayer.scheduler.Scheduler.__init__
+gn.libadaptationlayer.transmitFrame.TransmitFrame.__init__
+gn.libadaptlay80211.gwnDeframer.gwnDeframer.__init__
+gn.libadaptlay80211.gwnFramer.gwnFramer.__init__
+gn.libadaptlay80211.schedLayer3.Layer3.__init__
+gn.libadaptlay80211.schedLayer3.ReadLayer2.__init__
+gn.libadaptlay80211.schedLayer3.ReadLayer3.__init__
+gn.libadaptlay80211.scheduler.Scheduler.__init__
+gn.libadaptlay80211.transmitFrame.TransmitFrame.__init__
+gn.libevents.events.Event.__init__
+gn.libevents.evframes80211.EventFrame.__init__
+gn.libevents.evframes80211.EventFrameMgmt.__init__
+gn.libevents.evrequest.EventRequest.__init__
+gn.libevents.evtimer.EventTimer.__init__
+gn.libframes.frames.Frame.__init__
+gn.libframes.frames.FrameException.__init__
+gn.libframes.mac_frmbld.AFrame.__init__
+gn.libframes.mac_frmbld.AFrameBody.__init__
+gn.libframes.mac_frmbld.AFrameControl.__init__
+gn.libframes.mac_frmbld.MacFrameException.__init__
+gn.libframes.mac_frmspecs.FrameSpecsException.__init__
+gn.libfsm.fsm.ExceptionFSM.__init__
+gn.libfsm.fsm.FSM.__init__
+gn.libgnuradio.TxRxLayer1.TxL1.__init__
+gn.libgnuradio.TxRxLayer1.my_top_block_rx.__init__
+gn.libgnuradio.TxRxLayer1.my_top_block_tx.__init__
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.__init__
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.__init__
+gn.libgnuradio.receive_path.receive_path.__init__
+gn.libgnuradio.receive_path3_7.receive_path.__init__
+gn.libgnuradio.run_TDMA_L3.StartL1.__init__
+gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.__init__
+gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.__init__
+gn.libgnuradio.run_node.StartL1.__init__
+gn.libgnuradio.run_node.StartL2.__init__
+gn.libgnuradio.run_node.TestLayer1Rx.__init__
+gn.libgnuradio.run_node.TestLayer1Tx.__init__
+gn.libgnuradio.run_node.TestLayer2Rx.__init__
+gn.libgnuradio.run_node.TestLayer2Tx.__init__
+gn.libgnuradio.run_nodeL3.StartL1.__init__
+gn.libgnuradio.run_nodeL3.StartL2Mgmt.__init__
+gn.libgnuradio.run_nodeL3.StartSchedL1_L2.__init__
+gn.libgnuradio.run_nodeL3_80211.StartL1.__init__
+gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.__init__
+gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.__init__
+gn.libgnuradio.transmit_path.transmit_path.__init__
+gn.libgnuradio.transmit_path3_7.transmit_path.__init__
+gn.libgnuradio.uhd_interface.uhd_interface.__init__
+gn.libgnuradio.uhd_interface.uhd_receiver.__init__
+gn.libgnuradio.uhd_interface.uhd_transmitter.__init__
+gn.libgwnBlocks.gwnBlock.AListConnector.__init__
+gn.libgwnBlocks.gwnBlock.AQueueConnector.__init__
+gn.libgwnBlocks.gwnBlock.InPort.__init__
+gn.libgwnBlocks.gwnBlock.gwnBlock.__init__
+gn.libgwnBlocks.gwnBlockOld.gwnBlock.__init__
+gn.libgwnBlocks.gwnTopBlock.gwnTopBlock.__init__
+gn.libgwnBlocks.gwnTopBlock.top_block_test.__init__
+gn.libgwnBlocks.gwntimerblock.InPortTimer.__init__
+gn.libgwnblocks.gwnblock.GWNBlock.__init__
+gn.libgwnblocks.gwninport.AListConnector.__init__
+gn.libgwnblocks.gwninport.AQueueConnector.__init__
+gn.libgwnblocks.gwninport.InPort.__init__
+gn.libgwnblocks.gwntimer.InTimer.__init__
+gn.libgwnblocks.gwntopblock.gwnTopBlock.__init__
+gn.libgwnblocks.gwntopblock.top_block_test.__init__
+gn.libmacTDMA.ControlChannel.ControlChannel.__init__
+gn.libmacTDMA.MacTdma.MacTdma.__init__
+gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.__init__
+gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.__init__
+gn.libmacTDMA.MacTdma.ProcessingL2Events.__init__
+gn.libmanagement.Beacon.Beacon.__init__
+gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.__init__
+gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.__init__
+gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM.__init__
+gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.__init__
+gn.libmanagement.NetworkConfiguration.NetworkConfiguration.__init__
+gn.libmanagement.PeersTable.PeersTable.__init__
+gn.libmanagement.Profile.Profile.__init__
+gn.libtimer.timer.Timer.__init__
+gn.libtimer.timer2.Timer.__init__
+gn.libutils.exampletest.AClass.__init__
+gn.libutils.gnlogger_test.Auxiliary.__init__
+gn.libutils.gnscheduler.Scheduler.__init__
+gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier.__init__
+gn.libutils.gwnscheduler2.Scheduler.__init__
+gn.libutils.sched_bytype.Item.__init__
+gn.libvirtualchannel.EventConsumer.EventConsumer.__init__
+gn.libvirtualchannel.EventConsumer2.EventConsumer.__init__
+gn.libvirtualchannel.EventSimulator.EventSimulator.__init__
+gn.libvirtualchannel.EventSimulator2.EventSimulator.__init__
+gn.libvirtualchannel.EventSimulator3.EventSimulator.__init__
+gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel.__init__
+gn.libvirtualchannel.virtualchannel.VirtualChannel.__init__
+xml.dom.DOMException.__init__
+xml.dom.expatbuilder.ElementInfo.__init__
+xml.dom.expatbuilder.ExpatBuilder.__init__
+xml.dom.expatbuilder.FilterCrutch.__init__
+xml.dom.expatbuilder.FilterVisibilityController.__init__
+xml.dom.expatbuilder.FragmentBuilder.__init__
+xml.dom.expatbuilder.Rejecter.__init__
+xml.dom.minidom.Attr.__init__
+xml.dom.minidom.Comment.__init__
+xml.dom.minidom.Document.__init__
+xml.dom.minidom.DocumentFragment.__init__
+xml.dom.minidom.DocumentType.__init__
+xml.dom.minidom.Element.__init__
+xml.dom.minidom.ElementInfo.__init__
+xml.dom.minidom.Entity.__init__
+xml.dom.minidom.NamedNodeMap.__init__
+xml.dom.minidom.Notation.__init__
+xml.dom.minidom.ProcessingInstruction.__init__
+xml.dom.minidom.ReadOnlySequentialNamedNodeMap.__init__
+xml.dom.minidom.TypeInfo.__init__
+xml.dom.pulldom.DOMEventStream.__init__
+xml.dom.pulldom.PullDOM.__init__
+xml.dom.xmlbuilder.DOMBuilder.__init__
+xml.dom.xmlbuilder.DOMInputSource.__init__
+xml.etree.ElementPath._SelectorContext.__init__
+xml.etree.ElementTree.Element.__init__
+xml.etree.ElementTree.ElementTree.__init__
+xml.etree.ElementTree.QName.__init__
+xml.etree.ElementTree.TreeBuilder.__init__
+xml.etree.ElementTree.XMLParser.__init__
+xml.etree.ElementTree._IterParseIterator.__init__
+xml.sax._exceptions.SAXException.__init__
+xml.sax._exceptions.SAXParseException.__init__
+xml.sax.expatreader.ExpatLocator.__init__
+xml.sax.expatreader.ExpatParser.__init__
+xml.sax.handler.ContentHandler.__init__
+xml.sax.saxutils.XMLFilterBase.__init__
+xml.sax.saxutils.XMLGenerator.__init__
+xml.sax.xmlreader.AttributesImpl.__init__
+xml.sax.xmlreader.AttributesNSImpl.__init__
+xml.sax.xmlreader.IncrementalParser.__init__
+xml.sax.xmlreader.InputSource.__init__
+xml.sax.xmlreader.XMLReader.__init__" class="py-name" href="#" onclick="return doclink('link-29', '__init__', 'link-29');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kw</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="DOMException._get_code"></a><div id="DOMException._get_code-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="DOMException._get_code-toggle" onclick="return toggle('DOMException._get_code');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="xml.dom.DOMException-class.html#_get_code">_get_code</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DOMException._get_code-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="DOMException._get_code-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Variable xml.dom.DomstringSizeErr.code=xml.dom.DomstringSizeErr-class.html#code,Variable xml.dom.HierarchyRequestErr.code=xml.dom.HierarchyRequestErr-class.html#code,Variable xml.dom.IndexSizeErr.code=xml.dom.IndexSizeErr-class.html#code,Variable xml.dom.InuseAttributeErr.code=xml.dom.InuseAttributeErr-class.html#code,Variable xml.dom.InvalidAccessErr.code=xml.dom.InvalidAccessErr-class.html#code,Variable xml.dom.InvalidCharacterErr.code=xml.dom.InvalidCharacterErr-class.html#code,Variable xml.dom.InvalidModificationErr.code=xml.dom.InvalidModificationErr-class.html#code,Variable xml.dom.InvalidStateErr.code=xml.dom.InvalidStateErr-class.html#code,Variable xml.dom.NamespaceErr.code=xml.dom.NamespaceErr-class.html#code,Variable xml.dom.NoDataAllowedErr.code=xml.dom.NoDataAllowedErr-class.html#code,Variable xml.dom.NoModificationAllowedErr.code=xml.dom.NoModificationAllowedErr-class.html#code,Variable xml.dom.NotFoundErr.code=xml.dom.NotFoundErr-class.html#code,Variable xml.dom.NotSupportedErr.code=xml.dom.NotSupportedErr-class.html#code,Variable xml.dom.SyntaxErr.code=xml.dom.SyntaxErr-class.html#code,Variable xml.dom.ValidationErr.code=xml.dom.ValidationErr-class.html#code,Variable xml.dom.WrongDocumentErr.code=xml.dom.WrongDocumentErr-class.html#code"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-30', 'code', 'link-30');">code</a></tt> </tt>
+</div></div><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="IndexSizeErr"></a><div id="IndexSizeErr-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="IndexSizeErr-toggle" onclick="return toggle('IndexSizeErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.IndexSizeErr-class.html">IndexSizeErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="IndexSizeErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="IndexSizeErr-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt id="link-31" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-31', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name"><a title="xml.dom.INDEX_SIZE_ERR" class="py-name" href="#" onclick="return doclink('link-32', 'INDEX_SIZE_ERR', 'link-12');">INDEX_SIZE_ERR</a></tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="DomstringSizeErr"></a><div id="DomstringSizeErr-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="DomstringSizeErr-toggle" onclick="return toggle('DomstringSizeErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.DomstringSizeErr-class.html">DomstringSizeErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DomstringSizeErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DomstringSizeErr-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt id="link-33" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-33', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="xml.dom.DOMSTRING_SIZE_ERR" class="py-name" href="#" onclick="return doclink('link-34', 'DOMSTRING_SIZE_ERR', 'link-13');">DOMSTRING_SIZE_ERR</a></tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="HierarchyRequestErr"></a><div id="HierarchyRequestErr-def"><a name="L81"></a><tt class="py-lineno"> 81</tt> <a class="py-toggle" href="#" id="HierarchyRequestErr-toggle" onclick="return toggle('HierarchyRequestErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.HierarchyRequestErr-class.html">HierarchyRequestErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="HierarchyRequestErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="HierarchyRequestErr-expanded"><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-35', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="xml.dom.HIERARCHY_REQUEST_ERR" class="py-name" href="#" onclick="return doclink('link-36', 'HIERARCHY_REQUEST_ERR', 'link-14');">HIERARCHY_REQUEST_ERR</a></tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="WrongDocumentErr"></a><div id="WrongDocumentErr-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="WrongDocumentErr-toggle" onclick="return toggle('WrongDocumentErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.WrongDocumentErr-class.html">WrongDocumentErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="WrongDocumentErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="WrongDocumentErr-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-37', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name"><a title="xml.dom.WRONG_DOCUMENT_ERR" class="py-name" href="#" onclick="return doclink('link-38', 'WRONG_DOCUMENT_ERR', 'link-15');">WRONG_DOCUMENT_ERR</a></tt> </tt>
+</div><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="InvalidCharacterErr"></a><div id="InvalidCharacterErr-def"><a name="L87"></a><tt class="py-lineno"> 87</tt> <a class="py-toggle" href="#" id="InvalidCharacterErr-toggle" onclick="return toggle('InvalidCharacterErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.InvalidCharacterErr-class.html">InvalidCharacterErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InvalidCharacterErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="InvalidCharacterErr-expanded"><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-39', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-40" class="py-name"><a title="xml.dom.INVALID_CHARACTER_ERR" class="py-name" href="#" onclick="return doclink('link-40', 'INVALID_CHARACTER_ERR', 'link-16');">INVALID_CHARACTER_ERR</a></tt> </tt>
+</div><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="NoDataAllowedErr"></a><div id="NoDataAllowedErr-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="NoDataAllowedErr-toggle" onclick="return toggle('NoDataAllowedErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.NoDataAllowedErr-class.html">NoDataAllowedErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoDataAllowedErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoDataAllowedErr-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-41', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name"><a title="xml.dom.NO_DATA_ALLOWED_ERR" class="py-name" href="#" onclick="return doclink('link-42', 'NO_DATA_ALLOWED_ERR', 'link-17');">NO_DATA_ALLOWED_ERR</a></tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="NoModificationAllowedErr"></a><div id="NoModificationAllowedErr-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="NoModificationAllowedErr-toggle" onclick="return toggle('NoModificationAllowedErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.NoModificationAllowedErr-class.html">NoModificationAllowedErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoModificationAllowedErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoModificationAllowedErr-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-43', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name"><a title="xml.dom.NO_MODIFICATION_ALLOWED_ERR" class="py-name" href="#" onclick="return doclink('link-44', 'NO_MODIFICATION_ALLOWED_ERR', 'link-18');">NO_MODIFICATION_ALLOWED_ERR</a></tt> </tt>
+</div><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="NotFoundErr"></a><div id="NotFoundErr-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="NotFoundErr-toggle" onclick="return toggle('NotFoundErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.NotFoundErr-class.html">NotFoundErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NotFoundErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NotFoundErr-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt id="link-45" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-45', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-46" class="py-name"><a title="xml.dom.NOT_FOUND_ERR" class="py-name" href="#" onclick="return doclink('link-46', 'NOT_FOUND_ERR', 'link-19');">NOT_FOUND_ERR</a></tt> </tt>
+</div><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="NotSupportedErr"></a><div id="NotSupportedErr-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="NotSupportedErr-toggle" onclick="return toggle('NotSupportedErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.NotSupportedErr-class.html">NotSupportedErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NotSupportedErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NotSupportedErr-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt id="link-47" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-47', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-48" class="py-name"><a title="xml.dom.NOT_SUPPORTED_ERR" class="py-name" href="#" onclick="return doclink('link-48', 'NOT_SUPPORTED_ERR', 'link-20');">NOT_SUPPORTED_ERR</a></tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="InuseAttributeErr"></a><div id="InuseAttributeErr-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="InuseAttributeErr-toggle" onclick="return toggle('InuseAttributeErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.InuseAttributeErr-class.html">InuseAttributeErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InuseAttributeErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="InuseAttributeErr-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-49', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-50" class="py-name"><a title="xml.dom.INUSE_ATTRIBUTE_ERR" class="py-name" href="#" onclick="return doclink('link-50', 'INUSE_ATTRIBUTE_ERR', 'link-21');">INUSE_ATTRIBUTE_ERR</a></tt> </tt>
+</div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="InvalidStateErr"></a><div id="InvalidStateErr-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="InvalidStateErr-toggle" onclick="return toggle('InvalidStateErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.InvalidStateErr-class.html">InvalidStateErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InvalidStateErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="InvalidStateErr-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt id="link-51" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-51', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-52" class="py-name"><a title="xml.dom.INVALID_STATE_ERR" class="py-name" href="#" onclick="return doclink('link-52', 'INVALID_STATE_ERR', 'link-22');">INVALID_STATE_ERR</a></tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="SyntaxErr"></a><div id="SyntaxErr-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="SyntaxErr-toggle" onclick="return toggle('SyntaxErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.SyntaxErr-class.html">SyntaxErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SyntaxErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SyntaxErr-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt id="link-53" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-53', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-54" class="py-name"><a title="xml.dom.SYNTAX_ERR" class="py-name" href="#" onclick="return doclink('link-54', 'SYNTAX_ERR', 'link-23');">SYNTAX_ERR</a></tt> </tt>
+</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="InvalidModificationErr"></a><div id="InvalidModificationErr-def"><a name="L111"></a><tt class="py-lineno">111</tt> <a class="py-toggle" href="#" id="InvalidModificationErr-toggle" onclick="return toggle('InvalidModificationErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.InvalidModificationErr-class.html">InvalidModificationErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InvalidModificationErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="InvalidModificationErr-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt id="link-55" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-55', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name"><a title="xml.dom.INVALID_MODIFICATION_ERR" class="py-name" href="#" onclick="return doclink('link-56', 'INVALID_MODIFICATION_ERR', 'link-24');">INVALID_MODIFICATION_ERR</a></tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="NamespaceErr"></a><div id="NamespaceErr-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="NamespaceErr-toggle" onclick="return toggle('NamespaceErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.NamespaceErr-class.html">NamespaceErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NamespaceErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NamespaceErr-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt id="link-57" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-57', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-58" class="py-name"><a title="xml.dom.NAMESPACE_ERR" class="py-name" href="#" onclick="return doclink('link-58', 'NAMESPACE_ERR', 'link-25');">NAMESPACE_ERR</a></tt> </tt>
+</div><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="InvalidAccessErr"></a><div id="InvalidAccessErr-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="InvalidAccessErr-toggle" onclick="return toggle('InvalidAccessErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.InvalidAccessErr-class.html">InvalidAccessErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="InvalidAccessErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="InvalidAccessErr-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt id="link-59" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-59', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-60" class="py-name"><a title="xml.dom.INVALID_ACCESS_ERR" class="py-name" href="#" onclick="return doclink('link-60', 'INVALID_ACCESS_ERR', 'link-26');">INVALID_ACCESS_ERR</a></tt> </tt>
+</div><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="ValidationErr"></a><div id="ValidationErr-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="ValidationErr-toggle" onclick="return toggle('ValidationErr');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.ValidationErr-class.html">ValidationErr</a><tt class="py-op">(</tt><tt class="py-base-class">DOMException</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ValidationErr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ValidationErr-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt id="link-61" class="py-name"><a title="xml.dom.DomstringSizeErr.code
+xml.dom.HierarchyRequestErr.code
+xml.dom.IndexSizeErr.code
+xml.dom.InuseAttributeErr.code
+xml.dom.InvalidAccessErr.code
+xml.dom.InvalidCharacterErr.code
+xml.dom.InvalidModificationErr.code
+xml.dom.InvalidStateErr.code
+xml.dom.NamespaceErr.code
+xml.dom.NoDataAllowedErr.code
+xml.dom.NoModificationAllowedErr.code
+xml.dom.NotFoundErr.code
+xml.dom.NotSupportedErr.code
+xml.dom.SyntaxErr.code
+xml.dom.ValidationErr.code
+xml.dom.WrongDocumentErr.code" class="py-name" href="#" onclick="return doclink('link-61', 'code', 'link-30');">code</a></tt> <tt class="py-op">=</tt> <tt id="link-62" class="py-name"><a title="xml.dom.VALIDATION_ERR" class="py-name" href="#" onclick="return doclink('link-62', 'VALIDATION_ERR', 'link-27');">VALIDATION_ERR</a></tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="UserDataHandler"></a><div id="UserDataHandler-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="UserDataHandler-toggle" onclick="return toggle('UserDataHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="xml.dom.UserDataHandler-class.html">UserDataHandler</a><tt class="py-op">:</tt> </tt>
+</div><div id="UserDataHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="UserDataHandler-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-docstring">"""Class giving the operation constants for UserDataHandler.handle()."""</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-comment"># Based on DOM Level 3 (WD 9 April 2002)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt id="link-63" class="py-name" targets="Variable xml.dom.UserDataHandler.NODE_CLONED=xml.dom.UserDataHandler-class.html#NODE_CLONED"><a title="xml.dom.UserDataHandler.NODE_CLONED" class="py-name" href="#" onclick="return doclink('link-63', 'NODE_CLONED', 'link-63');">NODE_CLONED</a></tt>   <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt id="link-64" class="py-name" targets="Variable xml.dom.UserDataHandler.NODE_IMPORTED=xml.dom.UserDataHandler-class.html#NODE_IMPORTED"><a title="xml.dom.UserDataHandler.NODE_IMPORTED" class="py-name" href="#" onclick="return doclink('link-64', 'NODE_IMPORTED', 'link-64');">NODE_IMPORTED</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt id="link-65" class="py-name" targets="Variable xml.dom.UserDataHandler.NODE_DELETED=xml.dom.UserDataHandler-class.html#NODE_DELETED"><a title="xml.dom.UserDataHandler.NODE_DELETED" class="py-name" href="#" onclick="return doclink('link-65', 'NODE_DELETED', 'link-65');">NODE_DELETED</a></tt>  <tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt id="link-66" class="py-name" targets="Variable xml.dom.UserDataHandler.NODE_RENAMED=xml.dom.UserDataHandler-class.html#NODE_RENAMED"><a title="xml.dom.UserDataHandler.NODE_RENAMED" class="py-name" href="#" onclick="return doclink('link-66', 'NODE_RENAMED', 'link-66');">NODE_RENAMED</a></tt>  <tt class="py-op">=</tt> <tt class="py-number">4</tt> </tt>
+</div><a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt id="link-67" class="py-name" targets="Variable xml.dom.XML_NAMESPACE=xml.dom-module.html#XML_NAMESPACE"><a title="xml.dom.XML_NAMESPACE" class="py-name" href="#" onclick="return doclink('link-67', 'XML_NAMESPACE', 'link-67');">XML_NAMESPACE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://www.w3.org/XML/1998/namespace"</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt id="link-68" class="py-name" targets="Variable xml.dom.XMLNS_NAMESPACE=xml.dom-module.html#XMLNS_NAMESPACE"><a title="xml.dom.XMLNS_NAMESPACE" class="py-name" href="#" onclick="return doclink('link-68', 'XMLNS_NAMESPACE', 'link-68');">XMLNS_NAMESPACE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://www.w3.org/2000/xmlns/"</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt id="link-69" class="py-name" targets="Variable xml.dom.XHTML_NAMESPACE=xml.dom-module.html#XHTML_NAMESPACE"><a title="xml.dom.XHTML_NAMESPACE" class="py-name" href="#" onclick="return doclink('link-69', 'XHTML_NAMESPACE', 'link-69');">XHTML_NAMESPACE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://www.w3.org/1999/xhtml"</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt id="link-70" class="py-name" targets="Variable xml.dom.EMPTY_NAMESPACE=xml.dom-module.html#EMPTY_NAMESPACE"><a title="xml.dom.EMPTY_NAMESPACE" class="py-name" href="#" onclick="return doclink('link-70', 'EMPTY_NAMESPACE', 'link-70');">EMPTY_NAMESPACE</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt id="link-71" class="py-name" targets="Variable xml.dom.EMPTY_PREFIX=xml.dom-module.html#EMPTY_PREFIX"><a title="xml.dom.EMPTY_PREFIX" class="py-name" href="#" onclick="return doclink('link-71', 'EMPTY_PREFIX', 'link-71');">EMPTY_PREFIX</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-72" class="py-name" targets="Module xml.dom.domreg=xml.dom.domreg-module.html"><a title="xml.dom.domreg" class="py-name" href="#" onclick="return doclink('link-72', 'domreg', 'link-72');">domreg</a></tt> <tt class="py-keyword">import</tt> <tt id="link-73" class="py-name" targets="Function xml.dom.domreg.getDOMImplementation()=xml.dom.domreg-module.html#getDOMImplementation,Function xml.dom.minidom.getDOMImplementation()=xml.dom.minidom-module.html#getDOMImplementation"><a title="xml.dom.domreg.getDOMImplementation
+xml.dom.minidom.getDOMImplementation" class="py-name" href="#" onclick="return doclink('link-73', 'getDOMImplementation', 'link-73');">getDOMImplementation</a></tt><tt class="py-op">,</tt><tt id="link-74" class="py-name" targets="Function xml.dom.domreg.registerDOMImplementation()=xml.dom.domreg-module.html#registerDOMImplementation"><a title="xml.dom.domreg.registerDOMImplementation" class="py-name" href="#" onclick="return doclink('link-74', 'registerDOMImplementation', 'link-74');">registerDOMImplementation</a></tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:06:46 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##First block
+###################################################
+ -->
+<block>
+	<name>Event Consumer</name>
+	<key>eventconsumer</key>
+        <category>sinks</category>
+	<import>import libvirtualchannel.EventConsumer2 as consumer</import>
+	<make>consumer.EventConsumer($nickname1) </make>
+        <callback>start()</callback>
+	<callback>stop()</callback>
+	<param>
+		<name>nickname1</name>
+		<key>nickname1</key>
+		<value>nickname1</value>
+		<type>string</type>
+	</param>
+      <param>
+		<name>Input Type</name>
+		<key>itype</key>
+		<type>enum</type>
+           <option>
+			<name>Event</name>
+			<key>Event</key>
+		</option>
+	</param>
+	<sink>
+		<name>in</name>
+		<type>$itype</type>
+	</sink>
+
+     <doc>
+        The Event Consumer, consumes events and shows the events in the terminal window.
+	   The parameter $nickname is the Consumer identifier.
+    </doc>
+</block>

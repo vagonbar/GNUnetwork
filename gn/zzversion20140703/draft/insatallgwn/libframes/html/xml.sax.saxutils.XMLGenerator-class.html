@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>xml.sax.saxutils.XMLGenerator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="xml-module.html">Package&nbsp;xml</a> ::
+        <a href="xml.sax-module.html">Package&nbsp;sax</a> ::
+        <a href="xml.sax.saxutils-module.html">Module&nbsp;saxutils</a> ::
+        Class&nbsp;XMLGenerator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="xml.sax.saxutils.XMLGenerator-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class XMLGenerator</h1><p class="nomargin-top"><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="xml.sax.handler.ContentHandler-class.html">handler.ContentHandler</a> --+
+                         |
+                        <strong class="uidshort">XMLGenerator</strong>
+</pre>
+
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">out</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">encoding</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">iso-8859-1</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_qname"></a><span class="summary-sig-name">_qname</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Builds a qualified name from a (ns_url, localname) pair</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator._qname">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#startDocument" class="summary-sig-name">startDocument</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Receive notification of the beginning of a document.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startDocument">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#endDocument" class="summary-sig-name">endDocument</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Receive notification of the end of a document.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endDocument">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#startPrefixMapping" class="summary-sig-name">startPrefixMapping</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">prefix</span>,
+        <span class="summary-sig-arg">uri</span>)</span><br />
+      Begin the scope of a prefix-URI Namespace mapping.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startPrefixMapping">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#endPrefixMapping" class="summary-sig-name">endPrefixMapping</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">prefix</span>)</span><br />
+      End the scope of a prefix-URI mapping.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endPrefixMapping">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#startElement" class="summary-sig-name">startElement</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">attrs</span>)</span><br />
+      Signals the start of an element in non-namespace mode.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#endElement" class="summary-sig-name">endElement</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Signals the end of an element in non-namespace mode.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#startElementNS" class="summary-sig-name">startElementNS</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">qname</span>,
+        <span class="summary-sig-arg">attrs</span>)</span><br />
+      Signals the start of an element in namespace mode.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startElementNS">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#endElementNS" class="summary-sig-name">endElementNS</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">qname</span>)</span><br />
+      Signals the end of an element in namespace mode.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endElementNS">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#characters" class="summary-sig-name">characters</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>)</span><br />
+      Receive notification of character data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.characters">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#ignorableWhitespace" class="summary-sig-name">ignorableWhitespace</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>)</span><br />
+      Receive notification of ignorable whitespace in element content.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.ignorableWhitespace">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="xml.sax.saxutils.XMLGenerator-class.html#processingInstruction" class="summary-sig-name">processingInstruction</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">target</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Receive notification of a processing instruction.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.processingInstruction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="xml.sax.handler.ContentHandler-class.html">handler.ContentHandler</a></code></b>:
+      <code><a href="xml.sax.handler.ContentHandler-class.html#setDocumentLocator">setDocumentLocator</a></code>,
+      <code><a href="xml.sax.handler.ContentHandler-class.html#skippedEntity">skippedEntity</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">out</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">encoding</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">iso-8859-1</code><code class="variable-quote">'</code></span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#__init__">handler.ContentHandler.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="startDocument"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">startDocument</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startDocument">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive notification of the beginning of a document.</p>
+  <p>The SAX parser will invoke this method only once, before any other 
+  methods in this interface or in DTDHandler (except for 
+  setDocumentLocator).</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#startDocument">handler.ContentHandler.startDocument</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="endDocument"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">endDocument</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endDocument">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive notification of the end of a document.</p>
+  <p>The SAX parser will invoke this method only once, and it will be the 
+  last method invoked during the parse. The parser shall not invoke this 
+  method until it has either abandoned parsing (because of an unrecoverable
+  error) or reached the end of input.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#endDocument">handler.ContentHandler.endDocument</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="startPrefixMapping"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">startPrefixMapping</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">prefix</span>,
+        <span class="sig-arg">uri</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startPrefixMapping">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Begin the scope of a prefix-URI Namespace mapping.</p>
+  <p>The information from this event is not necessary for normal Namespace 
+  processing: the SAX XML reader will automatically replace prefixes for 
+  element and attribute names when the 
+  http://xml.org/sax/features/namespaces feature is true (the default).</p>
+  <p>There are cases, however, when applications need to use prefixes in 
+  character data or in attribute values, where they cannot safely be 
+  expanded automatically; the start/endPrefixMapping event supplies the 
+  information to the application to expand prefixes in those contexts 
+  itself, if necessary.</p>
+  <p>Note that start/endPrefixMapping events are not guaranteed to be 
+  properly nested relative to each-other: all startPrefixMapping events 
+  will occur before the corresponding startElement event, and all 
+  endPrefixMapping events will occur after the corresponding endElement 
+  event, but their order is not guaranteed.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#startPrefixMapping">handler.ContentHandler.startPrefixMapping</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="endPrefixMapping"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">endPrefixMapping</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">prefix</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endPrefixMapping">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>End the scope of a prefix-URI mapping.</p>
+  <p>See startPrefixMapping for details. This event will always occur after
+  the corresponding endElement event, but the order of endPrefixMapping 
+  events is not otherwise guaranteed.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#endPrefixMapping">handler.ContentHandler.endPrefixMapping</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="startElement"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">startElement</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">attrs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startElement">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Signals the start of an element in non-namespace mode.</p>
+  <p>The name parameter contains the raw XML 1.0 name of the element type 
+  as a string and the attrs parameter holds an instance of the Attributes 
+  class containing the attributes of the element.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#startElement">handler.ContentHandler.startElement</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="endElement"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">endElement</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endElement">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Signals the end of an element in non-namespace mode.</p>
+  <p>The name parameter contains the name of the element type, just as with
+  the startElement event.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#endElement">handler.ContentHandler.endElement</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="startElementNS"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">startElementNS</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">qname</span>,
+        <span class="sig-arg">attrs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.startElementNS">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Signals the start of an element in namespace mode.</p>
+  <p>The name parameter contains the name of the element type as a (uri, 
+  localname) tuple, the qname parameter the raw XML 1.0 name used in the 
+  source document, and the attrs parameter holds an instance of the 
+  Attributes class containing the attributes of the element.</p>
+  <p>The uri part of the name tuple is None for elements which have no 
+  namespace.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#startElementNS">handler.ContentHandler.startElementNS</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="endElementNS"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">endElementNS</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">qname</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.endElementNS">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Signals the end of an element in namespace mode.</p>
+  <p>The name parameter contains the name of the element type, just as with
+  the startElementNS event.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#endElementNS">handler.ContentHandler.endElementNS</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="characters"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">characters</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">content</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.characters">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive notification of character data.</p>
+  <p>The Parser will call this method to report each chunk of character 
+  data. SAX parsers may return all contiguous character data in a single 
+  chunk, or they may split it into several chunks; however, all of the 
+  characters in any single event must come from the same external entity so
+  that the Locator provides useful information.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#characters">handler.ContentHandler.characters</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="ignorableWhitespace"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">ignorableWhitespace</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">content</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.ignorableWhitespace">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive notification of ignorable whitespace in element content.</p>
+  <p>Validating Parsers must use this method to report each chunk of 
+  ignorable whitespace (see the W3C XML 1.0 recommendation, section 2.10): 
+  non-validating parsers may also use this method if they are capable of 
+  parsing and using content models.</p>
+  <p>SAX parsers may return all contiguous whitespace in a single chunk, or
+  they may split it into several chunks; however, all of the characters in 
+  any single event must come from the same external entity, so that the 
+  Locator provides useful information.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#ignorableWhitespace">handler.ContentHandler.ignorableWhitespace</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="processingInstruction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">processingInstruction</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">target</span>,
+        <span class="sig-arg">data</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="xml.sax.saxutils-pysrc.html#XMLGenerator.processingInstruction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Receive notification of a processing instruction.</p>
+  <p>The Parser will invoke this method once for each processing 
+  instruction found: note that processing instructions may occur before or 
+  after the main document element.</p>
+  <p>A SAX parser should never report an XML declaration (XML 1.0, section 
+  2.8) or a text declaration (XML 1.0, section 4.3.1) using this 
+  method.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="xml.sax.handler.ContentHandler-class.html#processingInstruction">handler.ContentHandler.processingInstruction</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:06:39 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>gn.libadaptlay80211.gwnDeframer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >GWN</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="gn-module.html">Package&nbsp;gn</a> ::
+        <a href="gn.libadaptlay80211-module.html">Package&nbsp;libadaptlay80211</a> ::
+        Module&nbsp;gwnDeframer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="gn.libadaptlay80211.gwnDeframer-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="gn.libadaptlay80211.gwnDeframer-module.html">Module gn.libadaptlay80211.gwnDeframer</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># sched-bytype.py</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">'''A frame to event scheduler, based on IEEE 802.11 frames.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">A scheduler that gets a frame from a Layer 1 input queue, generates the corresponding event, and puts it into Management, Control or Data queues based on the event type.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt> <tt class="py-op">+=</tt><tt class="py-op">[</tt><tt class="py-string">'..'</tt><tt class="py-op">]</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package gn.libevents=gn.libevents-module.html"><a title="gn.libevents" class="py-name" href="#" onclick="return doclink('link-0', 'libevents', 'link-0');">libevents</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module gn.libevents.if_events=gn.libevents.if_events-module.html"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-1', 'if_events', 'link-1');">if_events</a></tt> <tt class="py-keyword">as</tt> <tt id="link-2" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-2', 'if_events', 'link-1');">if_events</a></tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Package gn.libframes=gn.libframes-module.html"><a title="gn.libframes" class="py-name" href="#" onclick="return doclink('link-3', 'libframes', 'link-3');">libframes</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module gn.libframes.if_frames=gn.libframes.if_frames-module.html"><a title="gn.libframes.if_frames" class="py-name" href="#" onclick="return doclink('link-4', 'if_frames', 'link-4');">if_frames</a></tt> <tt class="py-keyword">as</tt> <tt id="link-5" class="py-name"><a title="gn.libframes.if_frames" class="py-name" href="#" onclick="return doclink('link-5', 'if_frames', 'link-4');">if_frames</a></tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Package gn.libgwnBlocks=gn.libgwnBlocks-module.html"><a title="gn.libgwnBlocks" class="py-name" href="#" onclick="return doclink('link-6', 'libgwnBlocks', 'link-6');">libgwnBlocks</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module gn.libgwnBlocks.gwnBlock=gn.libgwnBlocks.gwnBlock-module.html,Class gn.libgwnBlocks.gwnBlock.gwnBlock=gn.libgwnBlocks.gwnBlock.gwnBlock-class.html,Class gn.libgwnBlocks.gwnBlockOld.gwnBlock=gn.libgwnBlocks.gwnBlockOld.gwnBlock-class.html"><a title="gn.libgwnBlocks.gwnBlock
+gn.libgwnBlocks.gwnBlock.gwnBlock
+gn.libgwnBlocks.gwnBlockOld.gwnBlock" class="py-name" href="#" onclick="return doclink('link-7', 'gwnBlock', 'link-7');">gwnBlock</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">gwn</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="gwnDeframer"></a><div id="gwnDeframer-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="gwnDeframer-toggle" onclick="return toggle('gwnDeframer');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html">gwnDeframer</a><tt class="py-op">(</tt><tt class="py-base-class">gwn</tt><tt class="py-op">.</tt><tt class="py-base-class">gwnBlock</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gwnDeframer-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="gwnDeframer-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-docstring">'''</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">    '''</tt> </tt>
+<a name="gwnDeframer.__init__"></a><div id="gwnDeframer.__init__-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="gwnDeframer.__init__-toggle" onclick="return toggle('gwnDeframer.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gwnDeframer.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="gwnDeframer.__init__-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-docstring">'''  </tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">        Constructor</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Module gn.libadaptlay80211.gwnDeframer=gn.libadaptlay80211.gwnDeframer-module.html,Class gn.libadaptlay80211.gwnDeframer.gwnDeframer=gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html"><a title="gn.libadaptlay80211.gwnDeframer
+gn.libadaptlay80211.gwnDeframer.gwnDeframer" class="py-name" href="#" onclick="return doclink('link-8', 'gwnDeframer', 'link-8');">gwnDeframer</a></tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method gn.doc.epydoc_example.ClassA.__init__()=gn.doc.epydoc_example.ClassA-class.html#__init__,Method gn.grc.base.Block.Block.__init__()=gn.grc.base.Block.Block-class.html#__init__,Method gn.grc.base.Block.TemplateArg.__init__()=gn.grc.base.Block.TemplateArg-class.html#__init__,Method gn.grc.base.Connection.Connection.__init__()=gn.grc.base.Connection.Connection-class.html#__init__,Method gn.grc.base.Element.Element.__init__()=gn.grc.base.Element.Element-class.html#__init__,Method gn.grc.base.FlowGraph.FlowGraph.__init__()=gn.grc.base.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.base.Param.Option.__init__()=gn.grc.base.Param.Option-class.html#__init__,Method gn.grc.base.Param.Param.__init__()=gn.grc.base.Param.Param-class.html#__init__,Method gn.grc.base.ParseXML.XMLSyntaxError.__init__()=gn.grc.base.ParseXML.XMLSyntaxError-class.html#__init__,Method gn.grc.base.Platform.Platform.__init__()=gn.grc.base.Platform.Platform-class.html#__init__,Method gn.grc.base.Port.Port.__init__()=gn.grc.base.Port.Port-class.html#__init__,Method gn.grc.base.odict'.odict.__init__()=gn.grc.base.odict%27.odict-class.html#__init__,Method gn.grc.gui.ActionHandler.ActionHandler.__init__()=gn.grc.gui.ActionHandler.ActionHandler-class.html#__init__,Method gn.grc.gui.ActionHandler.ExecFlowGraphThread.__init__()=gn.grc.gui.ActionHandler.ExecFlowGraphThread-class.html#__init__,Method gn.grc.gui.Actions.Action.__init__()=gn.grc.gui.Actions.Action-class.html#__init__,Method gn.grc.gui.Bars.MenuBar.__init__()=gn.grc.gui.Bars.MenuBar-class.html#__init__,Method gn.grc.gui.Bars.Toolbar.__init__()=gn.grc.gui.Bars.Toolbar-class.html#__init__,Method gn.grc.gui.Block.Block.__init__()=gn.grc.gui.Block.Block-class.html#__init__,Method gn.grc.gui.BlockTreeWindow.BlockTreeWindow.__init__()=gn.grc.gui.BlockTreeWindow.BlockTreeWindow-class.html#__init__,Method gn.grc.gui.Connection.Connection.__init__()=gn.grc.gui.Connection.Connection-class.html#__init__,Method gn.grc.gui.DrawingArea.DrawingArea.__init__()=gn.grc.gui.DrawingArea.DrawingArea-class.html#__init__,Method gn.grc.gui.Element.Element.__init__()=gn.grc.gui.Element.Element-class.html#__init__,Method gn.grc.gui.FlowGraph.FlowGraph.__init__()=gn.grc.gui.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.gui.MainWindow.MainWindow.__init__()=gn.grc.gui.MainWindow.MainWindow-class.html#__init__,Method gn.grc.gui.NotebookPage.NotebookPage.__init__()=gn.grc.gui.NotebookPage.NotebookPage-class.html#__init__,Method gn.grc.gui.Param.EntryParam.__init__()=gn.grc.gui.Param.EntryParam-class.html#__init__,Method gn.grc.gui.Param.EnumEntryParam.__init__()=gn.grc.gui.Param.EnumEntryParam-class.html#__init__,Method gn.grc.gui.Param.EnumParam.__init__()=gn.grc.gui.Param.EnumParam-class.html#__init__,Method gn.grc.gui.Param.InputParam.__init__()=gn.grc.gui.Param.InputParam-class.html#__init__,Method gn.grc.gui.Param.Param.__init__()=gn.grc.gui.Param.Param-class.html#__init__,Method gn.grc.gui.Platform.Platform.__init__()=gn.grc.gui.Platform.Platform-class.html#__init__,Method gn.grc.gui.Port.Port.__init__()=gn.grc.gui.Port.Port-class.html#__init__,Method gn.grc.gui.PropsDialog.PropsDialog.__init__()=gn.grc.gui.PropsDialog.PropsDialog-class.html#__init__,Method gn.grc.gui.StateCache.StateCache.__init__()=gn.grc.gui.StateCache.StateCache-class.html#__init__,Method gn.grc.python.Block.Block.__init__()=gn.grc.python.Block.Block-class.html#__init__,Method gn.grc.python.Connection.Connection.__init__()=gn.grc.python.Connection.Connection-class.html#__init__,Method gn.grc.python.FlowGraph.FlowGraph.__init__()=gn.grc.python.FlowGraph.FlowGraph-class.html#__init__,Method gn.grc.python.Generator.Generator.__init__()=gn.grc.python.Generator.Generator-class.html#__init__,Method gn.grc.python.Param.FileParam.__init__()=gn.grc.python.Param.FileParam-class.html#__init__,Method gn.grc.python.Param.Param.__init__()=gn.grc.python.Param.Param-class.html#__init__,Method gn.grc.python.Platform.Platform.__init__()=gn.grc.python.Platform.Platform-class.html#__init__,Method gn.grc.python.Port.Port.__init__()=gn.grc.python.Port.Port-class.html#__init__,Method gn.grc.python.expr_utils.graph.__init__()=gn.grc.python.expr_utils.graph-class.html#__init__,Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.__init__()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL-class.html#__init__,Method gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.__init__()=gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA-class.html#__init__,Method gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2.__init__()=gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2-class.html#__init__,Method gn.libadaptationlayer.TunTapInterface.TunTapInterface.__init__()=gn.libadaptationlayer.TunTapInterface.TunTapInterface-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.Layer3.__init__()=gn.libadaptationlayer.schedLayer3.Layer3-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.ReadLayer2.__init__()=gn.libadaptationlayer.schedLayer3.ReadLayer2-class.html#__init__,Method gn.libadaptationlayer.schedLayer3.ReadLayer3.__init__()=gn.libadaptationlayer.schedLayer3.ReadLayer3-class.html#__init__,Method gn.libadaptationlayer.scheduler.Scheduler.__init__()=gn.libadaptationlayer.scheduler.Scheduler-class.html#__init__,Method gn.libadaptationlayer.transmitFrame.TransmitFrame.__init__()=gn.libadaptationlayer.transmitFrame.TransmitFrame-class.html#__init__,Method gn.libadaptlay80211.gwnDeframer.gwnDeframer.__init__()=gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#__init__,Method gn.libadaptlay80211.gwnFramer.gwnFramer.__init__()=gn.libadaptlay80211.gwnFramer.gwnFramer-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.Layer3.__init__()=gn.libadaptlay80211.schedLayer3.Layer3-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.ReadLayer2.__init__()=gn.libadaptlay80211.schedLayer3.ReadLayer2-class.html#__init__,Method gn.libadaptlay80211.schedLayer3.ReadLayer3.__init__()=gn.libadaptlay80211.schedLayer3.ReadLayer3-class.html#__init__,Method gn.libadaptlay80211.scheduler.Scheduler.__init__()=gn.libadaptlay80211.scheduler.Scheduler-class.html#__init__,Method gn.libadaptlay80211.transmitFrame.TransmitFrame.__init__()=gn.libadaptlay80211.transmitFrame.TransmitFrame-class.html#__init__,Method gn.libevents.events.Event.__init__()=gn.libevents.events.Event-class.html#__init__,Method gn.libevents.evframes80211.EventFrame.__init__()=gn.libevents.evframes80211.EventFrame-class.html#__init__,Method gn.libevents.evframes80211.EventFrameMgmt.__init__()=gn.libevents.evframes80211.EventFrameMgmt-class.html#__init__,Method gn.libevents.evrequest.EventRequest.__init__()=gn.libevents.evrequest.EventRequest-class.html#__init__,Method gn.libevents.evtimer.EventTimer.__init__()=gn.libevents.evtimer.EventTimer-class.html#__init__,Method gn.libframes.frames.Frame.__init__()=gn.libframes.frames.Frame-class.html#__init__,Method gn.libframes.frames.FrameException.__init__()=gn.libframes.frames.FrameException-class.html#__init__,Method gn.libframes.mac_frmbld.AFrame.__init__()=gn.libframes.mac_frmbld.AFrame-class.html#__init__,Method gn.libframes.mac_frmbld.AFrameBody.__init__()=gn.libframes.mac_frmbld.AFrameBody-class.html#__init__,Method gn.libframes.mac_frmbld.AFrameControl.__init__()=gn.libframes.mac_frmbld.AFrameControl-class.html#__init__,Method gn.libframes.mac_frmbld.MacFrameException.__init__()=gn.libframes.mac_frmbld.MacFrameException-class.html#__init__,Method gn.libframes.mac_frmspecs.FrameSpecsException.__init__()=gn.libframes.mac_frmspecs.FrameSpecsException-class.html#__init__,Method gn.libfsm.fsm.ExceptionFSM.__init__()=gn.libfsm.fsm.ExceptionFSM-class.html#__init__,Method gn.libfsm.fsm.FSM.__init__()=gn.libfsm.fsm.FSM-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.TxL1.__init__()=gn.libgnuradio.TxRxLayer1.TxL1-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.my_top_block_rx.__init__()=gn.libgnuradio.TxRxLayer1.my_top_block_rx-class.html#__init__,Method gn.libgnuradio.TxRxLayer1.my_top_block_tx.__init__()=gn.libgnuradio.TxRxLayer1.my_top_block_tx-class.html#__init__,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.__init__()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2-class.html#__init__,Method gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.__init__()=gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk-class.html#__init__,Method gn.libgnuradio.receive_path.receive_path.__init__()=gn.libgnuradio.receive_path.receive_path-class.html#__init__,Method gn.libgnuradio.receive_path3_7.receive_path.__init__()=gn.libgnuradio.receive_path3_7.receive_path-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartL1.__init__()=gn.libgnuradio.run_TDMA_L3.StartL1-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.__init__()=gn.libgnuradio.run_TDMA_L3.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.__init__()=gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.run_node.StartL1.__init__()=gn.libgnuradio.run_node.StartL1-class.html#__init__,Method gn.libgnuradio.run_node.StartL2.__init__()=gn.libgnuradio.run_node.StartL2-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer1Rx.__init__()=gn.libgnuradio.run_node.TestLayer1Rx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer1Tx.__init__()=gn.libgnuradio.run_node.TestLayer1Tx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer2Rx.__init__()=gn.libgnuradio.run_node.TestLayer2Rx-class.html#__init__,Method gn.libgnuradio.run_node.TestLayer2Tx.__init__()=gn.libgnuradio.run_node.TestLayer2Tx-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartL1.__init__()=gn.libgnuradio.run_nodeL3.StartL1-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartL2Mgmt.__init__()=gn.libgnuradio.run_nodeL3.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_nodeL3.StartSchedL1_L2.__init__()=gn.libgnuradio.run_nodeL3.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartL1.__init__()=gn.libgnuradio.run_nodeL3_80211.StartL1-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.__init__()=gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt-class.html#__init__,Method gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.__init__()=gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2-class.html#__init__,Method gn.libgnuradio.transmit_path.transmit_path.__init__()=gn.libgnuradio.transmit_path.transmit_path-class.html#__init__,Method gn.libgnuradio.transmit_path3_7.transmit_path.__init__()=gn.libgnuradio.transmit_path3_7.transmit_path-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_interface.__init__()=gn.libgnuradio.uhd_interface.uhd_interface-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_receiver.__init__()=gn.libgnuradio.uhd_interface.uhd_receiver-class.html#__init__,Method gn.libgnuradio.uhd_interface.uhd_transmitter.__init__()=gn.libgnuradio.uhd_interface.uhd_transmitter-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.AListConnector.__init__()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.__init__()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.InPort.__init__()=gn.libgwnBlocks.gwnBlock.InPort-class.html#__init__,Method gn.libgwnBlocks.gwnBlock.gwnBlock.__init__()=gn.libgwnBlocks.gwnBlock.gwnBlock-class.html#__init__,Method gn.libgwnBlocks.gwnBlockOld.gwnBlock.__init__()=gn.libgwnBlocks.gwnBlockOld.gwnBlock-class.html#__init__,Method gn.libgwnBlocks.gwnTopBlock.gwnTopBlock.__init__()=gn.libgwnBlocks.gwnTopBlock.gwnTopBlock-class.html#__init__,Method gn.libgwnBlocks.gwnTopBlock.top_block_test.__init__()=gn.libgwnBlocks.gwnTopBlock.top_block_test-class.html#__init__,Method gn.libgwnBlocks.gwntimerblock.InPortTimer.__init__()=gn.libgwnBlocks.gwntimerblock.InPortTimer-class.html#__init__,Method gn.libgwnblocks.gwnblock.GWNBlock.__init__()=gn.libgwnblocks.gwnblock.GWNBlock-class.html#__init__,Method gn.libgwnblocks.gwninport.AListConnector.__init__()=gn.libgwnblocks.gwninport.AListConnector-class.html#__init__,Method gn.libgwnblocks.gwninport.AQueueConnector.__init__()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#__init__,Method gn.libgwnblocks.gwninport.InPort.__init__()=gn.libgwnblocks.gwninport.InPort-class.html#__init__,Method gn.libgwnblocks.gwntimer.InTimer.__init__()=gn.libgwnblocks.gwntimer.InTimer-class.html#__init__,Method gn.libgwnblocks.gwntopblock.GWNTopBlock.__init__()=gn.libgwnblocks.gwntopblock.GWNTopBlock-class.html#__init__,Method gn.libgwnblocks.gwntopblock.top_block_test.__init__()=gn.libgwnblocks.gwntopblock.top_block_test-class.html#__init__,Method gn.libmacTDMA.ControlChannel.ControlChannel.__init__()=gn.libmacTDMA.ControlChannel.ControlChannel-class.html#__init__,Method gn.libmacTDMA.MacTdma.MacTdma.__init__()=gn.libmacTDMA.MacTdma.MacTdma-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.__init__()=gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.__init__()=gn.libmacTDMA.MacTdma.ProcessingL1DataEvents-class.html#__init__,Method gn.libmacTDMA.MacTdma.ProcessingL2Events.__init__()=gn.libmacTDMA.MacTdma.ProcessingL2Events-class.html#__init__,Method gn.libmanagement.Beacon.Beacon.__init__()=gn.libmanagement.Beacon.Beacon-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.__init__()=gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.__init__()=gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM.__init__()=gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM-class.html#__init__,Method gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.__init__()=gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator-class.html#__init__,Method gn.libmanagement.NetworkConfiguration.NetworkConfiguration.__init__()=gn.libmanagement.NetworkConfiguration.NetworkConfiguration-class.html#__init__,Method gn.libmanagement.PeersTable.PeersTable.__init__()=gn.libmanagement.PeersTable.PeersTable-class.html#__init__,Method gn.libmanagement.Profile.Profile.__init__()=gn.libmanagement.Profile.Profile-class.html#__init__,Method gn.libtimer.timer.Timer.__init__()=gn.libtimer.timer.Timer-class.html#__init__,Method gn.libtimer.timer2.Timer.__init__()=gn.libtimer.timer2.Timer-class.html#__init__,Method gn.libutils.exampletest.AClass.__init__()=gn.libutils.exampletest.AClass-class.html#__init__,Method gn.libutils.gnlogger_test.Auxiliary.__init__()=gn.libutils.gnlogger_test.Auxiliary-class.html#__init__,Method gn.libutils.gnscheduler.Scheduler.__init__()=gn.libutils.gnscheduler.Scheduler-class.html#__init__,Method gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier.__init__()=gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier-class.html#__init__,Method gn.libutils.gwnscheduler2.Scheduler.__init__()=gn.libutils.gwnscheduler2.Scheduler-class.html#__init__,Method gn.libutils.sched_bytype.Item.__init__()=gn.libutils.sched_bytype.Item-class.html#__init__,Method gn.libvirtualchannel.EventConsumer.EventConsumer.__init__()=gn.libvirtualchannel.EventConsumer.EventConsumer-class.html#__init__,Method gn.libvirtualchannel.EventConsumer2.EventConsumer.__init__()=gn.libvirtualchannel.EventConsumer2.EventConsumer-class.html#__init__,Method gn.libvirtualchannel.EventSimulator.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.EventSimulator2.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator2.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.EventSimulator3.EventSimulator.__init__()=gn.libvirtualchannel.EventSimulator3.EventSimulator-class.html#__init__,Method gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel.__init__()=gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel-class.html#__init__,Method gn.libvirtualchannel.virtualchannel.VirtualChannel.__init__()=gn.libvirtualchannel.virtualchannel.VirtualChannel-class.html#__init__"><a title="gn.doc.epydoc_example.ClassA.__init__
+gn.grc.base.Block.Block.__init__
+gn.grc.base.Block.TemplateArg.__init__
+gn.grc.base.Connection.Connection.__init__
+gn.grc.base.Element.Element.__init__
+gn.grc.base.FlowGraph.FlowGraph.__init__
+gn.grc.base.Param.Option.__init__
+gn.grc.base.Param.Param.__init__
+gn.grc.base.ParseXML.XMLSyntaxError.__init__
+gn.grc.base.Platform.Platform.__init__
+gn.grc.base.Port.Port.__init__
+gn.grc.base.odict'.odict.__init__
+gn.grc.gui.ActionHandler.ActionHandler.__init__
+gn.grc.gui.ActionHandler.ExecFlowGraphThread.__init__
+gn.grc.gui.Actions.Action.__init__
+gn.grc.gui.Bars.MenuBar.__init__
+gn.grc.gui.Bars.Toolbar.__init__
+gn.grc.gui.Block.Block.__init__
+gn.grc.gui.BlockTreeWindow.BlockTreeWindow.__init__
+gn.grc.gui.Connection.Connection.__init__
+gn.grc.gui.DrawingArea.DrawingArea.__init__
+gn.grc.gui.Element.Element.__init__
+gn.grc.gui.FlowGraph.FlowGraph.__init__
+gn.grc.gui.MainWindow.MainWindow.__init__
+gn.grc.gui.NotebookPage.NotebookPage.__init__
+gn.grc.gui.Param.EntryParam.__init__
+gn.grc.gui.Param.EnumEntryParam.__init__
+gn.grc.gui.Param.EnumParam.__init__
+gn.grc.gui.Param.InputParam.__init__
+gn.grc.gui.Param.Param.__init__
+gn.grc.gui.Platform.Platform.__init__
+gn.grc.gui.Port.Port.__init__
+gn.grc.gui.PropsDialog.PropsDialog.__init__
+gn.grc.gui.StateCache.StateCache.__init__
+gn.grc.python.Block.Block.__init__
+gn.grc.python.Connection.Connection.__init__
+gn.grc.python.FlowGraph.FlowGraph.__init__
+gn.grc.python.Generator.Generator.__init__
+gn.grc.python.Param.FileParam.__init__
+gn.grc.python.Param.Param.__init__
+gn.grc.python.Platform.Platform.__init__
+gn.grc.python.Port.Port.__init__
+gn.grc.python.expr_utils.graph.__init__
+gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.ReadUL.__init__
+gn.libMAC.gwnSimpleFDMA.gwnSimpleFDMA.__init__
+gn.libadaptationlayer.TunTapInterface.TunTapInterface.ReadLayer2.__init__
+gn.libadaptationlayer.TunTapInterface.TunTapInterface.__init__
+gn.libadaptationlayer.schedLayer3.Layer3.__init__
+gn.libadaptationlayer.schedLayer3.ReadLayer2.__init__
+gn.libadaptationlayer.schedLayer3.ReadLayer3.__init__
+gn.libadaptationlayer.scheduler.Scheduler.__init__
+gn.libadaptationlayer.transmitFrame.TransmitFrame.__init__
+gn.libadaptlay80211.gwnDeframer.gwnDeframer.__init__
+gn.libadaptlay80211.gwnFramer.gwnFramer.__init__
+gn.libadaptlay80211.schedLayer3.Layer3.__init__
+gn.libadaptlay80211.schedLayer3.ReadLayer2.__init__
+gn.libadaptlay80211.schedLayer3.ReadLayer3.__init__
+gn.libadaptlay80211.scheduler.Scheduler.__init__
+gn.libadaptlay80211.transmitFrame.TransmitFrame.__init__
+gn.libevents.events.Event.__init__
+gn.libevents.evframes80211.EventFrame.__init__
+gn.libevents.evframes80211.EventFrameMgmt.__init__
+gn.libevents.evrequest.EventRequest.__init__
+gn.libevents.evtimer.EventTimer.__init__
+gn.libframes.frames.Frame.__init__
+gn.libframes.frames.FrameException.__init__
+gn.libframes.mac_frmbld.AFrame.__init__
+gn.libframes.mac_frmbld.AFrameBody.__init__
+gn.libframes.mac_frmbld.AFrameControl.__init__
+gn.libframes.mac_frmbld.MacFrameException.__init__
+gn.libframes.mac_frmspecs.FrameSpecsException.__init__
+gn.libfsm.fsm.ExceptionFSM.__init__
+gn.libfsm.fsm.FSM.__init__
+gn.libgnuradio.TxRxLayer1.TxL1.__init__
+gn.libgnuradio.TxRxLayer1.my_top_block_rx.__init__
+gn.libgnuradio.TxRxLayer1.my_top_block_tx.__init__
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.ReadLayer2.__init__
+gn.libgnuradio.gwnGnuRadiopsk.gwnGnuRadiopsk.__init__
+gn.libgnuradio.receive_path.receive_path.__init__
+gn.libgnuradio.receive_path3_7.receive_path.__init__
+gn.libgnuradio.run_TDMA_L3.StartL1.__init__
+gn.libgnuradio.run_TDMA_L3.StartL2Mgmt.__init__
+gn.libgnuradio.run_TDMA_L3.StartSchedL1_L2.__init__
+gn.libgnuradio.run_node.StartL1.__init__
+gn.libgnuradio.run_node.StartL2.__init__
+gn.libgnuradio.run_node.TestLayer1Rx.__init__
+gn.libgnuradio.run_node.TestLayer1Tx.__init__
+gn.libgnuradio.run_node.TestLayer2Rx.__init__
+gn.libgnuradio.run_node.TestLayer2Tx.__init__
+gn.libgnuradio.run_nodeL3.StartL1.__init__
+gn.libgnuradio.run_nodeL3.StartL2Mgmt.__init__
+gn.libgnuradio.run_nodeL3.StartSchedL1_L2.__init__
+gn.libgnuradio.run_nodeL3_80211.StartL1.__init__
+gn.libgnuradio.run_nodeL3_80211.StartL2Mgmt.__init__
+gn.libgnuradio.run_nodeL3_80211.StartSchedL1_L2.__init__
+gn.libgnuradio.transmit_path.transmit_path.__init__
+gn.libgnuradio.transmit_path3_7.transmit_path.__init__
+gn.libgnuradio.uhd_interface.uhd_interface.__init__
+gn.libgnuradio.uhd_interface.uhd_receiver.__init__
+gn.libgnuradio.uhd_interface.uhd_transmitter.__init__
+gn.libgwnBlocks.gwnBlock.AListConnector.__init__
+gn.libgwnBlocks.gwnBlock.AQueueConnector.__init__
+gn.libgwnBlocks.gwnBlock.InPort.__init__
+gn.libgwnBlocks.gwnBlock.gwnBlock.__init__
+gn.libgwnBlocks.gwnBlockOld.gwnBlock.__init__
+gn.libgwnBlocks.gwnTopBlock.gwnTopBlock.__init__
+gn.libgwnBlocks.gwnTopBlock.top_block_test.__init__
+gn.libgwnBlocks.gwntimerblock.InPortTimer.__init__
+gn.libgwnblocks.gwnblock.GWNBlock.__init__
+gn.libgwnblocks.gwninport.AListConnector.__init__
+gn.libgwnblocks.gwninport.AQueueConnector.__init__
+gn.libgwnblocks.gwninport.InPort.__init__
+gn.libgwnblocks.gwntimer.InTimer.__init__
+gn.libgwnblocks.gwntopblock.GWNTopBlock.__init__
+gn.libgwnblocks.gwntopblock.top_block_test.__init__
+gn.libmacTDMA.ControlChannel.ControlChannel.__init__
+gn.libmacTDMA.MacTdma.MacTdma.__init__
+gn.libmacTDMA.MacTdma.ProcessingL1CtrlEvents.__init__
+gn.libmacTDMA.MacTdma.ProcessingL1DataEvents.__init__
+gn.libmacTDMA.MacTdma.ProcessingL2Events.__init__
+gn.libmanagement.Beacon.Beacon.__init__
+gn.libmanagement.DiscoveryPeeringController.DiscoveryPeeringController.__init__
+gn.libmanagement.DiscoveryPeeringFSM.ControllerFsmEmulator.__init__
+gn.libmanagement.DiscoveryPeeringFSM.DiscoveryPeeringFSM.__init__
+gn.libmanagement.DiscoveryPeeringFSM.ReadQueueTxEmulator.__init__
+gn.libmanagement.NetworkConfiguration.NetworkConfiguration.__init__
+gn.libmanagement.PeersTable.PeersTable.__init__
+gn.libmanagement.Profile.Profile.__init__
+gn.libtimer.timer.Timer.__init__
+gn.libtimer.timer2.Timer.__init__
+gn.libutils.exampletest.AClass.__init__
+gn.libutils.gnlogger_test.Auxiliary.__init__
+gn.libutils.gnscheduler.Scheduler.__init__
+gn.libutils.gwnEvtypeClassifier2.EvtypeClassifier.__init__
+gn.libutils.gwnscheduler2.Scheduler.__init__
+gn.libutils.sched_bytype.Item.__init__
+gn.libvirtualchannel.EventConsumer.EventConsumer.__init__
+gn.libvirtualchannel.EventConsumer2.EventConsumer.__init__
+gn.libvirtualchannel.EventSimulator.EventSimulator.__init__
+gn.libvirtualchannel.EventSimulator2.EventSimulator.__init__
+gn.libvirtualchannel.EventSimulator3.EventSimulator.__init__
+gn.libvirtualchannel.gwnVirtualChannel.gwnVirtualChannel.__init__
+gn.libvirtualchannel.virtualchannel.VirtualChannel.__init__" class="py-name" href="#" onclick="return doclink('link-9', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt>         </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">finished</tt><tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="gwnDeframer.run"></a><div id="gwnDeframer.run-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="gwnDeframer.run-toggle" onclick="return toggle('gwnDeframer.run');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#run">run</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="gwnDeframer.run-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="gwnDeframer.run-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-docstring">''' reads frames, outputs events by type.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">        Scheduler function to process a frames queue: reads one element from the input frame queue, generates an event, and puts the event in one of the output queues according to its type.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">        '''</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">finished</tt> <tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-name">in_qu</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ports_in</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">            <tt class="py-name">evframe</tt> <tt class="py-op">=</tt> <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.get()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.get()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#get,Method gn.libgwnBlocks.gwnBlock.Connector.get()=gn.libgwnBlocks.gwnBlock.Connector-class.html#get,Method gn.libgwnblocks.gwninport.AListConnector.get()=gn.libgwnblocks.gwninport.AListConnector-class.html#get,Method gn.libgwnblocks.gwninport.AQueueConnector.get()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#get,Method gn.libgwnblocks.gwninport.Connector.get()=gn.libgwnblocks.gwninport.Connector-class.html#get"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.get
+gn.libgwnBlocks.gwnBlock.AQueueConnector.get
+gn.libgwnBlocks.gwnBlock.Connector.get
+gn.libgwnblocks.gwninport.AListConnector.get
+gn.libgwnblocks.gwninport.AQueueConnector.get
+gn.libgwnblocks.gwninport.Connector.get" class="py-name" href="#" onclick="return doclink('link-10', 'get', 'link-10');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-comment">#print " recibi frame : ", repr(frame)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">            <tt class="py-name">frm_obj</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="gn.libframes.if_frames" class="py-name" href="#" onclick="return doclink('link-11', 'if_frames', 'link-4');">if_frames</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Function gn.libframes.if_frames.objfrompkt()=gn.libframes.if_frames-module.html#objfrompkt"><a title="gn.libframes.if_frames.objfrompkt" class="py-name" href="#" onclick="return doclink('link-12', 'objfrompkt', 'link-12');">objfrompkt</a></tt><tt class="py-op">(</tt><tt class="py-name">evframe</tt><tt class="py-op">.</tt><tt class="py-name">frmpkt</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">            <tt class="py-name">event</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-13', 'if_events', 'link-1');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Function gn.libevents.if_events.frmtoev()=gn.libevents.if_events-module.html#frmtoev"><a title="gn.libevents.if_events.frmtoev" class="py-name" href="#" onclick="return doclink('link-14', 'frmtoev', 'link-14');">frmtoev</a></tt><tt class="py-op">(</tt><tt class="py-name">frm_obj</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt class="py-comment">#print "recibi event : ", event</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">event</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">q</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ports_out</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">                    <tt class="py-name">q</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method gn.libgwnBlocks.gwnBlock.AListConnector.put()=gn.libgwnBlocks.gwnBlock.AListConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.AQueueConnector.put()=gn.libgwnBlocks.gwnBlock.AQueueConnector-class.html#put,Method gn.libgwnBlocks.gwnBlock.Connector.put()=gn.libgwnBlocks.gwnBlock.Connector-class.html#put,Method gn.libgwnblocks.gwninport.AListConnector.put()=gn.libgwnblocks.gwninport.AListConnector-class.html#put,Method gn.libgwnblocks.gwninport.AQueueConnector.put()=gn.libgwnblocks.gwninport.AQueueConnector-class.html#put,Method gn.libgwnblocks.gwninport.Connector.put()=gn.libgwnblocks.gwninport.Connector-class.html#put"><a title="gn.libgwnBlocks.gwnBlock.AListConnector.put
+gn.libgwnBlocks.gwnBlock.AQueueConnector.put
+gn.libgwnBlocks.gwnBlock.Connector.put
+gn.libgwnblocks.gwninport.AListConnector.put
+gn.libgwnblocks.gwninport.AQueueConnector.put
+gn.libgwnblocks.gwninport.Connector.put" class="py-name" href="#" onclick="return doclink('link-15', 'put', 'link-15');">put</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt>   <tt class="py-comment"># add to queue, don't block            </tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-16" class="py-name"><a title="gn.libevents.if_events" class="py-name" href="#" onclick="return doclink('link-16', 'if_events', 'link-1');">if_events</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Class gn.libevents.if_events.EventFrameException=gn.libevents.if_events.EventFrameException-class.html"><a title="gn.libevents.if_events.EventFrameException" class="py-name" href="#" onclick="return doclink('link-17', 'EventFrameException', 'link-17');">EventFrameException</a></tt><tt class="py-op">(</tt><tt class="py-string">'Scheduler, error in \</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-string">                        frame'</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">            <tt class="py-name">in_qu</tt><tt class="py-op">.</tt><tt class="py-name">task_done</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">             </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
+<a name="gwnDeframer.stop"></a><div id="gwnDeframer.stop-def"><a name="L56"></a><tt class="py-lineno">56</tt> <a class="py-toggle" href="#" id="gwnDeframer.stop-toggle" onclick="return toggle('gwnDeframer.stop');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gn.libadaptlay80211.gwnDeframer.gwnDeframer-class.html#stop">stop</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>         </tt>
+</div><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">       <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">finished</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">       <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_Thread__stop</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">    <tt class="py-name">testfilename</tt> <tt class="py-op">=</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'txt'</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testfile</tt><tt class="py-op">(</tt><tt class="py-name">testfilename</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt>      <tt class="py-comment"># no text file present</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="gn-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >GWN</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Jul  2 17:57:09 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>xml.dom.expatbuilder.ExpatBuilder</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="xml-module.html">Package&nbsp;xml</a> ::
+        <a href="xml.dom-module.html">Package&nbsp;dom</a> ::
+        <a href="xml.dom.expatbuilder-module.html">Module&nbsp;expatbuilder</a> ::
+        Class&nbsp;ExpatBuilder
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="xml.dom.expatbuilder.ExpatBuilder-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ExpatBuilder</h1><p class="nomargin-top"><span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="xml.dom.expatbuilder.ExpatBuilderNS-class.html">ExpatBuilderNS</a></li><li>, <a href="xml.dom.expatbuilder.FragmentBuilder-class.html">FragmentBuilder</a></li><li>, <a href="xml.dom.expatbuilder.InternalSubsetExtractor-class.html">InternalSubsetExtractor</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>Document builder that uses Expat to build a ParsedXML.DOM document 
+  instance.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="createParser"></a><span class="summary-sig-name">createParser</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Create a new parser object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.createParser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getParser"></a><span class="summary-sig-name">getParser</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the parser object, creating a new one if needed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.getParser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reset"></a><span class="summary-sig-name">reset</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Free all data structures used during DOM construction.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="install"></a><span class="summary-sig-name">install</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parser</span>)</span><br />
+      Install the callbacks needed to build the DOM into the parser.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.install">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parseFile"></a><span class="summary-sig-name">parseFile</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">file</span>)</span><br />
+      Parse a document from a file object, returning the document node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.parseFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parseString"></a><span class="summary-sig-name">parseString</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">string</span>)</span><br />
+      Parse a document from a string, returning the document node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.parseString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_setup_subset"></a><span class="summary-sig-name">_setup_subset</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buffer</span>)</span><br />
+      Load the internal subset if there might be one.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder._setup_subset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="start_doctype_decl_handler"></a><span class="summary-sig-name">start_doctype_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">doctypeName</span>,
+        <span class="summary-sig-arg">systemId</span>,
+        <span class="summary-sig-arg">publicId</span>,
+        <span class="summary-sig-arg">has_internal_subset</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.start_doctype_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="end_doctype_decl_handler"></a><span class="summary-sig-name">end_doctype_decl_handler</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.end_doctype_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="pi_handler"></a><span class="summary-sig-name">pi_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">target</span>,
+        <span class="summary-sig-arg">data</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.pi_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="character_data_handler_cdata"></a><span class="summary-sig-name">character_data_handler_cdata</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.character_data_handler_cdata">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="character_data_handler"></a><span class="summary-sig-name">character_data_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.character_data_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="entity_decl_handler"></a><span class="summary-sig-name">entity_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">entityName</span>,
+        <span class="summary-sig-arg">is_parameter_entity</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">base</span>,
+        <span class="summary-sig-arg">systemId</span>,
+        <span class="summary-sig-arg">publicId</span>,
+        <span class="summary-sig-arg">notationName</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.entity_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="notation_decl_handler"></a><span class="summary-sig-name">notation_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">notationName</span>,
+        <span class="summary-sig-arg">base</span>,
+        <span class="summary-sig-arg">systemId</span>,
+        <span class="summary-sig-arg">publicId</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.notation_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="comment_handler"></a><span class="summary-sig-name">comment_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.comment_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="start_cdata_section_handler"></a><span class="summary-sig-name">start_cdata_section_handler</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.start_cdata_section_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="end_cdata_section_handler"></a><span class="summary-sig-name">end_cdata_section_handler</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.end_cdata_section_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="external_entity_ref_handler"></a><span class="summary-sig-name">external_entity_ref_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">base</span>,
+        <span class="summary-sig-arg">systemId</span>,
+        <span class="summary-sig-arg">publicId</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.external_entity_ref_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="first_element_handler"></a><span class="summary-sig-name">first_element_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">attributes</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.first_element_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="start_element_handler"></a><span class="summary-sig-name">start_element_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">attributes</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.start_element_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_finish_start_element"></a><span class="summary-sig-name">_finish_start_element</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder._finish_start_element">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="end_element_handler"></a><span class="summary-sig-name">end_element_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.end_element_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_finish_end_element"></a><span class="summary-sig-name">_finish_end_element</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">curNode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder._finish_end_element">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_handle_white_text_nodes"></a><span class="summary-sig-name">_handle_white_text_nodes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>,
+        <span class="summary-sig-arg">info</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder._handle_white_text_nodes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="element_decl_handler"></a><span class="summary-sig-name">element_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">model</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.element_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="attlist_decl_handler"></a><span class="summary-sig-name">attlist_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">elem</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">type</span>,
+        <span class="summary-sig-arg">default</span>,
+        <span class="summary-sig-arg">required</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.attlist_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xml_decl_handler"></a><span class="summary-sig-name">xml_decl_handler</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">version</span>,
+        <span class="summary-sig-arg">encoding</span>,
+        <span class="summary-sig-arg">standalone</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="xml.dom.expatbuilder-pysrc.html#ExpatBuilder.xml_decl_handler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            >bitacora_belza.txt</th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Jun 30 18:06:37 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
