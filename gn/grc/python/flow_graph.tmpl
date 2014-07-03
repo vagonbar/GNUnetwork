@@ -54,11 +54,11 @@ $imp
 ########################################################
 #set $class_name = $flow_graph.get_option('id')
 #set $param_str = ', '.join(['self'] + ['%s=%s'%(param.get_id(), param.get_make()) for param in $parameters])
-class $(class_name)(gwnTB.gwnTopBlock):
+class $(class_name)(gwnTB.GWNTopBlock):
 
 
 	def __init__($param_str):
-		gwnTB.gwnTopBlock.__init__($param_str)
+		gwnTB.GWNTopBlock.__init__($param_str)
 
 ########################################################
 ##Create Parameters

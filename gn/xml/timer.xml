@@ -34,8 +34,7 @@
 	<sink>
 		<name>Conf(opt)</name>
 		<type>Request</type>
-		<optional>1</optional>
-            
+		<optional>1</optional>         
 	</sink>
     <source>
 		<name>Tout</name>

@@ -11,7 +11,7 @@ import threading,Queue,time
 import sys
 
 from gwninport import *   # suppress after qulifying all gwninport items
-import gwninport
+import gwntimer
 
 sys.path +=sys.path + ['..']
 
@@ -23,7 +23,7 @@ class GWNBlock(threading.Thread):
     '''The main block. All blocks inherit from it.
     '''
 
-    def __init__(self, blkid, blkname, number_in=0,number_out=0, timers=[]):
+    def __init__(self, blkid, blkname, number_in=0,number_out=0, number_timers=0):
         '''  
         Constructor.
         
@@ -40,7 +40,7 @@ class GWNBlock(threading.Thread):
         self.finished = False
         self.set_in_size(number_in)
         self.set_out_size(number_out)
-        self.set_timers(timers)
+        self.set_timer_size(number_timers)
 
 
     def set_in_size(self,number_in):
@@ -64,13 +64,24 @@ class GWNBlock(threading.Thread):
         self.ports_out = [[] for x in xrange(0,number_out)]
 
 
-    def set_timers(self, timers):
+    def set_timer_size(self, number_timers):
         '''Creates InTimer instances, assigns to block.
 
         TODO: construction of timers requires interval, event types (timing and stop), total run time, ...
         '''
-        self.timers = timers
+        for i in xrange(0, number_timers):
+            mytimer = gwntimer.InTimer(self, i)
+            print mytimer
+            self.timers.append(mytimer)
 
+    def set_timer(self, index,interrupt=True,interval=1,retry=1,nickname1="TimerTimer",nickname2=None,add_info=None):
+        mytimer = self.timers[index]        
+        mytimer.interval = interval
+        mytimer.retry = retry
+        mytimer.nickname1 = nickname1
+        mytimer.nickname2 = nickname2 
+        mytimer.add_info = add_info
+        mytimer.interrupt = interrupt
 
     def get_port_in(self,index):
         '''Returns an input port in this block.
@@ -178,13 +189,13 @@ class GWNBlock(threading.Thread):
     def __str__(self):
         ss = 'Block %s, %d in_ports, %d out_ports, %d timers\n' % \
             (self.blkname, len(self.ports_in), len(self.ports_out), len(self.timers))
-        for port in self.ports_in:
-            ss = ss + '  in_port %d in block %s\n' % (port.port_nr, port.block.blkname)
-        for i in range(len(self.ports_out)):   # no port_nr in ports_out
-            ss = ss + '  out_port %d in block %s\n' % \
-                (i, self.ports_out[i])
-        for timer in self.timers:
-            ss = ss + '  timer %d in block %s\n' % (timer.port_nr, timer.block.blkname)
+#        for port in self.ports_in:
+#            ss = ss + '  in_port %d in block %s\n' % (port.port_nr, port.block.blkname)
+#        for i in range(len(self.ports_out)):   # no port_nr in ports_out
+#            ss = ss + '  out_port %d in block %s\n' % \
+#                (i, self.ports_out[i])
+#        for timer in self.timers:
+#            ss = ss + '  timer  in block \n', timer.port_nr, timer.block.blkname
         return ss
 
 

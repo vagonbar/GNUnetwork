@@ -10,31 +10,34 @@ Created on Tue May  7 11:05:17 2013
 import sys,time
 sys.path +=['..']
 import libevents.if_events as if_events
-import libgwnBlocks.gwnBlock as gwn
+import libgwnblocks.gwnblock as gwn
 
 
-class EventSimulator(gwn.gwnBlock) :
+class EventSimulator(gwn.GWNBlock) :
     '''
     
     '''
 
-    def __init__(self,timeout,nickname,param1=0,param2=0,param3=0):
+    def __init__(self,interval,retry,nickname,param1=0,param2=0,param3=0):
         '''  
         Constructor.
         
         '''
-        super(EventSimulator,self).__init__(1,"Simulator1",0,1)        
+        super(EventSimulator,self).__init__(1,"Simulator1",0,1,1)        
         self.finished = False    
         self.nickname =nickname
         self.param1 = param1
         self.param2 =param2
         self.param3 = param3
-        self.timeout = timeout
+        self.interval = interval
+        self.retry = retry
+        self.set_timer(0,False,self.interval,self.retry)
 
        
         
-    def run(self):
-        while not self.finished :
+    def process_data(self, portype_nr, ev):  
+        portype,port_nr = portype_nr
+        if portype == "intimer":
             if self.nickname=="DataData":
                 event = self.event_data()
             if self.nickname=="CtrlRTS":
@@ -46,12 +49,10 @@ class EventSimulator(gwn.gwnBlock) :
             if self.nickname=="TimerConfig":      
                 event= self.event_timer_config()
             self.write_out(0,event)
-            "Wait for the next timer event to generate a new event"            
-            time.sleep(self.timeout)
+        else:
+            pass
     
-    def stop(self):
-        self.finished = True
-        self._Thread__stop()
+   
 
     def event_data(self):
         event = if_events.mkevent(self.nickname)
@@ -115,7 +116,7 @@ class EventSimulator(gwn.gwnBlock) :
 def test2():
     '''Test InPort, Block classses.
     '''
-    blk1 = EventSimulator(2,"CtrlRTS",100,101)
+    blk1 = EventSimulator(2,5,"CtrlRTS",100,101)
     print blk1
     connector2 = gwn.AQueueConnector()
     #blk1.start()

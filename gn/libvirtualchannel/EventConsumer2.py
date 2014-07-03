@@ -9,9 +9,9 @@ Created on 12/02/2014
 
 import sys
 sys.path +=['..']
-import libgwnBlocks.gwnBlock as gwn
+import libgwnblocks.gwnblock as gwn
 
-class EventConsumer(gwn.gwnBlock) :
+class EventConsumer(gwn.GWNBlock) :
     '''
     
     '''
@@ -21,17 +21,15 @@ class EventConsumer(gwn.gwnBlock) :
         Constructor.
         
         '''
-        super(EventConsumer,self).__init__(1,0)
-        self.finished = False    
+        super(EventConsumer,self).__init__(1,nickname,1,0)
         self.nickname = nickname
 
         
-    def run(self):
-		while not self.finished :
-			event = self.ports_in[0].get()
-			print "Consumer ", self.nickname, "receive event: ", event
+    def process_data(self, portype_nr, ev):
+        '''This is the private thread that generates.
+        '''
+        portype,port_nr = portype_nr
+        if portype == "inport":
+		print "Consumer ", self.nickname, "receive event: ", ev
 
-    def stop(self):
-        self.finished = True
-        self._Thread__stop()
 

@@ -7,10 +7,10 @@
 <block>
 	<name>Event Consumer</name>
 	<key>eventconsumer</key>
-        <category>sinks</category>
+      <category>sinks</category>
 	<import>import libvirtualchannel.EventConsumer2 as consumer</import>
 	<make>consumer.EventConsumer($nickname1) </make>
-        <callback>start()</callback>
+      <callback>start()</callback>
 	<callback>stop()</callback>
 	<param>
 		<name>nickname1</name>

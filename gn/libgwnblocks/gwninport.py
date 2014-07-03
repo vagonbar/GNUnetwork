@@ -130,13 +130,13 @@ class InPort(threading.Thread):
 
     def run(self):
         '''Runs thread.'''
-        print '  Starting InPort %d in block %s' % (self.port_nr, self.block.blkname)
+        print '  Starting InPort in block ', self.port_nr, self.block.blkname
         while not self.exit_flag:
             ev = self.conn.get()
             if ev:
                 thread_lock.acquire()
-                print '    port %d in block %s received event %s' % \
-                    (self.port_nr, self.block.blkname, ev)
+                print '    port  in block received event ', \
+                    self.port_nr, self.block.blkname, ev
                 self.block.process_data(self.port_nr, ev)
                 thread_lock.release()
         return
@@ -144,7 +144,7 @@ class InPort(threading.Thread):
 
     def stop(self):
         '''Stops thread.'''
-        print '  ...stopping port %d in block %s' % (self.port_nr, self.block.blkname)
+        print '  ...stopping port in block ', self.port_nr, self.block.blkname
         self.exit_flag = True
         return
 
@@ -155,7 +155,7 @@ class InPort(threading.Thread):
             ssaccept += ev + ' '
         #return '%s: accepted events: %s, connector empty: %s' % \
         #     (self.__class__, ssaccept, self.conn.is_empty() )
-        return  '  port %d in block %s' % (self.port_nr, self.block.blkname)
+        return  '  port in block '#,self.port_nr, self.block.blkname
 
 
 

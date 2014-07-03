@@ -9,7 +9,7 @@
 <block>
 	<name>Options</name>
 	<key>options</key>
-	<import>import libgwnBlocks.gwnTopBlock as gwnTB</import>
+	<import>import libgwnblocks.gwntopblock as gwnTB</import>
 	<make></make>
 	<callback>if $run: self.start()
 else: self.stop(); self.wait()</callback>

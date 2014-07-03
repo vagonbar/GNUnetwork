@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Jun  3 17:37:05 2014</timestamp>
+  <timestamp>Thu Jul  3 14:28:03 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -186,49 +186,6 @@
     </param>
   </block>
   <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>10:10:10:10:10:10</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>10:10:10:10:10:11</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Timer</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(330, 1)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>simplefdma</key>
     <param>
       <key>id</key>
@@ -321,14 +278,18 @@
     </param>
   </block>
   <block>
-    <key>timer</key>
+    <key>eventsim</key>
     <param>
       <key>id</key>
-      <value>timer_0</value>
+      <value>eventsim_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
     </param>
     <param>
       <key>interval</key>
@@ -336,15 +297,27 @@
     </param>
     <param>
       <key>retry</key>
-      <value>300</value>
+      <value>1</value>
     </param>
     <param>
-      <key>nickname1</key>
-      <value>TimerTimer</value>
+      <key>param1</key>
+      <value>10:10:10:10:10:10</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>10:10:10:10:10:11</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(34, 71)</value>
+      <value>(330, 1)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -374,12 +347,6 @@
     <sink_block_id>simplefdma_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>timer_0</source_block_id>
-    <sink_block_id>eventsim_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>eventsim_0</source_block_id>

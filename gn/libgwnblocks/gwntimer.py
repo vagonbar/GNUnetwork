@@ -22,9 +22,9 @@ class InTimer(threading.Thread):
         threading.Thread.__init__(self)
         self.accept = []
         self.block = block
-        self.port_nr = ("timer",port_nr)
+        self.port_nr = ("intimer",port_nr)
         self.exit_flag = False
-        self.interrupt = False
+        self.interrupt = True
 
         self.interval = interval
         self.retry = retry
@@ -45,7 +45,7 @@ class InTimer(threading.Thread):
 
         TODO: uses time.sleep(), cannot resume execution until this function finishes.'''
         print '  Starting InTimer %d in block %s' % \
-            (self.port_nr, self.block.blkname)
+            (self.port_nr[1], self.block.blkname)
         while not self.exit_flag:
             if not self.interrupt:
                 i=1
@@ -59,22 +59,9 @@ class InTimer(threading.Thread):
                 if not self.interrupt:
                     if self.nickname2 is not None:
                         self.tout2()
+                self.interrupt=True
             else:
                 time.sleep(0.01)
-                
-                
-                
-                
-                ev = 'TimeEv %s %d : %d' % \
-                    (self.block.blkname, self.port_nr, self.counter)
-                self.counter += 1
-                thread_lock.acquire()
-                #print '    port %d in block %s generated event %s' % \
-                #    (self.port_nr, self.block.blkname, ev)
-                print '   %s' % (ev,)
-                self.block.process_data(self.port_nr, ev)
-                thread_lock.release()
-            time.sleep(self.interval)
         return
 
 
@@ -102,7 +89,7 @@ class InTimer(threading.Thread):
 
     def stop(self):
         '''Stops thread.'''
-        print '  ...stopping timer %d in block %s' % (self.port_nr, self.block.blkname)
+        print '  ...stopping timer %d in block %s' % (self.port_nr[1], self.block.blkname)
         self.exit_flag = True
         return
 
@@ -116,7 +103,7 @@ class InTimer(threading.Thread):
         #return  '  timer [port] %d in block %s, thread %d' % \
         #    (self.port_nr, self.block.blkname, self.get_ident())
         return  '  timer [port] %d in block %s' % \
-            (self.port_nr, self.block.blkname)
+            (self.port_nr[1], self.block.blkname)
 
 
 def test():

@@ -9,7 +9,7 @@
 	<key>eventsim</key>
      <category>Sources</category>
 	<import>import libvirtualchannel.EventSimulator3 as simulator </import>
-	<make>simulator.EventSimulator($timeout, '$nick',$param1,$param2,$param3)</make>
+	<make>simulator.EventSimulator($interval,$retry, '$nick',$param1,$param2,$param3)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
 	<param>
@@ -36,12 +36,16 @@
         			<name>ACK</name>
         			<key>CtrlACK</key>
         		</option> 
-
-
 	</param>
 	<param>
-		<name>timeout</name>
-		<key>timeout</key>
+		<name>interval</name>
+		<key>interval</key>
+		<value>1</value>
+		<type>int</type>
+	</param>
+	<param>
+		<name>retry</name>
+		<key>retry</key>
 		<value>1</value>
 		<type>int</type>
 	</param>
@@ -63,8 +67,6 @@
 		<value></value>
 		<type>string</type>
 	</param>
-
-
       <param>
 		<name>Output Type</name>
 		<key>otype</key>
@@ -74,16 +76,10 @@
 			<key>Event</key>
 		</option>
 	</param>
-
-
    	<source>
 		<name>Event</name>
 		<type>$otype</type>
 	</source>
-
-
-
-
      <doc>
     Event Simulator:
         Each time the Event Simulator block receives a Timer event, 

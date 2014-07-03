@@ -10,15 +10,15 @@ import sys
 sys.path +=sys.path + ['..']
 import time
 import libevents.if_events as if_events
-import libgwnBlocks.gwnBlock as gwn
+import libgwnblocks.gwnblock as gwn
 
-class Timer(gwn.gwnBlock):
+class Timer(gwn.GWNBlock):
     '''A timerthat waits an interval and generates a Timer Event.
     This class is a timer that waits for a given interval. After that generates an event of Yype TIMER and Subtype the name given in subTypeEvent1.
     The timer retries the number of times gven in the parameter retry. After the given number of retries it generates the event of Type TIMER and subtype given in subTypeEvent2 if it is not None.
     '''
 
-    def __init__(self):
+    def __init__(self,interval=1,retry=1,nickname1="TimerTimer"):
         '''  
         Constructor.
         
@@ -29,44 +29,31 @@ class Timer(gwn.gwnBlock):
         @param add_info: additional information that will be send with the Timer Event.
         '''        
         "The Timer has one output and 0 inputs so we must call the father constructor with parameters (0,1)"
-        super(Timer,self).__init__(1,"Timer1",1,1)        
-        self.interval = 1
-        self.retry = 1
-        self.nickname1= None
+        super(Timer,self).__init__(1,"Timer1",1,1,1)        
+        self.interval = interval
+        self.retry = retry
+        self.nickname1= nickname1
         self.nickname2=None
         self.add_info = None
-
+        self.set_timer(0,False,self.interval,self.retry,self.nickname1,self.nickname2,self.add_info)
         
-    def process_data(self, port_nr, ev):
+    def process_data(self, portype_nr, ev):
         '''This is the private thread that generates.
         '''
-        if ev.nickname == 'TimerConfig':
-            #print "Receive configuration event ",  event
-            self.set_config(ev)
+        portype,port_nr = portype_nr
+        if portype == "intimer":
+            self.write_out(0,ev)
+        elif portype == "inport":
+            if ev.nickname == 'TimerConfig':
+                #print "Receive configuration event ",  event
+                self.set_config(ev)
+                self.set_timer(0,interrupt=True)
+                self.set_timer(0,False,self.interval,self.retry,self.nickname1,self.nickname2,self.add_info)
+            else:
+                print " \n Receives event %s in configuration port %d:" % (ev, port_nr)
         else:
-            print " \n Receives event %s in configuration port %d:" % (ev, port_nr)
-            return        
-        i=1
-        while i <= self.retry: 
-            i=i+1
-            time.sleep(self.interval)
-            self.tout1()
-        if self.nickname2 is not None:
-            self.tout2()
-                
-    def tout1(self):      
-        event = if_events.mkevent(self.nickname1)
-        event.ev_dc['add_info'] = self.add_info
-        self.write_out(0,event)
-
-    def tout2(self):
-        event= if_events.mkevent(self.nickname2)
-        event.ev_dc['add_info'] =  self.add_info
-        self.write_out(0,event) 
-               
-    def stop(self):
-        self.finished = True
-        self._Thread__stop()
+            pass
+            
 
     def set_config(self,event):
         if 'interval' in event.ev_dc:
@@ -101,13 +88,14 @@ def test2():
     #time.sleep(2)
     blk1.set_connection_in(connector1,0)
     blk1.set_connection_out(connector1,0)
+    blk1.start()
+    time.sleep(3)
     event = if_events.mkevent("TimerConfig")
     event.ev_dc['interval']=1
     event.ev_dc['retry']= 5
     event.ev_dc['nickname1']= "TimerTOR1"
     connector1.put(event)
         
-    blk1.start()
     time.sleep(10)
     blk1.stop()
     blk1.join()
