@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Jul  3 15:18:51 2014</timestamp>
+  <timestamp>Fri Jul  4 12:25:36 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,33 +84,6 @@
     </param>
   </block>
   <block>
-    <key>eventconsumer</key>
-    <param>
-      <key>id</key>
-      <value>eventconsumer_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nickname1</key>
-      <value>nickname1</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(719, 189)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>timer</key>
     <param>
       <key>id</key>
@@ -181,7 +154,34 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(147, 256)</value>
+      <value>(147, 156)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventconsumer</key>
+    <param>
+      <key>id</key>
+      <value>eventconsumer_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>blkname</key>
+      <value>blkname</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(728, 187)</value>
     </param>
     <param>
       <key>_rotation</key>

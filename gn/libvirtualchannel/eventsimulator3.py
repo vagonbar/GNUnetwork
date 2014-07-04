@@ -10,31 +10,37 @@ Created on Tue May  7 11:05:17 2013
 import sys,time
 sys.path +=['..']
 import libevents.if_events as if_events
-import libgwnblocks.gwnblock as gwn
+import libgwnblocks.gwnblock as gwnblock
+import libgwnblocks.gwninport as gwninport
 
-
-class EventSimulator(gwn.GWNBlock) :
+class EventSimulator(gwnblock.GWNBlock) :
     '''
     
     '''
 
-    def __init__(self,interval,retry,nickname,param1=0,param2=0,param3=0):
-        '''  
-        Constructor.
-        
+    def __init__(self, interval, retry, nickname, param1=0, param2=0, param3=0):
+        '''Constructor.
+
+        TODO: substitute param1, param2, param3 for **kwords.
+        TODO: unify event generation into a single function for all event types.
+        @param interval: the time elapsed between two successive events.
+        @param retry: the number of events to be generated.
+        @param nickname: the nickname of the events to be generated.
+        @param param1: param for event generation.
+        @param param2: param for event generation.
+        @param param3: param for event generation.
         '''
-        super(EventSimulator,self).__init__(1,"Simulator1",0,1,1)        
+        super(EventSimulator,self).__init__(1, "Simulator1", 0, 1, 1)        
         self.finished = False    
         self.nickname =nickname
         self.param1 = param1
-        self.param2 =param2
+        self.param2 = param2
         self.param3 = param3
         self.interval = interval
         self.retry = retry
-        self.set_timer(0,False,self.interval,self.retry)
+        self.set_timer(0, False, self.interval, self.retry)
 
-       
-        
+
     def process_data(self, port_type, port_nr, ev):
         if port_type == "intimer":
             if self.nickname=="DataData":
@@ -89,10 +95,12 @@ class EventSimulator(gwn.GWNBlock) :
         return event
 
     def convert_int(self,param):
-        if isinstance(param,int):
+        '''Convert int parameter types.
+        '''
+        if isinstance(param, int):
             return(param)
         else:
-            if isinstance(param,str):
+            if isinstance(param, str):
                 if param.isdigit():
                     return(int(param))
 
@@ -100,10 +108,12 @@ class EventSimulator(gwn.GWNBlock) :
         
         
     def convert_float(self,param):
-        if isinstance(param,float):
+        '''Convert int parameter types.
+        '''
+        if isinstance(param, float):
             return(param)
         else:
-            if isinstance(param,str):
+            if isinstance(param, str):
                 try:
                     return(float(param))
                 except ValueError:
@@ -112,19 +122,19 @@ class EventSimulator(gwn.GWNBlock) :
         
 
 def test2():
-    '''Test InPort, Block classses.
+    '''Test EventSimulator.
     '''
-    blk1 = EventSimulator(2,5,"CtrlRTS",100,101)
+    blk1 = EventSimulator(2, 5, "CtrlRTS", 100, 101)
     print blk1
-    connector2 = gwn.AQueueConnector()
+    connector2 = gwninport.AQueueConnector()
     #blk1.start()
     #time.sleep(2)
 
-    blk1.set_connection_out(connector2,0)
+    blk1.set_connection_out(connector2, 0)
     blk1.start()
-    i=1    
+    i = 1    
     while i < 10:
-        i=i+1    
+        i = i + 1
         print connector2.get()
         
    
