@@ -10,12 +10,13 @@ Created on Thu Dec 13 14:31:45 2012
 import threading,Queue,time
 import sys
 
-from gwninport import *   # suppress after qulifying all gwninport items
+#from gwninport import *   # suppress after qulifying all gwninport items
+import gwninport
 import gwntimer
 
-sys.path +=sys.path + ['..']
+sys.path += sys.path + ['..']
 
-thread_lock = threading.Lock()
+#thread_lock = threading.Lock()  # not used in this module
 
 
 
@@ -29,7 +30,7 @@ class GWNBlock(threading.Thread):
         
         @param number_in: the number of input ports of this block.
         @param number_out: the number of output ports of this block.
-        @param timers: a list of timers. TODO: may become tuples to build timers.
+        @param number_timers: a list of timers. TODO: may become tuples to build timers.
         '''        
         threading.Thread.__init__(self)
         self.blkid = blkid
@@ -43,14 +44,14 @@ class GWNBlock(threading.Thread):
         self.set_timer_size(number_timers)
 
 
-    def set_in_size(self,number_in):
+    def set_in_size(self, number_in):
         '''Creates a list of input connections.
 
         Creates a list of InPort instances; each InPort instances will be later assigned a Connector instance to implement the input connection.
         @param number_in: the number of input connections.
         '''
         for i in xrange(0, number_in):
-            port = InPort(self, i)
+            port = gwninport.InPort(self, i)
             print port
             self.ports_in.append(port)
 
@@ -67,14 +68,27 @@ class GWNBlock(threading.Thread):
     def set_timer_size(self, number_timers):
         '''Creates InTimer instances, assigns to block.
 
-        TODO: construction of timers requires interval, event types (timing and stop), total run time, ...
+        Creates a list of InTimer objects with default values; timer characteristics can be set later with function set_timer().
+        @param number_timers: the number of timers.
         '''
         for i in xrange(0, number_timers):
             mytimer = gwntimer.InTimer(self, i)
             print mytimer
             self.timers.append(mytimer)
 
-    def set_timer(self, index,interrupt=True,interval=1,retry=1,nickname1="TimerTimer",nickname2=None,add_info=None):
+
+    def set_timer(self, index, interrupt=True, interval=1, retry=1, \
+            nickname1="TimerTimer", nickname2=None, add_info=None):
+        '''Sets timer values.
+
+        @param index: the timer index position.
+        @param interrupt: if True interrupts timer event generation until set to False.
+        @param interval: the time elapsed between two successively generated timer events.
+        @param retry: the number of events to be generated; once this number is reached, the timer is interrupted until explicitly told to resume even generation.
+        @param nickname1: the nickname of the event to be generated after each interval.
+        @param nickname2: the nickname of the event to be generated once reached the retry number.
+        @param add_info: additional info.
+        ''' 
         mytimer = self.timers[index]        
         mytimer.interval = interval
         mytimer.retry = retry
@@ -82,6 +96,7 @@ class GWNBlock(threading.Thread):
         mytimer.nickname2 = nickname2 
         mytimer.add_info = add_info
         mytimer.interrupt = interrupt
+
 
     def get_port_in(self,index):
         '''Returns an input port in this block.
@@ -164,19 +179,18 @@ class GWNBlock(threading.Thread):
         print self.blkname + ' stopped.'
         return
 
-        
-
 
     ### user defined process code
     ###
-    def process_data(self, port_nr, ev):
+    def process_data(self, port_type, port_nr, ev):
         '''Block specific processing.
 
-        @param port_nr: the port number on which the event was received.
+        @param port_tp_nr: a tuple (port type, port number), the port type and port number on which the event was received.
         @param ev: an Event object.
         '''
-        print 'Processing, block %s, port %d, event %s... ' % \
-            (self.blkname, port_nr, ev),
+        port_type, port_nr
+        print 'Processing, block %s, port %s %d, event %s... ' % \
+            (self.blkname, port_type, port_nr, ev),
         #print '          ', self.ports[port_nr].conn.lsevents
         #time.sleep(1)
         #print ' done with event %s' % (ev,)

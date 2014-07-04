@@ -57,9 +57,9 @@ def test2():
 class BlockCopy(gwnblock.GWNBlock):
     '''Copies event from input into output.
     '''
-    def process_data(self, port_nr, ev):
-        print '\nCopying, block %s, port %d, event %s... ' % \
-            (self.blkname, port_nr, ev),
+    def process_data(self, port_type, port_nr, ev):
+        print '\nCopying, block %s, port %s %d, event %s... ' % \
+            (self.blkname, port_type, port_nr, ev),
         self.write_out(0, ev)
         print 'done.'
         return
@@ -68,7 +68,7 @@ class BlockCopy(gwnblock.GWNBlock):
 class BlockReceive(gwnblock.GWNBlock):
     '''Receives an event, informs.
     '''
-    def process_data(self, port_nr, ev):
+    def process_data(self, port_type, port_nr, ev):
         print 'Received, block %s, port %d, event %s... ' % \
             (self.blkname, port_nr, ev),
         #self.write_out(0, ev)

@@ -35,9 +35,8 @@ class EventSimulator(gwn.GWNBlock) :
 
        
         
-    def process_data(self, portype_nr, ev):  
-        portype,port_nr = portype_nr
-        if portype == "intimer":
+    def process_data(self, port_type, port_nr, ev):
+        if port_type == "intimer":
             if self.nickname=="DataData":
                 event = self.event_data()
             if self.nickname=="CtrlRTS":
@@ -53,7 +52,6 @@ class EventSimulator(gwn.GWNBlock) :
             pass
     
    
-
     def event_data(self):
         event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1

@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Thu Jul  3 15:27:25 2014
+# Generated: Thu Jul  3 22:11:31 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -31,7 +31,7 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.timer_0 = timer.Timer(1, 1,"TimerTimer")	
+		self.timer_0 = timer.Timer(1, 1, "TimerTimer")	
 		self.eventsim_0 = simulator.EventSimulator(5,2, 'TimerConfig',"1","1","TimerTimer")	
 		self.eventconsumer_0 = consumer.EventConsumer("nickname1") 	
 

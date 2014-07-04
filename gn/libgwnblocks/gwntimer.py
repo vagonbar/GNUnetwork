@@ -2,17 +2,20 @@
 # -*- coding: utf-8 -*-
 
 
-import gwnblock
-from gwnblock import thread_lock
-
 import threading
 import time
+
+import gwnblock
 import libevents.if_events as if_events
+
+# constants
+thread_lock = threading.Lock()
 
 class InTimer(threading.Thread):
     '''Generates timing events.
     '''
-    def __init__(self, block, port_nr, interval=1,retry=1,nickname1="TimerTimer",nickname2=None,add_info=None):
+    def __init__(self, block, port_nr, interval=1,retry=1, nickname1="TimerTimer", \
+            nickname2=None, add_info=None):
         '''Constructor.
 
         @param block: the block to which this instance is attached.
@@ -22,7 +25,8 @@ class InTimer(threading.Thread):
         threading.Thread.__init__(self)
         self.accept = []
         self.block = block
-        self.port_nr = ("intimer",port_nr)
+        self.port_type = 'intimer'
+        self.port_nr = port_nr
         self.exit_flag = False
         self.interrupt = True
 
@@ -43,20 +47,22 @@ class InTimer(threading.Thread):
     def run(self):
         '''Runs thread, generates events regularly.
 
-        TODO: uses time.sleep(), cannot resume execution until this function finishes.'''
-        print '  Starting InTimer %d in block %s' % \
-            (self.port_nr[1], self.block.blkname)
+        TODO: uses time.sleep(), cannot resume execution until this function finishes.
+        TODO: does not stop immediately when exit_flag is set!
+        '''
+        print '  Starting InTimer %s %d in block %s' % \
+            (self.port_type, self.port_nr, self.block.blkname)
         while not self.exit_flag:
             if not self.interrupt:
                 i=1
-                while i <= self.retry: 
+                while i <= self.retry and not self.exit_flag: 
                     i=i+1
                     time.sleep(self.interval)
                     if not self.interrupt:
                         self.tout1()
                     else:
                         break    
-                if not self.interrupt:
+                if not self.interrupt and not self.exit_flag:
                     if self.nickname2 is not None:
                         self.tout2()
                 self.interrupt=True
@@ -69,10 +75,10 @@ class InTimer(threading.Thread):
         ev = if_events.mkevent(self.nickname1)
         ev.ev_dc['add_info'] = self.add_info
         thread_lock.acquire()
-        #print '    port %d in block %s generated event %s' % \
-        #    (self.port_nr, self.block.blkname, ev)
+        #print '    port %s %d in block %s generated event %s' % \
+        #    (self.port_type, self.port_nr, self.block.blkname, ev)
         print '   %s' % (ev,)
-        self.block.process_data(self.port_nr, ev)
+        self.block.process_data(self.port_type, self.port_nr, ev)
         thread_lock.release()
      
 
@@ -80,16 +86,16 @@ class InTimer(threading.Thread):
         ev= if_events.mkevent(self.nickname2)
         ev.ev_dc['add_info'] =  self.add_info
         thread_lock.acquire()
-        #print '    port %d in block %s generated event %s' % \
-        #    (self.port_nr, self.block.blkname, ev)
+        #print '    port %s %d in block %s generated event %s' % \
+        #    (self.port_type, self.port_nr, self.block.blkname, ev)
         print '   %s' % (ev,)
-        self.block.process_data(self.port_nr, ev)
+        self.block.process_data(self.port_type, self.port_nr, ev)
         thread_lock.release()
 
 
     def stop(self):
         '''Stops thread.'''
-        print '  ...stopping timer %d in block %s' % (self.port_nr[1], self.block.blkname)
+        print '  ...stopping timer %d in block %s' % (self.port_nr, self.block.blkname)
         self.exit_flag = True
         return
 
@@ -102,8 +108,8 @@ class InTimer(threading.Thread):
         #     (self.__class__, ssaccept, self.conn.is_empty() )
         #return  '  timer [port] %d in block %s, thread %d' % \
         #    (self.port_nr, self.block.blkname, self.get_ident())
-        return  '  timer [port] %d in block %s' % \
-            (self.port_nr[1], self.block.blkname)
+        return  '  timer %s %d in block %s' % \
+            (self.port_type, self.port_nr, self.block.blkname)
 
 
 def test():
@@ -111,29 +117,35 @@ def test():
     '''
 
     # create timers
-    timer0 = InTimer(None, 0, 1)
+    #timer0 = InTimer(None, 0, 1)
     #print timer0
     #blk1.ports_in[0] = timer0
-    timer1 = InTimer(None, 1, 2)
+    #timer1 = InTimer(None, 1, 2)
     #print timer1
     #blk1.ports_in[1] = timer1
 
-    blk1 = gwnblock.GWNBlock(1, 'BlockTimer', 0, 0, [])
-    timer0.block, timer0.port_nr = blk1, 0
-    timer1.block, timer1.port_nr = blk1, 1
-    blk1.set_timers([timer0, timer1])
+    blk1 = gwnblock.GWNBlock(1, 'BlockTimer', 0, 0, 2)
+    time.sleep(2)
+    blk1.set_timer(0, interrupt=False, interval=2, retry=20)
+    blk1.set_timer(1, interrupt=False, interval=1, retry=10)
+    #timer0.block, timer0.port_nr = blk1, 0
+    #timer1.block, timer1.port_nr = blk1, 1
+    #blk1.set_timers([timer0, timer1])
     print blk1
 
     blk1.start()
 
-    time.sleep(5)
+    time.sleep(10)
+
 
     print '--- stopping timer 1 ---'
-    blk1.timers[1].set_interrupt(True)
+    #blk1.timers[1].set_interrupt(True)
+    blk1.set_timer(1, interrupt=True)
     time.sleep(5)
     print '--- restarting timer 1 ---'
-    blk1.timers[1].set_interrupt(False)
-    time.sleep(5)
+    #blk1.timers[1].set_interrupt(False)
+    blk1.set_timer(1, interrupt=False)
+    time.sleep(10)
 
     blk1.stop()
     blk1.join()

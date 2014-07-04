@@ -92,11 +92,6 @@ class AQueueConnector(Connector):
             print 'QueueConnector full, event %s discarded' % (ev,)
         return
 
-    """def is_empty(self):
-        if len(self.lsevents) > 0:
-            return False
-        else:
-            return True"""
 
             
 class InPort(threading.Thread):
@@ -116,7 +111,8 @@ class InPort(threading.Thread):
         #self.conn = AListConnector()
         self.conn = None
         self.block = block
-        self.port_nr = ("inport",port_nr)
+        self.port_type = "inport" 
+        self.port_nr = port_nr
         self.exit_flag = False
 
 
@@ -137,14 +133,15 @@ class InPort(threading.Thread):
                 thread_lock.acquire()
                 print '    port  in block received event ', \
                     self.port_nr, self.block.blkname, ev
-                self.block.process_data(self.port_nr, ev)
+                self.block.process_data(self.port_type, self.port_nr, ev)
                 thread_lock.release()
         return
 
 
     def stop(self):
         '''Stops thread.'''
-        print '  ...stopping port in block ', self.port_nr, self.block.blkname
+        print '  ...stopping port %s %d in block %s' % \
+            (self.port_type, self.port_nr, self.block.blkname)
         self.exit_flag = True
         return
 
@@ -155,7 +152,8 @@ class InPort(threading.Thread):
             ssaccept += ev + ' '
         #return '%s: accepted events: %s, connector empty: %s' % \
         #     (self.__class__, ssaccept, self.conn.is_empty() )
-        return  '  port in block '#,self.port_nr, self.block.blkname
+        return  '  port %s %d in block %s' % \
+            (self.port_type, self.port_nr, self.block.blkname)
 
 
 
