@@ -83,7 +83,7 @@ def test3():
     blk2 = BlockReceive(1, 'BlkReceive', 1, 0)
 
     conn1 = gwninport.AQueueConnector(10)
-    conn2 =  gwninport.AQueueConnector(10)
+    conn2 = gwninport.AQueueConnector(10)
     blk1.set_connection_in(conn1,0)
     blk2.set_connection_in(conn2,0)
     blk1.set_connection_out(conn2, 0)

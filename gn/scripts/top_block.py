@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Fri Jul  4 12:37:56 2014
+# Generated: Fri Jul  4 22:04:43 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -12,6 +12,7 @@ print os.getcwd()
 import sys
 sys.path +=['..']
 import libgwnblocks.gwntopblock as gwnTB
+import libtimer.timer2 as timer
 import libvirtualchannel.eventconsumer2 as consumer
 import libvirtualchannel.eventsimulator3 as simulator
 
@@ -30,7 +31,8 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.eventsim_0 = simulator.EventSimulator(1,3, 'DataData',"100","101","10")	
+		self.timer_0 = timer.Timer(1, 1, "TimerTimer")	
+		self.eventsim_0 = simulator.EventSimulator(5,2, 'TimerConfig',"1","1","TimerTimer")	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
 
 
@@ -39,12 +41,14 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.eventsim_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.timer_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.eventsim_0, 0), (self.timer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
+		self.timer_0.start()
 		self.eventsim_0.start()
 		self.eventconsumer_0.start()
 
@@ -54,6 +58,7 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
+		self.timer_0.stop()
 		self.eventsim_0.stop()
 		self.eventconsumer_0.stop()
 

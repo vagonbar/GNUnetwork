@@ -185,10 +185,10 @@ class GWNBlock(threading.Thread):
     def process_data(self, port_type, port_nr, ev):
         '''Block specific processing.
 
-        @param port_tp_nr: a tuple (port type, port number), the port type and port number on which the event was received.
+        @param port_type: the type of port, a string.
+        @param port_nr: the port number on which the event was received.
         @param ev: an Event object.
         '''
-        port_type, port_nr
         print 'Processing, block %s, port %s %d, event %s... ' % \
             (self.blkname, port_type, port_nr, ev),
         #print '          ', self.ports[port_nr].conn.lsevents

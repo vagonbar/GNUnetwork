@@ -7,21 +7,24 @@ Created on Tue May  7 11:05:17 2013
 @author: belza
 '''
 
-import sys,time
+import sys
+import time
+
 sys.path +=['..']
 import libevents.if_events as if_events
 import libgwnblocks.gwnblock as gwnblock
 import libgwnblocks.gwninport as gwninport
 
+
+
 class EventSimulator(gwnblock.GWNBlock) :
-    '''
-    
+    '''An event generator.
     '''
 
     def __init__(self, interval, retry, nickname, param1=0, param2=0, param3=0):
         '''Constructor.
 
-        TODO: substitute param1, param2, param3 for **kwords.
+        TODO: substitute param1, param2, param3 for **kwords?
         TODO: unify event generation into a single function for all event types.
         @param interval: the time elapsed between two successive events.
         @param retry: the number of events to be generated.
@@ -53,6 +56,7 @@ class EventSimulator(gwnblock.GWNBlock) :
                 event = self.event_ACK()
             if self.nickname=="TimerConfig":      
                 event= self.event_timer_config()
+            print 'eventsimulator3', event.nickname
             self.write_out(0,event)
         else:
             pass
@@ -62,7 +66,7 @@ class EventSimulator(gwnblock.GWNBlock) :
         event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
-        length= self.convert_int(self.param3)
+        length = self.convert_int(self.param3)
         event.ev_dc['frame_length'] = length                         
         event.payload='1'*length
         return event            
@@ -89,7 +93,7 @@ class EventSimulator(gwnblock.GWNBlock) :
         event = if_events.mkevent(self.nickname)
         interval = self.convert_float(self.param1)
         event.ev_dc['interval']=interval
-        retry=self.convert_int(self.param2)
+        retry = self.convert_int(self.param2)
         event.ev_dc['retry']=retry
         event.ev_dc['nickname1']= self.param3
         return event

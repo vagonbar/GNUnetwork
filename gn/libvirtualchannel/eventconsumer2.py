@@ -22,16 +22,15 @@ class EventConsumer(gwnblock.GWNBlock) :
         '''Constructor.
         
         @param nickname: '''
-        super(EventConsumer,self).__init__(1, blkname, 1, 0)
+        super(EventConsumer,self).__init__(1, 'EventConsumer', 1, 0)
         self.blkname = blkname
         
     def process_data(self, port_type, port_nr, ev):
         '''This is the private thread that generates.
         '''
-
         if port_type == "inport":
-		print "Consumer ", self.blkname, "received event: ", ev
-
+  		    #print '--> Consumer %s received event %s' % (self.blkname, ev.__str__())
+            print '--> Consumer', self.blkname, 'received event', ev
 
 
 def test():

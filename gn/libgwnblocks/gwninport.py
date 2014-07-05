@@ -108,7 +108,6 @@ class InPort(threading.Thread):
         '''
         threading.Thread.__init__(self)
         self.accept = []
-        #self.conn = AListConnector()
         self.conn = None
         self.block = block
         self.port_type = "inport" 
@@ -131,8 +130,8 @@ class InPort(threading.Thread):
             ev = self.conn.get()
             if ev:
                 thread_lock.acquire()
-                print '    port  in block received event ', \
-                    self.port_nr, self.block.blkname, ev
+                #print '    port  in block received event ', \
+                #    self.port_nr, self.block.blkname, ev
                 self.block.process_data(self.port_type, self.port_nr, ev)
                 thread_lock.release()
         return
