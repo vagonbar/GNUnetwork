@@ -14,6 +14,7 @@ EXCLUDES=${EXCLUDES}"|libgnuradio|grc|scripts|xml"
 
 
 
+
 if [ ! "$1" ]
 then
   PRJNM=GNUWiNnetwork
@@ -27,8 +28,12 @@ then
 else 
   mkdir html
 fi
+
+### ERROR: with full content nothing was generated!
+# opted for generating only updated versions of code
 #echo "  excluded:" $EXCLUDES
 #epydoc -v --name $PRJNM -o ./html --exclude "$EXCLUDES" gn
-INCLUDES="__init__.py libgwnblocks doc"
+
+INCLUDES="__init__.py libgwnblocks doc libvirtualchannel"
 epydoc -v --name $PRJNM $INCLUDES
 
