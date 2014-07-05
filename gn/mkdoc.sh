@@ -1,7 +1,7 @@
 #!/bin/bash
 # mkdoc.sh: makes epydoc
 
-ALLSUBDIRS="bitacora_belza.txt|doc|draft|grc|gwn-companion.sh|html|__init__.py|__init__.pyc|libadaptationlayer|libadaptlay80211|libevents|libframes|libfsm|libgnuradio|libgwnblocks|libgwnBlocks|libMAC|libmac80211|libmacTDMA|libmanagement|libtimer|libutils|libvirtualchannel|logs|mkdoc.sh|runtests.py|runtests.pyc|runtests.sh|scripts|xml|"
+#ALLSUBDIRS="bitacora_belza.txt|doc|draft|grc|gwn-companion.sh|html|__init__.py|__init__.pyc|libadaptationlayer|libadaptlay80211|libevents|libframes|libfsm|libgnuradio|libgwnblocks|libgwnBlocks|libMAC|libmac80211|libmacTDMA|libmanagement|libtimer|libutils|libvirtualchannel|logs|mkdoc.sh|runtests.py|runtests.pyc|runtests.sh|scripts|xml|"
 
 EXCLUDES="viejos|otros|old|others|draft|libgwnBlocks|logs"
 
@@ -10,7 +10,7 @@ EXCLUDES="viejos|otros|old|others|draft|libgwnBlocks|logs"
 EXCLUDES=${EXCLUDES}"|libgnuradio|grc|scripts|xml"
 #EXCLUDES=${EXCLUDES}"|libfsm|libmanagement|libtimer"
 
-EXCLUDES="bitacora_belza.txt|draft|grc|gwn-companion.sh|libadaptationlayer|libadaptlay80211|libevents|libframes|libfsm|libgnuradio|libgwnBlocks|libMAC|libmac80211|libmacTDMA|libmanagement|libtimer|libvirtualchannel|logs|runtests.py|scripts|xml"
+#EXCLUDES="bitacora_belza.txt|draft|grc|gwn-companion.sh|libadaptationlayer|libadaptlay80211|libevents|libframes|libfsm|libgnuradio|libgwnBlocks|libMAC|libmac80211|libmacTDMA|libmanagement|libtimer|libvirtualchannel|logs|runtests.py|scripts|xml"
 
 
 
