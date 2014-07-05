@@ -34,7 +34,7 @@ fi
 #echo "  excluded:" $EXCLUDES
 #epydoc -v --name $PRJNM -o ./html --exclude "$EXCLUDES" gn
 
-
+# the files to include in doc generation
 INCLUDES="__init__.py libgwnblocks doc libvirtualchannel"
 epydoc -v --name $PRJNM $INCLUDES
 
