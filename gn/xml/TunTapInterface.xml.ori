@@ -8,7 +8,7 @@
 	<name>Tun/Tap Interface</name>
 	<key>tun_tap</key>
      <category>Interfaces</category>
-	<import>import libgwnblocks.gwntuntap as tun_tap</import>
+	<import>import libadaptationlayer.TunTapInterface as tun_tap</import>
 	<make>tun_tap.TunTapInterface($device,$myaddr,$dstaddr)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
