@@ -7,14 +7,14 @@ Created on Thu Dec 13 14:31:45 2012
 @author: belza
 '''
 
-import threading,Queue,time
+import threading, Queue, time
 import sys
 
 #from gwninport import *   # suppress after qulifying all gwninport items
 import gwninport
 import gwntimer
 
-sys.path += sys.path + ['..']
+#sys.path += sys.path + ['..']
 
 #thread_lock = threading.Lock()  # not used in this module
 

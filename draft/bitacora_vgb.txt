@@ -2,6 +2,40 @@ GWN temas pendientes
 VGB
 
 
+
+=== Conversión directorios GWN
+
+== GWN en ampere:
+  - ampere:/iie/ext/grupos/artes/gwn
+  - se cambió gn por gwn.
+Respaldo de código en Git:
+  ampere:/iie/ext/grupos/artes/gwn/gwn_git_20140711.zip
+
+== estructura de archivos y directorios GNW:
+
+    README.md : el readme requerido por Github, descripción del proyecto
+    COPYING : requerido por licencia GPL, el texto de la licencia.
+
+    gn/doc : documentación pública.
+        - guía de estilo.
+        - en el futuro, tutoriales, instructivos de extensión.
+        - a crear subdirectorios necesarios, e.g. uml
+
+    gn/draft: documentación privada, o en preparación.
+        - bitácoras.
+        - instructivos de Github.
+        - preámbulo de licencia, para agregar a archivos de código.
+
+Ajuste variable PYTHONPATH
+
+Add the following lines to your .bashrc file:
+   PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gn
+   export PYTHONPATH
+Then do
+    source .bashrc
+
+
+
 === Reunión jueves 10/07/2014
 
 == Guía de estilo, licencia
@@ -15,43 +49,55 @@ VGB
 
 === The New GWN Library
 
-  - doc, ejemplo de epydoc, guía de estilo, otras guías relativas a código.
-  - html, la documentación de código generada por Epydoc
-  - gwnblocks, las clases abstractas, tests nuestros.
-          - gwntimer --> gwnintimer
-  - gwnevents, eventos, estructura a definir
   - blocks
-    - libadaptationlayer --> libio
-        tuntap ...
-        libgnuradio --> gnuradio
-    - mac
-        libmac80211 --> ieee80211
+      - framers
+          ieee80211
+             framer, deframer 80211
+          strframes
+      - libio <-- libadaptationlayer
+          tuntap ...
+          libgnuradio --> gnuradio
+      - mac
+          libmac80211 --> ieee80211
                             libadaptlay80211
-        libmacTDMA  --> generic_tdma
-        libMAC      --> generic_fdma
-    - libvirtualchannel  --> simulators
+          libmacTDMA  --> generic_tdma
+          libMAC      --> generic_fdma
+      - management <-- libmanagement
+            ieee80211
+                beacon, disc_and_peer
+      - simulators <-- libvirtualchannel
             generators
             consumers
             channels
-    - libmanagement --> management
-            ieee80211
-                beacon, disc_and_peer
-    - framers
-        ieee80211
-             framer, deframer 80211
-        strframes
-    - utilblocks
-        - libtimer --> timer
-        - schedulers
-        - classifiers
-  - libutils  --> utils
-        - fsm
+      - utilblocks
+          - libtimer --> timer
+          - schedulers
+          - classifiers
+
+  - epydoc <-- doc, ejemplo de epydoc, guía de estilo, otras guías relativas a código.
+
+  - gwnblocks, las clases abstractas, tests nuestros.
+          - gwntimer --> gwnintimer
+
+  - gwnevents, eventos, estructura a definir
+
+  - html, la documentación de código generada por Epydoc
+
   - logs
+
+  - scripts
+
+  - utils <-- libutils
+        - fsm
+
   - scripts: nodos armados en el Companion.
+
   - xml: descripción de los bloques para el Companion
+
 A desaparecer:
   - zzversion20140703: lo aún no revisado, o pasado a nuevos bloques.
   - draft, borradores, pruebas.
+
 No ubicada en el nuevo esquema:
   - grc
 

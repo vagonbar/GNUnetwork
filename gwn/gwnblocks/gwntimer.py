@@ -6,7 +6,8 @@ import threading
 import time
 
 import gwnblock
-import libevents.if_events as if_events
+#import libevents.if_events as if_events
+import gwnevents.if_events as if_events
 
 # constants
 thread_lock = threading.Lock()
