@@ -79,6 +79,8 @@ Then do
   - gwnblocks, las clases abstractas, tests nuestros.
           - gwntimer --> gwnintimer
 
+  - gwnc <-- grc, GWN Companion.
+
   - gwnevents, eventos, estructura a definir
 
   - html, la documentación de código generada por Epydoc
@@ -99,7 +101,7 @@ A desaparecer:
   - draft, borradores, pruebas.
 
 No ubicada en el nuevo esquema:
-  - grc
+
 
 
 == Máquina de estados:
