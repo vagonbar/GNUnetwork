@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Wed Jul  9 12:41:57 2014
+# Generated: Thu Jul 10 14:10:26 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -12,7 +12,7 @@ print os.getcwd()
 import sys
 sys.path +=['..']
 import libgwnblocks.gwntopblock as gwnTB
-import libgwnblocks.gwntuntap as tun_tap
+import libtimer.timer2 as timer
 import libvirtualchannel.eventconsumer2 as consumer
 import libvirtualchannel.eventsimulator3 as simulator
 
@@ -31,8 +31,8 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.tun_tap_0 = tun_tap.TunTapInterface("/dev/net/tun","10:10:10:10:10:10","11:11:11:11:11:11")	
-		self.eventsim_0 = simulator.EventSimulator(1,1, 'DataData',"1010101","101010","10")	
+		self.timer_0 = timer.Timer(1, 1, "TimerTimer")	
+		self.eventsim_0 = simulator.EventSimulator(5,2, 'TimerConfig',"1","1","TimerTimer")	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
 
 
@@ -41,14 +41,14 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.eventsim_0, 0), (self.tun_tap_0, 0))
-		self.connect((self.tun_tap_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.timer_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.eventsim_0, 0), (self.timer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.tun_tap_0.start()
+		self.timer_0.start()
 		self.eventsim_0.start()
 		self.eventconsumer_0.start()
 
@@ -58,7 +58,7 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.tun_tap_0.stop()
+		self.timer_0.stop()
 		self.eventsim_0.stop()
 		self.eventconsumer_0.stop()
 

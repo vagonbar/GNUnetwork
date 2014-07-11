@@ -1,0 +1,109 @@
+GWN temas pendientes
+VGB
+
+
+=== Reunión jueves 10/07/2014
+
+== Guía de estilo, licencia
+    Aprobadas en general, ver si surge algo a cambiar.
+
+== Directorios
+  - crear doc en root de GWN, para documentación que no sea código; subdirs
+        uml: diagramas UML y notas relativas
+        notes: bitácoras y notas nuestras, guías Github.
+        License.txt, el texto preámbulo de la licencia.
+
+=== The New GWN Library
+
+  - doc, ejemplo de epydoc, guía de estilo, otras guías relativas a código.
+  - html, la documentación de código generada por Epydoc
+  - gwnblocks, las clases abstractas, tests nuestros.
+          - gwntimer --> gwnintimer
+  - gwnevents, eventos, estructura a definir
+  - blocks
+    - libadaptationlayer --> libio
+        tuntap ...
+        libgnuradio --> gnuradio
+    - mac
+        libmac80211 --> ieee80211
+                            libadaptlay80211
+        libmacTDMA  --> generic_tdma
+        libMAC      --> generic_fdma
+    - libvirtualchannel  --> simulators
+            generators
+            consumers
+            channels
+    - libmanagement --> management
+            ieee80211
+                beacon, disc_and_peer
+    - framers
+        ieee80211
+             framer, deframer 80211
+        strframes
+    - utilblocks
+        - libtimer --> timer
+        - schedulers
+        - classifiers
+  - libutils  --> utils
+        - fsm
+  - logs
+  - scripts: nodos armados en el Companion.
+  - xml: descripción de los bloques para el Companion
+A desaparecer:
+  - zzversion20140703: lo aún no revisado, o pasado a nuevos bloques.
+  - draft, borradores, pruebas.
+No ubicada en el nuevo esquema:
+  - grc
+
+
+== Máquina de estados:
+  - pasar a cada FSM una referencia del bloque invocador para que la FSM pueda usar e.g. write_out del bloque (recomendada).
+  - máquina de GG, ya programada, queda como está o defina él.
+
+
+== Eventos estándar, puertos
+
+  Events:
+        data
+        control
+        management
+        timer
+        config
+
+Eventos config:
+  - tipos set, get, status (entrada); reply (salida)
+  - cada bloque tiene una entrada y una salida para eventos de config
+  - eventos de config sustituyen actuales eventos tipo request. 
+
+
+== Manejo de información.
+  - bloque NetworkConfig, lee de algún lado una serie de variables de configuración, inicialmente comunica (emite eventos de configuración) a los bloques que tiene conectados (write_out); periódicamente revisa si hay cambios de configuración, y si los hay emite eventos de configuración con los nuevos valores.
+
+
+
+
+
+
+
+
+Frames
+  - clases:
+    - un frame genérico con interfaz conocida, esto sería lo único que se ve desde los bloques.
+    - implementaciones de distintos tipos de empaquetados (e.g. 802.11, strings, otros) en subclases.
+
+TUN/TAP, bloque y conector: libgwnblocks/gwntuntap.py
+  - en el test se configura la IP, recibe todo lo que anda por ahí, pero termina.
+  - falta incorporar logger, ver original de tuntap en zzversionXXX/draft/libgwnblocks. No se hizo por no incorporar biblioteca libutils hasta discutir ubicaciones bibliotecas.
+
+Bloques:
+  - para todos los bloques: quitar los print de los bloques, poner solo en los tests.
+
+
+
+  
+
+
+
+
+
+

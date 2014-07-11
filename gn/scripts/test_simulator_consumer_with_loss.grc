@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Jul  4 22:03:43 2014</timestamp>
+  <timestamp>Thu Jul 10 14:09:28 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,53 +84,6 @@
     </param>
   </block>
   <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>CtrlRTS</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>101</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(169, 176)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>eventconsumer</key>
     <param>
       <key>id</key>
@@ -174,6 +127,53 @@
     <param>
       <key>_coordinate</key>
       <value>(431, 123)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>CtrlRTS</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>101</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(169, 159)</value>
     </param>
     <param>
       <key>_rotation</key>
