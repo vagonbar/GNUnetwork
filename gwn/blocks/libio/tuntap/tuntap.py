@@ -21,9 +21,9 @@ import Queue
 import time
 import sys
 
-import gwninport
-import gwnblock
-import libevents.if_events as if_events
+import gwnblocks.gwninport as gwninport
+import gwnblocks.gwnblock as gwnblock
+import gwnevents.if_events as if_events
 
 
 

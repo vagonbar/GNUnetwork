@@ -26,15 +26,27 @@ Respaldo de código en Git:
         - instructivos de Github.
         - preámbulo de licencia, para agregar a archivos de código.
 
-Ajuste variable PYTHONPATH
-
+--- Adjust PYTHONPATH variable for GWN imports
 Add the following lines to your .bashrc file:
-   PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gn
+   # GWN path
+   PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gwn
    export PYTHONPATH
 Then do
     source .bashrc
+Finally try
+    python
+    >>> import blocks.framers.ieee80211
+Should do with no errors.
+WARNING: to test modules which require 'sudo', you must do
+  sudo env PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gwn python tuntap.py 
+since 'sudo python' does not see PYTHONPATH user variable.
 
-
+--- this does not work as such:
+You can set PYTHONPATH system wide to avoid former inconvenience.
+Add this line to /etc/environment:
+   PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gwn
+Variable is seen by sudo, but python module cannot be found.
+---
 
 === Reunión jueves 10/07/2014
 
@@ -47,7 +59,7 @@ Then do
         notes: bitácoras y notas nuestras, guías Github.
         License.txt, el texto preámbulo de la licencia.
 
-=== The New GWN Library
+=== The New GWN Library: gwn
 
   - blocks
       - framers

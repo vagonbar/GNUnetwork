@@ -1,6 +1,5 @@
 GN if_events.txt: doctest file
 
-
 >>> from if_events import *
 
 
@@ -19,7 +18,7 @@ Event class name: EventFrame
   duration: 10
   frame_length: 0
   dst_addr: addr_1
-  Frame packet: 
+  Frame packet: ''
   Payload: ''
 
 --- an ActionOpen event ---
@@ -33,7 +32,7 @@ Event class name: EventFrameMgmt
   duration: 10
   frame_length: 0
   dst_addr: bbbb
-  Frame packet: 
+  Frame packet: ''
   Payload: ''
 
 --- a TimerTOH event
@@ -79,7 +78,7 @@ Event class name: EventFrameMgmt
   duration: 55
   frame_length: 0
   dst_addr: ladir2
-  Frame packet: 
+  Frame packet: ''
   Payload: ''
 >>> frm_actconfirm = evtofrm(ev_actconfirm)
 >>> print frm_actconfirm
@@ -110,7 +109,7 @@ Event class name: EventFrameMgmt
   duration: 20
   frame_length: 0
   dst_addr: beac_2
-  Frame packet: 
+  Frame packet: ''
   Payload: ''
 >>> dc_frbd_fldvals = {'SSID':'--- SSID field, length 34 '.ljust(34,'-')}
 >>> frm_bcn = evtofrm(ev_bcn, fr_dc_frbd_fldvals=dc_frbd_fldvals)
@@ -143,7 +142,7 @@ Event class name: EventFrame
   duration: 55
   frame_length: 0
   dst_addr: data_2
-  Frame packet: 
+  Frame packet: ''
   Payload: 'a DATA frame under test of mkevent'
 >>> frm_data = evtofrm(ev_data)
 >>> print frm_data
@@ -192,7 +191,7 @@ Event class name: EventFrameMgmt
        Event 1 --> Frame obj 1 --> pkt 1   transmitted
 received pkt  --> Frame obj 2 --> Event 2
 
->>> import libframes
+>>> import blocks.framers.ieee80211 as libframes
 
 >>> ev1 = mkevent('ActionClose', ev_dc={'peerlinkId':11, 'duration':12})
 >>> fr1 = evtofrm(ev1)

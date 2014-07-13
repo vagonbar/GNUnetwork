@@ -1,6 +1,7 @@
 libevents changelog
 
-
+=== 2014-07-13, victor
+    Change imports, new library structure
 === 2013-12-01, victor
 
 -- Change module contents.
