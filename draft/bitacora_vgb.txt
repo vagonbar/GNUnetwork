@@ -45,42 +45,41 @@ since 'sudo python' does not see PYTHONPATH user variable.
 You can set PYTHONPATH system wide to avoid former inconvenience.
 Add this line to /etc/environment:
    PYTHONPATH=$PYTHONPATH:<your_GWN_install_dir>/gwn
-Variable is seen by sudo, but python module cannot be found.
----
+--- does not work: variable is seen by sudo, but python module cannot be found.
 
-=== Reunión jueves 10/07/2014
 
-== Guía de estilo, licencia
-    Aprobadas en general, ver si surge algo a cambiar.
-
-== Directorios
-  - crear doc en root de GWN, para documentación que no sea código; subdirs
-        uml: diagramas UML y notas relativas
-        notes: bitácoras y notas nuestras, guías Github.
-        License.txt, el texto preámbulo de la licencia.
 
 === The New GWN Library: gwn
+GWN root directory
+  - doc: general documentation, not code doc.
+      - uml: diagramas UML y notas relativas
+      - notes: bitácoras y notas nuestras, guías Github.
+      License.txt, the license text preamble for all files.
+
+Code diretory: gwn
 
   - blocks
       - framers
-          ieee80211
+          - ieee80211 <-- libframes
              framer, deframer 80211
-          strframes
+             strframes
       - libio <-- libadaptationlayer
-          tuntap ...
-          libgnuradio --> gnuradio
+          - gnuradio <-- libgnuradio
+          - libadaptationlayer
+          - libadaptlay80211
+          - tuntap
       - mac
-          libmac80211 --> ieee80211
-                            libadaptlay80211
-          libmacTDMA  --> generic_tdma
-          libMAC      --> generic_fdma
+          - generic_fdma <-- libMAC
+          - generic_tdma <-- libmacTDMA
+          - ieee80211 <-- libmac80211
+              libadaptlay80211 ? Already in libio
       - management <-- libmanagement
-            ieee80211
+            - ieee80211
                 beacon, disc_and_peer
       - simulators <-- libvirtualchannel
-            generators
-            consumers
-            channels
+            - generators
+            - consumers
+            - channels
       - utilblocks
           - libtimer --> timer
           - schedulers
@@ -102,7 +101,12 @@ Variable is seen by sudo, but python module cannot be found.
   - scripts
 
   - utils <-- libutils
-        - fsm
+        - libfsm
+        - logger
+        - testing
+
+
+
 
   - scripts: nodos armados en el Companion.
 

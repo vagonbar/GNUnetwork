@@ -9,7 +9,7 @@ import sys
 
 import gwnblock
 import gwninport
-import gwntimer
+import gwnintimer
 
 
 
@@ -126,14 +126,9 @@ def test4():
     '''Block with input ports, output ports and timer.
     '''
 
-    #timer0 = gwntimer.InTimer(None, 0, 1)
-
     blk1 = BlockCopy(1, 'BlkCopy', 1, 1, 1)
-    #timer0.block, timer0.port_nr = blk1, 0
-    #blk1.set_timers([timer0])
 
     # same code as test 3
-
     blk2 = BlockReceive(1, 'BlkReceive', 1, 0)
     conn1 = gwninport.AQueueConnector(10)
     conn2 =  gwninport.AQueueConnector(10)

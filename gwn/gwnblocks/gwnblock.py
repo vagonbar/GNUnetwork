@@ -12,7 +12,7 @@ import sys
 
 #from gwninport import *   # suppress after qulifying all gwninport items
 import gwninport
-import gwntimer
+import gwnintimer
 
 #sys.path += sys.path + ['..']
 
@@ -72,7 +72,7 @@ class GWNBlock(threading.Thread):
         @param number_timers: the number of timers.
         '''
         for i in xrange(0, number_timers):
-            mytimer = gwntimer.InTimer(self, i)
+            mytimer = gwnintimer.InTimer(self, i)
             print mytimer
             self.timers.append(mytimer)
 
