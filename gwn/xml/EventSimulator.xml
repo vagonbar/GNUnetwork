@@ -8,7 +8,7 @@
 	<name>Event Simulator</name>
 	<key>eventsim</key>
      <category>Sources</category>
-	<import>import libvirtualchannel.eventsimulator3 as simulator </import>
+	<import>import blocks.simulators.generators.eventsimulator3 as simulator </import>
 	<make>simulator.EventSimulator($interval,$retry, '$nick',$param1,$param2,$param3)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>

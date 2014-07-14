@@ -9,10 +9,10 @@ Created on Thu Dec 13 14:31:45 2012
 
 import sys, Queue, time
 
-import gwnblock
-import gwninport
+import gwnblocks.gwnblock as gwnblock
+import gwnblocks.gwninport as gwninport
 
-sys.path +=sys.path + ['..']
+#sys.path +=sys.path + ['..']
 
 
 

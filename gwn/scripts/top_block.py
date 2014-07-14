@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Thu Jul 10 14:10:26 2014
+# Generated: Mon Jul 14 20:47:04 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -11,10 +11,10 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import libgwnblocks.gwntopblock as gwnTB
-import libtimer.timer2 as timer
-import libvirtualchannel.eventconsumer2 as consumer
-import libvirtualchannel.eventsimulator3 as simulator
+import blocks.simulators.channels.virtualchannel as channel
+import blocks.simulators.consumers.eventconsumer2 as consumer
+import blocks.simulators.generators.eventsimulator3 as simulator
+import gwnblocks.gwntopblock as gwnTB
 
 class top_block(gwnTB.GWNTopBlock):
 
@@ -31,8 +31,8 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.timer_0 = timer.Timer(1, 1, "TimerTimer")	
-		self.eventsim_0 = simulator.EventSimulator(5,2, 'TimerConfig',"1","1","TimerTimer")	
+		self.virtualchannel_0 = channel.GWNVirtualChannel(0.01)	
+		self.eventsim_0 = simulator.EventSimulator(1,3, 'TimerConfig',"","","")	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
 
 
@@ -41,14 +41,14 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.timer_0, 0), (self.eventconsumer_0, 0))
-		self.connect((self.eventsim_0, 0), (self.timer_0, 0))
+		self.connect((self.eventsim_0, 0), (self.virtualchannel_0, 0))
+		self.connect((self.virtualchannel_0, 0), (self.eventconsumer_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.timer_0.start()
+		self.virtualchannel_0.start()
 		self.eventsim_0.start()
 		self.eventconsumer_0.start()
 
@@ -58,7 +58,7 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.timer_0.stop()
+		self.virtualchannel_0.stop()
 		self.eventsim_0.stop()
 		self.eventconsumer_0.stop()
 

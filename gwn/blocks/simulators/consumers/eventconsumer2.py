@@ -10,9 +10,10 @@ Created on 12/02/2014
 import sys
 import time
 
-sys.path += ['..']
-import libgwnblocks.gwnblock as gwnblock
-import libgwnblocks.gwninport as gwninport
+#sys.path += ['..']
+import gwnblocks.gwnblock as gwnblock
+import gwnblocks.gwninport as gwninport
+
 
 class EventConsumer(gwnblock.GWNBlock) :
     '''An event consumer block.

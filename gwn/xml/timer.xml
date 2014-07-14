@@ -8,7 +8,7 @@
 	<name>Timer</name>
 	<key>timer</key>
      <category>Timers</category>
-	<import>import libtimer.timer2 as timer</import>
+	<import>import blocks.utilblocks.timer.timer2 as timer</import>
 	<make>timer.Timer($interval, $retry, $nickname1)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>

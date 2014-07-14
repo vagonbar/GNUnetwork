@@ -8,7 +8,7 @@
 	<name>Virtual Channel</name>
 	<key>virtualchannel</key>
     <category>Interfaces</category>
-	<import>import libvirtualchannel.virtualchannel as channel</import>
+	<import>import blocks.simulators.channels.virtualchannel as channel</import>
 	<make>channel.GWNVirtualChannel($frame_loss)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>

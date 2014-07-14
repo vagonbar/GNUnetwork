@@ -10,10 +10,10 @@ Created on Tue May  7 11:05:17 2013
 import sys
 import time
 
-sys.path +=['..']
-import libevents.if_events as if_events
-import libgwnblocks.gwnblock as gwnblock
-import libgwnblocks.gwninport as gwninport
+#sys.path +=['..']
+import gwnevents.if_events as if_events
+import gwnblocks.gwnblock as gwnblock
+import gwnblocks.gwninport as gwninport
 
 
 

@@ -10,9 +10,9 @@ Created on Thu Dec 13 14:31:45 2012
 import sys
 import random
 
-sys.path +=sys.path + ['..']
+#sys.path +=sys.path + ['..']
 #from libutils.gwnscheduler2 import Scheduler
-import libgwnblocks.gwnblock as gwnblock
+import gwnblocks.gwnblock as gwnblock
 
 
 

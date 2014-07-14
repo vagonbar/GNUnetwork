@@ -67,8 +67,8 @@ and you are welcome to redistribute it.
 """%'GNWversion1'  #%gr.version()
 	parser = OptionParser(usage=usage, version=version)
 	(options, args) = parser.parse_args()
-	from grc.python.Platform import Platform
-	from grc.gui.ActionHandler import ActionHandler
+	from gwnc.python.Platform import Platform
+	from gwnc.gui.ActionHandler import ActionHandler
 	#setup icon using icon theme
 	try: gtk.window_set_default_icon(gtk.IconTheme().load_icon('gnuradio-grc', 256, 0))
 	except: pass
