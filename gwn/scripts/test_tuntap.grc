@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Jul 14 20:43:29 2014</timestamp>
+  <timestamp>Tue Jul 15 11:52:50 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,69 +84,30 @@
     </param>
   </block>
   <block>
-    <key>eventsim</key>
+    <key>tun_tap</key>
     <param>
       <key>id</key>
-      <value>eventsim_0</value>
+      <value>tun_tap_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>nick</key>
-      <value>TimerConfig</value>
+      <key>device</key>
+      <value>"/dev/net/tun"</value>
     </param>
     <param>
-      <key>interval</key>
-      <value>1</value>
+      <key>myaddr</key>
+      <value>10:10:10:10:10:10</value>
     </param>
     <param>
-      <key>retry</key>
-      <value>3</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value></value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value></value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value></value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
+      <key>dstaddr</key>
+      <value>11:11:11:11:11:11</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(267, 69)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>virtualchannel</key>
-    <param>
-      <key>id</key>
-      <value>virtualchannel_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>frame_loss</key>
-      <value>0.01</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(624, 239)</value>
+      <value>(512, 43)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -173,7 +134,54 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(964, 108)</value>
+      <value>(832, 162)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>1010101</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>101010</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(220, 111)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -182,12 +190,12 @@
   </block>
   <connection>
     <source_block_id>eventsim_0</source_block_id>
-    <sink_block_id>virtualchannel_0</sink_block_id>
+    <sink_block_id>tun_tap_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>virtualchannel_0</source_block_id>
+    <source_block_id>tun_tap_0</source_block_id>
     <sink_block_id>eventconsumer_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

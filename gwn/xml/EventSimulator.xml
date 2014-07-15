@@ -8,8 +8,8 @@
 	<name>Event Simulator</name>
 	<key>eventsim</key>
      <category>Sources</category>
-	<import>import blocks.simulators.generators.eventsimulator3 as simulator </import>
-	<make>simulator.EventSimulator($interval,$retry, '$nick',$param1,$param2,$param3)</make>
+	<import>import blocks.simulators.generators.eventsimulator as simulator </import>
+	<make>simulator.EventSimulator($interval, $retry, '$nick', $param1, $param2, $param3)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
 	<param>
@@ -84,16 +84,16 @@
     Event Simulator:
         Each time the Event Simulator block receives a Timer event, 
         it generates a new output event.
-        The user can select the type of the output event and 
-        three parameters. This parameters depend on the type of the
+        The user can select the type of output event and three
+        parameters. These parameters depend on the type of the
         output event.
         For Data, Ctrl and Mgmt events the first two parameters are
         the source address and the destination address. For Data events
         the third parameter is the length of the paylod. For Ctrl and Mgmt
         the third parameter is not used.
-        For the TimerConfig event: parameter1 is the time interval, parameter2
-        is the number of retries and parameter3 is the nickname of the timer
-        event that will be generated.
+        For the TimerConfig event, parameter 1 is the time interval,
+        parameter 2 is the number of retries, and parameter 3 is the 
+        nickname of the timer event that will be generated.
         
         
     </doc>

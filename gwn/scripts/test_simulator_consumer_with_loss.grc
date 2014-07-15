@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Jul 10 14:09:28 2014</timestamp>
+  <timestamp>Tue Jul 15 11:13:24 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -53,7 +53,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(13, 7)</value>
+      <value>(10, 10)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -84,6 +84,76 @@
     </param>
   </block>
   <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>TimerConfig</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value></value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value></value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value></value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(267, 69)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>virtualchannel</key>
+    <param>
+      <key>id</key>
+      <value>virtualchannel_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>frame_loss</key>
+      <value>0.8</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(560, 109)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>eventconsumer</key>
     <param>
       <key>id</key>
@@ -103,77 +173,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(664, 223)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>virtualchannel</key>
-    <param>
-      <key>id</key>
-      <value>virtualchannel_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>frame_loss</key>
-      <value>0.5</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(431, 123)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>CtrlRTS</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>101</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(169, 159)</value>
+      <value>(784, 109)</value>
     </param>
     <param>
       <key>_rotation</key>

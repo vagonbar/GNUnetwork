@@ -8,7 +8,7 @@
 	<name>Event Consumer</name>
 	<key>eventconsumer</key>
       <category>sinks</category>
-	<import>import blocks.simulators.consumers.eventconsumer2 as consumer</import>
+	<import>import blocks.simulators.consumers.eventconsumer as consumer</import>
 	<make>consumer.EventConsumer($blkname) </make>
     <callback>start()</callback>
 	<callback>stop()</callback>

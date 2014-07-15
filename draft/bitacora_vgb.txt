@@ -2,6 +2,18 @@ GWN temas pendientes
 VGB
 
 
+=== Reunión GG, VGB 2014-07-15
+
+Scripts en gwn/scripts
+  - timer2, ¿tiene sentido? Ver en scripts/test_simulator_consumer_timer.grc
+
+Subdirs:
+  - blocks/libio, subdirs.
+
+
+
+
+
 
 === Conversión directorios GWN
 
