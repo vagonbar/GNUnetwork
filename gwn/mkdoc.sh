@@ -37,7 +37,8 @@ fi
 
 # the files to include in doc generation
 
-INCLUDES="__init__.py libgwnblocks doc libvirtualchannel"
-epydoc -v --name $PRJNM $INCLUDES
+#INCLUDES="__init__.py libgwnblocks doc libvirtualchannel"
+#epydoc -v --name $PRJNM $INCLUDES
+/usr/share/pyshared/epydoc/cli -v --name $PRJNM
 
 

@@ -10,7 +10,7 @@ import sys, threading
 sys.path +=sys.path + ['..']
 import libgwnBlocks.gwnBlock as gwn
 
-class gwnSimpleFDMA(gwn.gwnBlock):
+class SimpleFDMA(gwn.GWNBlock):
     '''
     '''
 
@@ -19,7 +19,7 @@ class gwnSimpleFDMA(gwn.gwnBlock):
         Constructor.
         
         '''        
-        super(gwnSimpleFDMA,self).__init__(2,2)
+        super(SimpleFDMA, self).__init__(1, 'SimpleFDMA', 2, 2)
         self.finished = False
         
     def run(self):
@@ -33,10 +33,12 @@ class gwnSimpleFDMA(gwn.gwnBlock):
             for q in self.ports_out[0]:
                 q.put(event,False)                
         return
+
     def stop(self):        
         self.ul.stop()
         self.finished = True
         self._Thread__stop()
+
         
         
     class ReadUL(threading.Thread):

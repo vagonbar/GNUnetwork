@@ -69,7 +69,7 @@ gwn subdirectories:
   - gwnblocks : the abstract classes, tests.
           - gwntimer --> gwnintimer
 
-  - gwnc <-- grc, the GWN Companion.
+  - gwnc <-- grc : the GWN Companion.
 
   - gwnevents : events, structure under design.
 

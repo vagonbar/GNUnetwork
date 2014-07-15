@@ -8,8 +8,8 @@
 	<name>802.11 DeFramer </name>
 	<key>deframer80211</key>
      <category>Framer</category>
-	<import>import libadaptlay80211.gwnDeframer as deframer</import>
-	<make>deframer.gwnDeframer()</make>
+	<import>import blocks.libio.libadaptlay80211.deframer as deframer</import>
+	<make>deframer.Deframer()</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
 	<sink>

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Jun  3 11:45:10 2014</timestamp>
+  <timestamp>Tue Jul 15 15:45:02 2014</timestamp>
   <block>
     <key>options</key>
     <param>
       <key>id</key>
-      <value>top_block</value>
+      <value>top_block1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -17,7 +17,7 @@
     </param>
     <param>
       <key>author</key>
-      <value>ARTES</value>
+      <value></value>
     </param>
     <param>
       <key>description</key>
@@ -53,7 +53,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 10)</value>
+      <value>(-1, 11)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -61,30 +61,123 @@
     </param>
   </block>
   <block>
-    <key>timer</key>
+    <key>variable</key>
     <param>
       <key>id</key>
-      <value>timer_0</value>
+      <value>var_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>interval</key>
-      <value>5</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>3</value>
-    </param>
-    <param>
-      <key>nickname1</key>
-      <value>TimerTimer</value>
+      <key>value</key>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(50, 100)</value>
+      <value>(31, 82)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>queues_size</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>queues_size</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>12</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(21, 149)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>10:10:10:10:10:10</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>11:11:11:11:11:11</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(177, 13)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>framer80211</key>
+    <param>
+      <key>id</key>
+      <value>framer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(437, 57)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -107,7 +200,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(539, 460)</value>
+      <value>(449, 177)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -115,18 +208,26 @@
     </param>
   </block>
   <block>
-    <key>framer80211</key>
+    <key>eventconsumer</key>
     <param>
       <key>id</key>
-      <value>framer80211_0</value>
+      <value>eventconsumer_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
+      <key>blkname</key>
+      <value>blkname</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
       <key>_coordinate</key>
-      <value>(303, 457)</value>
+      <value>(944, 53)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -145,7 +246,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(538, 379)</value>
+      <value>(721, 181)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -156,15 +257,15 @@
     <key>eventconsumer</key>
     <param>
       <key>id</key>
-      <value>eventconsumer_0</value>
+      <value>eventconsumer_1</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>nickname1</key>
-      <value>Consumer Node 1</value>
+      <key>blkname</key>
+      <value>blkname</value>
     </param>
     <param>
       <key>itype</key>
@@ -172,74 +273,13 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(905, 116)</value>
+      <value>(937, 177)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
   </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>100000</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>101000</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Timer</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(308, 61)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <connection>
-    <source_block_id>framer80211_0</source_block_id>
-    <sink_block_id>virtualchannel_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>timer_0</source_block_id>
-    <sink_block_id>eventsim_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>virtualchannel_0</source_block_id>
-    <sink_block_id>deframer80211_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
   <connection>
     <source_block_id>eventsim_0</source_block_id>
     <sink_block_id>framer80211_0</sink_block_id>
@@ -247,8 +287,26 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>deframer80211_0</source_block_id>
+    <source_block_id>framer80211_0</source_block_id>
     <sink_block_id>eventconsumer_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>deframer80211_0</source_block_id>
+    <sink_block_id>eventconsumer_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>framer80211_0</source_block_id>
+    <sink_block_id>virtualchannel_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>virtualchannel_0</source_block_id>
+    <sink_block_id>deframer80211_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
