@@ -21,10 +21,15 @@ import Queue
 import time
 import sys
 
-import gwnblocks.gwninport as gwninport
-import gwnblocks.gwnblock as gwnblock
-import gwnevents.if_events as if_events
-
+try:
+    import gwnblocks.gwninport as gwninport
+    import gwnblocks.gwnblock as gwnblock
+    import gwnevents.if_events as if_events
+except ImportError:
+    print 'tuntap.py, import Error:'
+    print '  adjust PYTHONPATH for sudo:'
+    print '    sudo env PYTHONPATH=<your_gwn_path>/gwn/ python tuntap.py'
+    sys.exit()
 
 
 class ATunTapConnector(gwninport.Connector):
@@ -203,12 +208,10 @@ def test2():
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if sys.argv[1] == '2':
+        if sys.argv[1] == '1':
+            test = test1
+        elif sys.argv[1] == '2':
             test = test2
-        elif sys.argv[1] == '3':
-            test = test3
-        elif sys.argv[1] == '4':
-            test = test4
     else:
         test = test2
         #print 'tuntapport: please do'

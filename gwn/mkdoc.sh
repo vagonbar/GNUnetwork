@@ -39,6 +39,8 @@ fi
 
 #INCLUDES="__init__.py libgwnblocks doc libvirtualchannel"
 #epydoc -v --name $PRJNM $INCLUDES
-/usr/share/pyshared/epydoc/cli -v --name $PRJNM
+#/usr/share/pyshared/epydoc/cli -v --name $PRJNM
+python /usr/share/pyshared/epydoc/cli.py -v --name GNUWiNetwork --exclude "gwnc" .
+
 
 

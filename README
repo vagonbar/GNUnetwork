@@ -39,14 +39,14 @@ gwn subdirectories:
 
   - blocks
       - framers
-          - ieee80211 <-- libframes
+          - ieee80211 <-- libframes         ### 2014-07-16 all tests pass
              framer, deframer 80211
              strframes
       - libio <-- libadaptationlayer
           - gnuradio <-- libgnuradio
           - libadaptationlayer
           - libadaptlay80211
-          - tuntap
+          - tuntap                          ### 2014-07-16 all tests pass
       - mac
           - generic_fdma <-- libMAC
           - generic_tdma <-- libmacTDMA
@@ -55,10 +55,10 @@ gwn subdirectories:
       - management <-- libmanagement
             - ieee80211
                 beacon, disc_and_peer
-      - simulators <-- libvirtualchannel
-            - generators
-            - consumers
-            - channels
+      - simulators <-- libvirtualchannel    ### 2014-07-16 all tests pass
+            - generators                    ### 2014-07-16 all tests pass
+            - consumers                     ### 2014-07-16 all tests pass
+            - channels                      ### no tests
       - utilblocks
           - libtimer --> timer
           - schedulers
@@ -66,7 +66,7 @@ gwn subdirectories:
 
   - epydoc <-- doc : the Epydoc generated code documentation.
 
-  - gwnblocks : the abstract classes, tests.
+  - gwnblocks : the abstract classes, tests.     ### 2014-07-16 all tests pass
           - gwntimer --> gwnintimer
 
   - gwnc <-- grc : the GWN Companion.

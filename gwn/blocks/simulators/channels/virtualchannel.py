@@ -21,7 +21,7 @@ class GWNVirtualChannel(gwnblock.GWNBlock):
     '''
 
 
-    def __init__(self,frame_loss):
+    def __init__(self, frame_loss):
         ''' Constructor.
         
         @param frame_loss: rate of frame loss, in [0, 1]; 0 is no loss, all frames transferred; 1 is total loss, no frame transferred.

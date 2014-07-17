@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+'''The GWN inside timer class.
+'''
 
 import threading
 import time

@@ -10,11 +10,21 @@ Scripts en gwn/scripts
 Subdirs:
   - blocks/libio, subdirs, ¿no serán muchos?
 
-Tests:
-  - los de cada módulo, los doctests en archivos separados.
-
 Bitácora Belza:
   - revisar las conversiones para adaptar el companion.
+
+Cuestiones a resolver:
+  - framers, ¿bajo blocks? ¿que va bajo blocks? E.g. todo lo que puedan generar otros o diferentes formas, por contraposición a los gwn, que son genéricos.
+  - acceso a gnuradio, "import gnuradio as gr"
+
+Framers:
+  - bajo gwn
+  - framers.py es genérico, para todas las implementaciones de frames.
+  - subdir ieee80211, frames IEEE 802.11
+  - subdir strframes, frames en formato string.
+  - subdir XXX, frames en formato XXX.
+  - todos los subdirs contienen un módulo if_frames con las funciones
+
 
 
 

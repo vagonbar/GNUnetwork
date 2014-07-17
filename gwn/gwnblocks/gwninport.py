@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 
 '''
-Created on Thu Dec 13 14:31:45 2012
-
-@author: belza
+The GWN input port and connector classes.
 '''
 
-import threading, Queue,time
+import threading, Queue, time
 import sys
 sys.path += sys.path + ['..']
 

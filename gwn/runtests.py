@@ -44,7 +44,9 @@ for tstfl in lststfiles:
     #pkg = os.path.basename(mndir)
     #print '    package: ', pkg
     #tstrslt = doctest.testfile(fname, package=pkg)
+
     tstrslt = doctest.testfile(fname, verbose=False, report=False)
+
     #tstrslt = ''
     os.chdir(curdir)
     #print '    EN ' + os.getcwd()

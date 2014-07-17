@@ -8,8 +8,8 @@
 	<name>GNURADIO Tx/RX Modulator Interface</name>
 	<key>gnuradio_psk</key>
      <category>Interfaces</category>
-	<import>import libgnuradio.gwnGnuRadiopsk as psk</import>
-	<make>psk.gwnGnuRadiopsk( $sps, $version, $antenna, $rx_freq, $rx_gain, $spec, $tx_gain, '$modulation', $args,  $bitrate, $tx_freq, $tx_amplitude)</make>
+	<import>import blocks/libio/gnuradio/gwngnuradiopsk as psk</import>
+	<make>psk.GWNGnuRadioPSK( $sps, $version, $antenna, $rx_freq, $rx_gain, $spec, $tx_gain, '$modulation', $args,  $bitrate, $tx_freq, $tx_amplitude)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
   
