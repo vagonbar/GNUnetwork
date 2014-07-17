@@ -47,16 +47,16 @@ gwn subdirectories:
           - strframes : framer, deframer blocks for string frames (not yet)
       - libio
           - gnuradio <-- libgnuradio
-          - tuntap                          ### 2014-07-16 all tests pass
+          - tuntap                          ### 2014-07-17 all tests pass
       - mac
           - generic_fdma <-- libMAC
           - generic_tdma <-- libmacTDMA
           - ieee80211 <-- libmac80211
       - management <-- libmanagement
             - ieee80211 : beacon, discovery and peering (to rebuild)
-      - simulators <-- libvirtualchannel    ### 2014-07-16 all tests pass
-            - generators                    ### 2014-07-16 all tests pass
-            - consumers                     ### 2014-07-16 all tests pass
+      - simulators <-- libvirtualchannel    ### 2014-07-17 all tests pass
+            - generators                    ### 2014-07-17 all tests pass
+            - consumers                     ### 2014-07-17 all tests pass
             - channels                      ### no tests
       - utilblocks
           - classifiers (empty for now)
@@ -65,7 +65,7 @@ gwn subdirectories:
 
   - epydoc <-- doc : how to write docstrings for the Epydoc documentation program.
 
-  - gwnblocks : the abstract classes, tests.     ### 2014-07-16 all tests pass
+  - gwnblocks : the abstract classes, tests.     ### 2014-07-17 all tests pass
           - gwntimer --> gwnintimer
 
   - gwnc <-- grc : the GWN Companion.
@@ -91,29 +91,26 @@ gwn subdirectories:
 
   - utils <-- libutils
         - framers
-            - ieee80211 <-- libframes           ### 2014-07-16 all tests pass
+            - ieee80211 <-- libframes           ### 2014-07-17 all tests pass
             - strframes (not yet)
         - libfsm : Finite State Machines.
         - logger : the GWN logger facility.
         - testing : test code.
 
   - xml : block descriptions for the GWN Companion
-        80211DeFramer.xml                       ### 2014-07-16 block working
-        80211Framer.xml                         ### 2014-07-16 block working
-        EventConsumer.xml                       ### 2014-07-16 block working
-        EventSimulator.xml                      ### 2014-07-16 block working
+        80211DeFramer.xml                       ### 2014-07-17 block working
+        80211Framer.xml                         ### 2014-07-17 block working
+        EventConsumer.xml                       ### 2014-07-17 block working
+        EventSimulator.xml                      ### 2014-07-17 block working
         evtype_clasifier.xml
-        fdma.xml                                ### 2014-07-16 block working
+        fdma.xml                                ### 2014-07-17 block working
         gnuradio-grc.desktop
         gnuradiopsk.xml
-        options.xml                             ### 2014-07-16 block working
-        parameter.xml                           ### 2014-07-16 block working
-        timer.xml                               ### 2014-07-16 block working
-        TunTapInterface.xml                     ### 2014-07-16 block working
-        variable.xml                            ### 2014-07-16 block working
-        virtualchannel.xml                      ### 2014-07-16 block working
+        options.xml                             ### 2014-07-17 block working
+        parameter.xml                           ### 2014-07-17 block working
+        timer.xml                               ### 2014-07-17 block working
+        TunTapInterface.xml                     ### 2014-07-17 block working
+        variable.xml                            ### 2014-07-17 block working
+        virtualchannel.xml                      ### 2014-07-17 block working
 
-
-To disappear:
-  - zzversion20140703: code not yet revised.
 
