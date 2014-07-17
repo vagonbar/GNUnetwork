@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 ###################################################
-##Parameter block: a grc variable with key, value
+## Parameter block: a grc variable with key, value
 ###################################################
  -->
 <block>
@@ -9,6 +9,7 @@
 	<key>parameter</key>
 	<var_make>self.$(id) = $(id)</var_make>
 	<make>$value</make>
+
 	<param>
 		<name>Label</name>
 		<key>label</key>
@@ -16,12 +17,14 @@
 		<type>string</type>
 		<hide>#if $label() then 'none' else 'part'#</hide>
 	</param>
+
 	<param>
 		<name>Value</name>
 		<key>value</key>
 		<value>0</value>
 		<type>$type.type</type>
 	</param>
+
 	<param>
 		<name>Type</name>
 		<key>type</key>
@@ -66,21 +69,25 @@
 		</option>
 		-->
 	</param>
+
 	<param>
 		<name>Short ID</name>
 		<key>short_id</key>
 		<value></value>
 		<type>string</type>
 		<hide>#if not $type()
-all#slurp
-#elif $short_id()
-none#slurp
-#else
-part#slurp
-#end if</hide>
+            all#slurp
+            #elif $short_id()
+            none#slurp
+            #else
+            part#slurp
+            #end if
+        </hide>
 	</param>
+
 	<check>len($short_id) in (0, 1)</check>
 	<check>$short_id == '' or $(short_id).isalpha()</check>
+
 	<doc>
 This block represents a parameter to the flow graph. \
 A parameter can be used to pass command line arguments into a top block. \

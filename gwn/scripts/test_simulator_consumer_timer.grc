@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Jul  4 22:05:30 2014</timestamp>
+  <timestamp>Thu Jul 17 13:46:05 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -76,38 +76,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 170)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>timer</key>
-    <param>
-      <key>id</key>
-      <value>timer_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>nickname1</key>
-      <value>TimerTimer</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(503, 64)</value>
+      <value>(12, 94)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -154,7 +123,38 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(147, 156)</value>
+      <value>(188, 37)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>timer</key>
+    <param>
+      <key>id</key>
+      <value>timer_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>nickname1</key>
+      <value>TimerTimer</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(516, 61)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -181,7 +181,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(770, 199)</value>
+      <value>(795, 77)</value>
     </param>
     <param>
       <key>_rotation</key>

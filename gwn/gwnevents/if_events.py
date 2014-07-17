@@ -22,11 +22,11 @@ import evtimer
 import evrequest
 import evframes80211
 
-from blocks.framers.ieee80211.mac_frmbld import MacFrameException
+from utils.framers.ieee80211.mac_frmbld import MacFrameException
 from gwnevents.events import EventNameException 
 
 # import if_frames for test function
-from blocks.framers.ieee80211 import if_frames as if_frames
+from utils.framers.ieee80211 import if_frames as if_frames
 
 
 

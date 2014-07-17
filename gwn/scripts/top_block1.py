@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Tue Jul 15 15:42:34 2014
+# Generated: Thu Jul 17 15:30:32 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -10,8 +10,8 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import blocks.libio.libadaptlay80211.deframer as deframer
-import blocks.libio.libadaptlay80211.framer as framer
+import blocks.framers.ieee80211.deframer as deframer
+import blocks.framers.ieee80211.framer as framer
 import blocks.simulators.channels.virtualchannel as channel
 import blocks.simulators.consumers.eventconsumer as consumer
 import blocks.simulators.generators.eventsimulator as simulator

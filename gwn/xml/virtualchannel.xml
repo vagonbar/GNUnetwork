@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 ###################################################
-##Timer block
+## Virtual Channel block
 ###################################################
  -->
 <block>
@@ -12,6 +12,7 @@
 	<make>channel.GWNVirtualChannel($frame_loss)</make>
 	<callback>start()</callback>
 	<callback>stop()</callback>
+
 	<param>
 		<name>Loss Probability</name>
 		<key>frame_loss</key>
@@ -23,12 +24,13 @@
 		<name>in</name>
 		<type>Event</type>            
 	</sink>
-     	<source>
+
+   	<source>
 		<name>out</name>
 		<type>Event</type>
 	</source>
 
      <doc>
-    A virtual channel with frame loss.
-    </doc>
+     A virtual channel with frame loss.
+     </doc>
 </block>

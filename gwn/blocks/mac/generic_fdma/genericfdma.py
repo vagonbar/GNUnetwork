@@ -17,10 +17,9 @@ class GenericFDMA(gwn.GWNBlock):
     '''A simple FDMA.
     '''
 
-    def __init__(self,bandDL1,bandUL1):
-        '''  
-        Constructor.
-        
+    #def __init__(self,bandDL1,bandUL1):
+    def __init__(self):
+        '''Constructor.
         '''        
         super(GenericFDMA, self).__init__(1, 'GenericFDMA', 2, 2)
         self.finished = False

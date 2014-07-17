@@ -7,7 +7,7 @@
 '''
 
 from events import Event, EventNameException
-import blocks.framers.ieee80211.if_frames as if_frames
+import utils.framers.ieee80211.if_frames as if_frames
 
 
 class EventFrame(Event):

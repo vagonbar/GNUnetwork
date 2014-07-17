@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 '''
-Created on Thu Dec 13 14:31:45 2012
+Tests how many threads can be opened.
 
+Created on Thu Dec 13 14:31:45 2012
 @author: belza
 '''
 
@@ -15,7 +16,7 @@ class gwnBlock(threading.Thread):
     '''The main block. All blocks inherit from it.
     '''
 
-    def __init__(self, number_in=0,number_out=0):
+    def __init__(self, number_in=0,number_out=0,number=0):
         '''  
         Constructor.
         
@@ -28,10 +29,13 @@ class gwnBlock(threading.Thread):
         self.finished = False
         self.set_in_size(number_in)
         self.set_out_size(number_out)
+        self.number = number
 
-#    def run(self):
-#        pass    
-
+    def run(self):
+        while 1:
+           aux = self.ports_in[0].get()
+           print aux,self.number
+           
     def set_in_size(self,number_in):
         '''Creates a list of input connections.
 
@@ -83,17 +87,26 @@ class gwnBlock(threading.Thread):
 def test():
     '''A test function.
     '''
+    
     myQueue=Queue.Queue(10)
-    gwnblock =gwnBlock(5,7)
-    gwnblock.set_connection_in(myQueue,3)
-    gwnblock.ports_in[3].put("hola")
-    print gwnblock.ports_in   
-    print gwnblock.ports_in[3].get()
-    gwnblock.set_connection_out(myQueue,2)
-    gwnblock.ports_out[2].put("hola")
-    print gwnblock.ports_out   
-    print gwnblock.ports_out[2].get()
-    gwnblock.set_connection_out(myQueue,9)
+    myQueue1=400*[None]
+    gwnblock=400*[None]
+    i=1
+    while i<375:
+        gwnblock[i] =gwnBlock(5,7,i)
+        myQueue1[i]=Queue.Queue(10)
+        gwnblock[i].set_connection_in(myQueue1[i],0)
+        gwnblock[i].set_connection_in(myQueue,3)
+        myQueue1[i].put("hola")
+        gwnblock[i].start()
+        i=i+1
+    myQueue1[20].put("chau")
+    gwnblock[1].join()
+#    gwnblock.set_connection_out(myQueue,2)
+#    gwnblock.ports_out[2].put("hola")
+#    print gwnblock.ports_out   
+#    print gwnblock.ports_out[2].get()
+#    gwnblock.set_connection_out(myQueue,9)
  
     
 

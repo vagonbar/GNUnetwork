@@ -1,23 +1,25 @@
 <?xml version="1.0"?>
 <!--
 ###################################################
-##First block
+## Event Consumer block
 ###################################################
  -->
 <block>
 	<name>Event Consumer</name>
 	<key>eventconsumer</key>
-      <category>sinks</category>
+    <category>Sinks</category>
 	<import>import blocks.simulators.consumers.eventconsumer as consumer</import>
 	<make>consumer.EventConsumer($blkname) </make>
     <callback>start()</callback>
 	<callback>stop()</callback>
+
 	<param>
 		<name>blkname</name>
 		<key>blkname</key>
 		<value>blkname</value>
 		<type>string</type>
 	</param>
+
     <param>
 		<name>Input Type</name>
 		<key>itype</key>
@@ -27,6 +29,7 @@
 		   <key>Event</key>
 		</option>
 	</param>
+
 	<sink>
 		<name>in</name>
 		<type>$itype</type>

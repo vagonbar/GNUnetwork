@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 ###################################################
-##Options Block:
+## Options Block:
 ## options for window size,
 ## and flow graph building.
 ###################################################
@@ -11,8 +11,10 @@
 	<key>options</key>
 	<import>import gwnblocks.gwntopblock as gwnTB</import>
 	<make></make>
-	<callback>if $run: self.start()
-else: self.stop(); self.wait()</callback>
+	<callback>
+        if $run: self.start()
+        else: self.stop(); self.wait()
+    </callback>
 	<param>
 		<name>Title</name>
 		<key>title</key>
@@ -20,6 +22,7 @@ else: self.stop(); self.wait()</callback>
 		<type>string</type>
 		<hide>#if $title() then 'none' else 'part'#</hide>
 	</param>
+
 	<param>
 		<name>Author</name>
 		<key>author</key>
@@ -27,6 +30,7 @@ else: self.stop(); self.wait()</callback>
 		<type>string</type>
 		<hide>#if $author() then 'none' else 'part'#</hide>
 	</param>
+
 	<param>
 		<name>Description</name>
 		<key>description</key>
@@ -34,6 +38,7 @@ else: self.stop(); self.wait()</callback>
 		<type>string</type>
 		<hide>#if $description() then 'none' else 'part'#</hide>
 	</param>
+
 	<param>
 		<name>Window Size</name>
 		<key>window_size</key>
@@ -41,6 +46,7 @@ else: self.stop(); self.wait()</callback>
 		<type>int_vector</type>
 		<hide>part</hide>
 	</param>
+
 	<param>
 		<name>Generate Options</name>
 		<key>generate_options</key>
@@ -63,6 +69,7 @@ else: self.stop(); self.wait()</callback>
 			<key>hb</key>
 		</option>
 	</param>
+
 	<param>
 		<name>Category</name>
 		<key>category</key>
@@ -70,6 +77,7 @@ else: self.stop(); self.wait()</callback>
 		<type>string</type>
 		<hide>#if $generate_options() == 'hb' then 'none' else 'all'#</hide>
 	</param>
+
 	<param>
 		<name>Run Options</name>
 		<key>run_options</key>
@@ -85,21 +93,22 @@ else: self.stop(); self.wait()</callback>
 			<key>prompt</key>
 		</option>
 	</param>
+
 	<param>
 		<name>Run</name>
 		<key>run</key>
 		<value>True</value>
 		<type>bool</type>
 		<hide>
-#if $generate_options() in ('qt_gui', 'wx_gui')
-	#if $run()
-		part
-	#else
-		none
-	#end if
-#else
-	all
-#end if
+            #if $generate_options() in ('qt_gui', 'wx_gui')
+	            #if $run()
+            		part
+            	#else
+		            none
+            	#end if
+            #else
+            	all
+            #end if
 		</hide>
 		<option>
 			<name>Autostart</name>
@@ -110,31 +119,36 @@ else: self.stop(); self.wait()</callback>
 			<key>False</key>
 		</option>
 	</param>
+
 	<param>
 		<name>Max Number of Output</name>
 		<key>max_nouts</key>
 		<value>0</value>
 		<type>int</type>
-		<hide>#if $generate_options() == 'hb'
-all#slurp
-#elif $max_nouts()
-none#slurp
-#else
-part#slurp
-#end if</hide>
+		<hide>
+            #if $generate_options() == 'hb'
+                all#slurp
+            #elif $max_nouts()
+                none#slurp
+            #else
+                part#slurp
+            #end if
+        </hide>
 	</param>
 	<param>
 		<name>Realtime Scheduling</name>
 		<key>realtime_scheduling</key>
 		<value></value>
 		<type>enum</type>
-		<hide>#if $generate_options() == 'hb'
-all#slurp
-#elif $realtime_scheduling()
-none#slurp
-#else
-part#slurp
-#end if</hide>
+		<hide>
+            #if $generate_options() == 'hb'
+                all#slurp
+            #elif $realtime_scheduling()
+                none#slurp
+            #else
+                part#slurp
+            #end if
+        </hide>
 		<option>
 			<name>Off</name>
 			<key></key>
@@ -144,9 +158,11 @@ part#slurp
 			<key>1</key>
 		</option>
 	</param>
+
 	<check>len($window_size) == 2</check>
 	<check>300 &lt;= $(window_size)[0] &lt;= 4096</check>
 	<check>300 &lt;= $(window_size)[1] &lt;= 4096</check>
+
 	<doc>
 The options block sets special parameters for the flow graph. \
 Only one option block is allowed per flow graph.
