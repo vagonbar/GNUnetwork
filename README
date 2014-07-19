@@ -63,7 +63,7 @@ gwn subdirectories:
           - schedulers  (empty for now)
           - timer <-- libtimer              ### 2014-07-17 all tests pass
 
-  - epydoc_doc <-- doc : how to write docstrings for the Epydoc documentation program.
+  - epydoc_doc  <-- doc : how to write docstrings for the Epydoc documentation program.
 
   - gwnblocks : the abstract classes, tests.     ### 2014-07-17 all tests pass
           - gwntimer --> gwnintimer
