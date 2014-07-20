@@ -50,7 +50,7 @@ def mklslic(withgr=False):
     '''Makes list of license lines, optionally including GNU Radio recognition.
 
     @param withgr: if True, adds GNU Radio recognition.
-    @eturn: list of license lines.
+    @return: list of license lines.
     '''
     if withgr:
         return lslic1 + lslicgr + lslic2

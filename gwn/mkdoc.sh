@@ -6,6 +6,8 @@ EXCLUDES="viejos|otros|old|others|draft|logs"
 
 EXCLUDES=${EXCLUDES}"|gwnc|scripts|xml"
 
+EXCLUDES=${EXCLUDES}"|gnuradio|mac"
+
 if [ ! "$1" ]
 then
   PRJNM=GNUWiNnetwork
@@ -20,4 +22,7 @@ else
   mkdir html
 fi
 
-epydoc -v --name $PRJNM -o ./html --exclude "$EXCLUDES" .
+CURDIR=`pwd`
+#echo $CURDIR
+#echo epydoc -v --name $PRJNM -o ${CURDIR}/html --exclude "$EXCLUDES" .
+epydoc -v --name $PRJNM -o ${CURDIR}/html --exclude "$EXCLUDES" .

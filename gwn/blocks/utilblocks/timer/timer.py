@@ -24,7 +24,8 @@ class Timer(gwn.GWNBlock):
     The timer retries the number of times gven in the parameter retry. After the given number of retries it generates the event of Type TIMER and subtype given in subTypeEvent2 if it is not None.
     '''
 
-    def __init__(self, interval=1, retry=1, nickname1="TimerTimer", nickname2=None):
+    def __init__(self, interval=1, retry=1, nickname1="TimerTimer", nickname2=None, \
+            add_info=None):
         '''Constructor.
         
         @param interval: the interval of time.

@@ -22,7 +22,8 @@ class EventConsumer(gwnblock.GWNBlock) :
     def __init__(self, blkname):
         '''Constructor.
         
-        @param nickname: '''
+        @param blkname: the block name.
+        '''
         super(EventConsumer,self).__init__(1, 'EventConsumer', 1, 0)
         self.blkname = blkname
         

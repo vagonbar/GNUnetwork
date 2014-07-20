@@ -15,7 +15,7 @@ sys.path += ['.']
 curdir = os.getcwd()
 
 
-omitdirs = ['/old/', '/gnu/']
+omitdirs = ['/old/', '/gnu/', '/gwnc/', '/html/']
 lststfiles = []
 # selects .txt files in directory tree except if dir in omitdirs
 for dirpath, dirnames, filenames in os.walk('.'):
