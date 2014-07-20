@@ -1,7 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+#    This file is part of GNUWiNetwork,
+#    Copyright (C) 2014 by 
+#        Pablo Belzarena, Gabriel Gomez Sena, Victor Gonzalez Barbone,
+#        Facultad de Ingenieria, Universidad de la Republica, Uruguay.
+#
+#    GNUWiNetwork is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GNUWiNetwork is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
+#
 
-'''Classes and functions to handle events from and to IEEE 802.11 frames.
+
+'''A library for events with IEEE 802.11 frames.
 
 @var dc_nicknames: a dictionary of nicknames, types, subtypes, and classnames, C{ {nickname: (type, subtype, classname)} }; C{classname} is the class used to build the object. This dictionary allows to build a frame event object by just saying its nickname. Module function C{mkevent()} uses this module variable.
 '''
@@ -109,3 +129,4 @@ if __name__ == '__main__':
     import doctest
     doctest.testmod()
     
+

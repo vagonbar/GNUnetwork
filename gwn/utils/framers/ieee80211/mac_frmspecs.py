@@ -1,15 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+#    This file is part of GNUWiNetwork,
+#    Copyright (C) 2014 by 
+#        Pablo Belzarena, Gabriel Gomez Sena, Victor Gonzalez Barbone,
+#        Facultad de Ingenieria, Universidad de la Republica, Uruguay.
+#
+#    GNUWiNetwork is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GNUWiNetwork is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
+#
 
-# mac_frmspecs : format specifications for MAC management frames.
 
-'''Data variables to specify MAC frame structures.
+
+'''Model classes for specification of frame structures.
 
 @var dc_frmclasses: A dictionary {frame_name: (frame_class, framebody_class) }, where frame class is the class which builds the frame, and framebody_class is the class which builds the frame body, if the frame body is structured, as in Management frames.
 '''
 
 import copy
-
 
 
 class FrameSpecsException(Exception):
@@ -329,6 +347,7 @@ def showfldvals(obj):
         print '--- Frame Body fields ---'
         print obj._fb_obj   # frame body
     return
+
 
 
 

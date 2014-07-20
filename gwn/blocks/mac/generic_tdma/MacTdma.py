@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-Created on Mon Dec 10 14:55:52 2012
-
-@author: belza
+A MAC TDMA module.
 '''
 
 import sys

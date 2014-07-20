@@ -19,8 +19,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
 #
-# epydoc_example.py : example code for the use of Epydoc
-#
+
 
 '''Example code for the Epydoc documentation generation.
 
@@ -93,3 +92,4 @@ class ClassA:
         '''
     pass
     
+

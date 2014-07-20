@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 
 '''
-Created on Thu Dec 13 14:31:45 2012
-
-@author: belza
+A generic FDMA block.
 '''
+
 import sys, threading
 #sys.path +=sys.path + ['..']
 

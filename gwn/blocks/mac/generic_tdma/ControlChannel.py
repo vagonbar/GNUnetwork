@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Created on Tue May  7 11:05:17 2013
-
-@author: belza
+A control channel block.
 '''
 
 import sys
