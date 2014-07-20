@@ -15,12 +15,12 @@ then
 else
   PRJNM="$1"
 fi
-if [ -d "html" ]
-then
-  rm -r html/*
-else 
-  mkdir html
-fi
+#if [ -d "html" ]
+#then
+#  rm -r html/*
+#else 
+#  mkdir html
+#fi
 
 CURDIR=`pwd`
 #echo $CURDIR
