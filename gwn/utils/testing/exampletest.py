@@ -21,7 +21,7 @@
 #
 
 
-'''A module to show the use of doctest in testing.
+'''Use of doctest in testing.
 
 Instructions to use:
 

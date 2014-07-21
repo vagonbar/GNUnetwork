@@ -3,7 +3,5 @@
 
 # GNU network __init__ package file
 
-'''A library for fsm.
-
-
+'''A library for Finite State Machines (FSM).
 '''

@@ -22,7 +22,7 @@
 
 
 '''
-An event generator simuulator.
+An event generator simulator.
 '''
 
 import sys

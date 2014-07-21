@@ -7,7 +7,7 @@ Package module documentation goes in file C{__init__.py}, which may be empty but
 
 Generate Epydoc documentation with the following command (C{man epydoc} for more options)::
 
-    epydoc -v -n <nombre_proyecto> --exclude="<subdir1>|<subdir2>" .
+    epydoc -v -n <project name> --exclude="<subdir1>|<subdir2>" .
 
 This creates a directory named 'html' in the working directory.
 
@@ -26,7 +26,7 @@ A script to generate Epydoc documentation follows::
         else 
             mkdir html
         fi
-        epydoc -v -n $PRJNM --exclude="viejos|otros" .
+        epydoc -v -n $PRJNM --exclude="draft|old" .
     fi
 
 References:

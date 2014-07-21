@@ -20,8 +20,9 @@
 #    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+"""Implementation of a Finite State Machine (FSM).
 
-"""This module implements a Finite State Machine (FSM). In addition to state
+This module implements a Finite State Machine (FSM). In addition to state
 this FSM also maintains a user defined "memory". So this FSM can be used as a
 Push-down Automata (PDA) since a PDA is a FSM + memory.
 

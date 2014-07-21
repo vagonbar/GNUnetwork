@@ -3,6 +3,6 @@
 
 # libframes : frames library, version 2
 
-'''A library for MAC fFrames.
+'''A library for MAC Frames.
 '''
 
