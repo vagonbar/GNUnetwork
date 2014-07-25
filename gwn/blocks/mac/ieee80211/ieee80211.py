@@ -31,8 +31,14 @@ sys.path += sys.path + ['..']
 import gwnevents.if_events as if_events
 import gwnblocks.gwnblock as gwn
 import gwnblocks.gwninport as inport
+import utils.logger.gnlogger as gnlogger
+import logging
+module_logger = logging.getLogger(__name__)
+import utils.libfsm.fsm as fsm
+import blocks.management.ieee80211.NetworkConfiguration as nc
+import random
 
-Loses = 10
+Loses = 0
 aSIFSTime = 1
 aDIFSTime = 1
 # "CTS_Time” shall be calculated using the length of the CTS frame and the data rate at which the RTS frame used for the most recent NAV update was received.
@@ -47,7 +53,7 @@ CWmax = 1023
 CTSTout = aSIFSTime + aSlotTime + aPHY_RX_START_Delay
 ACKTout = aSIFSTime + aSlotTime + aPHY_RX_START_Delay
 
-class Ieee80211(gwn.GWNBlock):
+class IEEE80211(gwn.GWNBlock):
     '''A CSMA IEEE 802.11 MAC implementation
 
     This class is a 802.11 mac implementation.
@@ -68,7 +74,7 @@ class Ieee80211(gwn.GWNBlock):
         timer 1: wait for Data ACK
         ......................
         '''        
-        super(Ieee80211,self).__init__(1, "Ieee80211_1", 2, 2, 3)
+        super(IEEE80211,self).__init__(1, "IEEE80211_1", 2, 2, 2)
 
         self.nodeid = nodeid
         self.logger = logging.getLogger(str(self.__class__))
@@ -76,6 +82,8 @@ class Ieee80211(gwn.GWNBlock):
         self.logger.info(str(self.nodeid) + ' start')
 
         self.initvars()
+
+        self.net_conf = nc.NetworkConfiguration(self.nodeid,'my network',256,1)
 
         self.macfsm = fsm.FSM ('IDLE', []) 
         self.initmacfsm()

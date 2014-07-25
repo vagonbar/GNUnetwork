@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Thu Jun  5 18:12:00 2014
+# Generated: Fri Jul 25 16:34:37 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -11,38 +11,37 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import libMAC.gwnSimpleFDMA as fdma
-import libadaptlay80211.gwnDeframer as deframer
-import libadaptlay80211.gwnFramer as framer
-import libgwnBlocks.gwnTopBlock as gwnTB
-import libtimer.timer2 as timer
-import libvirtualchannel.EventConsumer2 as consumer
-import libvirtualchannel.EventSimulator2 as simulator
-import libvirtualchannel.gwnVirtualChannel as channel
+import blocks.mac.ieee80211.ieee80211 as ieee80211
+import blocks.simulators.channels.virtualchannel as channel
+import blocks.simulators.consumers.eventconsumer as consumer
+import blocks.simulators.generators.eventsimulator as simulator
+import gwnblocks.gwntopblock as gwnTB
 
-class top_block(gwnTB.gwnTopBlock):
+class top_block(gwnTB.GWNTopBlock):
 
 
 	def __init__(self):
-		gwnTB.gwnTopBlock.__init__(self)
+		gwnTB.GWNTopBlock.__init__(self)
 
+
+		##################################################
+		# Variables
+		##################################################
+		self.samp_rate = samp_rate = 32000
 
 		##################################################
 		# Blocks
 		##################################################
-		self.virtualchannel_0 = channel.gwnVirtualChannel(0.01)	
-		self.timer_0_0 = timer.Timer(7, 3,"TimerTimer")	
-		self.timer_0 = timer.Timer(5, 3,"TimerTimer")	
-		self.simplefdma_0_0 = fdma.gwnSimpleFDMA(851000000.0,850000000.0)	
-		self.simplefdma_0 = fdma.gwnSimpleFDMA(851000000.0,850000000.0)	
-		self.framer80211_0_0 = framer.gwnFramer()	
-		self.framer80211_0 = framer.gwnFramer()	
-		self.eventsim_0_0 = simulator.EventSimulator('DataData',"101","100","10")	
-		self.eventsim_0 = simulator.EventSimulator('DataData',"100","101","10")	
-		self.eventconsumer_0_0 = consumer.EventConsumer("Consumer Node 2") 	
-		self.eventconsumer_0 = consumer.EventConsumer("Consumer Node 1") 	
-		self.deframer80211_0_0 = deframer.gwnDeframer()	
-		self.deframer80211_0 = deframer.gwnDeframer()	
+		self.virtualchannel_0 = channel.GWNVirtualChannel(0.01)	
+		self.eventsim_2 = simulator.EventSimulator(3, 1, 'DataData', "0003", "0001", "")	
+		self.eventsim_1 = simulator.EventSimulator(5, 1, 'DataData', "0002", "0003", "10")	
+		self.eventsim_0 = simulator.EventSimulator(10, 5, 'DataData', "0001", "0002", "10")	
+		self.eventconsumer_2 = consumer.EventConsumer("blkname") 	
+		self.eventconsumer_1 = consumer.EventConsumer("blkname") 	
+		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
+		self.IEEE80211_2 = ieee80211.IEEE80211("0001")	
+		self.IEEE80211_1 = ieee80211.IEEE80211("0003")	
+		self.IEEE80211_0 = ieee80211.IEEE80211("0002")	
 
 
 
@@ -50,38 +49,33 @@ class top_block(gwnTB.gwnTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.deframer80211_0, 0), (self.simplefdma_0, 1))
-		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0, 0))
-		self.connect((self.framer80211_0, 0), (self.virtualchannel_0, 0))
-		self.connect((self.simplefdma_0, 0), (self.framer80211_0, 0))
-		self.connect((self.timer_0, 0), (self.eventsim_0, 0))
-		self.connect((self.eventsim_0, 0), (self.simplefdma_0, 0))
-		self.connect((self.simplefdma_0, 1), (self.eventconsumer_0, 0))
-		self.connect((self.deframer80211_0_0, 0), (self.simplefdma_0_0, 1))
-		self.connect((self.simplefdma_0_0, 0), (self.framer80211_0_0, 0))
-		self.connect((self.timer_0_0, 0), (self.eventsim_0_0, 0))
-		self.connect((self.eventsim_0_0, 0), (self.simplefdma_0_0, 0))
-		self.connect((self.simplefdma_0_0, 1), (self.eventconsumer_0_0, 0))
-		self.connect((self.framer80211_0_0, 0), (self.virtualchannel_0, 0))
-		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0_0, 0))
+		self.connect((self.eventsim_1, 0), (self.IEEE80211_0, 1))
+		self.connect((self.IEEE80211_1, 1), (self.eventconsumer_1, 0))
+		self.connect((self.IEEE80211_0, 0), (self.virtualchannel_0, 0))
+		self.connect((self.IEEE80211_1, 0), (self.virtualchannel_0, 0))
+		self.connect((self.IEEE80211_2, 0), (self.virtualchannel_0, 0))
+		self.connect((self.eventsim_0, 0), (self.IEEE80211_2, 1))
+		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_2, 0))
+		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_1, 0))
+		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_0, 0))
+		self.connect((self.IEEE80211_2, 1), (self.eventconsumer_0, 0))
+		self.connect((self.IEEE80211_0, 1), (self.eventconsumer_2, 0))
+		self.connect((self.eventsim_2, 0), (self.IEEE80211_1, 1))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
 		self.virtualchannel_0.start()
-		self.timer_0_0.start()
-		self.timer_0.start()
-		self.simplefdma_0_0.start()
-		self.simplefdma_0.start()
-		self.framer80211_0_0.start()
-		self.framer80211_0.start()
-		self.eventsim_0_0.start()
+		self.eventsim_2.start()
+		self.eventsim_1.start()
 		self.eventsim_0.start()
-		self.eventconsumer_0_0.start()
+		self.eventconsumer_2.start()
+		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
-		self.deframer80211_0_0.start()
-		self.deframer80211_0.start()
+		self.IEEE80211_2.start()
+		self.IEEE80211_1.start()
+		self.IEEE80211_0.start()
 
 
 	def stop(self):
@@ -90,18 +84,15 @@ class top_block(gwnTB.gwnTopBlock):
 		# Ending Bloks
 		##################################################
 		self.virtualchannel_0.stop()
-		self.timer_0_0.stop()
-		self.timer_0.stop()
-		self.simplefdma_0_0.stop()
-		self.simplefdma_0.stop()
-		self.framer80211_0_0.stop()
-		self.framer80211_0.stop()
-		self.eventsim_0_0.stop()
+		self.eventsim_2.stop()
+		self.eventsim_1.stop()
 		self.eventsim_0.stop()
-		self.eventconsumer_0_0.stop()
+		self.eventconsumer_2.stop()
+		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
-		self.deframer80211_0_0.stop()
-		self.deframer80211_0.stop()
+		self.IEEE80211_2.stop()
+		self.IEEE80211_1.stop()
+		self.IEEE80211_0.stop()
 
 
 
