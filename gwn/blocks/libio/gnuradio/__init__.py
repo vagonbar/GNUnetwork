@@ -3,7 +3,5 @@
 
 # GNU network __init__ package file
 
-'''A library for fsm.
-
-
+'''GNU Radio transmit / receive modules, adapted for GWN.
 '''

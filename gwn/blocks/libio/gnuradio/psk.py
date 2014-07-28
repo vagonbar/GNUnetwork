@@ -1,25 +1,40 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+#    This file is part of GNUWiNetwork,
+#    Copyright (C) 2014 by 
+#        Pablo Belzarena, Gabriel Gomez Sena, Victor Gonzalez Barbone,
+#        Facultad de Ingenieria, Universidad de la Republica, Uruguay.
+#
+#    GNUWiNetwork is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GNUWiNetwork is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
+#
 
-'''
-Created on Thu Dec 13 14:31:45 2012
-
-@author: belza
+'''PSK modulation transmit / receive block.
 '''
 
 import sys
 sys.path +=['..']
 
-# From gr-digital
 from gnuradio import digital
-#import Queue
-#import threading
 import gwnevents.if_events as if_events
 import TxRxLayer1 as TxRxLayer1
 import gwnblocks.gwnblock as gwn
 
 
 class PSK(gwn.GWNBlock):
+    '''PSK modulation block.
+    '''
 
     def __init__(self, samples_per_symbol=2, version='6', antenna='TX/RX', \
         rx_freq=850000000.0, rx_gain=15.0, spec='A:0', tx_gain=15.0, \
@@ -66,9 +81,8 @@ class PSK(gwn.GWNBlock):
 
 
     def process_data(self, port_type, port_nr, ev):
-        #self.readl2= self.ReadLayer2(self.ports_in[0], self.tx_queue)
-        #self.readl2.start()
-        #while not self.finished :
+        '''Process data function for PSK block.
+        '''
         if port_type == 'InPort' and port_nr == 0:
             frame = ev.frmpkt
             self.write_out(1, frame)    # 1, to GNU radio
@@ -85,15 +99,25 @@ class PSK(gwn.GWNBlock):
 
 
     def set_rx_freq(self, value):
+        '''Set receive frequency.
+        '''
         self.tb_rx.set_freq(value)
 
     def set_tx_freq(self, value):
+        '''Set transmit frequency.
+        '''
         self.tb.set_freq(value)
 
     def sense_carrier(self):
+        '''Sense carrier function.
+        '''
         self.tb_rx.sense_carrier()
 
     def stop(self):
+        '''PSK block stop function.
+
+        This stop function is required to stop GNU Radio threads. Overwrites generic block stop function; first stops locally started threads, waits on them, and finally invokes the generic stop function in PSK super class (generic block).
+        '''
         self.tb_tx.stop()
         self.tb_tx.wait()   
         print("tx top block stopped")
@@ -104,7 +128,8 @@ class PSK(gwn.GWNBlock):
 
 
 class dotdict(dict):
-        """dot.notation access to dictionary attributes"""
+        '''dot.notation access to dictionary attributes.
+        '''
         def __getattr__(self, attr):
             return self.get(attr)
         __setattr__= dict.__setitem__
@@ -120,3 +145,4 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         pass
+

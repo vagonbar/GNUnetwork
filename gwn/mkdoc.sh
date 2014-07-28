@@ -6,7 +6,7 @@ EXCLUDES="viejos|otros|old|others|draft|logs"
 
 EXCLUDES=${EXCLUDES}"|gwnc|scripts|xml"
 
-EXCLUDES=${EXCLUDES}"|gnuradio"
+#EXCLUDES=${EXCLUDES}"|gnuradio"
 
 if [ ! "$1" ]
 then

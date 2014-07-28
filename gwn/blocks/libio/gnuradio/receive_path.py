@@ -20,6 +20,9 @@
 # Boston, MA 02110-1301, USA.
 # 
 
+'''GNU Radio receive path.
+'''
+
 from gnuradio import gr
 from gnuradio import eng_notation
 from gnuradio import digital

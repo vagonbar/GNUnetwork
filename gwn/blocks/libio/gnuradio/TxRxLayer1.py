@@ -18,7 +18,10 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-# 
+#
+
+'''GNU Radio transmit / receive from layer 1.
+'''
 
 from gnuradio import gr
 
