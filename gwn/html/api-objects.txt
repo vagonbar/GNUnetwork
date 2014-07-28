@@ -168,11 +168,6 @@ gwn.gwnevents.if_events.evtofrm	gwn.gwnevents.if_events-module.html#evtofrm
 gwn.gwnevents.if_events.EventNameException	gwn.gwnevents.events.EventNameException-class.html
 gwn.gwnevents.if_events.__package__	gwn.gwnevents.if_events-module.html#__package__
 gwn.gwnevents.if_events.mkevent	gwn.gwnevents.if_events-module.html#mkevent
-gwn.runtests	gwn.runtests-module.html
-gwn.runtests.modsfail	gwn.runtests-module.html#modsfail
-gwn.runtests.lststfiles	gwn.runtests-module.html#lststfiles
-gwn.runtests.omitdirs	gwn.runtests-module.html#omitdirs
-gwn.runtests.curdir	gwn.runtests-module.html#curdir
 gwn.utils	gwn.utils-module.html
 gwn.utils.__package__	gwn.utils-module.html#__package__
 gwn.utils.addlicense	gwn.utils.addlicense-module.html

@@ -47,12 +47,12 @@ gwn subdirectories:
           - strframes : framer, deframer blocks for string frames (not yet)
       - libio
           - gnuradio
-            uhd_interface.py: GNU radio
-            TxRxLayer1.py: GNU Radio
-            transmit_path.py: GNU Radio
-            transmit_path3_7.py: GNU Radio
-            receive_path.py: GNU Radio
-            receive_path3_7.py: GNU Radio
+            uhd_interface.py:               ### from GNU radio
+            TxRxLayer1.py:                  ### from GNU radio
+            transmit_path.py:               ### from GNU radio
+            transmit_path3_7.py:            ### from GNU radio
+            receive_path.py:                ### from GNU radio
+            receive_path3_7.py:             ### from GNU radio
             psk.py                          ### 2014-07-28 all tests pass
           - tuntap                          ### 2014-07-17 all tests pass
       - mac

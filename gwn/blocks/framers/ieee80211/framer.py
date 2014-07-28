@@ -35,7 +35,7 @@ import gwnblocks.gwnblock as gwn
 class Framer(gwn.GWNBlock):
     '''An Framer based on IEEE 802.11 frames.
 
-    Gets an event from the Events input queue, generates the corresponding frame, puts it into the Event, and puts the event in the output queue.
+    Receives an Event, generates a frame packet, assigns it to the Event object as an attribute, and outputs the Event object.
     '''
 
     def __init__(self):
@@ -48,7 +48,7 @@ class Framer(gwn.GWNBlock):
     def process_data(self, port_type, port_nr, ev):
         '''Generates a frame and includes it into an ouput event.
         
-        From the event received, generates a frame, assigns the frame as an atrribute in the same event, and outputs the event.
+        From the event received, generates a frame packet, assigns this frame packet as an atrribute to the same event, and outputs the event.
         '''
         frmobj = if_events.evtofrm(ev)
         framepkt = frmobj.mkpkt()

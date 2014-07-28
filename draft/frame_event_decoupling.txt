@@ -1,0 +1,71 @@
+GWN design point : Frame Event interaction
+
+Summary of directory structure, contents, and comments towards a redesign.
+
+--- gwn.blocks.framers
+    ieee80211
+        framer   : class Framer, Event --> Event with frame packet
+        deframer : class Deframer, frame packet --> Event
+    xxx
+        blocks to frame / deframe in another protocol.
+Notes:
+    - these classes are ordinary blocks.
+    - in ieee.framer: import gwnevents.if_events as if_events
+    - WARNING: if_events dependent on IEEE 802.11 frames!!!
+
+
+--- gwn.utils.framers
+    ieee80211
+        if_frames: API for IEEE 802.11 framing protocol. Includes functions:
+            objfrompkt, pktfromobj, mkframeobj, showfldvals, showfldnames, test
+    xxx
+        if_frames: API for another protocol.
+Notes:
+    - encapsulates framing protocols.
+    - API in if_frames
+    - standardize if_frames?
+    - are function names acceptable?
+
+>>> up to this point, encapsulation is considered correct <<<
+
+
+--- gwn.events
+    events
+        classes Event, EventNameException
+
+    evframes80211
+        classes, functions, dictionaries for IEEE 802.11 framing.
+
+   evstrframes
+        mkevent : frame packet --> Event
+        mkframe : Event --> frame packet
+    
+    evrequest  --> evconfig ?
+        class EventRequest --> EventConfig?
+        dictionary dc_nicknames {nickname: (type, subtype, classname)}
+
+    evtimer
+        class EventTimer
+        dictionary dc_nicknames
+
+    if_events
+        class EventFrameException
+        functions mkevent, frmtoev, evtofrm
+
+Notes:
+    - encapsulation is correct for
+        events, evstrframes, evframes80211
+    - if_events is NOT CORRECT, linked to frames IEEE 802.11, move to ieee80211?
+    - evtimer, evrequest require REVISION.
+    - a STANDARD API for event frame interaction must be defined, and
+        strframes, ieee80211 adapted to it.
+    - event frame interaction, should it be in gwn.events?
+
+
+            
+
+
+
+
+
+

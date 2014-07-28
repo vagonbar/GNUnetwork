@@ -35,7 +35,7 @@ import gwnblocks.gwnblock as gwn
 class Deframer(gwn.GWNBlock):
     '''A frame to event scheduler, based on IEEE 802.11 frames.
 
-    Receives A scheduler that gets a frame from a Layer 1 input queue, generates the corresponding event, and puts it into Management, Control or Data queues based on the event type.
+    A block that receives a frame packet, generates and Event object from it, and outputs this Event object.
     '''
     def __init__(self):
         '''Constructor
@@ -47,7 +47,7 @@ class Deframer(gwn.GWNBlock):
     def process_data(self, port_type, port_nr, ev):
         '''Reads frames, outputs events by type.
         
-        Scheduler function to process a frames queue: reads one element from the input frame queue, generates an event, and puts the event in one of the output queues according to its type.
+        Receives a frame packet, generates another Event object with data extracted from the frame packet, and outputs the generated Event.
         '''
         frm_obj = if_frames.objfrompkt(ev.frmpkt)
         ev_out = if_events.frmtoev(frm_obj)
