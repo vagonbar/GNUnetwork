@@ -9,10 +9,12 @@ Created on Tue May  7 12:42:54 2013
 
 import sys
 sys.path +=['..']
+
 import Queue,time,threading
-import libfsm.fsm as fsm
-import libevents.if_events as if_events
-import libtimer.timer as Timer
+
+import utils.libfsm.fsm as fsm
+import gwnevents.if_events as if_events
+import blocks.utilblocks.timer.timer as Timer
 import NetworkConfiguration
 
 
@@ -54,20 +56,20 @@ class DiscoveryPeeringFSM() :
    
         
         # ------------------ Transitions from IDLE ----------------------------
-        self.fsm.add_transition      ('REQ_RJCT',               'IDLE',            self.sndCLS,              'IDLE')
-        self.fsm.add_transition      ('ACTOPN',                 'IDLE',            self.sndOPNsetR,          'OPN_SNT')
-        self.fsm.add_transition      ('OPN_ACPT',               'IDLE',            self.sndCNFsetR,          'OPN_RCVD')
+        self.fsm.add_transition ('REQ_RJCT', 'IDLE', self.sndCLS, 'IDLE')
+        self.fsm.add_transition ('ACTOPN', 'IDLE', self.sndOPNsetR, 'OPN_SNT')
+        self.fsm.add_transition ('OPN_ACPT', 'IDLE', self.sndCNFsetR, 'OPN_RCVD')
     
         # ------------------ Transitions from OPN_SNT -------------------------
         # --- remark: when arrives TOR1 arrives and the state is OPN_SNT I will not setR as in the standar because is considered in the implementation of the Timer" 
-        self.fsm.add_transition      ('TOR1',                   'OPN_SNT',         self.sndOPN,          'OPN_SNT') 
-        self.fsm.add_transition      ('CNF_ACPT',               'OPN_SNT',         self.clRsetC,             'CNF_RCVD')
-        self.fsm.add_transition      ('OPN_ACPT',               'OPN_SNT',         self.sndCNF,              'OPN_RCVD')
-        self.fsm.add_transition_list      (['CLS_ACPT', 'OPN_RJCT', 'CNF_RJCT', 'TOR2', 'CNCL'],   'OPN_SNT',      self.sndCLSclRsetH,   'HOLDING')
+        self.fsm.add_transition ('TOR1', 'OPN_SNT', self.sndOPN, 'OPN_SNT') 
+        self.fsm.add_transition ('CNF_ACPT', 'OPN_SNT', self.clRsetC,  'CNF_RCVD')
+        self.fsm.add_transition ('OPN_ACPT', 'OPN_SNT', self.sndCNF,  'OPN_RCVD')
+        self.fsm.add_transition_list (['CLS_ACPT', 'OPN_RJCT', 'CNF_RJCT', 'TOR2', 'CNCL'], 'OPN_SNT', self.sndCLSclRsetH, 'HOLDING')
         
         # ------------------ Transitions from CNF_RCVD ------------------------
-        self.fsm.add_transition      ('OPN_ACPT',               'CNF_RCVD',         self.clCsndCNF,              'ESTAB')
-        self.fsm.add_transition_list      (['CLS_ACPT', 'OPN_RJCT', 'CNF_RJCT', 'CNCL'],   'CNF_RCVD',     self.sndCLSclCsetH,   'HOLDING')
+        self.fsm.add_transition ('OPN_ACPT', 'CNF_RCVD', self.clCsndCNF, 'ESTAB')
+        self.fsm.add_transition_list (['CLS_ACPT', 'OPN_RJCT', 'CNF_RJCT', 'CNCL'], 'CNF_RCVD', self.sndCLSclCsetH,   'HOLDING')
         self.fsm.add_transition      ('TOC',   'CNF_RCVD',    self.sndCLSsetH,   'HOLDING')
     
         # ------------------ Transitions from OPN_RCVD ------------------------
