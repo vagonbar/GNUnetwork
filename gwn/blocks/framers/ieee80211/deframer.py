@@ -49,14 +49,16 @@ class Deframer(gwn.GWNBlock):
         
         Receives a frame packet, generates another Event object with data extracted from the frame packet, and outputs the generated Event.
         '''
-        frm_obj = if_frames.objfrompkt(ev.frmpkt)
-        ev_out = if_events.frmtoev(frm_obj)
-        #print "recibi event : ", event
-        if ev_out != None:
-            self.write_out(0, ev_out)
+        print "recibi event : ", ev
+        if ev:
+            frm_obj = if_frames.objfrompkt(ev.frmpkt)
+            ev_out = if_events.frmtoev(frm_obj)
+            if ev_out != None:
+                self.write_out(0, ev_out)
+            else:
+                raise if_events.EventFrameException('Deframer, error in frame')
         else:
-            raise if_events.EventFrameException('Deframer, error in frame')
-
+            print " Not event recieved"
 
 if __name__ == '__main__':
     import doctest

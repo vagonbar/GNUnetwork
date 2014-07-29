@@ -72,8 +72,8 @@ class InTimer(threading.Thread):
         TODO: uses time.sleep(), cannot resume execution until this function finishes.
         TODO: does not stop immediately when exit_flag is set!
         '''
-        print '  Starting InTimer %s %d in block %s' % \
-            (self.port_type, self.port_nr, self.block.blkname)
+        #print '  Starting InTimer %s %d in block %s' % \
+        #    (self.port_type, self.port_nr, self.block.blkname)
         while not self.exit_flag:
             if not self.interrupt:
                 i=1
@@ -99,7 +99,7 @@ class InTimer(threading.Thread):
         thread_lock.acquire()
         #print '    port %s %d in block %s generated event %s' % \
         #    (self.port_type, self.port_nr, self.block.blkname, ev)
-        print '   %s' % (ev,)
+        #print '   %s' % (ev,)
         self.block.process_data(self.port_type, self.port_nr, ev)
         thread_lock.release()
      
@@ -110,7 +110,7 @@ class InTimer(threading.Thread):
         thread_lock.acquire()
         #print '    port %s %d in block %s generated event %s' % \
         #    (self.port_type, self.port_nr, self.block.blkname, ev)
-        print '   %s' % (ev,)
+        #print '   %s' % (ev,)
         self.block.process_data(self.port_type, self.port_nr, ev)
         thread_lock.release()
 

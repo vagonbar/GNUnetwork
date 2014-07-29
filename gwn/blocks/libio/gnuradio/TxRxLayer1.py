@@ -139,6 +139,9 @@ class TxL1(threading.Thread) :
     def run(self):
         while not self.finished:
             payload = self.q_tx.get()
+            print " -------------------------------------------------"
+            print payload
+            print "--------------------------------------------------"
             self.tb.txpath.send_pkt(payload)    
                 
         self.tb.txpath.send_pkt("", True)

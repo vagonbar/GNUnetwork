@@ -153,7 +153,7 @@ class GWNBlock(threading.Thread):
         @param index: the position of the output port in this block.
         '''
         if index <= len(self.ports_out)-1:
-            self.ports_out[index] = connector
+            self.ports_out[index].append(connector)
 
 
     def write_out(self, port_nr, ev):
@@ -163,7 +163,7 @@ class GWNBlock(threading.Thread):
         @param ev: an Event object.
         '''
         #for q in self.ports_out[port_nr]:
-        for conn in self.ports_out:
+        for conn in self.ports_out[port_nr]:
             conn.put(ev)
 
             

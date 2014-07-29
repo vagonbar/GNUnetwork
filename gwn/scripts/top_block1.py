@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block1
-# Generated: Thu Jul 17 15:30:32 2014
+# Generated: Tue Jul 29 17:16:12 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -12,7 +12,7 @@ import sys
 sys.path +=['..']
 import blocks.framers.ieee80211.deframer as deframer
 import blocks.framers.ieee80211.framer as framer
-import blocks.simulators.channels.virtualchannel as channel
+import blocks.libio.gnuradio.psk as psk
 import blocks.simulators.consumers.eventconsumer as consumer
 import blocks.simulators.generators.eventsimulator as simulator
 import gwnblocks.gwntopblock as gwnTB
@@ -37,10 +37,9 @@ class top_block1(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.virtualchannel_0 = channel.GWNVirtualChannel(0.01)	
+		self.psk_0 = psk.PSK(2, "6", 'TX/RX', 850000000.0, 15, "A:0", 15, 'bpsk', "serial=E0R11Y0B1",  100000, 851000000.0, 0.25)	
 		self.framer80211_0 = framer.Framer()	
-		self.eventsim_0 = simulator.EventSimulator(1, 1, 'DataData', "10:10:10:10:10:10", "11:11:11:11:11:11", "5")	
-		self.eventconsumer_1 = consumer.EventConsumer("blkname") 	
+		self.eventsim_0 = simulator.EventSimulator(1, 50, 'DataData', "0001", "0002", "10")	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
 		self.deframer80211_0 = deframer.Deframer()	
 
@@ -51,19 +50,17 @@ class top_block1(gwnTB.GWNTopBlock):
 		# Connections
 		##################################################
 		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
-		self.connect((self.framer80211_0, 0), (self.eventconsumer_0, 0))
-		self.connect((self.deframer80211_0, 0), (self.eventconsumer_1, 0))
-		self.connect((self.framer80211_0, 0), (self.virtualchannel_0, 0))
-		self.connect((self.virtualchannel_0, 0), (self.deframer80211_0, 0))
+		self.connect((self.deframer80211_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.framer80211_0, 0), (self.psk_0, 0))
+		self.connect((self.psk_0, 0), (self.deframer80211_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.virtualchannel_0.start()
+		self.psk_0.start()
 		self.framer80211_0.start()
 		self.eventsim_0.start()
-		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
 		self.deframer80211_0.start()
 
@@ -73,10 +70,9 @@ class top_block1(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.virtualchannel_0.stop()
+		self.psk_0.stop()
 		self.framer80211_0.stop()
 		self.eventsim_0.stop()
-		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
 		self.deframer80211_0.stop()
 

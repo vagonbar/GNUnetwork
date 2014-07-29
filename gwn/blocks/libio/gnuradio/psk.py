@@ -42,7 +42,7 @@ class PSK(gwn.GWNBlock):
         tx_freq=851000000.0, tx_amplitude=0.25):
         '''Constructor.
         '''
-        super(PSK,self).__init__(1, 'GNURadioPSK', 1, 1)
+        super(PSK,self).__init__(1, 'GNURadioPSK', 2, 2)
         #super(TunTapInterface, self).__init__(1,'TunTapInterface', 2, 2)
         self.mods = digital.modulation_utils.type_1_mods()
         self.demods = digital.modulation_utils.type_1_demods()
@@ -83,11 +83,15 @@ class PSK(gwn.GWNBlock):
     def process_data(self, port_type, port_nr, ev):
         '''Process data function for PSK block.
         '''
-        if port_type == 'InPort' and port_nr == 0:
+        print " ------------------------------------"
+        print ev
+        print port_type,port_nr
+        print "-------------------------------------"
+        
+        if port_type == 'inport' and port_nr == 0:
             frame = ev.frmpkt
             self.write_out(1, frame)    # 1, to GNU radio
-
-        elif port_type == 'InPort' and port_nr == 1:
+        elif port_type == 'inport' and port_nr == 1:
             frame = ev   # ev is a frame received
             if not frame:
                 print 'PSK: an empty frame from  L1'
