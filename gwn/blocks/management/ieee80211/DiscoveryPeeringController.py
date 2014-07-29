@@ -10,8 +10,9 @@ import sys
 sys.path +=['..']
 
 import threading, Queue,time
-import PeersTable,NetworkConfiguration
-import libevents.if_events as if_events
+
+import PeersTable, NetworkConfiguration
+import gwnevents.if_events as if_events
 
 
 class DiscoveryPeeringController(threading.Thread) :

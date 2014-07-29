@@ -34,6 +34,7 @@ import sys
 # /////////////////////////////////////////////////////////////////////////////
 
 class transmit_path(gr.hier_block2):
+
     def __init__(self, modulator_class, options):
         '''
         See below for what options should hold
@@ -72,9 +73,9 @@ class transmit_path(gr.hier_block2):
         self.connect(self.packet_transmitter, self.amp, self)
 
     def set_tx_amplitude(self, ampl):
-        """
-        Sets the transmit amplitude sent to the USRP in volts
-        @param: ampl 0 <= ampl < 1.
+        """Sets the transmit amplitude sent to the USRP in volts.
+        
+        @param ampl: 0 <= ampl < 1.
         """
         self._tx_amplitude = max(0.0, min(ampl, 1))
         self.amp.set_k(self._tx_amplitude)
@@ -120,11 +121,11 @@ class transmit_path(gr.hier_block2):
     add_options = staticmethod(add_options)
 
     def _print_verbage(self):
-        """
-        Prints information about the transmit path
+        """Prints information about the transmit path.
         """
         print "Tx amplitude     %s"    % (self._tx_amplitude)
         print "modulation:      %s"    % (self._modulator_class.__name__)
-        print "bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate))
+        print "bitrate:         %sb/s" % \
+            (eng_notation.num_to_str(self._bitrate))
         print "samples/symbol:  %.4f"  % (self.samples_per_symbol())
         print "Differential:    %s"    % (self.differential())

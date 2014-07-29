@@ -35,6 +35,7 @@ import sys
 # /////////////////////////////////////////////////////////////////////////////
 
 class transmit_path(gr.hier_block2):
+
     def __init__(self, modulator_class, options):
         '''
         See below for what options should hold
@@ -73,11 +74,9 @@ class transmit_path(gr.hier_block2):
         self.connect(self.packet_transmitter, self.amp, self)
 
     def set_tx_amplitude(self, ampl):
-        """
-        Sets the transmit amplitude sent to the USRP in volts
+        """Sets the transmit amplitude sent to the USRP in volts.
         
-        Args:
-            : ampl 0 <= ampl < 1.
+        @param ampl: 0 <= ampl < 1.
         """
         self._tx_amplitude = max(0.0, min(ampl, 1))
         self.amp.set_k(self._tx_amplitude)
@@ -103,30 +102,30 @@ class transmit_path(gr.hier_block2):
         """
         if not normal.has_option('--bitrate'):
             normal.add_option("-r", "--bitrate", type="eng_float",
-                              default=100e3,
-                              help="specify bitrate [default=%default].")
+                default=100e3,
+                help="specify bitrate [default=%default].")
         normal.add_option("", "--tx-amplitude", type="eng_float",
-                          default=0.250, metavar="AMPL",
-                          help="set transmitter digital amplitude: 0 <= AMPL < 1 [default=%default]")
+            default=0.250, metavar="AMPL",
+            help="set transmitter digital amplitude: 0 <= AMPL < 1 [default=%default]")
         normal.add_option("-v", "--verbose", action="store_true",
-                          default=False)
+            default=False)
 
         expert.add_option("-S", "--samples-per-symbol", type="float",
-                          default=2,
-                          help="set samples/symbol [default=%default]")
+            default=2,
+            help="set samples/symbol [default=%default]")
         expert.add_option("", "--log", action="store_true",
-                          default=False,
-                          help="Log all parts of flow graph to file (CAUTION: lots of data)")
+            default=False,
+            help="Log all parts of flow graph to file (CAUTION: lots of data)")
 
     # Make a static method to call before instantiation
     add_options = staticmethod(add_options)
 
     def _print_verbage(self):
-        """
-        Prints information about the transmit path
+        """Prints information about the transmit path.
         """
         print "Tx amplitude     %s"    % (self._tx_amplitude)
         print "modulation:      %s"    % (self._modulator_class.__name__)
-        print "bitrate:         %sb/s" % (eng_notation.num_to_str(self._bitrate))
+        print "bitrate:         %sb/s" % \
+            (eng_notation.num_to_str(self._bitrate))
         print "samples/symbol:  %.4f"  % (self.samples_per_symbol())
         print "Differential:    %s"    % (self.differential())

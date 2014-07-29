@@ -41,6 +41,19 @@ class PSK(gwn.GWNBlock):
         modulation='bpsk', args='serial=E0R11Y0B1', bitrate=100000.0, \
         tx_freq=851000000.0, tx_amplitude=0.25):
         '''Constructor.
+        
+        @param samples_per_symbol: default 2.
+        @param version: default 6.
+        @param antenna: default TX/RX.
+        @param rx_freq: reception frequency, default 850000000.0.
+        @param rx_gain: reception gain, default 15.0.
+        @param spec: default 'A:0'.
+        @param tx_gain: transmission gain, default 15.0.
+        @param modulation: default 'bpsk'.
+        @param args: default 'serial=E0R11Y0B1'.
+        @param bitrate: default 100000.0.
+        @param tx_freq: transmission frequency, default 851000000.0.
+        @param tx_amplitude: default 0.25.
         '''
         super(PSK,self).__init__(1, 'GNURadioPSK', 1, 1)
         #super(TunTapInterface, self).__init__(1,'TunTapInterface', 2, 2)
