@@ -95,6 +95,9 @@ class my_top_block_rx(gr.top_block):
     def rx_callback(self,ok, payload):
         '''A callback function for reception.
         '''
+        print " LLEGO PAYLOAD-------------------------------------------------"
+        print payload
+        print "--------------------------------------------------"
         self.q_rx.put(payload)
   
     def set_freq(self,value):
