@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Fri Jul 25 16:34:37 2014
+# Generated: Thu Jul 31 19:50:36 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -35,7 +35,7 @@ class top_block(gwnTB.GWNTopBlock):
 		self.virtualchannel_0 = channel.GWNVirtualChannel(0.01)	
 		self.eventsim_2 = simulator.EventSimulator(3, 1, 'DataData', "0003", "0001", "")	
 		self.eventsim_1 = simulator.EventSimulator(5, 1, 'DataData', "0002", "0003", "10")	
-		self.eventsim_0 = simulator.EventSimulator(10, 5, 'DataData', "0001", "0002", "10")	
+		self.eventsim_0 = simulator.EventSimulator(10, 5, 'DataData', "0001", "0002", "10000")	
 		self.eventconsumer_2 = consumer.EventConsumer("blkname") 	
 		self.eventconsumer_1 = consumer.EventConsumer("blkname") 	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	

@@ -43,9 +43,9 @@ aSIFSTime = 1
 aDIFSTime = 1
 # "CTS_Time” shall be calculated using the length of the CTS frame and the data rate at which the RTS frame used for the most recent NAV update was received.
 CTS_Time = 14*8/34000  # 14 bytes, 34M ??
-aSlotTime = 1
+aSlotTime = 10
 aRTSThreshold = 60
-aPHY_RX_START_Delay = 10
+aPHY_RX_START_Delay = 1
 dot11LongRetryLimit = 5
 dot11ShortRetryLimit = 5
 CWmin = 15
@@ -77,7 +77,8 @@ class IEEE80211(gwn.GWNBlock):
         super(IEEE80211,self).__init__(1, "IEEE80211_1", 2, 2, 2)
 
         self.nodeid = nodeid
-        self.logger = logging.getLogger(str(self.__class__))
+        #self.logger = logging.getLogger(str(self.__class__))
+        self.logger = module_logger
         gnlogger.logconf()         # initializes the logging facility
         self.logger.info(str(self.nodeid) + ' start')
 
@@ -138,7 +139,7 @@ class IEEE80211(gwn.GWNBlock):
                     self.logger.debug(str(self.nodeid) + ' Received event %s in port %s %d:' % (ev, port_type, port_nr))
                     return
             else:
-                self.logger.debug(str(self.nodeid) + 'Lx control or management data event arrives')
+                self.logger.debug(str(self.nodeid) + ' Lx control or management data event arrives')
         else:
             self.logger.debug(str(self.nodeid) + ' Received event %s in port %s %d:' % (ev, port_type, port_nr))
             return
@@ -251,10 +252,15 @@ class IEEE80211(gwn.GWNBlock):
     def sndRTS(self, fsm):
         self.logger.info(str(self.nodeid) + ' Send RTS')
         rcv_event = self.macfsm.memory
+        if (rcv_event.ev_subtype == 'CTSTout'):
+            if (rcv_event.nickname == 'TimerCTSTout'):
+                self.logger.info(str(self.nodeid) + ' Send RTS timer exausted')
+                self.set_timer(0, interrupt=True)
+                return
         event = if_events.mkevent("CtrlRTS")
-        event.ev_dc['src_addr']=self.net_conf.station_id
-        event.ev_dc['dst_addr']= rcv_event.ev_dc['dst_addr']
-        event.ev_dc['duration']=0;
+        event.ev_dc['src_addr'] = self.net_conf.station_id
+        event.ev_dc['dst_addr'] = rcv_event.ev_dc['dst_addr']
+        event.ev_dc['duration'] = 0;
         self.snd_frame(event)
         return True
 
@@ -285,6 +291,7 @@ class IEEE80211(gwn.GWNBlock):
         if (fsm.input_symbol == "RTS"):
             #waitT = 2*aSIFSTime + CTS_Time + 2*aSlotTime # tutorial
             waitT = 2*aSIFSTime + CTS_Time + aPHY_RX_START_Delay + 2*aSlotTime # norma
+            self.logger.debug(str(self.nodeid) + ' Sleep for ' + str(waitT))
             time.sleep(waitT)
             self.NAV = self.currentTime()
         else:

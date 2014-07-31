@@ -43,7 +43,7 @@ appname = 'GNlogger'
 fname = 'gnlogger.log'   # log file name
 fmode = 'w'              # log file mode, 'a' for append, 'w' restarts
 loglvl = logging.DEBUG   # log level
-fmtstr = '%(asctime)s %(levelname)s %(name)s: %(message)s'
+fmtstr = '%(asctime)s %(levelname)-8s %(name)s: %(message)s'
 logdir = '../logs/'      # set to './' to log to current directory
 
 def logconf(app=appname, fnm=fname, fmd=fmode, lvl=loglvl, fmt=fmtstr, \
