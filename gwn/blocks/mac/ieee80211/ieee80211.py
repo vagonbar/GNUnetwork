@@ -101,24 +101,24 @@ class IEEE80211(gwn.GWNBlock):
     def initmacfsm(self):
         self.macfsm.set_default_transition (self.Error, 'IDLE')
 
-        self.macfsm.add_transition      ('L3Data',        'IDLE',            self.rcvL3,      'WAIT_ACK'    )
-        self.macfsm.add_transition      ('Beacon',        'IDLE',            self.rcvL3,      'WAIT_ACK'    )
-        self.macfsm.add_transition      ('L1Data',        'IDLE',               self.rcvL1,      'IDLE'         )
-        self.macfsm.add_transition      ('RTS',         'IDLE',               self.rcvRTS,     'IDLE'        )
-        self.macfsm.add_transition      ('CTS',         'IDLE',               self.updNAV,     'IDLE'        )
-        self.macfsm.add_transition_any  (                'IDLE',            self.Error,            'IDLE'        )
+        self.macfsm.add_transition      ('L3Data',    'IDLE',       self.rcvL3,    'WAIT_ACK'  )
+        self.macfsm.add_transition      ('Beacon',    'IDLE',       self.rcvL3,    'WAIT_ACK'  )
+        self.macfsm.add_transition      ('L1Data',    'IDLE',       self.rcvL1,    'IDLE'      )
+        self.macfsm.add_transition      ('RTS',       'IDLE',       self.rcvRTS,   'IDLE'      )
+        self.macfsm.add_transition      ('CTS',       'IDLE',       self.updNAV,   'IDLE'      )
+        self.macfsm.add_transition_any  (             'IDLE',       self.Error,    'IDLE'      )
 
-        self.macfsm.add_transition      ('ACK',         'WAIT_ACK',        self.rcvACK,     'IDLE'        )
-        self.macfsm.add_transition      ('ACKTout',     'WAIT_ACK',        self.sndData,    'WAIT_ACK'    )
-        self.macfsm.add_transition      ('DataAbort',   'WAIT_ACK',        self.sndData,    'IDLE'        )
-        self.macfsm.add_transition      ('RTS',         'WAIT_ACK',        self.rcvRTS,     'WAIT_CTS'    )
-        self.macfsm.add_transition_any  (                'WAIT_ACK',        self.Error,            'WAIT_ACK'    )
+        self.macfsm.add_transition      ('ACK',       'WAIT_ACK',   self.rcvACK,   'IDLE'      )
+        self.macfsm.add_transition      ('ACKTout',   'WAIT_ACK',   self.sndData,  'WAIT_ACK'  )
+        self.macfsm.add_transition      ('DataAbort', 'WAIT_ACK',   self.sndData,  'IDLE'      )
+        self.macfsm.add_transition      ('RTS',       'WAIT_ACK',   self.rcvRTS,   'WAIT_CTS'  )
+        self.macfsm.add_transition_any  (             'WAIT_ACK',   self.Error,    'WAIT_ACK'  )
 
-        self.macfsm.add_transition      ('CTS',         'WAIT_CTS',        self.sndData,    'WAIT_ACK'    )
-        self.macfsm.add_transition      ('CTSTout',     'WAIT_CTS',        self.sndRTS,     'WAIT_CTS'    )
-        self.macfsm.add_transition      ('RTSAbort',     'WAIT_CTS',        self.sndRTS,     'IDLE'        )
-        self.macfsm.add_transition      ('RTS',         'WAIT_CTS',        self.rcvRTS,     'WAIT_CTS'    )
-        self.macfsm.add_transition_any  (                'WAIT_CTS',        self.Error,            'WAIT_CTS'    )
+        self.macfsm.add_transition      ('CTS',       'WAIT_CTS',   self.sndData,  'WAIT_ACK'  )
+        self.macfsm.add_transition      ('CTSTout',   'WAIT_CTS',   self.sndRTS,   'WAIT_CTS'  )
+        self.macfsm.add_transition      ('RTSAbort',  'WAIT_CTS',   self.sndRTS,   'IDLE'      )
+        self.macfsm.add_transition      ('RTS',       'WAIT_CTS',   self.rcvRTS,   'WAIT_CTS'  )
+        self.macfsm.add_transition_any  (             'WAIT_CTS',   self.Error,    'WAIT_CTS'  )
 
     def process_data(self, port_type, port_nr, ev):
         '''
@@ -291,9 +291,9 @@ class IEEE80211(gwn.GWNBlock):
         if (fsm.input_symbol == "RTS"):
             #waitT = 2*aSIFSTime + CTS_Time + 2*aSlotTime # tutorial
             waitT = 2*aSIFSTime + CTS_Time + aPHY_RX_START_Delay + 2*aSlotTime # norma
-            self.logger.debug(str(self.nodeid) + ' Sleep for ' + str(waitT))
-            time.sleep(waitT)
-            self.NAV = self.currentTime()
+            #self.logger.debug(str(self.nodeid) + ' Sleep for ' + str(waitT))
+            #time.sleep(waitT)
+            self.NAV = waitT
         else:
             testNAV = self.currentTime() + int(event.ev_dc['duration'])
             if (testNAV > self.NAV):
