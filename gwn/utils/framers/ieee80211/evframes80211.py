@@ -27,7 +27,7 @@
 '''
 
 from gwnevents.gwnevent import Event, EventNameException
-import utils.framers.ieee80211.if_frames as if_frames
+import if_frames
 
 
 class EventFrame(Event):

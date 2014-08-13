@@ -2,8 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block
-# Author: ARTES
-# Generated: Thu Jul 24 16:22:50 2014
+# Generated: Wed Aug 13 13:28:13 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -11,30 +10,34 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import blocks.framers.ieee80211.framer as framer
-import blocks.libio.gnuradio.psk as psk
 import blocks.simulators.consumers.eventconsumer as consumer
 import blocks.simulators.generators.eventsimulator as simulator
+import blocks.utilblocks.timer.timer as timer
 import gwnblocks.gwntopblock as gwnTB
 
 class top_block(gwnTB.GWNTopBlock):
 
 
-	def __init__(self):
-		gwnTB.GWNTopBlock.__init__(self)
+	def __init__(self, parametro1=12):
+		gwnTB.GWNTopBlock.__init__(self, parametro1=12)
 
+
+		##################################################
+		# Parameters
+		##################################################
+		self.parametro1 = parametro1
 
 		##################################################
 		# Variables
 		##################################################
-		self.samp_rate = samp_rate = 32000
+		self.variable_0 = variable_0 = 0.5
 
 		##################################################
 		# Blocks
 		##################################################
-		self.psk_0 = psk.PSK(2, "6", 'TX/RX', 850000000.0, 15, "A:0", 15, 'bpsk', "serial=E0R11Y0B1",  100000, 851000000.0, 0.25)	
-		self.framer80211_0 = framer.Framer()	
-		self.eventsim_0 = simulator.EventSimulator(1, 3, 'DataData', "0001", "0002", "10")	
+		self.timer_0 = timer.Timer(variable_0, 2, "TimerTOR1")	
+		self.eventsim_0 = simulator.EventSimulator(1, 1, 'TimerConfig', "3", "1", "TimerTimer")	
+		self.eventconsumer_1 = consumer.EventConsumer("blkname") 	
 		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
 
 
@@ -43,17 +46,17 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
-		self.connect((self.framer80211_0, 0), (self.psk_0, 0))
-		self.connect((self.psk_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.timer_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.eventsim_0, 0), (self.timer_0, 0))
+		self.connect((self.timer_0, 0), (self.eventconsumer_1, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.psk_0.start()
-		self.framer80211_0.start()
+		self.timer_0.start()
 		self.eventsim_0.start()
+		self.eventconsumer_1.start()
 		self.eventconsumer_0.start()
 
 
@@ -62,9 +65,9 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.psk_0.stop()
-		self.framer80211_0.stop()
+		self.timer_0.stop()
 		self.eventsim_0.stop()
+		self.eventconsumer_1.stop()
 		self.eventconsumer_0.stop()
 
 

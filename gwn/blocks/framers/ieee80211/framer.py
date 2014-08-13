@@ -26,7 +26,8 @@
 
 import sys
 
-import utils.framers.ieee80211.frames as frames
+#import utils.framers.ieee80211.frames as frames
+import utils.framers.ieee80211.if_events as frames
 import gwnblocks.gwnblock as gwn
 
 

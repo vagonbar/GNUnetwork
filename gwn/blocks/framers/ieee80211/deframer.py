@@ -29,7 +29,7 @@ import sys
 
 import gwnblocks.gwnblock as gwn
 
-import utils.framers.ieee80211.frames as frames
+import utils.framers.ieee80211.if_events as if_events
 import utils.framers.ieee80211.if_frames as if_frames
 
 
@@ -53,7 +53,7 @@ class Deframer(gwn.GWNBlock):
         print "recibi event : ", ev
         if ev:
             frm_obj = if_frames.objfrompkt(ev.frmpkt)
-            ev_out = frames.frmtoev(frm_obj)
+            ev_out = if_events.frmtoev(frm_obj)
             if ev_out != None:
                 self.write_out(0, ev_out)
             else:
