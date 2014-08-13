@@ -36,27 +36,29 @@ To add different types of events:
 import sys
 sys.path += ['..']
 
-import events as events
+import gwnevents.events as events
 # event modules, for different types of events
-import evtimer
-import evrequest
-import evframes80211
+#import evtimer
+#import evrequest
+import utils.framers.ieee80211.evframes80211 as evframes80211
 
 from utils.framers.ieee80211.mac_frmbld import MacFrameException
-from gwnevents.events import EventNameException 
+from gwnevents.gwnevent import EventNameException 
 
 # import if_frames for test function
 from utils.framers.ieee80211 import if_frames as if_frames
 
 
-
+"""
 class EventFrameException(Exception):
     '''An exception to rise on Event to/from Frame conversion.
     '''
     pass 
+"""
 
 
 
+"""
 def mkevent(nickname, **kwargs):
     '''Returns an event of the given event nickname.
 
@@ -90,6 +92,8 @@ def mkevent(nickname, **kwargs):
         return eventclass(nickname, ptype, psubtype, ev_dc)    
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')
+"""
+
 
 
 def frmtoev(frmobj):
@@ -141,7 +145,7 @@ def frmtoev(frmobj):
         raise MacFrameException(frmogj.frmtype + ' not a valid frame type')
         
     # make Event object
-    ev = mkevent(nickname, ev_dc=ev_dc, payload=payload)
+    ev = events.mkevent(nickname, ev_dc=ev_dc, payload=payload)
     ev.ev_dc['frame_length'] = frmobj.frame_len    # adjust frame length
     ev.frmpkt = frmobj.frmpkt
     ev.frmobj = frmobj    # ref to Frame obj associated with this event

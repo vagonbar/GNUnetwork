@@ -28,7 +28,7 @@ import sys
 import time
 
 sys.path += sys.path + ['..']
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 import gwnblocks.gwnblock as gwn
 import gwnblocks.gwninport as inport
 import utils.logger.gnlogger as gnlogger
@@ -257,7 +257,7 @@ class IEEE80211(gwn.GWNBlock):
                 self.logger.info(str(self.nodeid) + ' Send RTS timer exausted')
                 self.set_timer(0, interrupt=True)
                 return
-        event = if_events.mkevent("CtrlRTS")
+        event = events.mkevent("CtrlRTS")
         event.ev_dc['src_addr'] = self.net_conf.station_id
         event.ev_dc['dst_addr'] = rcv_event.ev_dc['dst_addr']
         event.ev_dc['duration'] = 0;
@@ -266,7 +266,7 @@ class IEEE80211(gwn.GWNBlock):
 
     def sndCTS(self, fsm):
         self.logger.info(str(self.nodeid) + ' Send CTS')
-        event = if_events.mkevent("CtrlCTS")
+        event = events.mkevent("CtrlCTS")
         event.ev_dc['src_addr']=self.net_conf.station_id
         rcv_event = self.macfsm.memory
         event.ev_dc['dst_addr']= rcv_event.ev_dc['src_addr']
@@ -302,7 +302,7 @@ class IEEE80211(gwn.GWNBlock):
 
     def sndACK(self, fsm):
         self.logger.info(str(self.nodeid) + ' Send ACK')
-        event = if_events.mkevent("CtrlACK")
+        event = events.mkevent("CtrlACK")
         event.ev_dc['src_addr']=self.net_conf.station_id
         rcv_event = self.macfsm.memory
         event.ev_dc['dst_addr']= rcv_event.ev_dc['src_addr']
@@ -404,7 +404,7 @@ def test2():
     blk1.set_connection_out(connector1,0)
     blk1.start()
     time.sleep(3)
-    event = if_events.mkevent("TimerConfig")
+    event = events.mkevent("TimerConfig")
     event.ev_dc['interval'] = 1
     event.ev_dc['retry'] = 5
     event.ev_dc['nickname1'] = "TimerTOR1"

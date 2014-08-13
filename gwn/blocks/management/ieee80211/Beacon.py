@@ -13,7 +13,7 @@ sys.path +=['..']
 import threading, Queue, time
 
 import blocks.utilblocks.timer.timer as Timer
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 import NetworkConfiguration
 
 
@@ -48,7 +48,7 @@ class Beacon(threading.Thread) :
                 timer=Timer.Timer(self.my_queue, \
                     self.my_actual_net_conf.beacon_period, 1, "TimerTimer")
                 timer.start()
-                event = if_events.mkevent("MgmtBeacon")
+                event = events.mkevent("MgmtBeacon")
                 event.ev_dc['src_addr'] = self.my_addr
                 event.ev_dc['dst_addr'] = self.broadcast_addr
                 event.ev_dc['peerlinkId'] = 0

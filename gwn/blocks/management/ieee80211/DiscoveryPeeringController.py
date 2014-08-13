@@ -12,7 +12,7 @@ sys.path +=['..']
 import threading, Queue,time
 
 import PeersTable, NetworkConfiguration
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 
 
 class DiscoveryPeeringController(threading.Thread) :
@@ -127,7 +127,7 @@ def test():
     dpcontrol.start()
 
 #    " Test1: Beacon  Confirm Open "
-#    event = if_events.mkevent("MgmtBeacon")
+#    event = events.mkevent("MgmtBeacon")
 #    event.src_addr=101
 #    event.dst_addr= net_conf1.broadcast_addr
 #    event.peerlinkId = 0
@@ -136,7 +136,7 @@ def test():
 #    dpfsm = dpcontrol.my_peers.getSM(peerMACaddr= 101)
 #
 #    print "state", dpfsm.fsm.current_state
-#    event = if_events.mkevent("ActionConfirm")
+#    event = events.mkevent("ActionConfirm")
 #    event.src_addr=101
 #    event.dst_addr= 100
 #    event.peerlinkId = 0
@@ -144,7 +144,7 @@ def test():
 #    time.sleep(5)
 #    print "state", dpfsm.fsm.current_state
 #    
-#    event = if_events.mkevent("ActionOpen")
+#    event = events.mkevent("ActionOpen")
 #    event.src_addr=101
 #    event.dst_addr= 100
 #    event.peerlinkId = 0
@@ -153,7 +153,7 @@ def test():
 #    print "state", dpfsm.fsm.current_state
     
 #    " Test2: Open  Confirm "
-#    event = if_events.mkevent("ActionOpen")
+#    event = events.mkevent("ActionOpen")
 #    event.src_addr=101
 #    event.dst_addr= net_conf1.broadcast_addr
 #    event.peerlinkId = 0
@@ -162,7 +162,7 @@ def test():
 #    dpfsm = dpcontrol.my_peers.getSM(peerMACaddr= 101)
 #
 #    print "state", dpfsm.fsm.current_state
-#    event = if_events.mkevent("ActionConfirm")
+#    event = events.mkevent("ActionConfirm")
 #    event.src_addr=101
 #    event.dst_addr= 100
 #    event.peerlinkId = 0
@@ -171,7 +171,7 @@ def test():
 #    print "state", dpfsm.fsm.current_state
     
     # Test3: Beacon  Open Confirm
-    event = if_events.mkevent("MgmtBeacon")
+    event = events.mkevent("MgmtBeacon")
     event.ev_dc['src_addr'] = 101
     event.ev_dc['dst_addr'] = net_conf1.broadcast_addr
     event.ev_dc['peerlinkId'] = 0
@@ -179,7 +179,7 @@ def test():
     time.sleep(5)
     dpfsm = dpcontrol.my_peers.getSM(peerMACaddr = 101)
 
-    event = if_events.mkevent("ActionOpen")
+    event = events.mkevent("ActionOpen")
     event.ev_dc['src_addr'] = 101
     event.ev_dc['dst_addr'] = 100
     event.ev_dc['peerlinkId'] = 0
@@ -188,7 +188,7 @@ def test():
     print "state", dpfsm.fsm.current_state
 
     print "state", dpfsm.fsm.current_state
-    event = if_events.mkevent("ActionConfirm")
+    event = events.mkevent("ActionConfirm")
     event.ev_dc['src_addr'] = 101
     event.ev_dc['dst_addr'] = 100
     event.ev_dc['peerlinkId'] = 0

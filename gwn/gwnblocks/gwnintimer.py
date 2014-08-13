@@ -28,7 +28,7 @@ import threading
 import time
 
 import gwnblock
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 
 # constants
 thread_lock = threading.Lock()
@@ -94,7 +94,7 @@ class InTimer(threading.Thread):
 
 
     def tout1(self):      
-        ev = if_events.mkevent(self.nickname1)
+        ev = events.mkevent(self.nickname1)
         ev.ev_dc['add_info'] = self.add_info
         thread_lock.acquire()
         #print '    port %s %d in block %s generated event %s' % \
@@ -105,7 +105,7 @@ class InTimer(threading.Thread):
      
 
     def tout2(self):
-        ev= if_events.mkevent(self.nickname2)
+        ev= events.mkevent(self.nickname2)
         ev.ev_dc['add_info'] =  self.add_info
         thread_lock.acquire()
         #print '    port %s %d in block %s generated event %s' % \

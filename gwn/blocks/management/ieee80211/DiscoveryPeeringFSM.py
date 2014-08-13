@@ -13,7 +13,7 @@ sys.path +=['..']
 import Queue,time,threading
 
 import utils.libfsm.fsm as fsm
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 import blocks.utilblocks.timer.timer as Timer
 import NetworkConfiguration
 
@@ -93,21 +93,21 @@ class DiscoveryPeeringFSM() :
         self.fsm.memory.append (data) 
         
     def sndCLS(self,fsm):
-        event = if_events.mkevent("ActionClose")
+        event = events.mkevent("ActionClose")
         event.ev_dc['src_addr'] = self.net_conf.station_id
         event.ev_dc['dst_addr']= self.peer_addr
         event.ev_dc['peerlinkId'] = self.link_id
         self.tx_event_q.put(event,False)
     
     def sndOPN(self,fsm):
-        event = if_events.mkevent("ActionOpen")
+        event = events.mkevent("ActionOpen")
         event.ev_dc['src_addr'] = self.net_conf.station_id
         event.ev_dc['dst_addr'] = self.peer_addr
         event.ev_dc['peerlinkId'] = self.link_id
         self.tx_event_q.put(event,False)
 
     def sndCNF(self,fsm):
-        event = if_events.mkevent("ActionConfirm")
+        event = events.mkevent("ActionConfirm")
         event.ev_dc['src_addr'] =self.net_conf.station_id
         event.ev_dc['dst_addr'] = self.peer_addr
         event.ev_dc['peerlinkId'] = self.link_id

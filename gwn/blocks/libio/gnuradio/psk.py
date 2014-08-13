@@ -27,7 +27,7 @@ import sys
 sys.path +=['..']
 
 from gnuradio import digital
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 import TxRxLayer1 as TxRxLayer1
 import gwnblocks.gwnblock as gwn
 
@@ -109,7 +109,7 @@ class PSK(gwn.GWNBlock):
             if not frame:
                 print 'PSK: an empty frame from  L1'
             else:
-                event = if_events.mkevent("DataData")
+                event = events.mkevent("DataData")
                 event.frmpkt = frame
                 self.write_out(0, event)
         return

@@ -9,7 +9,7 @@ sys.path +=['..']
 
 import threading, Queue,time
 import libmanagement.NetworkConfiguration as NetworkConfiguration
-import libevents.if_events as if_events
+import gwnevents.events as events
 import libtimer.timer as Timer
 import libutils.gnlogger as gnlogger
 import logging
@@ -248,7 +248,7 @@ def test1():
     net_conf1.list_nodes.append(101)
     
     mac_control = MacTdma(net_conf1,L1_ctrl_rx_q,L1_data_rx_q,L2_ctrl_rx_q,L2_data_rx_q,L1_event_tx_q,L2_event_tx_q,True)
-    event = if_events.mkevent("DataData")
+    event = events.mkevent("DataData")
     event.ev_dc['src_addr'] = 100 
     event.ev_dc['dst_addr'] = 101 
     L2_data_rx_q.put(event,False)
@@ -271,12 +271,12 @@ def test2():
     
     mac_control = MacTdma(net_conf1,L1_ctrl_rx_q,L1_data_rx_q,L2_ctrl_rx_q,L2_data_rx_q,L1_event_tx_q,L2_event_tx_q,False)
 
-    event = if_events.mkevent("DataData")
+    event = events.mkevent("DataData")
     event.ev_dc['src_addr'] = 101
     event.ev_dc['dst_addr'] = 100
     L2_data_rx_q.put(event,False)
     time.sleep(10)
-    event = if_events.mkevent("MgmtBeacon")
+    event = events.mkevent("MgmtBeacon")
     net_conf1.slots = 3 
     " The first slot  is the control slot, the others are for data"
     net_conf1.control_time = 3
@@ -308,7 +308,7 @@ def test3():
 #    net_conf1.list_nodes.append(101)
 #    net_conf1.list_nodes.append(100) 
     mac_control = MacTdma(net_conf1,L1_ctrl_rx_q,L1_data_rx_q,L2_ctrl_rx_q,L2_data_rx_q,L1_event_tx_q,L2_event_tx_q,False)
-    event = if_events.mkevent("DataData")
+    event = events.mkevent("DataData")
     event.ev_dc['src_addr'] = 100
     event.ev_dc['dst_addr'] = 101
     L1_data_rx_q.put(event,False)

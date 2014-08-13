@@ -1,62 +1,9 @@
 GN if_events.txt: doctest file
 
->>> from if_events import *
-
-
-=====         ===== 
-===== mkevent =====
-=====         ===== 
-
---- a CTS event ---
->>> ev_ob_frm = mkevent('CtrlCTS')
->>> print ev_ob_frm
-Event class name: EventFrame
-  Nickname: 'CtrlCTS'; Type: 'Ctrl'; SubType: 'CTS'
-  retry: 0
-  src_addr: addr_1
-  peerlinkId: 0
-  duration: 10
-  frame_length: 0
-  dst_addr: addr_1
-  Frame packet: ''
-  Payload: ''
-
---- an ActionOpen event ---
->>> ev_mg = mkevent('ActionOpen', ev_dc={'src_addr':'aaaa', 'dst_addr':'bbbb', 'peerlinkId':11})
->>> print ev_mg
-Event class name: EventFrameMgmt
-  Nickname: 'ActionOpen'; Type: 'Mgmt'; SubType: 'Action'
-  retry: 0
-  src_addr: aaaa
-  peerlinkId: 11
-  duration: 10
-  frame_length: 0
-  dst_addr: bbbb
-  Frame packet: ''
-  Payload: ''
-
---- a TimerTOH event
->>> ev_ob_tmr = mkevent('TimerTOH')
->>> print ev_ob_tmr
-Event class name: EventTimer
-  Nickname: 'TimerTOH'; Type: 'Timer'; SubType: 'TOH'
-  add_info: None
-  frame_length: 0
->>> ev_ob_tmr = mkevent('TimerTOH', ev_dc={'add_info':'additional info, testing'})
->>> print ev_ob_tmr
-Event class name: EventTimer
-  Nickname: 'TimerTOH'; Type: 'Timer'; SubType: 'TOH'
-  add_info: additional info, testing
-  frame_length: 0
-
---- events test for equality
->>> ac1 = mkevent('ActionConfirm')
->>> ac2 = mkevent('ActionConfirm')
->>> ac3 = mkevent('ActionConfirm', ev_dc={'peerlinkId':55})
->>> be1 = mkevent('MgmtBeacon')
->>> ac1 == ac2, ac2 == ac3, be1 == ac3
-(True, False, False)
-
+>>> #from events import *
+>>> import gwnevents.events as events
+>>> import if_frames
+>>> import if_events
 
 
 
@@ -68,7 +15,7 @@ Event class name: EventTimer
 --- Action frames ---
 
 >>> ev_dc = {'src_addr':'ladir1', 'dst_addr':'ladir2', 'duration':55, 'peerlinkId':27}
->>> ev_actconfirm = mkevent('ActionConfirm', ev_dc=ev_dc)
+>>> ev_actconfirm = events.mkevent('ActionConfirm', ev_dc=ev_dc)
 >>> print ev_actconfirm
 Event class name: EventFrameMgmt
   Nickname: 'ActionConfirm'; Type: 'Mgmt'; SubType: 'Action'
@@ -80,7 +27,7 @@ Event class name: EventFrameMgmt
   dst_addr: ladir2
   Frame packet: ''
   Payload: ''
->>> frm_actconfirm = evtofrm(ev_actconfirm)
+>>> frm_actconfirm = if_events.evtofrm(ev_actconfirm)
 >>> print frm_actconfirm
 Frame type  : Action
 Bit or bytes: bytes
@@ -99,7 +46,7 @@ frame_body: bytes, no bitmask  24   31  False    !7s :  '\r\x02\x00\x00\x00\x00\
 --- Beacon frames ---
 
 >>> ev_dc = {'src_addr':'beac_1', 'dst_addr':'beac_2', 'duration':20, 'peerlinkId':21}
->>> ev_bcn = mkevent('MgmtBeacon', ev_dc=ev_dc)
+>>> ev_bcn = events.mkevent('MgmtBeacon', ev_dc=ev_dc)
 >>> print ev_bcn
 Event class name: EventFrameMgmt
   Nickname: 'MgmtBeacon'; Type: 'Mgmt'; SubType: 'Beacon'
@@ -112,7 +59,7 @@ Event class name: EventFrameMgmt
   Frame packet: ''
   Payload: ''
 >>> dc_frbd_fldvals = {'SSID':'--- SSID field, length 34 '.ljust(34,'-')}
->>> frm_bcn = evtofrm(ev_bcn, fr_dc_frbd_fldvals=dc_frbd_fldvals)
+>>> frm_bcn = if_events.evtofrm(ev_bcn, fr_dc_frbd_fldvals=dc_frbd_fldvals)
 >>> print frm_bcn
 Frame type  : Beacon
 Bit or bytes: bytes
@@ -132,7 +79,7 @@ frame_body: bytes, no bitmask  24   84  False   !60s :  '\x00\x00\x00\x00\x00\x0
 
 >>> ev_dc = {'src_addr':'data_1', 'dst_addr':'data_2', 'duration':55} 
 >>> payload = 'a DATA frame under test of mkevent'
->>> ev_data = mkevent('DataData', ev_dc=ev_dc, payload=payload)
+>>> ev_data = events.mkevent('DataData', ev_dc=ev_dc, payload=payload)
 >>> print ev_data
 Event class name: EventFrame
   Nickname: 'DataData'; Type: 'Data'; SubType: 'Data'
@@ -144,7 +91,7 @@ Event class name: EventFrame
   dst_addr: data_2
   Frame packet: ''
   Payload: 'a DATA frame under test of mkevent'
->>> frm_data = evtofrm(ev_data)
+>>> frm_data = if_events.evtofrm(ev_data)
 >>> print frm_data
 Frame type  : Data
 Bit or bytes: bytes
@@ -171,7 +118,7 @@ frame_body: bytes, no bitmask  36   70  False   !34s :  'a DATA frame under test
 =====         ===== 
 
 --- frame Action Confirm ---
->>> ev_obj = frmtoev(frm_actconfirm)
+>>> ev_obj = if_events.frmtoev(frm_actconfirm)
 >>> print ev_obj
 Event class name: EventFrameMgmt
   Nickname: 'ActionConfirm'; Type: 'Mgmt'; SubType: 'Action'
@@ -193,36 +140,36 @@ received pkt  --> Frame obj 2 --> Event 2
 
 >>> import blocks.framers.ieee80211 as libframes
 
->>> ev1 = mkevent('ActionClose', ev_dc={'peerlinkId':11, 'duration':12})
->>> fr1 = evtofrm(ev1)
+>>> ev1 = events.mkevent('ActionClose', ev_dc={'peerlinkId':11, 'duration':12})
+>>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = libframes.if_frames.objfrompkt(pk1)
->>> ev2 = frmtoev(fr2)
+>>> fr2 = if_frames.objfrompkt(pk1)
+>>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
 
 
->>> ev1 = mkevent('MgmtBeacon', ev_dc={'peerlinkId':21, 'duration':22})
->>> fr1 = evtofrm(ev1)
+>>> ev1 = events.mkevent('MgmtBeacon', ev_dc={'peerlinkId':21, 'duration':22})
+>>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = libframes.if_frames.objfrompkt(pk1)
->>> ev2 = frmtoev(fr2)
+>>> fr2 = if_frames.objfrompkt(pk1)
+>>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
 
->>> ev1 = mkevent('CtrlACK', ev_dc={'duration':22})
->>> fr1 = evtofrm(ev1)
+>>> ev1 = events.mkevent('CtrlACK', ev_dc={'duration':22})
+>>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = libframes.if_frames.objfrompkt(pk1)
->>> ev2 = frmtoev(fr2)
+>>> fr2 = if_frames.objfrompkt(pk1)
+>>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
 
->>> ev1 = mkevent('DataData', ev_dc={'duration':33, 'payload':'A Data frame payload'})
->>> fr1 = evtofrm(ev1)
+>>> ev1 = events.mkevent('DataData', ev_dc={'duration':33, 'payload':'A Data frame payload'})
+>>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = libframes.if_frames.objfrompkt(pk1)
->>> ev2 = frmtoev(fr2)
+>>> fr2 = if_frames.objfrompkt(pk1)
+>>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
 

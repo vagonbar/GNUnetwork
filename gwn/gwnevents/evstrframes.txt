@@ -2,7 +2,7 @@ GN evstrframes, doctest file
 
 
 >>> from evstrframes import *
->>> #import if_events
+>>> import events
 
 >>> #ev = if_events.mkevent("MgmtBeacon", pev_dc={})
 >>> ev = mkevent("MgmtBeacon", pev_dc={})
@@ -18,7 +18,7 @@ Event class name: EventFrameMgmt
   duration: 10
   frame_length: 0
   dst_addr: 112
-  Frame packet: 
+  Frame packet: ''
   Payload: ''
 
 >>> frame = mkframe(ev)

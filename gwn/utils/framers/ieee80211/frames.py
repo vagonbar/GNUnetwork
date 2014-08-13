@@ -33,9 +33,12 @@ import os
 import struct
 from collections import namedtuple
 
+import evframes80211
+
 # the following comment is treated as a docstring for following variable
 #: a collections.namedtuple subclass for naming metadata items on fields; 'beg', 'end' are list positions for slicing, 'inv' inverts bits if True, 'fmt' is the struct mask for packing, 'btmsk' is a bitmask for bit fields.
 FieldTemplate = namedtuple('FieldTemplate', ['beg', 'end', 'inv', 'fmt', 'btmsk'])
+
 
 
 def bin2(bb, bitlen=8, with0b=False):
@@ -78,6 +81,14 @@ class FrameException(Exception):
         self.msg = msg
     def __str__(self):
         return repr(self.msg)
+
+
+
+class EventFrameException(Exception):
+    '''An exception to rise on Event to/from Frame conversion.
+    '''
+    pass 
+
 
 
 class Frame(object):

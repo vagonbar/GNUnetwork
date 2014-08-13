@@ -24,10 +24,9 @@
 '''An IEEE 802.11 framer block.
 '''
 
-
 import sys
 
-import gwnevents.if_events as if_events
+import utils.framers.ieee80211.frames as frames
 import gwnblocks.gwnblock as gwn
 
 
@@ -50,7 +49,7 @@ class Framer(gwn.GWNBlock):
         
         From the event received, generates a frame packet, assigns this frame packet as an atrribute to the same event, and outputs the event.
         '''
-        frmobj = if_events.evtofrm(ev)
+        frmobj = frames.evtofrm(ev)
         framepkt = frmobj.mkpkt()
         ev.frmpkt = framepkt
         self.write_out(0, ev)

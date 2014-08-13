@@ -29,7 +29,7 @@ import sys
 import time
 
 sys.path += sys.path + ['..']
-import gwnevents.if_events as if_events
+import gwnevents.events as events
 import gwnblocks.gwnblock as gwn
 import gwnblocks.gwninport as inport
 
@@ -111,7 +111,7 @@ def test2():
     blk1.set_connection_out(connector1,0)
     blk1.start()
     time.sleep(3)
-    event = if_events.mkevent("TimerConfig")
+    event = events.mkevent("TimerConfig")
     event.ev_dc['interval'] = 1
     event.ev_dc['retry'] = 5
     event.ev_dc['nickname1'] = "TimerTOR1"

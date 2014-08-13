@@ -26,7 +26,7 @@
 @var dc_nicknames: a dictionary of nicknames, types, subtypes, and classnames, C{ {nickname: (type, subtype, classname)} }; C{classname} is the class used to build the object. This dictionary allows to build a time event object by just saying its nickname. Module function C{mkevent()} uses this module variable.
 '''
 
-from events import Event, EventNameException
+from gwnevent import Event, EventNameException
 
 
 

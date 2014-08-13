@@ -44,7 +44,7 @@ import sys
 try:
     import gwnblocks.gwninport as gwninport
     import gwnblocks.gwnblock as gwnblock
-    import gwnevents.if_events as if_events
+    import gwnevents.events as events
 except ImportError:
     print 'tuntap.py, import Error:'
     print '  adjust PYTHONPATH for sudo:'
@@ -135,7 +135,7 @@ class TunTapInterface(gwnblock.GWNBlock):
             (self.blkname, port_type, port_nr, ev),
 
         if port_type is 'inport' and port_nr is 1:     # ev is payload from op sys
-            event = if_events.mkevent("DataData")
+            event = events.mkevent("DataData")
             event.ev_dc['src_addr'] = self.my_addr
             event.ev_dc['dst_addr'] = self.dst_addr
             event.payload = ev
@@ -205,7 +205,7 @@ def test2():
 
     for i in range(0,5):
         print '=== BEGIN Event %d ===' % (i,)
-        event = if_events.mkevent('DataData', ev_dc={'src_addr':'sss', \
+        event = events.mkevent('DataData', ev_dc={'src_addr':'sss', \
             'dst_addr':'dddd'} )
         blk2.ports_in[0].conn.put(event)
         time.sleep(2)

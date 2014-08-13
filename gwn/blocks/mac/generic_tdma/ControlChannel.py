@@ -8,7 +8,7 @@ A control channel block.
 import sys
 sys.path +=['..']
 import libtimer.timer as Timer
-import libevents.if_events as if_events
+import gwnevents.events as events
 import threading,Queue,time
 import libmanagement.NetworkConfiguration as NetworkConfiguration
 import libutils.gnlogger as gnlogger
@@ -47,7 +47,7 @@ class ControlChannel(threading.Thread) :
                 timer=Timer.Timer(self.my_queue, \
                     self.my_actual_net_conf.control_time,1,"TimerTimer")
                 timer.start()
-                event = if_events.mkevent("MgmtBeacon")
+                event = events.mkevent("MgmtBeacon")
                 event.ev_dc['src_addr'] = self.my_addr
                 event.ev_dc['dst_addr'] = self.broadcast_addr
                 event.ev_dc['time_slot']=  self.my_actual_net_conf.control_time/ self.my_actual_net_conf.slots

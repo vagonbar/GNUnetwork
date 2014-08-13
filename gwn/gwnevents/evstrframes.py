@@ -39,7 +39,7 @@ Fields are separated by ','. Payload length is required to unpack, since ',' may
 '''
 
 import events
-import if_events
+import gwnevent
 import sys
 
 
@@ -54,12 +54,12 @@ def mkevent(pnickname=None, pframe=None, pev_dc={}, payload=''):
     @return: an Event object.
     '''
     if not pnickname and not pframe:
-        raise events.EventNameException('No event nickname or frame received')
+        raise gwnevent.EventNameException('No event nickname or frame received')
     if pnickname and pframe:
-        raise events.EventNameException( \
+        raise gwnevent.EventNameException( \
             'Both event nickname and frame received')
     if pnickname:
-        return if_events.mkevent(pnickname, ev_dc=pev_dc)
+        return events.mkevent(pnickname, ev_dc=pev_dc)
     if pframe:
         ev_dc = {}
         ### unpack frame
@@ -78,7 +78,7 @@ def mkevent(pnickname=None, pframe=None, pev_dc={}, payload=''):
             print "mkevent unpack error : ",repr(pframe)
             return None
         try:
-            ev = if_events.mkevent(nickname, frmpkt=pframe, ev_dc=ev_dc)
+            ev = events.mkevent(nickname, frmpkt=pframe, ev_dc=ev_dc)
             ev.payload = payload
             return  ev
         except:
@@ -98,23 +98,23 @@ def mkframe(ev_obj):
     @param ev_obj: an Event object.
     @return: a frame in string format.
     '''
-    if not isinstance(ev_obj, events.Event):
-        raise EventNameException('Parameter is not an Event object.')
+    if not isinstance(ev_obj, gwnevent.Event):
+        raise gwnevent.EventNameException('Parameter is not an Event object.')
         return None
 
     # unnecessary, ev_dc always included in mkevent, even if empty
     #if not ev_obj.ev_dc:
-    #    raise if_events.EventNameException('ev_dc not in event object.')
+    #    raise events.EventNameException('ev_dc not in event object.')
 
     # TODO: see if all these validations are required, or force fields
     #   to be present by other means, e.g. a default ev_dc
     # WARNING: following lines impose values on these fields!
     #if not ev_obj.ev_dc.has_key('src_addr') or \
     #    not ev_obj.ev_dc.has_key('dst_addr'):
-    #    raise if_events.EventNameException( \
+    #    raise events.EventNameException( \
     #        'ev_dc does not contain src_addr, dst_addr keys.')
     #if not ev_obj.nickname:
-    #    raise if_events.EventNameException( 'even with no nickname.')
+    #    raise events.EventNameException( 'even with no nickname.')
     if not ev_obj.ev_dc['src_addr']:
         ev_obj.ev_dc['src_addr'] = ''
     if not ev_obj.ev_dc['dst_addr']:

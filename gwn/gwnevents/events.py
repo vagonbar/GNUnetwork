@@ -21,57 +21,61 @@
 #
 
 
-'''A generic class for events.
+'''Functions to create events of different types.
 
-Class Event is a generic class for all types of events. Class Event is expected to be specialized into different, more specific types of events, implemented as subclasses. A hierarchy of event types and subtypes is possible. Events are distinguished by a nickname, a descriptive name used to recognize the type of event whatever their position in the event class hierarchy. Event nicknames are a convention of this project.
-
-See module if_events for an interface to use this module.
-
-Nickname: 1. A descriptive name added to or replacing the actual name of a person, place, or thing (American Heritage Dictionary).
-
+To create an event object use function C{mkevent()}. This function creates events of different types, according to the event modules imported by this module.
 '''
 
 import sys
 import types
 
+import evtimer
+import utils.framers.ieee80211.evframes80211 as evframes80211
+import evrequest
+#sys.path = sys.path + ['..']
 
-sys.path = sys.path + ['..']
 
 
+def mkevent(nickname, **kwargs):
+    '''Returns an event of the given event nickname.
 
-class Event:
-    '''A general class for all types of event.
+    @param nickname: a valid event nickname, i.e. one that is a key in dictionary of valid nicknames.
+    @param kwargs: a dictionary of variables depending on the type of event. Field C{ev_dc} is a dictionary of fields and values for the corresponding event type; field C{frmpkt} is a binary packed frame.
+    @return: an Event object.
     '''
 
-    def __init__(self, nickname):
-        '''Constructor.
-        
-        @param nickname: a descriptive name to indicate the type of event.
-        '''
-        self.nickname = nickname
-        self.dc_ev = {}
-        
-    def __str__(self):
-        ss = 'Event class name: ' + self.__class__.__name__
-        ss += "\n  Nickname: '%s'; Type: '%s'; SubType: '%s'"  % \
-            (self.nickname, self.ev_type, self.ev_subtype)
-        for key in self.ev_dc.keys():
-            ss += '\n  ' + key + ': ' + str(self.ev_dc[key])
-        return ss
+    from evtimer import dc_nicknames as ev_dc_nicknames
+    import utils.framers.ieee80211.evframes80211
+    import evrequest
+
+    frmpkt, ev_dc = '', {}
+    if kwargs.has_key('ev_dc'):
+        ev_dc = kwargs['ev_dc']
+    if kwargs.has_key('frmpkt'):
+        frmpkt = kwargs['frmpkt']
+        ev_dc['frame_length'] = len(frmpkt)
+    else:
+        ev_dc['frame_length'] = 0
+        frmpkt = ''
+    if kwargs.has_key('payload'):
+        payload = kwargs['payload']
+    else:
+        payload = ''
+    if evtimer.dc_nicknames.has_key(nickname):
+        ptype, psubtype, eventclass = evtimer.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
+    elif evframes80211.dc_nicknames.has_key(nickname):
+        ev_type, ev_subtype, eventclass = evframes80211.dc_nicknames[nickname]
+        ev = eventclass(nickname, ev_type, ev_subtype, frmpkt, ev_dc)
+        ev.payload = payload
+        return ev
+    elif evrequest.dc_nicknames.has_key(nickname):
+        ptype, psubtype, eventclass = evrequest.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
+    else:
+        raise EventNameException(nickname + ' is not a valid nickname.')
 
 
-    def getname(self):
-        '''Returns event nickname.
-        
-        TODO: see if really needed, nickname is public
-        '''
-        return self.nickname
-
-
-class EventNameException(Exception):
-    '''An exception to rise on non valid parameters for event construction.
-    '''
-    pass 
 
 
 
