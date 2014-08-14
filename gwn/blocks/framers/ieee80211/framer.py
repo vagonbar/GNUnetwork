@@ -27,7 +27,7 @@
 import sys
 
 #import utils.framers.ieee80211.frames as frames
-import utils.framers.ieee80211.if_events as frames
+import utils.framers.ieee80211.if_events as if_events
 import gwnblocks.gwnblock as gwn
 
 
@@ -50,7 +50,7 @@ class Framer(gwn.GWNBlock):
         
         From the event received, generates a frame packet, assigns this frame packet as an atrribute to the same event, and outputs the event.
         '''
-        frmobj = frames.evtofrm(ev)
+        frmobj = if_events.evtofrm(ev)
         framepkt = frmobj.mkpkt()
         ev.frmpkt = framepkt
         self.write_out(0, ev)

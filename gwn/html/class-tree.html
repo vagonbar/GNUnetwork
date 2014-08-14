@@ -67,14 +67,6 @@
     <li> <strong class="uidlink"><a href="gwn.epydoc_doc.epydoc_example.ClassA-class.html">gwn.epydoc_doc.epydoc_example.ClassA</a></strong>:
       <em class="summary">A brief description of class ClassA, should fit in a line.</em>
     </li>
-    <li> <strong class="uidlink">gwnblocks.gwninport.Connector</strong>:
-      <em class="summary">A data structure to put and get events from.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="gwn.blocks.libio.tuntap.tuntap.ATunTapConnector-class.html">gwn.blocks.libio.tuntap.tuntap.ATunTapConnector</a></strong>:
-      <em class="summary">A Connector with a TUN/TAP interface.</em>
-    </li>
-    </ul>
-    </li>
     <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwninport.Connector-class.html">gwn.gwnblocks.gwninport.Connector</a></strong>:
       <em class="summary">A data structure to put and get events from.</em>
     <ul>
@@ -86,19 +78,32 @@
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM-class.html">gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM</a></strong>:
-      <em class="summary">The discovery and peering finite state machine.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.events.Event-class.html">gwn.gwnevents.events.Event</a></strong>:
-      <em class="summary">A general class for all types of event.</em>
+    <li> <strong class="uidlink">gwnblocks.gwninport.Connector</strong>:
+      <em class="summary">A data structure to put and get events from.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evframes80211.EventFrame-class.html">gwn.gwnevents.evframes80211.EventFrame</a></strong>:
-      <em class="summary">An event associated with a frame.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evframes80211.EventFrameMgmt-class.html">gwn.gwnevents.evframes80211.EventFrameMgmt</a></strong>
+    <li> <strong class="uidlink"><a href="gwn.blocks.libio.tuntap.tuntap.ATunTapConnector-class.html">gwn.blocks.libio.tuntap.tuntap.ATunTapConnector</a></strong>:
+      <em class="summary">A Connector with a TUN/TAP interface.</em>
     </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM-class.html">gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM</a></strong>:
+      <em class="summary">The discovery and peering finite state machine.</em>
+    </li>
+    <li> <strong class="uidlink">gwnevents.gwnevent.Event</strong>:
+      <em class="summary">A general class for all types of event.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="gwn.utils.framers.ieee80211.evframes80211.EventFrame-class.html">gwn.utils.framers.ieee80211.evframes80211.EventFrame</a></strong>:
+      <em class="summary">An event associated with a frame.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="gwn.utils.framers.ieee80211.evframes80211.EventFrameMgmt-class.html">gwn.utils.framers.ieee80211.evframes80211.EventFrameMgmt</a></strong>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnevents.gwnevent.Event-class.html">gwn.gwnevents.gwnevent.Event</a></strong>:
+      <em class="summary">A general class for all types of event.</em>
+    <ul>
     <li> <strong class="uidlink"><a href="gwn.gwnevents.evrequest.EventRequest-class.html">gwn.gwnevents.evrequest.EventRequest</a></strong>:
       <em class="summary">An event associated with the configuration of blocks.</em>
     </li>
@@ -136,10 +141,10 @@
     <li> <strong class="uidlink">exceptions.Exception</strong>:
       <em class="summary">Common base class for all non-exit exceptions.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.if_events.EventFrameException-class.html">gwn.gwnevents.if_events.EventFrameException</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.utils.framers.ieee80211.frames.EventFrameException-class.html">gwn.utils.framers.ieee80211.frames.EventFrameException</a></strong>:
       <em class="summary">An exception to rise on Event to/from Frame conversion.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.events.EventNameException-class.html">gwn.gwnevents.events.EventNameException</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents.gwnevent.EventNameException-class.html">gwn.gwnevents.gwnevent.EventNameException</a></strong>:
       <em class="summary">An exception to rise on non valid parameters for event 
         construction.</em>
     </li>
@@ -309,13 +314,13 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
     <li> <strong class="uidlink"><i>unreachable</i>.hier_block2</strong>:
       <em class="summary">Subclass this to create a python hierarchical block.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.receive_path.receive_path-class.html">gwn.blocks.libio.gnuradio.receive_path.receive_path</a></strong>
-    </li>
     <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.receive_path3_7.receive_path-class.html">gwn.blocks.libio.gnuradio.receive_path3_7.receive_path</a></strong>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.transmit_path3_7.transmit_path-class.html">gwn.blocks.libio.gnuradio.transmit_path3_7.transmit_path</a></strong>
+    <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.receive_path.receive_path-class.html">gwn.blocks.libio.gnuradio.receive_path.receive_path</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.transmit_path.transmit_path-class.html">gwn.blocks.libio.gnuradio.transmit_path.transmit_path</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.transmit_path3_7.transmit_path-class.html">gwn.blocks.libio.gnuradio.transmit_path3_7.transmit_path</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="gwn.blocks.libio.gnuradio.uhd_interface.uhd_receiver-class.html">gwn.blocks.libio.gnuradio.uhd_interface.uhd_receiver</a></strong>
     </li>
@@ -385,7 +390,7 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 29 14:29:27 2014
+    Generated by Epydoc 3.0.1 on Thu Aug 14 14:45:20 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

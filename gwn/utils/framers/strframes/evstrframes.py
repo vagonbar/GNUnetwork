@@ -38,55 +38,60 @@ Fields are separated by ','. Payload length is required to unpack, since ',' may
 
 '''
 
-import events
-import gwnevent
+import gwnevents.events as events
+import gwnevents.gwnevent as gwnevent
 import sys
 
 
-def mkevent(pnickname=None, pframe=None, pev_dc={}, payload=''):
+def mkevent(nickname=None, frame=None, ev_dc={}, payload=''):
     '''Creates an event from a nickname or from a frame.
     
     This function accepts either an event nickname or a string frame, but not both. If an event nickname is given, an Event object of that nickname is created; if a string frame is given, an Event object is created from that frame.
-    @param pnickname: the event nickname, default None.
-    @param pframe: a frame in string format, default None.
-    @param pev_dc: a dictionary {field_name: value} for event creation; defaults to an empty dictionary. Disregarded if a frame is given.
+    @param nickname: the event nickname, default None.
+    @param frame: a frame in string format, default None.
+    @param ev_dc: a dictionary {field_name: value} for event creation; defaults to an empty dictionary. Disregarded if a frame is given.
     @param payload: the payload, not included in dictionary to preserve binary string format as received.
     @return: an Event object.
     '''
-    if not pnickname and not pframe:
+    if not nickname and not frame:
         raise gwnevent.EventNameException('No event nickname or frame received')
-    if pnickname and pframe:
+    if nickname and frame:
         raise gwnevent.EventNameException( \
             'Both event nickname and frame received')
-    if pnickname:
-        return events.mkevent(pnickname, ev_dc=pev_dc)
-    if pframe:
+    if nickname:
+        return events.mkevent(nickname, ev_dc=ev_dc, payload = payload)
+    if frame:
         ev_dc = {}
         ### unpack frame
         try:
-            nickname, sep, rest1 = pframe.partition(',')
+            nickname, sep, rest1 = frame.partition(',')
             strlen, sep, rest2 = rest1.partition(',')
             if int(strlen) == 0:
                 str_ev_dc = rest2
             else:
                 str_ev_dc, payload = rest2[:-int(strlen)], rest2[-int(strlen):]
-            ev_dc = eval(str_ev_dc)
+
+            ev_dc = eval(str_ev_dc.strip(','))    # leaves out final comma
 
             # TODO: this function should adjust frame_length. How?
             #    frame_lenght must be set in ev_dc of Event. Is it used?
+            ev_dc['frame_length'] = 0
         except:
-            print "mkevent unpack error : ",repr(pframe)
+            print "mkevent unpack error : ", repr(frame)
+            print "  nickname:", nickname
+            print "  str_ev_dc:", str_ev_dc
+            print "  payload:", payload
             return None
         try:
-            ev = events.mkevent(nickname, frmpkt=pframe, ev_dc=ev_dc)
+            ev = events.mkevent(nickname, frmpkt=frame, ev_dc=ev_dc)
             ev.payload = payload
             return  ev
         except:
             #raise events.EventNameException( \
             #    'cannot generate event: malformed packet\n' + \
-            #    pframe)
+            #    frame)
             print 'evstrframes: cannot generate event: malformed packet'
-            print repr(pframe)
+            print repr(frame)
             return None
 
 
@@ -126,8 +131,11 @@ def mkframe(ev_obj):
     # frame_length cannot be included in packet, alters frame_length!
     #    other encoding must be used to inclue frame_length in packet
     ### pack frame
+
     frame = '' + ev_obj.nickname + ',' + str(len(ev_obj.payload)) + ',' + \
-        str(ev_obj.ev_dc) + ev_obj.payload
+        str(ev_obj.ev_dc)
+    if ev_obj.payload:
+        frame = frame + ',' + ev_obj.payload
     #print "mkframe   ", frame
     ev_obj.frmpkt = frame
     ev_obj.ev_dc['frame_length'] = len(ev_obj.frmpkt)
