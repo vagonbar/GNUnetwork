@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# libframes : frames library, version 2
-
-'''A library for MAC Frames.
+'''A library for IEEE 802.11 frames.
 '''
 

@@ -213,6 +213,12 @@ gwn.utils.framers.ieee80211.mac_frmspecs.getfrmclass	gwn.utils.framers.ieee80211
 gwn.utils.framers.ieee80211.mac_frmspecs.dc_frmclasses	gwn.utils.framers.ieee80211.mac_frmspecs-module.html#dc_frmclasses
 gwn.utils.framers.ieee80211.mac_frmspecs.__package__	gwn.utils.framers.ieee80211.mac_frmspecs-module.html#__package__
 gwn.utils.framers.ieee80211.mac_frmspecs.showfldvals	gwn.utils.framers.ieee80211.mac_frmspecs-module.html#showfldvals
+gwn.utils.framers.strframes	gwn.utils.framers.strframes-module.html
+gwn.utils.framers.strframes.__package__	gwn.utils.framers.strframes-module.html#__package__
+gwn.utils.framers.strframes.evstrframes	gwn.utils.framers.strframes.evstrframes-module.html
+gwn.utils.framers.strframes.evstrframes.mkframe	gwn.utils.framers.strframes.evstrframes-module.html#mkframe
+gwn.utils.framers.strframes.evstrframes.__package__	gwn.utils.framers.strframes.evstrframes-module.html#__package__
+gwn.utils.framers.strframes.evstrframes.mkevent	gwn.utils.framers.strframes.evstrframes-module.html#mkevent
 gwn.utils.libfsm	gwn.utils.libfsm-module.html
 gwn.utils.libfsm.__package__	gwn.utils.libfsm-module.html#__package__
 gwn.utils.libfsm.fsm	gwn.utils.libfsm.fsm-module.html
