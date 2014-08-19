@@ -29,7 +29,7 @@ Try both possibilities::
     python gnlogger.py
     python gnlogger_test.py
     
-Log file is C{../logs/gnlogger.log}.
+Log file is C{<gwn_base_dir>/logs/gnlogger.log}.
 '''
 
 import gnlogger

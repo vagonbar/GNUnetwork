@@ -2,6 +2,49 @@ GWN temas pendientes
 VGB
 
 
+=== Reunión martes 19/08/2014
+
+Temas a comentar:
+  - configuración de bloques.
+  - concepto de nodo.
+  - prioridades actuales, cómo seguir hasta fin de año.
+
+UML, LANC 2014:
+  - clases en bloques, diagrama UML.
+  - clases en eventos, pendiente
+  - envío paper?
+
+Logger:
+  - categorías: debug, info, error, critical; exception?, fatal es critical.
+  - nombre de archivo de log, por nivel de directorio?
+
+Interacción eventos - frames, nombres de módulos:
+  frmevents: funciones evento-->frame, frame-->evento
+  frmobjects: funciones frame-->objeto_frame, mkframe, ...
+
+
+
+
+
+=== Reunión Belza, VGB
+
+Configuración de bloques, requiere:
+  - interrogar estado de un bloque; el estado está definido a través de valores de variables. PROPUESTA: usar bloques de variable, un bloque por variable, como lo tiene implementado el Companion.
+  - cambiar la configuración interna de un bloque , o sea cambiar el estado, los valores de variables en ese bloque. PROPUESTA: a través de eventos generados por un bloque de configuración, en base a lógica e informaciones recabadas por el bloque, a través de eventos y/o interrogación de estado (lo anterior).
+
+Concepto de nodo:
+  - un nodo es un conjunto de bloques interconectados apto para realizar algún tipo de comunicación.
+  - un nodo puede interactuar con otros nodos a través de un canal de comunicación real o simulado.
+  - un nodo se percibe como una unidad o dispositivo de comunicación, análogo a una plaqueta Ethernet o un dongle WiFi (o parte de ellos); un usuario puede armar una red usando nodos conectados a algún medio físico real o simulado.
+  - los nodos aparecerán (quizás) en la GWN 2.0.
+
+Prioridades:
+  - LANC 2014, crear presentación, ajustar, ensayar, presenar en evento.
+  - terminar versión 1 del framework.
+  - ver si podemos llegar a presentar algún artículo a una revista antes de fin de año, posiblemente en el ámbito de educación técnica, menos exigente en lo específico de redes.
+  - ir pensando qué aplicaciones podemos implementar en el framework, e.g. algo de redes cognitivas; esto podría dar para un artículo en una revista orientada a redes o comunicaciones.
+
+
 === Reunión GG, VGB 2014-07-15
 
 Scripts en gwn/scripts

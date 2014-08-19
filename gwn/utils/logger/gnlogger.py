@@ -23,7 +23,7 @@
 
 '''A logger for GNUWiNetwork modules.
 
-This module provides configuration for the logging facilities used in the GNU network modules.
+This module provides configuration for the logging facilities used in the GNUWiNetwork modules.
 
 See:  See I{"Logging", "Logging HowTo", and "Logging Cookbook" in Python Documentation}.
 
@@ -39,12 +39,12 @@ import logging
 import gnlogger_test
 
 # set default behavior, initialize variables
-appname = 'GNlogger'    
+appname = 'GWNlogger'    
 fname = 'gnlogger.log'   # log file name
 fmode = 'w'              # log file mode, 'a' for append, 'w' restarts
 loglvl = logging.DEBUG   # log level
 fmtstr = '%(asctime)s %(levelname)-8s %(name)s: %(message)s'
-logdir = '../logs/'      # set to './' to log to current directory
+logdir = '../../logs/'      # last '/' required! set to './' for current directory
 
 def logconf(app=appname, fnm=fname, fmd=fmode, lvl=loglvl, fmt=fmtstr, \
         lgd=logdir):
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     logger.debug('creating an object from another module')
     obja = gnlogger_test.Auxiliary()
-    logger.debug('infoking a function in created object')
+    logger.debug('invoking a function in created object')
     obja.do_something()
 
 
