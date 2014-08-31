@@ -27,7 +27,7 @@
 '''
 
 from gwnevents.gwnevent import Event, EventNameException
-import if_frames
+import api_frames
 
 
 class EventFrame(Event):

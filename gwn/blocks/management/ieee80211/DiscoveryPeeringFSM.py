@@ -13,7 +13,7 @@ sys.path +=['..']
 import Queue,time,threading
 
 import utils.libfsm.fsm as fsm
-import gwnevents.events as events
+import gwnevents.api_events as events
 import blocks.utilblocks.timer.timer as Timer
 import NetworkConfiguration
 

@@ -28,7 +28,7 @@ import sys
 import time
 
 sys.path += sys.path + ['..']
-import gwnevents.events as events
+import gwnevents.api_events as events
 import gwnblocks.gwnblock as gwn
 import gwnblocks.gwninport as inport
 import utils.logger.gnlogger as gnlogger

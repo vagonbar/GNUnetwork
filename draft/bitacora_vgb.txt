@@ -16,13 +16,18 @@ UML, LANC 2014:
 
 Logger:
   - categorías: debug, info, error, critical; exception?, fatal es critical.
-  - nombre de archivo de log, por nivel de directorio?
+  - nombre de archivo de log, un solo archivo de log, se filtra para más específicos.
+  - variable para fijar el nivel de log global, un logger para todos.
 
-Interacción eventos - frames, nombres de módulos:
-  frmevents: funciones evento-->frame, frame-->evento
-  frmobjects: funciones frame-->objeto_frame, mkframe, ...
++ Interacción eventos - frames, nombres de módulos (ex if_events en frames):
+  frmevents: funciones evento-->frame, frame-->evento     :
+    api_frmevs, api_frmevents, api_frameevents,
+  frmobjects: funciones frame-->objeto_frame, mkframe, ...:
+    api_frmobjs, api_frmobjects, api_frameobjects, api_frames
+  + api_frames, api_frmevs
 
-
++ Eventos
+  + api_events en lugar de event; OJO, no corregido, 'import gwnevents.api_events as events'.
 
 
 
@@ -39,7 +44,7 @@ Concepto de nodo:
   - los nodos aparecerán (quizás) en la GWN 2.0.
 
 Prioridades:
-  - LANC 2014, crear presentación, ajustar, ensayar, presenar en evento.
+  - LANC 2014, crear presentación, ajustar, ensayar, presentar en congreso.
   - terminar versión 1 del framework.
   - ver si podemos llegar a presentar algún artículo a una revista antes de fin de año, posiblemente en el ámbito de educación técnica, menos exigente en lo específico de redes.
   - ir pensando qué aplicaciones podemos implementar en el framework, e.g. algo de redes cognitivas; esto podría dar para un artículo en una revista orientada a redes o comunicaciones.

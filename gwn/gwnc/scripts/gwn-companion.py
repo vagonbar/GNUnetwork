@@ -22,7 +22,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import sys
-sys.path +=['../..']
+#sys.path +=['../..']
 
 '''
 try: from gnuradio import gr

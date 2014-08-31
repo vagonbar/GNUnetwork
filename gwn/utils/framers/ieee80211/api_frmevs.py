@@ -36,7 +36,7 @@ To add different types of events:
 import sys
 sys.path += ['..']
 
-import gwnevents.events as events
+import gwnevents.api_events as events
 # event modules, for different types of events
 #import evtimer
 #import evrequest
@@ -45,8 +45,8 @@ import utils.framers.ieee80211.evframes80211 as evframes80211
 from utils.framers.ieee80211.mac_frmbld import MacFrameException
 from gwnevents.gwnevent import EventNameException 
 
-# import if_frames for test function
-from utils.framers.ieee80211 import if_frames as if_frames
+# import api_frames for test function
+from utils.framers.ieee80211 import api_frames as api_frames
 
 
 """
@@ -192,7 +192,7 @@ def evtofrm(evobj, fr_dc_fldvals={}, fr_dc_frbd_fldvals={}):
     ##
 
     # make Frame object, record frame length
-    frmobj = if_frames.mkframeobj(frmname, dc_fldvals=dc_fldvals, \
+    frmobj = api_frames.mkframeobj(frmname, dc_fldvals=dc_fldvals, \
         dc_frbd_fldvals=dc_frbd_fldvals) 
     #evobj.ev_dc['frame_length'] = frmobj.frame_len
     evobj.frmpkt = frmobj.mkpkt()

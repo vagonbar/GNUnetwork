@@ -9,7 +9,7 @@ sys.path +=['..']
 
 import threading, Queue,time
 import libmanagement.NetworkConfiguration as NetworkConfiguration
-import gwnevents.events as events
+import gwnevents.api_events as events
 import libtimer.timer as Timer
 import libutils.gnlogger as gnlogger
 import logging

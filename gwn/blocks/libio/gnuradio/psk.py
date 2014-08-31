@@ -27,7 +27,7 @@ import sys
 sys.path +=['..']
 
 from gnuradio import digital
-import gwnevents.events as events
+import gwnevents.api_events as events
 import TxRxLayer1 as TxRxLayer1
 import gwnblocks.gwnblock as gwn
 

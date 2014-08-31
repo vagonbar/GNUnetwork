@@ -44,7 +44,7 @@ import sys
 try:
     import gwnblocks.gwninport as gwninport
     import gwnblocks.gwnblock as gwnblock
-    import gwnevents.events as events
+    import gwnevents.api_events as events
 except ImportError:
     print 'tuntap.py, import Error:'
     print '  adjust PYTHONPATH for sudo:'

@@ -38,7 +38,7 @@ Fields are separated by ','. Payload length is required to unpack, since ',' may
 
 '''
 
-import gwnevents.events as events
+import gwnevents.api_events as events
 import gwnevents.gwnevent as gwnevent
 import sys
 

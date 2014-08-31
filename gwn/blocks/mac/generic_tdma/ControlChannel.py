@@ -8,7 +8,7 @@ A control channel block.
 import sys
 sys.path +=['..']
 import libtimer.timer as Timer
-import gwnevents.events as events
+import gwnevents.api_events as events
 import threading,Queue,time
 import libmanagement.NetworkConfiguration as NetworkConfiguration
 import libutils.gnlogger as gnlogger

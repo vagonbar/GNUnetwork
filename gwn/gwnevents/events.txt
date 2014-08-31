@@ -1,6 +1,6 @@
 GWN events.txt: doctest file
 
->>> import events
+>>> import api_events as events
 
 
 

@@ -12,7 +12,7 @@ sys.path +=['..']
 import threading, Queue,time
 
 import PeersTable, NetworkConfiguration
-import gwnevents.events as events
+import gwnevents.api_events as events
 
 
 class DiscoveryPeeringController(threading.Thread) :

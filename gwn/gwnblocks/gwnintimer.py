@@ -28,7 +28,7 @@ import threading
 import time
 
 import gwnblock
-import gwnevents.events as events
+import gwnevents.api_events as events
 
 # constants
 thread_lock = threading.Lock()

@@ -2,7 +2,7 @@ GN evstrframes, doctest file
 
 
 >>> from evstrframes import *
->>> import gwnevents.events as events
+>>> import gwnevents.api_events as events
 
 >>> #ev = mkevent("MgmtBeacon", ev_dc={})
 >>> ev = mkevent("MgmtBeacon", ev_dc={})

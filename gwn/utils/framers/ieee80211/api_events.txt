@@ -1,9 +1,9 @@
 GN if_events.txt: doctest file
 
 >>> #from events import *
->>> import gwnevents.events as events
->>> import if_frames
->>> import if_events
+>>> import gwnevents.api_events as events
+>>> import api_frames
+>>> import api_frmevs as if_events
 
 
 
@@ -143,7 +143,7 @@ received pkt  --> Frame obj 2 --> Event 2
 >>> ev1 = events.mkevent('ActionClose', ev_dc={'peerlinkId':11, 'duration':12})
 >>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = if_frames.objfrompkt(pk1)
+>>> fr2 = api_frames.objfrompkt(pk1)
 >>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
@@ -152,7 +152,7 @@ True
 >>> ev1 = events.mkevent('MgmtBeacon', ev_dc={'peerlinkId':21, 'duration':22})
 >>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = if_frames.objfrompkt(pk1)
+>>> fr2 = api_frames.objfrompkt(pk1)
 >>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
@@ -160,7 +160,7 @@ True
 >>> ev1 = events.mkevent('CtrlACK', ev_dc={'duration':22})
 >>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = if_frames.objfrompkt(pk1)
+>>> fr2 = api_frames.objfrompkt(pk1)
 >>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
@@ -168,7 +168,7 @@ True
 >>> ev1 = events.mkevent('DataData', ev_dc={'duration':33, 'payload':'A Data frame payload'})
 >>> fr1 = if_events.evtofrm(ev1)
 >>> pk1 = fr1.mkpkt()
->>> fr2 = if_frames.objfrompkt(pk1)
+>>> fr2 = api_frames.objfrompkt(pk1)
 >>> ev2 = if_events.frmtoev(fr2)
 >>> ev2 == ev1
 True
