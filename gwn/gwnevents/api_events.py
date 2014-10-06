@@ -62,7 +62,8 @@ def mkevent(nickname, **kwargs):
         payload = kwargs['payload']
     else:
         payload = ''
-    ### proceeds according to nickname of event to create
+
+    ### determine type of event to create from nickname
     # a timer event
     if evtimer.dc_nicknames.has_key(nickname):
         ptype, psubtype, eventclass = evtimer.dc_nicknames[nickname]
@@ -77,10 +78,22 @@ def mkevent(nickname, **kwargs):
     elif evconfig.dc_nicknames.has_key(nickname):      # a configuration event
         ptype, psubtype, eventclass = evconfig.dc_nicknames[nickname]
         return eventclass(nickname, ptype, psubtype, ev_dc)    
+    # a data event
+    elif evdata.dc_nicknames.has_key(nickname):      # a configuration event
+        ptype, psubtype, eventclass = evdata.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
+    # a management event
+    elif evmgmt.dc_nicknames.has_key(nickname):      # a configuration event
+        ptype, psubtype, eventclass = evmgmt.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
+    # a control event
+    elif evctrl.dc_nicknames.has_key(nickname):        # a control event
+        ptype, psubtype, eventclass = evctrl.dc_nicknames[nickname]
+        return eventclass(nickname, ptype, psubtype, ev_dc)    
     # no identifiable event
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')
-
+    ###
 
 
 if __name__ == '__main__':

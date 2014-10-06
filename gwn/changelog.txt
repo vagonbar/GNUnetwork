@@ -1,0 +1,25 @@
+###
+### GNUWiNetwork - Changelog
+###
+
+Entry format:
+<ISO date> <author>
+<subject>
+  <item>
+
+
+2014-10-06  VGB
+Events:
+  - created evdata, evctrl, evmgmt modules: classes EventData, EventCtrl, EventData.
+  - changed evrequest.EventRequest into evconfig.EventConfig; adjusted in other modules; tests run.
+  - changed api_events to include the former changes.
+  - pending:
+    - fill or review ev_dc dictionaries of type, subtype, class in modules evdata, evctrl, evmgmt.
+    - ajust evconfig.ev_dc: existing types EventConsumerStatus, TimerConfig;
+      types to include: set, get, status (as input events); reply (as output event).
+
+
+
+
+
+

@@ -2,9 +2,10 @@ GWN temas pendientes
 VGB
 
 
-=== reunión 2/10/2014
+=== Llamado "María Viñas"
+Reunión 2/10/2014
 
-Para María Viñas:
+Resumen, introducción:
   - por qué, para qué del framework.
   - para INVESTIGACION y enseñanza, para formación de investigadores en el área.
 
@@ -22,11 +23,9 @@ Aplicaciones (Belza):
 
 
 
-=== reunión 23/09/2014
-
-Evaluación LANC2014
-
-Objetivos hasta final 2014:
+=== Objetivos hasta final 2014:
+Reunión 23/09/2014
+Objetivos:
   - desarrollo:
     - revisar lo existente, eliminar viejos, borradores, etc.
     - mirar bitácoras, incorporar al desarrollo, borrar, dejar pendiente.
@@ -40,20 +39,16 @@ Objetivos hasta final 2014:
   - página web, actualizar luego de estabilizar versión 1.0.
   - artículo de revista, en el ámbito educativo.
   - llamado: preparar material para llamado María Viñas u otros; ver documentación del proyecto.
-
 GWN en enseñanza (para el artículo de revista):
   - grupos en FIng y/o en Rocha, evaluar.
   - pensar propuestas para laboratorio.
-
 Contacto con el medio:
   - financiación.
   - difusión.
   - colaboraciones.
 
 
-
-
-=== repositorio git-artes: GWNartes
+=== Repositorio git-artes: GWNartes
 
 Dificultad: usuario git-artes bloqueado en vagonbar (?). Ingresar en vagonbar, visitar perfil usuario git-artes, en ruedita, desbloquear el usuario; ingresar en git-artes, proyecto GWNWiNetwork, agregar a 
   vagonbar como colaborador.
@@ -70,23 +65,14 @@ origin	https://github.com/vagonbar/GNUnetwork (fetch)
 origin	https://github.com/vagonbar/GNUnetwork (push)
 
 
-=== Reunión martes 19/08/2014
-
-Temas a comentar:
-  - configuración de bloques.
-  - concepto de nodo.
-  - prioridades actuales, cómo seguir hasta fin de año.
-
-UML, LANC 2014:
-  - clases en bloques, diagrama UML.
-  - clases en eventos, pendiente
-  - envío paper?
-
-Logger:
+=== Logger:
+Reunión martes 19/08/2014
   - categorías: debug, info, error, critical; exception?, fatal es critical.
   - nombre de archivo de log, un solo archivo de log, se filtra para más específicos.
   - variable para fijar el nivel de log global, un logger para todos.
 
+=== Interacción Eventos - Frames
+Reunión martes 19/08/2014
 + Interacción eventos - frames, nombres de módulos (ex if_events en frames):
   frmevents: funciones evento-->frame, frame-->evento     :
     api_frmevs, api_frmevents, api_frameevents,
@@ -112,7 +98,6 @@ Concepto de nodo:
   - los nodos aparecerán (quizás) en la GWN 2.0.
 
 Prioridades:
-  - LANC 2014, crear presentación, ajustar, ensayar, presentar en congreso.
   - terminar versión 1 del framework.
   - ver si podemos llegar a presentar algún artículo a una revista antes de fin de año, posiblemente en el ámbito de educación técnica, menos exigente en lo específico de redes.
   - ir pensando qué aplicaciones podemos implementar en el framework, e.g. algo de redes cognitivas; esto podría dar para un artículo en una revista orientada a redes o comunicaciones.
@@ -123,23 +108,11 @@ Prioridades:
 Scripts en gwn/scripts
   - timer2, ¿tiene sentido? Ver en scripts/test_simulator_consumer_timer.grc
 
-Subdirs:
-  - blocks/libio, subdirs, ¿no serán muchos?
-
 Bitácora Belza:
   - revisar las conversiones para adaptar el companion.
 
 Cuestiones a resolver:
-  - framers, ¿bajo blocks? ¿que va bajo blocks? E.g. todo lo que puedan generar otros o diferentes formas, por contraposición a los gwn, que son genéricos.
   - acceso a gnuradio, "import gnuradio as gr"
-
-Framers:
-  - bajo gwn
-  - framers.py es genérico, para todas las implementaciones de frames.
-  - subdir ieee80211, frames IEEE 802.11
-  - subdir strframes, frames en formato string.
-  - subdir XXX, frames en formato XXX.
-  - todos los subdirs contienen un módulo if_frames con las funciones
 
 
 
@@ -185,42 +158,37 @@ Add this line to /etc/environment:
 
 == Eventos estándar, puertos
 
-  Events:
-        data
-        control
-        management
-        timer
-        config
-
 Eventos config:
   - tipos set, get, status (entrada); reply (salida)
   - cada bloque tiene una entrada y una salida para eventos de config
-  - eventos de config sustituyen actuales eventos tipo request. 
 
 
-== Manejo de información.
+== Configuración
+Manejo de información.
   - bloque NetworkConfig, lee de algún lado una serie de variables de configuración, inicialmente comunica (emite eventos de configuración) a los bloques que tiene conectados (write_out); periódicamente revisa si hay cambios de configuración, y si los hay emite eventos de configuración con los nuevos valores.
 
 
-
+=== Framing
 Frames
   - clases:
     - un frame genérico con interfaz conocida, esto sería lo único que se ve desde los bloques.
     - implementaciones de distintos tipos de empaquetados (e.g. 802.11, strings, otros) en subclases.
+Framers:
+  - bajo gwn
+  - framers.py es genérico, para todas las implementaciones de frames.
+  - subdir ieee80211, frames IEEE 802.11
+  - subdir strframes, frames en formato string.
+  - subdir XXX, frames en formato XXX.
+  - todos los subdirs contienen un módulo if_frames con las funciones
+
+
+
+=== Bloques especiales
 
 TUN/TAP, bloque y conector: libgwnblocks/gwntuntap.py
   - en el test se configura la IP, recibe todo lo que anda por ahí, pero termina.
-  - falta incorporar logger, ver original de tuntap en zzversionXXX/draft/libgwnblocks. No se hizo por no incorporar biblioteca libutils hasta discutir ubicaciones bibliotecas.
+  - falta incorporar logger.
 
 Bloques:
   - para todos los bloques: quitar los print de los bloques, poner solo en los tests.
-
-
-
-  
-
-
-
-
-
 

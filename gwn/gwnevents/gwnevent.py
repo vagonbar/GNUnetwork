@@ -21,7 +21,7 @@
 #
 
 
-'''A generic class for events.
+'''A generic class for events of all types.
 
 Class Event is a generic class for all types of events. Class Event is expected to be specialized into different, more specific types of events, implemented as subclasses. A hierarchy of event types and subtypes is possible. Events are distinguished by a nickname, a descriptive name used to recognize the type of event whatever their position in the event class hierarchy. Event nicknames are a convention of this project.
 

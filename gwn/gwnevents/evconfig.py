@@ -21,7 +21,7 @@
 #
 
 
-'''A library for block configuration events.
+'''A class for block configuration events.
 
 @var dc_nicknames: a dictionary of nicknames, types, subtypes, and classnames, C{ {nickname: (type, subtype, classname)} }; C{classname} is the class used to build the object. This dictionary allows to build a time event object by just saying its nickname. Module function C{mkevent()} uses this module variable.
 '''
@@ -53,8 +53,8 @@ class EventConfig(Event):
 
 
 dc_nicknames = { \
-	'TimerConfig'        : ('Request',  'SetTimerConfig',     EventConfig     ), \
-	'EventConsumerStatus'  : ('Request',  'EventConsumerStatus', EventConfig     ) \
+	'TimerConfig'          : ('Request',  'SetTimerConfig',      EventConfig    ), \
+	'EventConsumerStatus'  : ('Request',  'EventConsumerStatus', EventConfig    ) \
     }
 
 
