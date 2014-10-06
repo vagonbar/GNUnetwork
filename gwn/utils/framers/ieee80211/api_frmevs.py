@@ -39,7 +39,7 @@ sys.path += ['..']
 import gwnevents.api_events as events
 # event modules, for different types of events
 #import evtimer
-#import evrequest
+#import evconfig
 import utils.framers.ieee80211.evframes80211 as evframes80211
 
 from utils.framers.ieee80211.mac_frmbld import MacFrameException
@@ -87,8 +87,8 @@ def mkevent(nickname, **kwargs):
         ev = eventclass(nickname, ev_type, ev_subtype, frmpkt, ev_dc)
         ev.payload = payload
         return ev
-    elif evrequest.dc_nicknames.has_key(nickname):
-        ptype, psubtype, eventclass = evrequest.dc_nicknames[nickname]
+    elif evconfig.dc_nicknames.has_key(nickname):
+        ptype, psubtype, eventclass = evconfig.dc_nicknames[nickname]
         return eventclass(nickname, ptype, psubtype, ev_dc)    
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')

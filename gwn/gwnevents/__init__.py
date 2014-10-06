@@ -3,5 +3,7 @@
 
 # GNU network __init__ package file
 
-'''Libraries for different types of event.
+'''Events defined by GWN.
+
+Libraries for different types of event as defined in GNUWiNetwork (GWN). Programmers are expected to subclass one of the GWN classes defined.
 '''

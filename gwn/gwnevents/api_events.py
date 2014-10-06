@@ -30,8 +30,9 @@ import sys
 import types
 
 import evtimer
+import evconfig
 import utils.framers.ieee80211.evframes80211 as evframes80211
-import evrequest
+
 #sys.path = sys.path + ['..']
 
 
@@ -46,7 +47,7 @@ def mkevent(nickname, **kwargs):
 
     from evtimer import dc_nicknames as ev_dc_nicknames
     import utils.framers.ieee80211.evframes80211
-    import evrequest
+    import evconfig
 
     frmpkt, ev_dc = '', {}
     if kwargs.has_key('ev_dc'):
@@ -61,26 +62,27 @@ def mkevent(nickname, **kwargs):
         payload = kwargs['payload']
     else:
         payload = ''
+    ### proceeds according to nickname of event to create
+    # a timer event
     if evtimer.dc_nicknames.has_key(nickname):
         ptype, psubtype, eventclass = evtimer.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)    
+        return eventclass(nickname, ptype, psubtype, ev_dc)
+    # an IEEE 802.11 frame event
     elif evframes80211.dc_nicknames.has_key(nickname):
         ev_type, ev_subtype, eventclass = evframes80211.dc_nicknames[nickname]
         ev = eventclass(nickname, ev_type, ev_subtype, frmpkt, ev_dc)
         ev.payload = payload
         return ev
-    elif evrequest.dc_nicknames.has_key(nickname):
-        ptype, psubtype, eventclass = evrequest.dc_nicknames[nickname]
+    # a configuration event
+    elif evconfig.dc_nicknames.has_key(nickname):      # a configuration event
+        ptype, psubtype, eventclass = evconfig.dc_nicknames[nickname]
         return eventclass(nickname, ptype, psubtype, ev_dc)    
+    # no identifiable event
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')
-
-
 
 
 
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-
-

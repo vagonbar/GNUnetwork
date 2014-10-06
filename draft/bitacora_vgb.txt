@@ -2,6 +2,74 @@ GWN temas pendientes
 VGB
 
 
+=== reunión 2/10/2014
+
+Para María Viñas:
+  - por qué, para qué del framework.
+  - para INVESTIGACION y enseñanza, para formación de investigadores en el área.
+
+Aplicaciones (Belza):
+  calidad de servicio
+  acceso al medio
+  ruteo en capa 2
+  handover para móviles   
+  Redes cognitivas:
+    - red doméstica en ambiente universitario.
+    - situación de emergencia, sin comunicaciones convencionales en la zona.
+    - acceso en medios de contexto crítico, ver con Gabriel propuesta al MIDES.
+    Una comunicación en frecuencia más baja tiene mayor penetración, está fuera del rango habitualmente utilizado y por lo tanto hay menos tráfico. OJO, no es banda autorizada.
+
+
+
+
+=== reunión 23/09/2014
+
+Evaluación LANC2014
+
+Objetivos hasta final 2014:
+  - desarrollo:
+    - revisar lo existente, eliminar viejos, borradores, etc.
+    - mirar bitácoras, incorporar al desarrollo, borrar, dejar pendiente.
+    - convertir bloques faltantes, los desarrollados antes.
+    - revisar scripts demostrativos, elimnar parciales o no funcionantes.
+    - convertir prints a logs.
+    - documentación de código.
+    - documentación de proyecto, manual de extensión (es breve).
+    - eventos, propuesta de clases, atributos, funciones.
+    - frames, uniformizar IEEE802.11 y string.
+  - página web, actualizar luego de estabilizar versión 1.0.
+  - artículo de revista, en el ámbito educativo.
+  - llamado: preparar material para llamado María Viñas u otros; ver documentación del proyecto.
+
+GWN en enseñanza (para el artículo de revista):
+  - grupos en FIng y/o en Rocha, evaluar.
+  - pensar propuestas para laboratorio.
+
+Contacto con el medio:
+  - financiación.
+  - difusión.
+  - colaboraciones.
+
+
+
+
+=== repositorio git-artes: GWNartes
+
+Dificultad: usuario git-artes bloqueado en vagonbar (?). Ingresar en vagonbar, visitar perfil usuario git-artes, en ruedita, desbloquear el usuario; ingresar en git-artes, proyecto GWNWiNetwork, agregar a 
+  vagonbar como colaborador.
+
+rsync -nauv --delete --exclude=\.* --exclude=draft GWNcode/ GWNartes/ | less
+git push gwnartes master
+
+victor@mya-arenaria:~/IIE/GWNcode/draft$ git remote -v
+gn	git@github.com:vagonbar/GNUnetwork (fetch)
+gn	git@github.com:vagonbar/GNUnetwork (push)
+gwn	git@github.com:vagonbar/GNUnetwork (fetch)
+gwn	git@github.com:vagonbar/GNUnetwork (push)
+origin	https://github.com/vagonbar/GNUnetwork (fetch)
+origin	https://github.com/vagonbar/GNUnetwork (push)
+
+
 === Reunión martes 19/08/2014
 
 Temas a comentar:
@@ -97,19 +165,16 @@ Add this line to /etc/environment:
 
     README.md : el readme requerido por Github, descripción del proyecto
     COPYING : requerido por licencia GPL, el texto de la licencia.
-    gn/doc : documentación pública.
+    gwn/doc : documentación pública.
         - guía de estilo.
         - en el futuro, tutoriales, instructivos de extensión.
         - a crear subdirectorios necesarios, e.g. uml
-    gn/draft: documentación privada, o en preparación.
+    gwn/draft: documentación privada, o en preparación.
         - bitácoras.
         - instructivos de Github.
         - preámbulo de licencia, para agregar a archivos de código.
 
 
-A desaparecer:
-  - zzversion20140703: lo aún no revisado, o pasado a nuevos bloques.
-  - draft, borradores, pruebas.
 
 
 

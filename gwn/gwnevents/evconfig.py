@@ -30,7 +30,7 @@ from gwnevent import Event, EventNameException
 
 
 
-class EventRequest(Event):
+class EventConfig(Event):
     '''An event associated with the configuration of blocks.
     
     @ivar nickname: a descriptive name for this event.
@@ -53,8 +53,8 @@ class EventRequest(Event):
 
 
 dc_nicknames = { \
-	'TimerConfig'        : ('Request',  'SetTimerConfig',     EventRequest     ), \
-	'EventConsumerStatus'  : ('Request',  'EventConsumerStatus', EventRequest     ) \
+	'TimerConfig'        : ('Request',  'SetTimerConfig',     EventConfig     ), \
+	'EventConsumerStatus'  : ('Request',  'EventConsumerStatus', EventConfig     ) \
     }
 
 
