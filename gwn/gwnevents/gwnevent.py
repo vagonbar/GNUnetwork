@@ -42,22 +42,34 @@ sys.path = sys.path + ['..']
 
 
 class Event:
-    '''A general class for all types of event.
+    '''Events interchanged by blocks.
+
+    Events are the objects interchanged by blocks in GWN. Events of a certain type are described by a nickname, from which type, subtype are determined. Nicknames are recorded in dictionary gwnevent_dc.dc_nicknames.
+    @ivar nickname: a descriptive name to indicate the type of event.
+    @ivar ev_type: the event type.
+    @ivar ev_subtype: the event subtype.
+    @ivar ev_dc: a dictionary of complementary data, e.g. {'add_info': 'additional information'}.
     '''
 
-    def __init__(self, nickname):
+    def __init__(self, nickname, ev_type, ev_subtype, ev_dc={}):
         '''Constructor.
         
         @param nickname: a descriptive name to indicate the type of event.
         '''
         self.nickname = nickname
-        self.dc_ev = {}
+        self.ev_type = ev_type
+        self.ev_subtype = ev_subtype
+        self.ev_dc = ev_dc
         
     def __str__(self):
         ss = 'Event class name: ' + self.__class__.__name__
         ss += "\n  Nickname: '%s'; Type: '%s'; SubType: '%s'"  % \
             (self.nickname, self.ev_type, self.ev_subtype)
         for key in self.ev_dc.keys():
+            #if key in ['src_addr', 'dst_addr']:
+            #    ss += '\n  ' + key + ': ' + repr(self.ev_dc[key])
+            #else:
+            #    ss += '\n  ' + key + ': ' + str(self.ev_dc[key])
             ss += '\n  ' + key + ': ' + str(self.ev_dc[key])
         return ss
 

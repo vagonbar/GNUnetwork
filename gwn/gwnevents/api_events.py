@@ -29,71 +29,64 @@ To create an event object use function C{mkevent()}. This function creates event
 import sys
 import types
 
-import evtimer
-import evconfig
+from gwnevent import EventNameException
+
 import utils.framers.ieee80211.evframes80211 as evframes80211
 
 #sys.path = sys.path + ['..']
 
 
 
-def mkevent(nickname, **kwargs):
+def mkevent(nickname, ev_dc={}, payload='', frmpkt=''):        #**kwargs):
     '''Returns an event of the given event nickname.
 
+    This function creates an event of the adequate event type and main attributes based only in the nickname. To this purpose, the nickname given as a parameter is searched in a dictionary of valid nicknames; this dictionary provides a mapping of nicknames to type, subtype and generating class.
+
+    This function receives a list of keyword arguments, variable according to the type of event to create. Besides, the programmer may include any keyword, under her own responsibility.
     @param nickname: a valid event nickname, i.e. one that is a key in dictionary of valid nicknames.
-    @param kwargs: a dictionary of variables depending on the type of event. Field C{ev_dc} is a dictionary of fields and values for the corresponding event type; field C{frmpkt} is a binary packed frame.
+    @param ev_dc: a dictionary {field_name: value} for event creation; defaults to an empty dictionary.
+    @param payload: a data event payload, defaults to the empty string.
+    @param frmpkt: a binary packed frame, defaults to the empty string.
     @return: an Event object.
     '''
 
-    from evtimer import dc_nicknames as ev_dc_nicknames
+    from gwnevent_dc import ev_dc_nicknames
     import utils.framers.ieee80211.evframes80211
-    import evconfig
 
-    frmpkt, ev_dc = '', {}
-    if kwargs.has_key('ev_dc'):
-        ev_dc = kwargs['ev_dc']
-    if kwargs.has_key('frmpkt'):
-        frmpkt = kwargs['frmpkt']
+    # determine and assign frame length if there is a frame packet
+    if frmpkt:
         ev_dc['frame_length'] = len(frmpkt)
-    else:
-        ev_dc['frame_length'] = 0
-        frmpkt = ''
-    if kwargs.has_key('payload'):
-        payload = kwargs['payload']
-    else:
-        payload = ''
+    elif ev_dc.has_key('frmpkt'):
+        ev_dc['frame_length'] = len(ev_dc['frmpkt'])
 
-    ### determine type of event to create from nickname
-    # a timer event
-    if evtimer.dc_nicknames.has_key(nickname):
-        ptype, psubtype, eventclass = evtimer.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)
-    # an IEEE 802.11 frame event
+    # create event from nickname
+    if ev_dc_nicknames.has_key(nickname):
+        ev_type, ev_subtype, eventclass = ev_dc_nicknames[nickname]
+        #ev = eventclass(nickname, ptype, psubtype, ev_dc)
+        ev = eventclass(nickname, ev_type, ev_subtype, ev_dc=ev_dc)
+
+    # an IEEE 802.11 frame event, see if it can be generalized and decoupled
     elif evframes80211.dc_nicknames.has_key(nickname):
         ev_type, ev_subtype, eventclass = evframes80211.dc_nicknames[nickname]
         ev = eventclass(nickname, ev_type, ev_subtype, frmpkt, ev_dc)
-        ev.payload = payload
-        return ev
-    # a configuration event
-    elif evconfig.dc_nicknames.has_key(nickname):      # a configuration event
-        ptype, psubtype, eventclass = evconfig.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)    
-    # a data event
-    elif evdata.dc_nicknames.has_key(nickname):      # a configuration event
-        ptype, psubtype, eventclass = evdata.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)    
-    # a management event
-    elif evmgmt.dc_nicknames.has_key(nickname):      # a configuration event
-        ptype, psubtype, eventclass = evmgmt.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)    
-    # a control event
-    elif evctrl.dc_nicknames.has_key(nickname):        # a control event
-        ptype, psubtype, eventclass = evctrl.dc_nicknames[nickname]
-        return eventclass(nickname, ptype, psubtype, ev_dc)    
-    # no identifiable event
+        #ev.payload = payload
+        #return ev
+
     else:
         raise EventNameException(nickname + ' is not a valid nickname.')
-    ###
+
+    # add complementary attributes, if given
+    if payload:
+        ev.payload = payload
+    if frmpkt:
+        ev.frmpkt = frmpkt
+
+    ## add complementary attributes from ev_dc if required
+    # if ev_dc.has_key('some_key_1'):
+    #       ev.some_key_1 = ev_dc['some_key_1']
+
+    return ev
+
 
 
 if __name__ == '__main__':

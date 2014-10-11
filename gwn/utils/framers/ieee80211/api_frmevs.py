@@ -43,6 +43,7 @@ import gwnevents.api_events as events
 import utils.framers.ieee80211.evframes80211 as evframes80211
 
 from utils.framers.ieee80211.mac_frmbld import MacFrameException
+from frames import EventFrameException
 from gwnevents.gwnevent import EventNameException 
 
 # import api_frames for test function

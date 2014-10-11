@@ -20,8 +20,13 @@
 #    along with GNUWiNetwork.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+'''
+Runs all doctest files found on tree.
 
-# runtests.py: run doctests
+Searches for .txt files in directory tree; if .txt file found is a doctest file, runs it and reports results. Execute as::
+
+    C{python runtests.py}
+'''
 
 import os
 import os.path

@@ -5,5 +5,5 @@
 
 '''Events defined by GWN.
 
-Libraries for different types of event as defined in GNUWiNetwork (GWN). Programmers are expected to subclass one of the GWN classes defined.
+Libraries for events defined in GNUWiNetwork (GWN). Programmers may subclass the GWN classes as needed.
 '''

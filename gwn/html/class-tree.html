@@ -89,28 +89,28 @@
     <li> <strong class="uidlink"><a href="gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM-class.html">gwn.blocks.management.ieee80211.DiscoveryPeeringFSM.DiscoveryPeeringFSM</a></strong>:
       <em class="summary">The discovery and peering finite state machine.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.gwnevent.Event-class.html">gwn.gwnevents.gwnevent.Event</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.gwnevent.Event-class.html">gwn.gwnevents_subs.gwnevent.Event</a></strong>:
       <em class="summary">A general class for all types of event.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evconfig.EventConfig-class.html">gwn.gwnevents.evconfig.EventConfig</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.evconfig.EventConfig-class.html">gwn.gwnevents_subs.evconfig.EventConfig</a></strong>:
       <em class="summary">An event associated with the configuration of blocks.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evctrl.EventCtrl-class.html">gwn.gwnevents.evctrl.EventCtrl</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.evctrl.EventCtrl-class.html">gwn.gwnevents_subs.evctrl.EventCtrl</a></strong>:
       <em class="summary">An event associated with control.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evdata.EventData-class.html">gwn.gwnevents.evdata.EventData</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.evdata.EventData-class.html">gwn.gwnevents_subs.evdata.EventData</a></strong>:
       <em class="summary">An event associated with data.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evmgmt.EventMgmt-class.html">gwn.gwnevents.evmgmt.EventMgmt</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.evmgmt.EventMgmt-class.html">gwn.gwnevents_subs.evmgmt.EventMgmt</a></strong>:
       <em class="summary">An event associated with management.</em>
     </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnevents.evtimer.EventTimer-class.html">gwn.gwnevents.evtimer.EventTimer</a></strong>:
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.evtimer.EventTimer-class.html">gwn.gwnevents_subs.evtimer.EventTimer</a></strong>:
       <em class="summary">An event associated with a timer.</em>
     </li>
     </ul>
     </li>
     <li> <strong class="uidlink">gwnevents.gwnevent.Event</strong>:
-      <em class="summary">A general class for all types of event.</em>
+      <em class="summary">Events interchanged by blocks.</em>
     <ul>
     <li> <strong class="uidlink"><a href="gwn.utils.framers.ieee80211.evframes80211.EventFrame-class.html">gwn.utils.framers.ieee80211.evframes80211.EventFrame</a></strong>:
       <em class="summary">An event associated with a frame.</em>
@@ -120,6 +120,9 @@
     </ul>
     </li>
     </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnevents.gwnevent.Event-class.html">gwn.gwnevents.gwnevent.Event</a></strong>:
+      <em class="summary">Events interchanged by blocks.</em>
     </li>
     <li> <strong class="uidlink"><a href="gwn.utils.libfsm.fsm.FSM-class.html">gwn.utils.libfsm.fsm.FSM</a></strong>:
       <em class="summary">This is a Finite State Machine (FSM).</em>
@@ -154,6 +157,10 @@
       <em class="summary">An exception to rise on Event to/from Frame conversion.</em>
     </li>
     <li> <strong class="uidlink"><a href="gwn.gwnevents.gwnevent.EventNameException-class.html">gwn.gwnevents.gwnevent.EventNameException</a></strong>:
+      <em class="summary">An exception to rise on non valid parameters for event 
+        construction.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnevents_subs.gwnevent.EventNameException-class.html">gwn.gwnevents_subs.gwnevent.EventNameException</a></strong>:
       <em class="summary">An exception to rise on non valid parameters for event 
         construction.</em>
     </li>
@@ -240,6 +247,20 @@
     <li> <strong class="uidlink"><a href="gwn.blocks.management.ieee80211.DiscoveryPeeringController.DiscoveryPeeringController-class.html">gwn.blocks.management.ieee80211.DiscoveryPeeringController.DiscoveryPeeringController</a></strong>:
       <em class="summary">The discovery and peering controller, a Thread.</em>
     </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwnblock.GWNBlock-class.html">gwn.gwnblocks.gwnblock.GWNBlock</a></strong>:
+      <em class="summary">The main block.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockCopy-class.html">gwn.gwnblocks.gwntests.BlockCopy</a></strong>:
+      <em class="summary">Copies event from input into output.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockReceive-class.html">gwn.gwnblocks.gwntests.BlockReceive</a></strong>:
+      <em class="summary">Receives an event, informs.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockTimerCopy-class.html">gwn.gwnblocks.gwntests.BlockTimerCopy</a></strong>:
+      <em class="summary">Copies event from input into output, outputs events from timer.</em>
+    </li>
+    </ul>
+    </li>
     <li> <strong class="uidlink">gwnblocks.gwnblock.GWNBlock</strong>:
       <em class="summary">The main block.</em>
     <ul>
@@ -272,20 +293,6 @@
     </li>
     <li> <strong class="uidlink"><a href="gwn.blocks.libio.tuntap.tuntap.TunTapInterface-class.html">gwn.blocks.libio.tuntap.tuntap.TunTapInterface</a></strong>:
       <em class="summary">A TUN/TAP interface block.</em>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwnblock.GWNBlock-class.html">gwn.gwnblocks.gwnblock.GWNBlock</a></strong>:
-      <em class="summary">The main block.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockCopy-class.html">gwn.gwnblocks.gwntests.BlockCopy</a></strong>:
-      <em class="summary">Copies event from input into output.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockReceive-class.html">gwn.gwnblocks.gwntests.BlockReceive</a></strong>:
-      <em class="summary">Receives an event, informs.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="gwn.gwnblocks.gwntests.BlockTimerCopy-class.html">gwn.gwnblocks.gwntests.BlockTimerCopy</a></strong>:
-      <em class="summary">Copies event from input into output, outputs events from timer.</em>
     </li>
     </ul>
     </li>
@@ -399,7 +406,7 @@ dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Oct  6 14:05:45 2014
+    Generated by Epydoc 3.0.1 on Sat Oct 11 11:48:50 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
