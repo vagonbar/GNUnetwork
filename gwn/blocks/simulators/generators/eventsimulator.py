@@ -29,7 +29,7 @@ import sys
 import time
 
 #sys.path +=['..']
-import gwnevents.api_events as events
+import gwnevents.if_events as if_events
 import gwnblocks.gwnblock as gwnblock
 import gwnblocks.gwninport as gwninport
 
@@ -60,10 +60,12 @@ class EventSimulator(gwnblock.GWNBlock) :
         self.interval = interval
         self.retry = retry
         self.set_timer(0, False, self.interval, self.retry)
+        self.number =0
 
 
     def process_data(self, port_type, port_nr, ev):
         if port_type == "intimer":
+            self.number = self.number+1
             if self.nickname=="DataData":
                 event = self.event_data()
             if self.nickname=="CtrlRTS":
@@ -74,41 +76,41 @@ class EventSimulator(gwnblock.GWNBlock) :
                 event = self.event_ACK()
             if self.nickname=="TimerConfig":      
                 event= self.event_timer_config()
-            print 'eventsimulator3', event.nickname
+            #print 'eventsimulator3', event.nickname
             self.write_out(0,event)
         else:
             pass
     
    
     def event_data(self):
-        event = events.mkevent(self.nickname)
+        event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         length = self.convert_int(self.param3)
         event.ev_dc['frame_length'] = length                         
-        event.payload='1'*length
+        event.payload= ' '+str(self.number) + ' '+'1'*(length-len(str(self.number))-2)
         return event            
         
     def event_RTS(self):
-        event = events.mkevent(self.nickname)
+        event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event        
 
     def event_CTS(self):
-        event = events.mkevent(self.nickname)
+        event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event
 
     def event_ACK(self):
-        event = events.mkevent(self.nickname)
+        event = if_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event        
 
     def event_timer_config(self):
-        event = events.mkevent(self.nickname)
+        event = if_events.mkevent(self.nickname)
         interval = self.convert_float(self.param1)
         event.ev_dc['interval']=interval
         retry = self.convert_int(self.param2)

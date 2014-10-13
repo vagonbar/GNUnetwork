@@ -50,7 +50,7 @@ class EventConsumer(gwnblock.GWNBlock) :
         '''
         if port_type == "inport":
   		    #print '--> Consumer %s received event %s' % (self.blkname, ev.__str__())
-            print '--> Consumer', self.blkname, 'received event', ev
+            print '--> Consumer: ', self.blkname, 'received event', ev
 
 
 def test():

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##QPSK modulator demodulator with channel block
+###################################################
+ -->
+<block>
+	<name>GNURadio Tx/Rx QPSK with channel Interface</name>
+	<key>qpsk_channel</key>
+        <category>Interfaces</category>
+	<import>import blocks.libio.gnuradio.new.gwnChannelqpsk as psk</import>
+	<make>psk.ChannelQPSK($noise_voltage,$freq_offset,$epsilon,$taps)</make>
+	<callback>start()</callback>
+	<callback>stop()</callback>
+      <param>
+		<name>Noise Voltage</name>
+		<key>noise_voltage</key>
+		<value>0.01</value>
+		<type>real</type>
+	</param>
+	<param>
+		<name>Frequency Offset</name>
+		<key>freq_offset</key>
+		<value>0.001</value>
+		<type>real</type>
+	</param>
+	<param>
+		<name>Epsilon</name>
+		<key>epsilon</key>
+		<value>1.001</value>
+		<type>real</type>
+	</param>
+	<param>
+		<name>Taps</name>
+		<key>taps</key>
+		<value>1.0 + 0.5j</value>
+		<type>complex_vector</type>
+	</param>
+    	<sink>
+		<name>in</name>
+		<type>Event</type>            
+	</sink>
+
+   	<source>
+		<name>out</name>
+		<type>Event</type>
+	</source>
+
+    <doc>
+        TODO
+    </doc>
+</block>

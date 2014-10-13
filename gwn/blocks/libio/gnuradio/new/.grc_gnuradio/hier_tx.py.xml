@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='ASCII'?>
+<block>
+  <name>Hier Tx</name>
+  <key>hier_tx</key>
+  <category>Custom</category>
+  <import>execfile("/home/belza/.grc_gnuradio/hier_tx.py")</import>
+  <make>hier_tx(
+    alfa=$alfa,
+    samp_per_sym=$samp_per_sym,
+    bits_per_sym=$bits_per_sym,
+    constellation=$constellation,
+    len_sym_srrc=$len_sym_srrc,
+    out_const_mul=$out_const_mul,
+)</make>
+  <callback>set_alfa($alfa)</callback>
+  <callback>set_samp_per_sym($samp_per_sym)</callback>
+  <callback>set_bits_per_sym($bits_per_sym)</callback>
+  <callback>set_constellation($constellation)</callback>
+  <callback>set_len_sym_srrc($len_sym_srrc)</callback>
+  <callback>set_out_const_mul($out_const_mul)</callback>
+  <param>
+    <name>alpha</name>
+    <key>alfa</key>
+    <value>0.35</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>samp_per_sym</name>
+    <key>samp_per_sym</key>
+    <value>3</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>bits_per_sym</name>
+    <key>bits_per_sym</key>
+    <value>2</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>constellation</name>
+    <key>constellation</key>
+    <value>[-1-1j,1-1j, 1+1j, -1+1j]</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>len_sym_srrc</name>
+    <key>len_sym_srrc</key>
+    <value>7</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>out_const_mul</name>
+    <key>out_const_mul</key>
+    <value>0.4</value>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+    <vlen>1</vlen>
+    <optional>1</optional>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+    <vlen>1</vlen>
+  </source>
+  <doc>
+
+/home/belza/.grc_gnuradio/hier_tx.py</doc>
+  <grc_source>/home/belza/Dropbox/Curso_Inalambricas/gnuradio_projects/hier_tx.grc</grc_source>
+</block>

@@ -65,7 +65,7 @@ CORE_TYPES = ( #name, key, sizeof, color
 	('Async Message', 'message', 0, '#C0C0C0'),
 	('Wildcard', '', 0, '#FFFFFF'),
 #      ('TimerEvent', 'TimerEvent', '123', '#55cc66'),
-      ('Event', 'Event', '100,110,120,130,140,150,121,122,123,124,151', '#777777'),
+      ('Event', 'Event', '100,110,120,130,140,150,121,122,123,124,151', '#00FF33'),
       ('Ev Type: Timer', 'Timer', '110', '#CC8C69'),
       ('Ev Type: Data', 'Data', '120', '#3399FF'),
       ('Ev Type; Ctrl', 'Ctrl', '130', '#66CC00'),
