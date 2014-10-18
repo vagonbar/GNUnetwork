@@ -1,4 +1,4 @@
-GN if_events.txt: doctest file
+GWN api_events.txt: doctest file
 
 >>> #from events import *
 >>> import gwnevents.api_events as events
