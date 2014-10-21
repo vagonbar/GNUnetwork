@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Oct 13 13:52:35 2014</timestamp>
+  <timestamp>Mon Oct 13 16:59:14 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -176,7 +176,7 @@
     <key>qpsk_channel</key>
     <param>
       <key>id</key>
-      <value>qpsk_channel_0</value>
+      <value>qpsk_channel_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -184,7 +184,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>0.1</value>
+      <value>0.01</value>
     </param>
     <param>
       <key>freq_offset</key>
@@ -200,7 +200,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(429, 180)</value>
+      <value>(436, 305)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -211,7 +211,7 @@
     <key>qpsk_channel</key>
     <param>
       <key>id</key>
-      <value>qpsk_channel_0_0</value>
+      <value>qpsk_channel_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -219,7 +219,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>5</value>
+      <value>0.01</value>
     </param>
     <param>
       <key>freq_offset</key>
@@ -235,7 +235,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 299)</value>
+      <value>(429, 182)</value>
     </param>
     <param>
       <key>_rotation</key>

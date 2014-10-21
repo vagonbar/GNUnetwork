@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Oct 13 15:59:00 2014</timestamp>
+  <timestamp>Fri Oct 17 19:49:15 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -80,6 +80,111 @@
     </param>
   </block>
   <block>
+    <key>eventconsumer</key>
+    <param>
+      <key>id</key>
+      <value>eventconsumer_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>blkname</key>
+      <value>Consumer 1</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(708, 274)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>deframer80211</key>
+    <param>
+      <key>id</key>
+      <value>deframer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(701, 213)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>psk</key>
+    <param>
+      <key>id</key>
+      <value>psk_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>args</key>
+      <value>serial=E0R11Y0B1</value>
+    </param>
+    <param>
+      <key>antenna</key>
+      <value>'TX/RX'</value>
+    </param>
+    <param>
+      <key>spec</key>
+      <value>A:0</value>
+    </param>
+    <param>
+      <key>rx_freq</key>
+      <value>870000000.0</value>
+    </param>
+    <param>
+      <key>rx_gain</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>tx_gain</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>tx_freq</key>
+      <value>850000000.0</value>
+    </param>
+    <param>
+      <key>tx_amplitude</key>
+      <value>0.25</value>
+    </param>
+    <param>
+      <key>bitrate</key>
+      <value>100000</value>
+    </param>
+    <param>
+      <key>sps</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(629, 17)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>eventsim</key>
     <param>
       <key>id</key>
@@ -120,111 +225,6 @@
     <param>
       <key>_coordinate</key>
       <value>(151, 25)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>psk</key>
-    <param>
-      <key>id</key>
-      <value>psk_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>args</key>
-      <value>serial=E0R11Y4B1</value>
-    </param>
-    <param>
-      <key>antenna</key>
-      <value>'TX/RX'</value>
-    </param>
-    <param>
-      <key>spec</key>
-      <value>A:0</value>
-    </param>
-    <param>
-      <key>rx_freq</key>
-      <value>851000000.0</value>
-    </param>
-    <param>
-      <key>rx_gain</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>tx_gain</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>tx_freq</key>
-      <value>850000000.0</value>
-    </param>
-    <param>
-      <key>tx_amplitude</key>
-      <value>0.25</value>
-    </param>
-    <param>
-      <key>bitrate</key>
-      <value>100000</value>
-    </param>
-    <param>
-      <key>sps</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(629, 19)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventconsumer</key>
-    <param>
-      <key>id</key>
-      <value>eventconsumer_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>blkname</key>
-      <value>Consumer 1</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(708, 274)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>deframer80211</key>
-    <param>
-      <key>id</key>
-      <value>deframer80211_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(701, 213)</value>
     </param>
     <param>
       <key>_rotation</key>

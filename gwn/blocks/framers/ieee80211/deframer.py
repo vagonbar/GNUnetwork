@@ -50,7 +50,7 @@ class Deframer(gwn.GWNBlock):
         
         Receives a frame packet, generates another Event object with data extracted from the frame packet, and outputs the generated Event.
         '''
-        print "Deframer, event received: ", ev
+        #print "Deframer, event received: ", ev
         if ev:
             frm_obj = api_frames.objfrompkt(ev.frmpkt)
             ev_out = api_frmevs.frmtoev(frm_obj)

@@ -3,7 +3,7 @@
 # GNU Wireless Network Flow Graph
 # Title: Top Block
 # Author: ARTES
-# Generated: Tue Aug 19 15:28:28 2014
+# Generated: Tue Oct 14 11:26:47 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -11,8 +11,9 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import blocks.mac.ieee80211.ieee80211 as ieee80211
-import blocks.simulators.channels.virtualchannel as channel
+import blocks.framers.ieee80211.deframer as deframer
+import blocks.framers.ieee80211.framer as framer
+import blocks.libio.gnuradio.new.gwnChannelqpsk as psk
 import blocks.simulators.consumers.eventconsumer as consumer
 import blocks.simulators.generators.eventsimulator as simulator
 import gwnblocks.gwntopblock as gwnTB
@@ -32,16 +33,12 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.virtualchannel_0 = channel.GWNVirtualChannel(0.01)	
-		self.eventsim_2 = simulator.EventSimulator(3, 1, 'DataData', "0003", "0001", "")	
-		self.eventsim_1 = simulator.EventSimulator(5, 1, 'DataData', "0002", "0003", "10")	
-		self.eventsim_0 = simulator.EventSimulator(10, 5, 'DataData', "0001", "0002", "10000")	
-		self.eventconsumer_2 = consumer.EventConsumer("blkname") 	
-		self.eventconsumer_1 = consumer.EventConsumer("blkname") 	
-		self.eventconsumer_0 = consumer.EventConsumer("blkname") 	
-		self.IEEE80211_2 = ieee80211.IEEE80211("0001")	
-		self.IEEE80211_1 = ieee80211.IEEE80211("0003")	
-		self.IEEE80211_0 = ieee80211.IEEE80211("0002")	
+		self.qpsk_channel_0_0 = psk.ChannelQPSK(0.01,0.001,1.001,(1.0 + 0.5j, ))	
+		self.qpsk_channel_0 = psk.ChannelQPSK(0.01,0.001,1.001,(1.0 + 0.5j, ))	
+		self.framer80211_0 = framer.Framer()	
+		self.eventsim_0 = simulator.EventSimulator(1, 4, 'DataData', "aaaaaa", "bbbbbb", "10")	
+		self.eventconsumer_0_0 = consumer.EventConsumer("Number 2") 	
+		self.deframer80211_0_0 = deframer.Deframer()	
 
 
 
@@ -49,33 +46,22 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.eventsim_1, 0), (self.IEEE80211_0, 1))
-		self.connect((self.IEEE80211_1, 1), (self.eventconsumer_1, 0))
-		self.connect((self.IEEE80211_0, 0), (self.virtualchannel_0, 0))
-		self.connect((self.IEEE80211_1, 0), (self.virtualchannel_0, 0))
-		self.connect((self.IEEE80211_2, 0), (self.virtualchannel_0, 0))
-		self.connect((self.eventsim_0, 0), (self.IEEE80211_2, 1))
-		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_2, 0))
-		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_1, 0))
-		self.connect((self.virtualchannel_0, 0), (self.IEEE80211_0, 0))
-		self.connect((self.IEEE80211_2, 1), (self.eventconsumer_0, 0))
-		self.connect((self.IEEE80211_0, 1), (self.eventconsumer_2, 0))
-		self.connect((self.eventsim_2, 0), (self.IEEE80211_1, 1))
+		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
+		self.connect((self.framer80211_0, 0), (self.qpsk_channel_0, 0))
+		self.connect((self.qpsk_channel_0_0, 0), (self.deframer80211_0_0, 0))
+		self.connect((self.deframer80211_0_0, 0), (self.eventconsumer_0_0, 0))
+		self.connect((self.qpsk_channel_0, 0), (self.qpsk_channel_0_0, 0))
 
 
 		##################################################
 		# Starting Bloks
 		##################################################
-		self.virtualchannel_0.start()
-		self.eventsim_2.start()
-		self.eventsim_1.start()
+		self.qpsk_channel_0_0.start()
+		self.qpsk_channel_0.start()
+		self.framer80211_0.start()
 		self.eventsim_0.start()
-		self.eventconsumer_2.start()
-		self.eventconsumer_1.start()
-		self.eventconsumer_0.start()
-		self.IEEE80211_2.start()
-		self.IEEE80211_1.start()
-		self.IEEE80211_0.start()
+		self.eventconsumer_0_0.start()
+		self.deframer80211_0_0.start()
 
 
 	def stop(self):
@@ -83,16 +69,12 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Ending Bloks
 		##################################################
-		self.virtualchannel_0.stop()
-		self.eventsim_2.stop()
-		self.eventsim_1.stop()
+		self.qpsk_channel_0_0.stop()
+		self.qpsk_channel_0.stop()
+		self.framer80211_0.stop()
 		self.eventsim_0.stop()
-		self.eventconsumer_2.stop()
-		self.eventconsumer_1.stop()
-		self.eventconsumer_0.stop()
-		self.IEEE80211_2.stop()
-		self.IEEE80211_1.stop()
-		self.IEEE80211_0.stop()
+		self.eventconsumer_0_0.stop()
+		self.deframer80211_0_0.stop()
 
 
 
