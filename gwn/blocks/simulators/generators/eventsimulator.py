@@ -29,7 +29,7 @@ import sys
 import time
 
 #sys.path +=['..']
-import gwnevents.if_events as if_events
+import gwnevents.api_events as api_events
 import gwnblocks.gwnblock as gwnblock
 import gwnblocks.gwninport as gwninport
 
@@ -83,7 +83,7 @@ class EventSimulator(gwnblock.GWNBlock) :
     
    
     def event_data(self):
-        event = if_events.mkevent(self.nickname)
+        event = api_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         length = self.convert_int(self.param3)
@@ -92,25 +92,25 @@ class EventSimulator(gwnblock.GWNBlock) :
         return event            
         
     def event_RTS(self):
-        event = if_events.mkevent(self.nickname)
+        event = api_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event        
 
     def event_CTS(self):
-        event = if_events.mkevent(self.nickname)
+        event = api_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event
 
     def event_ACK(self):
-        event = if_events.mkevent(self.nickname)
+        event = api_events.mkevent(self.nickname)
         event.ev_dc['src_addr'] = self.param1
         event.ev_dc['dst_addr'] = self.param2
         return event        
 
     def event_timer_config(self):
-        event = if_events.mkevent(self.nickname)
+        event = api_events.mkevent(self.nickname)
         interval = self.convert_float(self.param1)
         event.ev_dc['interval']=interval
         retry = self.convert_int(self.param2)

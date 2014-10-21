@@ -2,6 +2,28 @@ GWN temas pendientes
 VGB
 
 
+=== Coordinación, reunión 21/10/2014
+
+GWN pendientes:
+  - sincronización notebook belza
+  - funciones conversión direcciones MAC, ¿dónde aplicarlas? ¿Cómo documentar para programadores? "The GWN Block developer's manual".
+  - prueba con USRPs configuración de Belza
+  - agenda, dedicación semanal
+  - actualizar lista de pendientes para  priorizar
+  - seguir llamado taller GNU Radio para Tecnólogo
+
+TVD plan:
+  - cronograma: viaje VGB abril 2014.
+  - GNU Radio, versión, instalación; máquina posiie1.
+  - qué leer, por dónde empezar...
+    - GNU Radio
+
+María Viñas:
+  postergado, concentrar esfuerzo en artículo sobre GWN.
+  
+
+
+
 === Llamado "María Viñas"
 Reunión 2/10/2014
 
@@ -19,7 +41,6 @@ Aplicaciones (Belza):
     - situación de emergencia, sin comunicaciones convencionales en la zona.
     - acceso en medios de contexto crítico, ver con Gabriel propuesta al MIDES.
     Una comunicación en frecuencia más baja tiene mayor penetración, está fuera del rango habitualmente utilizado y por lo tanto hay menos tráfico. OJO, no es banda autorizada.
-
 
 
 

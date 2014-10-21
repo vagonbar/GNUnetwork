@@ -27,7 +27,7 @@ import sys
 sys.path +=['..']
 
 from gnuradio import digital
-import gwnevents.if_events as if_events
+import gwnevents.api_events as api_events
 import gwnTxRxL1_channel as TxRxLayer1
 import gwnblocks.gwnblock as gwn
 import math
@@ -74,7 +74,7 @@ class ChannelQPSK(gwn.GWNBlock):
             if not frame:
                 print 'PSK: an empty frame from  L1'
             else:
-                event = if_events.mkevent("DataData")
+                event = api_events.mkevent("DataData")
                 event.frmpkt = frame
                 self.write_out(0, event)
 
