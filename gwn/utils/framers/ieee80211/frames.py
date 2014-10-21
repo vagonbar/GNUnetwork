@@ -33,7 +33,7 @@ import os
 import struct
 from collections import namedtuple
 
-import evframes80211
+#import evframes80211
 
 # the following comment is treated as a docstring for following variable
 #: a collections.namedtuple subclass for naming metadata items on fields; 'beg', 'end' are list positions for slicing, 'inv' inverts bits if True, 'fmt' is the struct mask for packing, 'btmsk' is a bitmask for bit fields.
@@ -68,6 +68,35 @@ def mkbm(beg, end, bm_len, as_int=True):
     	return int('0b' + '0'*(beg) + '1'*(end - beg) + '0'*(bm_len - end), 2)
     else:
        	return '0'*(beg) + '1'*(end - beg) + '0'*(bm_len - end)
+
+
+def addrmac2pkt(addrmac):
+    '''Packs a string MAC address into 6 bytes.
+
+    Receives a MAC address in readable, string format such as '6c:62:6d:1c:cf:09' and packs it into 6 bytes.
+    @param addrmac: a MAC address in string format such as '6c:62:6d:1c:cf:09'.
+    @return: a MAC address packed in 6 bytes.
+    '''
+    addrmacls = addrmac.split(':')
+    d1, d2, d3, d4, d5, d6 = [int(ii, 16) for ii in addrmacls]
+    return struct.pack('BBBBBB', d1, d2, d3, d4, d5, d6)
+
+
+def addrpkt2mac(addrpkt):
+    '''Unpacks 6 bytes MAC address into string.
+
+    Receives 6 bytes corresponding to a packed MAC address, unpacks it and presents it as a string formmatted address such as '6c:62:6d:1c:cf:09'.
+    @param addrpkt: a MAC address packed in 6 bytes.
+    @return: a MAC address in string format such as '6c:62:6d:1c:cf:09'.
+    '''
+    # note: unpack() returns integers, hex() returns 1 or 2 chars,
+    #   e.g. 12, 0a, 9; rjust() pads with '0' on the left, 09
+    lsdd = struct.unpack('BBBBBB', addrpkt)
+    addrmac = hex(lsdd[0])[2:].rjust(2,'0')
+    for dd in lsdd[1:]:
+        addrmac += ':' + hex(dd)[2:].rjust(2,'0')
+    return addrmac
+
 
 
 class FrameException(Exception):
