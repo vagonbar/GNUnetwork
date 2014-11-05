@@ -35,32 +35,32 @@ timer_dc = { \
     'TimerTOR1'       : ('Timer',  'TOR1',     Event     ), \
     'TimerTOR2'       : ('Timer',  'TOR2',     Event     ), \
     'TimerTimer'      : ('Timer',  'Timer',    Event     ), \
-	'TimerCTSTout'    : ('Timer',  'CTSTout',  Event     ), \
-	'TimerRTSAbort'   : ('Timer',  'CTSTout',  Event     ), \
-	'TimerACKTout'    : ('Timer',  'ACKTout',  Event     ), \
-	'TimerDataAbort'  : ('Timer',  'ACKTout',  Event     ) \
+    'TimerCTSTout'    : ('Timer',  'CTSTout',  Event     ), \
+    'TimerRTSAbort'   : ('Timer',  'CTSTout',  Event     ), \
+    'TimerACKTout'    : ('Timer',  'ACKTout',  Event     ), \
+    'TimerDataAbort'  : ('Timer',  'ACKTout',  Event     ) \
     }
 
 
 config_dc = { \
-	'TimerConfig'          : ('Request',  'SetTimerConfig',      Event    ), \
-	'EventConsumerStatus'  : ('Config',   'EventConsumerStatus', Event    ) \
+        'TimerConfig'          : ('Request',  'SetTimerConfig',      Event    ), \
+        'EventConsumerStatus'  : ('Config',   'EventConsumerStatus', Event    ) \
     }
 # change type to Config in all nicknames!
 
 data_dc = { \
-	'DataIn'           : ('Data',   'DataIn',  Event     ), \
-	'DataOut'          : ('Data',   'DataOut', Event     )  \
+        'DataIn'           : ('Data',   'DataIn',  Event     ), \
+        'DataOut'          : ('Data',   'DataOut', Event     )  \
     }
 
 ctrl_dc = { \
-	#'Nickname'        : ('Ctrl',   'SubType', Event    ), \
-	#'Nickname'        : ('Ctrl',   'SubType', Event    )  \
+        #'Nickname'        : ('Ctrl',   'SubType', Event    ), \
+        #'Nickname'        : ('Ctrl',   'SubType', Event    )  \
     }
 
 mgmt_dc = { \
-	#'Nickname'        : ('Mgmt',   'SubType', Event    ), \
-	#'Nickname'        : ('Mgmt',   'SubType', Event    )  \
+        #'Nickname'        : ('Mgmt',   'SubType', Event    ), \
+        #'Nickname'        : ('Mgmt',   'SubType', Event    )  \
     }
 
 
