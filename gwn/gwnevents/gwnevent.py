@@ -87,7 +87,15 @@ class EventConfig(Event):
 
     A Configuration Event is used to set some behavior in blocks.
     '''
-    pass
+    def __init__(self, nickname, ev_type, ev_subtype, ev_dc={}):
+        '''Constructor. Creates a Configuration Event.
+        '''
+        Event.__init__(self, nickname, ev_type, ev_subtype, ev_dc)
+
+
+    def __str__(self):
+        ss = Event.__str__(self)
+        return ss
 
 
 
@@ -96,7 +104,14 @@ class EventTimer(Event):
 
     A Timer Event is sent by a block to signal other blocks a certain instant in time.
     '''
-    pass
+    def __init__(self, nickname, ev_type, ev_subtype, ev_dc={}):
+        '''Constructor. Creates a Timer Event.
+        '''
+        Event.__init__(self, nickname, ev_type, ev_subtype, ev_dc)
+
+    def __str__(self):
+        ss = Event.__str__(self)
+        return ss
 
 
 
@@ -106,16 +121,16 @@ class EventComm(Event):
     A Communications Event contains information of interest for the communication with entities outside the flowgraph, via the operating system, a hardware communications device, or through some other means. A Communication Event happens between a source entity and a destination entity, hence the presence of a source address and a destination addess. Information may be some type of payload to be moved from source to destination, or some control or management information sent from source to destination.
     '''
  
-    def __init__(self, nickname, ev_type, ev_subtype, \
+    def __init__(self, nickname, ev_type, ev_subtype, ev_dc={}, \
             src_addr='', dst_addr='', payload='', frmpkt=''):
         '''Constructor. Creates a Communications Event.
 
         @param src_addr: source address.
-        @param dst_sddr: destination address.
+        @param dst_addr: destination address.
         @param payload: data to be carried from source to destination.
-        @param fmpkt: a binary packed frame, defaults to the empty string.
+        @param frmpkt: a binary packed frame, defaults to the empty string.
         '''
-        Event.__init__(self, nickname, ev_type, ev_subtype)
+        Event.__init__(self, nickname, ev_type, ev_subtype, ev_dc)
         self.src_addr = src_addr
         self.dst_addr = dst_addr
         self.payload  = payload

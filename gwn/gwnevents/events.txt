@@ -39,13 +39,13 @@ Event class name: EventFrameMgmt
 --- a TimerTOH event
 >>> ev_ob_tmr = events.mkevent('TimerTOH')
 >>> print ev_ob_tmr
-Event class name: Event
+Event class name: EventTimer
   Nickname: 'TimerTOH'; Type: 'Timer'; SubType: 'TOH'
 
 >>> ev_dc={'add_info':'additional info, testing', 'frmpkt': 'AFramePacket'}
 >>> ev_ob_tmr = events.mkevent('TimerTOH', ev_dc=ev_dc)
 >>> print ev_ob_tmr
-Event class name: Event
+Event class name: EventTimer
   Nickname: 'TimerTOH'; Type: 'Timer'; SubType: 'TOH'
   add_info: additional info, testing
   frmpkt: AFramePacket

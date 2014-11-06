@@ -5,9 +5,9 @@ VGB
 === Coordinación, reunión 21/10/2014
 
 GWN pendientes:
-  - sincronización notebook belza
+  + sincronización notebook belza
   - funciones conversión direcciones MAC, ¿dónde aplicarlas? ¿Cómo documentar para programadores? "The GWN Block developer's manual".
-  - prueba con USRPs configuración de Belza
+  - prueba con USRPs configuración de Belza, jueves 23/10
   - agenda, dedicación semanal
   - actualizar lista de pendientes para  priorizar
   - seguir llamado taller GNU Radio para Tecnólogo

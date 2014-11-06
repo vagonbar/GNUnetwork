@@ -28,7 +28,7 @@ Searches for .txt files in directory tree; if .txt file found is a doctest file,
     C{python runtests.py}
 '''
 
-import os
+import os, sys
 import os.path
 import doctest
 
@@ -39,8 +39,9 @@ sys.path += ['.']
 
 curdir = os.getcwd()
 
-
 omitdirs = ['/old/', '/gnu/', '/gwnc/', '/html/']
+# apparently not working, omission of directories...
+
 lststfiles = []
 # selects .txt files in directory tree except if dir in omitdirs
 for dirpath, dirnames, filenames in os.walk('.'):
@@ -57,8 +58,9 @@ for dirpath, dirnames, filenames in os.walk('.'):
                         pass
                     else:
                         lststfiles += [tstfnm]
-#for fl in lststfiles:
-#    print fl
+for fl in lststfiles:
+    print fl
+sys.exit()
     
 modsfail = []
 for tstfl in lststfiles:
