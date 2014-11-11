@@ -46,6 +46,8 @@ class GWNBlock(threading.Thread):
         '''  
         Constructor.
         
+        @param blkid: block identifier.
+        @param blkname: block name.
         @param number_in: the number of input ports of this block.
         @param number_out: the number of output ports of this block.
         @param number_timers: a list of timers. TODO: may become tuples to build timers.

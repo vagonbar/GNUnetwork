@@ -33,7 +33,7 @@ To create an event object use function C{events.mkevent()}. This function create
 import sys
 import types
 
-#import evtimer
+from utils.framers.ieee80211.frames import addrmac2pkt, addrpkt2mac
 
 
 
@@ -131,19 +131,18 @@ class EventComm(Event):
         @param frmpkt: a binary packed frame, defaults to the empty string.
         '''
         Event.__init__(self, nickname, ev_type, ev_subtype, ev_dc)
-        self.src_addr = src_addr
-        self.dst_addr = dst_addr
+        self.src_addr = addrmac2pkt(src_addr)
+        self.dst_addr = addrmac2pkt(dst_addr)
         self.payload  = payload
         self.frmpkt = frmpkt
 
     def __str__(self):
         ss = Event.__str__(self)
-        ss += '\n  ' + 'src_addr: ' + self.src_addr
-        ss += '\n  ' + 'dst_addr: ' + self.dst_addr
+        ss += '\n  ' + 'src_addr: ' + addrpkt2mac(self.src_addr)
+        ss += '\n  ' + 'dst_addr: ' + addrpkt2mac(self.dst_addr)
         ss += '\n  ' + 'payload: ' + self.payload
         ss += '\n  ' + 'frmpk: ' + repr(self.frmpkt)
         return ss
-
 
 
 class EventNameException(Exception):

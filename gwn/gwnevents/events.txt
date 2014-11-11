@@ -4,9 +4,9 @@ GWN events.txt: doctest file
 
 
 
-=====         ===== 
-===== mkevent =====
-=====         ===== 
+=====
+===== events created by the mkevent() function
+=====
 
 --- a CTS event ---
 >>> ev_ob_frm = events.mkevent('CtrlCTS')
@@ -58,4 +58,23 @@ Event class name: EventTimer
 >>> be1 = events.mkevent('MgmtBeacon')
 >>> ac1 == ac2, ac2 == ac3, be1 == ac3
 (True, False, False)
+
+
+
+===
+=== events created directly by their class constructors
+===
+
+--- EventComm events
+>>> import gwnevent
+>>> evcom1 = gwnevent.EventComm('DataIn', 'Data', 'DataIn', src_addr='00:01:11:22:aa:ff', dst_addr='error', payload='the_payload')
+>>> print repr(evcom1.src_addr), repr(evcom1.dst_addr)
+'\x00\x01\x11"\xaa\xff' '\x00\x00\x00\x00\x00\x00'
+>>> print evcom1
+Event class name: EventComm
+  Nickname: 'DataIn'; Type: 'Data'; SubType: 'DataIn'
+  src_addr: 00:01:11:22:aa:ff
+  dst_addr: 00:00:00:00:00:00
+  payload: the_payload
+  frmpk: ''
 

@@ -7,6 +7,13 @@ Entry format:
 <subject>
   <item>
 
+2014-11-11
+Events:
+  - created subclasses of Event in module gwnevent.
+  - class EventComm converts MAC addresses.
+  - mkevent() not useful when subclasses contain specific fields, e.g. EventComm; use of class constructor requires specifying ev_type, ev_subtype, losing benefit of nickname, which maps to corresponding ev_type, ev_subtype.
+
+
 2014-10-11
 Events:
   - suppressed subclasses, all events are Event objects,

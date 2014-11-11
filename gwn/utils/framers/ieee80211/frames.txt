@@ -27,5 +27,18 @@ Example 2:
 >>> dirstr == dirmac
 True
 
+Example 3: erroneous MAC addresses
+>>> dirmac = 'error:mac'   # not in 'bb:bb:bb:bb:bb:bb' format
+>>> dirpkt = addrmac2pkt(dirmac)
+>>> dirpkt, len(dirpkt), type(dirpkt)
+('\x00\x00\x00\x00\x00\x00', 6, <type 'str'>)
+
+Error in packed 
+>>> dirpkt = 'error'  # not in 'bbbbbb' format
+>>> dirstr = addrpkt2mac(dirpkt)
+>>> dirstr
+'00:00:00:00:00:00'
+
+
 
 

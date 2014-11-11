@@ -73,29 +73,34 @@ def mkbm(beg, end, bm_len, as_int=True):
 def addrmac2pkt(addrmac):
     '''Packs a string MAC address into 6 bytes.
 
-    Receives a MAC address in readable, string format such as '6c:62:6d:1c:cf:09' and packs it into 6 bytes.
+    Receives a MAC address in readable, string format such as '6c:62:6d:1c:cf:09' and packs it into 6 bytes. When received data is not a formally valid MAC address, returns '000000'.
     @param addrmac: a MAC address in string format such as '6c:62:6d:1c:cf:09'.
-    @return: a MAC address packed in 6 bytes.
+    @return: a MAC address packed in 6 bytes, or '000000' on error.
     '''
     addrmacls = addrmac.split(':')
-    d1, d2, d3, d4, d5, d6 = [int(ii, 16) for ii in addrmacls]
-    return struct.pack('BBBBBB', d1, d2, d3, d4, d5, d6)
-
+    try:
+        d1, d2, d3, d4, d5, d6 = [int(ii, 16) for ii in addrmacls]
+        return struct.pack('BBBBBB', d1, d2, d3, d4, d5, d6)
+    except:
+        return struct.pack('BBBBBB', 0, 0, 0, 0, 0, 0)
 
 def addrpkt2mac(addrpkt):
     '''Unpacks 6 bytes MAC address into string.
 
-    Receives 6 bytes corresponding to a packed MAC address, unpacks it and presents it as a string formmatted address such as '6c:62:6d:1c:cf:09'.
+    Receives 6 bytes corresponding to a packed MAC address, unpacks it and presents it as a string formmatted address such as '6c:62:6d:1c:cf:09'. When received data is not a 6B string, returns '00:00:00:00:00:00'.
     @param addrpkt: a MAC address packed in 6 bytes.
-    @return: a MAC address in string format such as '6c:62:6d:1c:cf:09'.
+    @return: a MAC address in string format such as '6c:62:6d:1c:cf:09', or '00:00:00:00:00:00' on error.
     '''
     # note: unpack() returns integers, hex() returns 1 or 2 chars,
     #   e.g. 12, 0a, 9; rjust() pads with '0' on the left, 09
-    lsdd = struct.unpack('BBBBBB', addrpkt)
-    addrmac = hex(lsdd[0])[2:].rjust(2,'0')
-    for dd in lsdd[1:]:
-        addrmac += ':' + hex(dd)[2:].rjust(2,'0')
-    return addrmac
+    try:
+        lsdd = struct.unpack('BBBBBB', addrpkt)
+        addrmac = hex(lsdd[0])[2:].rjust(2,'0')
+        for dd in lsdd[1:]:
+            addrmac += ':' + hex(dd)[2:].rjust(2,'0')
+        return addrmac
+    except:
+        return '00:00:00:00:00:00'
 
 
 

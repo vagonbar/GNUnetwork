@@ -1,0 +1,34 @@
+The GWN Block developer's manual
+
+
+
+
+To create a new block:
+  1. Define new block as a subclass of GWNBlock.
+     See doc of GWNBlock for description of attributes and functions inherited.
+  2. Overwrite constructor (optional)
+     Set blkid, blkname : block identifier, block name.
+     Set number of inputs, outputs and timers.
+     Add parameters and attributes as necessary, initialize.
+  3. Overwrite body of process_data function.
+     Preserve signature of process_data function, to receive all information.
+     Function process_data is called this way:
+       process_data(port_type, port_nr, ev)
+     Function process_data defines transformations occuring in this block.
+     Function process_data is called on each event received on any of the inputs to this block.
+     Information received as arguments (actual parameters):
+       event : event received.
+       port_type, port_nr : port type and number on which event was received.
+     Use:
+       function write_out to output events on any output of the block.
+
+
+To test a new block (draft):
+This procedure creates a doctest file independent of module where new block is defined.
+
+  1. Create a module <new_block_name>.tst
+  2. Create generator blocks to connect to each of the inputs of new block.
+  3. Create consumer blocks to connect each output of new block.
+  4. Run as
+       python -m doctest <new_block_name>.tst
+  5. Verify output, include correct output in doctest file.

@@ -58,9 +58,9 @@ for dirpath, dirnames, filenames in os.walk('.'):
                         pass
                     else:
                         lststfiles += [tstfnm]
-for fl in lststfiles:
-    print fl
-sys.exit()
+#for fl in lststfiles:
+#    print fl
+#sys.exit()
     
 modsfail = []
 for tstfl in lststfiles:
