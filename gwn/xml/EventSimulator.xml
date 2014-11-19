@@ -42,8 +42,8 @@
 	<param>
 		<name>interval</name>
 		<key>interval</key>
-		<value>1</value>
-		<type>int</type>
+		<value>1.0</value>
+		<type>real</type>
 	</param>
 
 	<param>
