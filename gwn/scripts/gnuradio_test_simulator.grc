@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Jul 29 17:15:44 2014</timestamp>
+  <timestamp>Wed Nov 19 11:39:57 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -184,6 +184,53 @@
     </param>
   </block>
   <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>50</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>aaaaaa</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>bbbbb</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(25, 102)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>psk</key>
     <param>
       <key>id</key>
@@ -194,12 +241,8 @@
       <value>True</value>
     </param>
     <param>
-      <key>version</key>
-      <value>6</value>
-    </param>
-    <param>
       <key>args</key>
-      <value>serial=E0R11Y0B1</value>
+      <value>serial=E0R11Y4B1</value>
     </param>
     <param>
       <key>antenna</key>
@@ -238,59 +281,8 @@
       <value>2</value>
     </param>
     <param>
-      <key>modulation</key>
-      <value>bpsk</value>
-    </param>
-    <param>
       <key>_coordinate</key>
       <value>(513, 25)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>50</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>0001</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>0002</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(25, 102)</value>
     </param>
     <param>
       <key>_rotation</key>

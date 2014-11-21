@@ -52,8 +52,8 @@ class gwn_txrx_top_block(gr.top_block):
         '''
         gr.top_block.__init__(self)
         self.sink_queue = gr.msg_queue()
-        bits_per_sym = 2
-        samp_per_sym=3
+        bits_per_sym = 2   # only for QPSK!
+        #samp_per_sym=3
         sym_rate = bit_rate/bits_per_sym 
         self.uhd_usrp_source_0 = uhd.usrp_source(
         	device_addr=args,

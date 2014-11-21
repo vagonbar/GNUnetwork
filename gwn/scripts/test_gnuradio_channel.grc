@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Oct 13 16:59:14 2014</timestamp>
+  <timestamp>Wed Nov 19 11:38:52 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -54,53 +54,6 @@
     <param>
       <key>_coordinate</key>
       <value>(10, 10)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(151, 28)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -236,6 +189,53 @@
     <param>
       <key>_coordinate</key>
       <value>(429, 182)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>aaaaaa</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>bbbbbb</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(151, 28)</value>
     </param>
     <param>
       <key>_rotation</key>

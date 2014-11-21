@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Wed Oct 29 15:33:49 2014</timestamp>
+  <timestamp>Fri Nov 21 12:20:25 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -61,53 +61,6 @@
     </param>
   </block>
   <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(10, 83)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>framer80211</key>
     <param>
       <key>id</key>
@@ -120,25 +73,6 @@
     <param>
       <key>_coordinate</key>
       <value>(254, 127)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>deframer80211</key>
-    <param>
-      <key>id</key>
-      <value>deframer80211_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(300, 336)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -173,6 +107,72 @@
     </param>
   </block>
   <block>
+    <key>deframer80211</key>
+    <param>
+      <key>id</key>
+      <value>deframer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(300, 336)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>0.05</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>100000</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>aaaaaa</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>bbbbbb</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 83)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>psk</key>
     <param>
       <key>id</key>
@@ -196,7 +196,7 @@
     </param>
     <param>
       <key>rx_freq</key>
-      <value>870000000.0</value>
+      <value>850000000.0</value>
     </param>
     <param>
       <key>rx_gain</key>
@@ -208,7 +208,7 @@
     </param>
     <param>
       <key>tx_freq</key>
-      <value>850000000.0</value>
+      <value>851000000.0</value>
     </param>
     <param>
       <key>tx_amplitude</key>
@@ -220,7 +220,7 @@
     </param>
     <param>
       <key>sps</key>
-      <value>2</value>
+      <value>5</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -238,12 +238,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>deframer80211_0</source_block_id>
-    <sink_block_id>eventconsumer_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>framer80211_0</source_block_id>
     <sink_block_id>psk_0</sink_block_id>
     <source_key>0</source_key>
@@ -252,6 +246,12 @@
   <connection>
     <source_block_id>psk_0</source_block_id>
     <sink_block_id>deframer80211_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>deframer80211_0</source_block_id>
+    <sink_block_id>eventconsumer_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

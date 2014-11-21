@@ -72,7 +72,7 @@ def conv_1_0_string_to_packed_binary_string(s):
 default_access_code = \
   conv_packed_binary_string_to_1_0_string('\xAC\xDD\xA4\xE2\xF2\x8C\x20\xFC')
 default_preamble = \
-  conv_packed_binary_string_to_1_0_string('\xA4\xF2')
+  conv_packed_binary_string_to_1_0_string('\xA4\xF2'*5)
 
 def is_1_0_string(s):
     if not isinstance(s, str):
@@ -140,10 +140,10 @@ def make_packet(payload, samples_per_symbol, bits_per_symbol,
 
     if whitening:
         pkt = ''.join((packed_preamble, packed_access_code, make_header(L, whitener_offset),
-                       whiten(payload_with_crc, whitener_offset), '\x55'))
+                       whiten(payload_with_crc, whitener_offset), '\x55'*5))
     else:
         pkt = ''.join((packed_preamble, packed_access_code, make_header(L, whitener_offset),
-                       (payload_with_crc), '\x55'))
+                       (payload_with_crc), '\x55'*5))
 
     if pad_for_usrp:
         pkt = pkt + (_npadding_bytes(len(pkt), int(samples_per_symbol), bits_per_symbol) * '\x55')
