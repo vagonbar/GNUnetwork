@@ -2,7 +2,7 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block
-# Generated: Fri Nov 21 12:20:31 2014
+# Generated: Fri Nov 21 13:53:43 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -10,7 +10,6 @@ print os.getcwd()
 
 import sys
 sys.path +=['..']
-import blocks.framers.ieee80211.deframer as deframer
 import blocks.framers.ieee80211.framer as framer
 import blocks.libio.gnuradio.new.gwnInterfaceTxRxqpsk as qpsk
 import blocks.simulators.consumers.eventconsumer as consumer
@@ -27,11 +26,10 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		# Blocks
 		##################################################
-		self.psk_0 = qpsk.QPSK(5, 'TX/RX', 850000000.0, 15, "A:0", 15, "serial=E0R11Y4B1",  100000, 851000000.0, 0.25)	
+		self.psk_0 = qpsk.QPSK(5, 'TX/RX', 850000000.0, 15, "A:0", 15, "serial=EBR15U1B1",  100000, 851000000.0, 0.25)	
 		self.framer80211_0 = framer.Framer()	
-		self.eventsim_0 = simulator.EventSimulator(0.05, 100000, 'DataData', "aaaaaa", "bbbbbb", "100")	
+		self.eventsim_0 = simulator.EventSimulator(0.05, 100000, 'DataData', "aaaaaa", "bbbbbb", "300")	
 		self.eventconsumer_0 = consumer.EventConsumer("Consumer 1") 	
-		self.deframer80211_0 = deframer.Deframer()	
 
 
 
@@ -41,8 +39,7 @@ class top_block(gwnTB.GWNTopBlock):
 		##################################################
 		self.connect((self.eventsim_0, 0), (self.framer80211_0, 0))
 		self.connect((self.framer80211_0, 0), (self.psk_0, 0))
-		self.connect((self.psk_0, 0), (self.deframer80211_0, 0))
-		self.connect((self.deframer80211_0, 0), (self.eventconsumer_0, 0))
+		self.connect((self.psk_0, 0), (self.eventconsumer_0, 0))
 
 
 		##################################################
@@ -52,7 +49,6 @@ class top_block(gwnTB.GWNTopBlock):
 		self.framer80211_0.start()
 		self.eventsim_0.start()
 		self.eventconsumer_0.start()
-		self.deframer80211_0.start()
 
 
 	def stop(self):
@@ -64,7 +60,6 @@ class top_block(gwnTB.GWNTopBlock):
 		self.framer80211_0.stop()
 		self.eventsim_0.stop()
 		self.eventconsumer_0.stop()
-		self.deframer80211_0.stop()
 
 
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Nov 21 12:20:25 2014</timestamp>
+  <timestamp>Fri Nov 21 13:49:28 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -80,6 +80,25 @@
     </param>
   </block>
   <block>
+    <key>deframer80211</key>
+    <param>
+      <key>id</key>
+      <value>deframer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(300, 337)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>eventconsumer</key>
     <param>
       <key>id</key>
@@ -99,73 +118,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(503, 332)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>deframer80211</key>
-    <param>
-      <key>id</key>
-      <value>deframer80211_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(300, 336)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>0.05</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>100000</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>aaaaaa</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>bbbbbb</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(10, 83)</value>
+      <value>(507, 332)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -184,7 +137,7 @@
     </param>
     <param>
       <key>args</key>
-      <value>serial=E0R11Y4B1</value>
+      <value>serial=EBR15U1B1</value>
     </param>
     <param>
       <key>antenna</key>
@@ -224,7 +177,54 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(484, 51)</value>
+      <value>(482, 52)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventsim</key>
+    <param>
+      <key>id</key>
+      <value>eventsim_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>nick</key>
+      <value>DataData</value>
+    </param>
+    <param>
+      <key>interval</key>
+      <value>0.05</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>100000</value>
+    </param>
+    <param>
+      <key>param1</key>
+      <value>aaaaaa</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>bbbbbb</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>300</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 83)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -245,12 +245,6 @@
   </connection>
   <connection>
     <source_block_id>psk_0</source_block_id>
-    <sink_block_id>deframer80211_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>deframer80211_0</source_block_id>
     <sink_block_id>eventconsumer_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

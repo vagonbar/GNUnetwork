@@ -254,8 +254,8 @@ class _queue_watcher_thread(_threading.Thread):
         while self.keep_running:
             msg = self.rcvd_pktq.delete_head()
             ok, payload = packet_utils.unmake_packet(msg.to_string(), int(msg.arg1()))
-            #print ok            
-            #print payload
+            print ok
+            print payload
             if ok == True:
                 self.q_rx.put(payload)
 
