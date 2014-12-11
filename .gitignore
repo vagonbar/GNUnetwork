@@ -1,7 +1,7 @@
-gn/draft
-gn/viejos
-gn/otros
-gn/logs
+draft
+viejos
+otros
+gwn/logs
 *.log
 *.pyc
 *.bin
