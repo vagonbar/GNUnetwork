@@ -81,8 +81,6 @@ class gwn_txrx_top_block(gr.top_block):
         self.uhd_usrp_sink_0.set_antenna(antenna, 0)
         self.set_sample_rate(self.uhd_usrp_sink_0,sym_rate, samp_per_sym)
 
-        
-        
         #self.Add(self.wxgui_scopesink2_0_0.win)
         self.hier_rx_0 = hier_rx.hier_rx(
             bw_clock_sync=2*math.pi/100,

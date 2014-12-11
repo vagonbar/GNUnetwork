@@ -33,7 +33,6 @@ import gwnblocks.gwnblock as gwn
 import math
 
 
-
 class QPSK(gwn.GWNBlock):
     '''PSK modulation block.
     '''

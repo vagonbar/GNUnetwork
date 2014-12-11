@@ -94,7 +94,6 @@ def whiten(s, o):
 def dewhiten(s, o):
     return whiten(s, o)        # self inverse
 
-
 def make_header(payload_len, whitener_offset=0):
     # Upper nibble is offset, lower 12 bits is len
     val = ((whitener_offset & 0xf) << 12) | (payload_len & 0x0fff)

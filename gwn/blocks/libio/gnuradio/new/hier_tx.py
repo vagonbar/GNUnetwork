@@ -38,6 +38,7 @@ class hier_tx(gr.hier_block2):
         ##################################################
         self.pulso = pulso = firdes.root_raised_cosine(samp_per_sym,samp_per_sym,1.0,alfa,samp_per_sym*len_sym_srrc)
 
+
         ##################################################
         # Blocks
         ##################################################
