@@ -85,23 +85,23 @@ class gwn_txrx_top_block(gr.top_block):
         
         #self.Add(self.wxgui_scopesink2_0_0.win)
         self.hier_rx_0 = hier_rx.hier_rx(
-            bw_clock_sync=2*math.pi/5,
-            bw_fll=math.pi/400,
+            bw_clock_sync=2*math.pi/100,
+            bw_fll=2*math.pi/100,
             bits_per_sym=bits_per_sym,
             bw_costas=2*math.pi/100,
             n_filts=32,
-            len_sym_srrc=7,
+            len_sym_srrc=11,
             constellation=digital.constellation_calcdist([-1-1j, 1-1j, 1+1j, -1+1j], [], 4, 1).base(),
             samp_per_sym=samp_per_sym,
-            alfa=0.35,
+            alfa=0.45,
         )
         
         
         self.hier_tx_0 = hier_tx.hier_tx(
-            alfa=0.35,
+            alfa=0.45,
             samp_per_sym=samp_per_sym,
             constellation=[-1-1j,1-1j, 1+1j, -1+1j],
-            len_sym_srrc=7,
+            len_sym_srrc=11,
             out_const_mul=0.4,
             bits_per_sym=bits_per_sym,
         )
@@ -129,7 +129,7 @@ class gwn_txrx_top_block(gr.top_block):
         self.connect((self.hier_rx_0, 0), self.correlator, self.framer_sink)
         self._watcher = _queue_watcher_thread(self._rcvd_pktq,q_rx)
         queue = self.blocks_message_source_0.msgq()
-        self.snd = SendData(q_tx,queue)   
+        self.snd = SendData(q_tx,queue,samp_per_sym)   
     
 #        self.connect((self.hier_rx_0, 0), (self.vsnk_src, 0))
 #        self.connect((self.hier_rx_0, 0), (self.m_sink, 0))
@@ -172,7 +172,7 @@ class SendData(threading.Thread) :
     This class controls the Beacon generation.       
     '''
 
-    def __init__(self, q_tx,queue,samp_per_sym=3,bits_per_sym=2,preamble=None, access_code=None, msgq_limit=2,
+    def __init__(self, q_tx,queue,samp_per_sym=3,bits_per_sym=2,preamble=None, access_code=None, msgq_limit=4,
                  pad_for_usrp=True, use_whitener_offset=False):
         '''  
         Constructor.
@@ -250,12 +250,13 @@ class _queue_watcher_thread(_threading.Thread):
         self.start()
 
 
+
     def run(self):
         while self.keep_running:
             msg = self.rcvd_pktq.delete_head()
             ok, payload = packet_utils.unmake_packet(msg.to_string(), int(msg.arg1()))
             #print ok            
-            #print payload
+            #print repr(payload)
             if ok == True:
                 self.q_rx.put(payload)
 

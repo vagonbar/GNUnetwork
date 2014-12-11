@@ -36,7 +36,7 @@ class QPSK(gwn.GWNBlock):
     '''PSK modulation block.
     '''
 
-    def __init__(self, samples_per_symbol=2, antenna='TX/RX', \
+    def __init__(self, samples_per_symbol=5, antenna='TX/RX', \
         rx_freq=850000000.0, rx_gain=15.0, spec='A:0', tx_gain=15.0, \
         args='serial=E0R11Y0B1', bitrate=100000.0, \
         tx_freq=851000000.0, tx_amplitude=0.25):

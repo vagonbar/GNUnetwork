@@ -52,7 +52,6 @@ class EventConsumer(gwnblock.GWNBlock) :
   		    #print '--> Consumer %s received event %s' % (self.blkname, ev.__str__())
             print '--> Consumer: ', self.blkname, 'received event', ev
 
-
 def test():
     blk1 = EventConsumer('consumer1')
     print blk1

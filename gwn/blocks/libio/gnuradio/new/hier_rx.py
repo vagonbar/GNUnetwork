@@ -11,10 +11,10 @@ from gnuradio import digital
 from gnuradio import gr
 from gnuradio.filter import firdes
 import math
-
+DEBUG = 0
 class hier_rx(gr.hier_block2):
 
-    def __init__(self, bw_clock_sync=2*math.pi/100, bw_fll=math.pi/1600, bw_costas=2*math.pi/100, n_filts=32, len_sym_srrc=7, constellation=digital.constellation_calcdist([-1-1j, 1-1j, 1+1j, -1+1j], [], 4, 1).base(), samp_per_sym=3, alfa=0.35, bits_per_sym=2, alpha_probe=0.1, th_probe=0):
+    def __init__(self, bw_clock_sync=2*math.pi/100, bw_fll=math.pi/1600, bw_costas=2*math.pi/100, n_filts=32, len_sym_srrc=7, constellation=digital.constellation_calcdist([-1-1j, 1-1j, 1+1j, -1+1j], [], 4, 1).base(), samp_per_sym=5, alfa=0.35, bits_per_sym=2, alpha_probe=0.1, th_probe=0):
         gr.hier_block2.__init__(
             self, "Hier Rx",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
@@ -51,8 +51,16 @@ class hier_rx(gr.hier_block2):
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(constellation)
         self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(bits_per_sym)
         self.analog_probe_avg_mag_sqrd_x_0 = analog.probe_avg_mag_sqrd_c(th_probe, alpha_probe)
-        self.analog_agc2_xx_0 = analog.agc2_cc(1e-1, 1e-2, 1.0, 1.0)
-        self.analog_agc2_xx_0.set_max_gain(65536)
+        #self.analog_agc2_xx_0 = analog.agc2_cc(1e-4, 5e-4, 6, 15)
+	self.analog_agc2_xx_0 = analog.agc2_cc(0.6e-2, 1e-3, 2, 15)
+        self.analog_agc2_xx_0.set_max_gain(15)
+	if DEBUG:
+		self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, "./file_rx_fin", False)
+        	self.blocks_file_sink_0.set_unbuffered(True)	        
+		self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_char*1, "./file_rx_out_diff", False)
+        	self.blocks_file_sink_1.set_unbuffered(True)	
+ 		self.blocks_file_sink_2 = blocks.file_sink(gr.sizeof_gr_complex*1, "./file_rx_sym", False)
+        	self.blocks_file_sink_2.set_unbuffered(True)
 
         ##################################################
         # Connections
@@ -65,6 +73,10 @@ class hier_rx(gr.hier_block2):
         self.connect((self, 0), (self.analog_agc2_xx_0, 0))
         self.connect((self.digital_costas_loop_cc_0_0_0, 0), (self.digital_constellation_decoder_cb_0, 0))
         self.connect((self.blocks_unpack_k_bits_bb_0, 0), (self, 0))
+	if DEBUG:
+		self.connect((self.blocks_unpack_k_bits_bb_0, 0), (self.blocks_file_sink_0, 0))
+        	self.connect((self.digital_diff_decoder_bb_0, 0), (self.blocks_file_sink_1, 0))
+		self.connect((self.digital_costas_loop_cc_0_0_0, 0), (self.blocks_file_sink_2, 0))
         self.connect((self, 0), (self.analog_probe_avg_mag_sqrd_x_0, 0))
 
 

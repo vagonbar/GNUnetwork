@@ -12,9 +12,11 @@ from gnuradio.filter import firdes
 from gnuradio.filter import pfb
 import math
 
+DEBUG=0
+
 class hier_tx(gr.hier_block2):
 
-    def __init__(self, alfa=0.35, samp_per_sym=3, bits_per_sym=2, constellation=[-1-1j,1-1j, 1+1j, -1+1j], len_sym_srrc=7, out_const_mul=0.4):
+    def __init__(self, alfa=0.35, samp_per_sym=5, bits_per_sym=2, constellation=[-1-1j,1-1j, 1+1j, -1+1j], len_sym_srrc=7, out_const_mul=0.4):
         gr.hier_block2.__init__(
             self, "Hier Tx",
             gr.io_signature(1, 1, gr.sizeof_char*1),
@@ -48,6 +50,15 @@ class hier_tx(gr.hier_block2):
         self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc((constellation), 1)
         self.blocks_packed_to_unpacked_xx_0 = blocks.packed_to_unpacked_bb(bits_per_sym, gr.GR_MSB_FIRST)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((out_const_mul, ))
+        if DEBUG:
+		self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, "./file_tx_ini", False)
+        	self.blocks_file_sink_0.set_unbuffered(True)
+ 		self.blocks_file_sink_1 = blocks.file_sink(gr.sizeof_char*1, "./file_tx_2bits", False)
+		self.blocks_file_sink_1.set_unbuffered(True)
+ 		self.blocks_file_sink_2 = blocks.file_sink(gr.sizeof_gr_complex*1, "./file_tx_out", False)
+        	self.blocks_file_sink_2.set_unbuffered(True)
+ 		self.blocks_file_sink_3 = blocks.file_sink(gr.sizeof_gr_complex*1, "./file_tx_sym", False)
+        	self.blocks_file_sink_3.set_unbuffered(True)
 
         ##################################################
         # Connections
@@ -58,7 +69,11 @@ class hier_tx(gr.hier_block2):
         self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.digital_diff_encoder_bb_0, 0))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self, 0))
         self.connect((self, 0), (self.blocks_packed_to_unpacked_xx_0, 0))
-
+        if DEBUG:
+	 	self.connect((self, 0), (self.blocks_file_sink_0, 0))
+        	self.connect((self.blocks_packed_to_unpacked_xx_0, 0), (self.blocks_file_sink_1, 0))
+		self.connect((self.pfb_interpolator_ccf_0, 0), (self.blocks_file_sink_2, 0))
+		self.connect((self.digital_chunks_to_symbols_xx_0_0, 0), (self.blocks_file_sink_3, 0))
 
 # QT sink close method reimplementation
 

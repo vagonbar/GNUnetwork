@@ -47,6 +47,7 @@ class gwn_sim_top_block(gr.top_block):
         
         @param q_rx:
         '''
+	samp_per_sym =5
         gr.top_block.__init__(self)
         self.sink_queue = gr.msg_queue()
         #self.Add(self.wxgui_scopesink2_0_0.win)
@@ -58,14 +59,14 @@ class gwn_sim_top_block(gr.top_block):
             n_filts=32,
             len_sym_srrc=7,
             constellation=digital.constellation_calcdist([-1-1j, 1-1j, 1+1j, -1+1j], [], 4, 1).base(),
-            samp_per_sym=3,
+            samp_per_sym=samp_per_sym,
             alfa=0.35,
         )
         
         
         self.hier_tx_0 = hier_tx.hier_tx(
             alfa=0.35,
-            samp_per_sym=3,
+            samp_per_sym=samp_per_sym,
             bits_per_sym=2,
             constellation=[-1-1j,1-1j, 1+1j, -1+1j],
             len_sym_srrc=7,
@@ -103,7 +104,7 @@ class gwn_sim_top_block(gr.top_block):
         self.connect((self.hier_rx_0, 0), self.correlator, self.framer_sink)
         self._watcher = _queue_watcher_thread(self._rcvd_pktq,q_rx)
         queue = self.blocks_message_source_0.msgq()
-        self.snd = SendData(q_tx,queue)   
+        self.snd = SendData(q_tx,queue,samp_per_sym)   
     
 #        self.connect((self.hier_rx_0, 0), (self.vsnk_src, 0))
 #        self.connect((self.hier_rx_0, 0), (self.m_sink, 0))
@@ -115,7 +116,7 @@ class SendData(threading.Thread) :
     This class controls the Beacon generation.       
     '''
 
-    def __init__(self, q_tx,queue,samp_per_sym=3,bits_per_sym=2,preamble=None, access_code=None, msgq_limit=2,
+    def __init__(self, q_tx,queue,samp_per_sym,bits_per_sym=2,preamble=None, access_code=None, msgq_limit=4,
                  pad_for_usrp=True, use_whitener_offset=False):
         '''  
         Constructor.
@@ -197,7 +198,7 @@ class _queue_watcher_thread(_threading.Thread):
         while self.keep_running:
             msg = self.rcvd_pktq.delete_head()
             ok, payload = packet_utils.unmake_packet(msg.to_string(), int(msg.arg1()))
-            #print ok            
+            print ok            
             #print payload
             if ok == True:
                 self.q_rx.put(payload)

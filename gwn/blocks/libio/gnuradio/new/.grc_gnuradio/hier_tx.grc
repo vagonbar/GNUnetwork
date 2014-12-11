@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun Oct  5 11:30:31 2014</timestamp>
+  <timestamp>Sun Nov 23 20:55:58 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -77,29 +77,6 @@
     <param>
       <key>_coordinate</key>
       <value>(383, 448)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>bits_per_sym</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(168, 520)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -245,6 +222,29 @@
     </param>
   </block>
   <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>bits_per_sym</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(168, 520)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>import</key>
     <param>
       <key>id</key>
@@ -369,45 +369,6 @@
     <param>
       <key>_coordinate</key>
       <value>(640, 83)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_source</key>
-    <param>
-      <key>id</key>
-      <value>pad_source_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>in</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(4, 349)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -555,57 +516,6 @@
     </param>
   </block>
   <block>
-    <key>digital_chunks_to_symbols_xx</key>
-    <param>
-      <key>id</key>
-      <value>digital_chunks_to_symbols_xx_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>in_type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>out_type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>symbol_table</key>
-      <value>constellation</value>
-    </param>
-    <param>
-      <key>dimension</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_ports</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(333, 149)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>parameter</key>
     <param>
       <key>id</key>
@@ -723,49 +633,6 @@
     </param>
   </block>
   <block>
-    <key>pfb_interpolator_ccf</key>
-    <param>
-      <key>id</key>
-      <value>pfb_interpolator_ccf_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>interp</key>
-      <value>samp_per_sym</value>
-    </param>
-    <param>
-      <key>taps</key>
-      <value>pulso</value>
-    </param>
-    <param>
-      <key>atten</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(190, 68)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>parameter</key>
     <param>
       <key>id</key>
@@ -843,21 +710,228 @@
       <value>0</value>
     </param>
   </block>
-  <connection>
-    <source_block_id>pfb_interpolator_ccf_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
+  <block>
+    <key>digital_chunks_to_symbols_xx</key>
+    <param>
+      <key>id</key>
+      <value>digital_chunks_to_symbols_xx_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>in_type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>out_type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>symbol_table</key>
+      <value>constellation</value>
+    </param>
+    <param>
+      <key>dimension</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_ports</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(333, 149)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_source</key>
+    <param>
+      <key>id</key>
+      <value>pad_source_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>in</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(4, 349)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/belza/Dropbox/gn/gwn/blocks/libio/gnuradio/new/.grc_gnuradio/file_rx_ini</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(416, 228)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pfb_interpolator_ccf</key>
+    <param>
+      <key>id</key>
+      <value>pfb_interpolator_ccf_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>samp_per_sym</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>pulso</value>
+    </param>
+    <param>
+      <key>atten</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(190, 68)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>id</key>
+      <value>blocks_file_sink_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/belza/Dropbox/gn/gwn/blocks/libio/gnuradio/new/.grc_gnuradio/file_rx_out</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(689, 145)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>digital_diff_encoder_bb_0</source_block_id>
     <sink_block_id>digital_chunks_to_symbols_xx_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>digital_chunks_to_symbols_xx_0_0</source_block_id>
-    <sink_block_id>pfb_interpolator_ccf_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -876,6 +950,30 @@
   <connection>
     <source_block_id>pad_source_0</source_block_id>
     <sink_block_id>blocks_packed_to_unpacked_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_chunks_to_symbols_xx_0_0</source_block_id>
+    <sink_block_id>pfb_interpolator_ccf_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>pfb_interpolator_ccf_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>pad_source_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>pfb_interpolator_ccf_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

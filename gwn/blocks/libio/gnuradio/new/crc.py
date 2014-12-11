@@ -32,8 +32,8 @@ def check_crc32(s):
     if len(s) < 4:
         return (False, '')
     msg = s[:-4]
-    #print "msg = '%s'" % (msg,)
+    print "msg = '%s'" % (msg,)
     actual = digital.crc32(msg)
     (expected,) = struct.unpack(">I", s[-4:])
-    # print "actual =", hex(actual), "expected =", hex(expected)
+    print "actual =", hex(actual), "expected =", hex(expected)
     return (actual == expected, msg)

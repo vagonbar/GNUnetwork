@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Wed Nov 19 11:38:52 2014</timestamp>
+  <timestamp>Mon Nov 24 14:55:03 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -126,34 +126,46 @@
     </param>
   </block>
   <block>
-    <key>qpsk_channel</key>
+    <key>eventsim</key>
     <param>
       <key>id</key>
-      <value>qpsk_channel_0_0</value>
+      <value>eventsim_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>noise_voltage</key>
-      <value>0.01</value>
+      <key>nick</key>
+      <value>DataData</value>
     </param>
     <param>
-      <key>freq_offset</key>
-      <value>0.001</value>
+      <key>interval</key>
+      <value>1</value>
     </param>
     <param>
-      <key>epsilon</key>
-      <value>1.001</value>
+      <key>retry</key>
+      <value>3</value>
     </param>
     <param>
-      <key>taps</key>
-      <value>1.0 + 0.5j</value>
+      <key>param1</key>
+      <value>aaaaaa</value>
+    </param>
+    <param>
+      <key>param2</key>
+      <value>bbbbbb</value>
+    </param>
+    <param>
+      <key>param3</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>otype</key>
+      <value>Event</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(436, 305)</value>
+      <value>(152, 26)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -176,11 +188,11 @@
     </param>
     <param>
       <key>freq_offset</key>
-      <value>0.001</value>
+      <value>0.01</value>
     </param>
     <param>
       <key>epsilon</key>
-      <value>1.001</value>
+      <value>1.005</value>
     </param>
     <param>
       <key>taps</key>
@@ -188,54 +200,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(429, 182)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventsim</key>
-    <param>
-      <key>id</key>
-      <value>eventsim_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nick</key>
-      <value>DataData</value>
-    </param>
-    <param>
-      <key>interval</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>retry</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>param1</key>
-      <value>aaaaaa</value>
-    </param>
-    <param>
-      <key>param2</key>
-      <value>bbbbbb</value>
-    </param>
-    <param>
-      <key>param3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>otype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(151, 28)</value>
+      <value>(497, 247)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -255,20 +220,14 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>qpsk_channel_0</source_block_id>
-    <sink_block_id>qpsk_channel_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>qpsk_channel_0_0</source_block_id>
-    <sink_block_id>deframer80211_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>framer80211_0</source_block_id>
     <sink_block_id>qpsk_channel_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>qpsk_channel_0</source_block_id>
+    <sink_block_id>deframer80211_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
