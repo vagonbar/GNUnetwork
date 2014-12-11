@@ -54,6 +54,7 @@ class hier_rx(gr.hier_block2):
         #self.analog_agc2_xx_0 = analog.agc2_cc(1e-4, 5e-4, 6, 15)
 	self.analog_agc2_xx_0 = analog.agc2_cc(0.6e-2, 1e-3, 2, 15)
         self.analog_agc2_xx_0.set_max_gain(15)
+
 	if DEBUG:
 		self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, "./file_rx_fin", False)
         	self.blocks_file_sink_0.set_unbuffered(True)	        
