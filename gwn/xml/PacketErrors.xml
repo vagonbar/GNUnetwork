@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+## Event Consumer block
+###################################################
+ -->
+<block>
+	<name>Packet Errors</name>
+	<key>packeterrors</key>
+    <category>Sinks</category>
+	<import>import blocks.simulators.consumers.packeterrors as consumer</import>
+	<make>consumer.PacketErrors($blkname) </make>
+    <callback>start()</callback>
+	<callback>stop()</callback>
+
+	<param>
+		<name>blkname</name>
+		<key>blkname</key>
+		<value>blkname</value>
+		<type>string</type>
+	</param>
+
+    <param>
+		<name>Input Type</name>
+		<key>itype</key>
+		<type>enum</type>
+           <option>
+		   <name>Event</name>
+		   <key>Event</key>
+		</option>
+	</param>
+
+	<sink>
+		<name>in</name>
+		<type>$itype</type>
+	</sink>
+
+     <doc>
+       The Packet Errors, calculates the % of good packets received from a Data Event Simulator.
+	   The parameter $blkname is the Consumer identifier.
+    </doc>
+</block>
