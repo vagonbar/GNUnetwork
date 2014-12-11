@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Mon Dec  8 12:29:40 2014</timestamp>
+  <timestamp>Thu Dec 11 11:34:34 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -17,7 +17,7 @@
     </param>
     <param>
       <key>author</key>
-      <value></value>
+      <value>ARTES</value>
     </param>
     <param>
       <key>description</key>
@@ -61,6 +61,29 @@
     </param>
   </block>
   <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>32000</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 170)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>framer80211</key>
     <param>
       <key>id</key>
@@ -72,7 +95,53 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(254, 127)</value>
+      <value>(463, 95)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>packeterrors</key>
+    <param>
+      <key>id</key>
+      <value>packeterrors_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>blkname</key>
+      <value>blkname</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(932, 346)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>deframer80211</key>
+    <param>
+      <key>id</key>
+      <value>deframer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(718, 349)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -131,53 +200,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(486, 45)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>deframer80211</key>
-    <param>
-      <key>id</key>
-      <value>deframer80211_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(300, 336)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>packeterrors</key>
-    <param>
-      <key>id</key>
-      <value>packeterrors_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>blkname</key>
-      <value>blkname</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(752, 346)</value>
+      <value>(719, 32)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -200,23 +223,23 @@
     </param>
     <param>
       <key>interval</key>
-      <value>1</value>
+      <value>1.0</value>
     </param>
     <param>
       <key>retry</key>
-      <value>100000</value>
+      <value>1</value>
     </param>
     <param>
       <key>param1</key>
-      <value>bbbbbb</value>
-    </param>
-    <param>
-      <key>param2</key>
       <value>aaaaaa</value>
     </param>
     <param>
+      <key>param2</key>
+      <value>bbbbbb</value>
+    </param>
+    <param>
       <key>param3</key>
-      <value>1000</value>
+      <value>100</value>
     </param>
     <param>
       <key>otype</key>
@@ -224,7 +247,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(4, 95)</value>
+      <value>(195, 130)</value>
     </param>
     <param>
       <key>_rotation</key>

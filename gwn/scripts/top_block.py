@@ -2,7 +2,8 @@
 ##################################################
 # GNU Wireless Network Flow Graph
 # Title: Top Block
-# Generated: Mon Dec  8 12:39:29 2014
+# Author: ARTES
+# Generated: Thu Dec 11 11:38:41 2014
 ##################################################
 import os
 os.chdir("../../scripts/")
@@ -25,12 +26,17 @@ class top_block(gwnTB.GWNTopBlock):
 
 
 		##################################################
+		# Variables
+		##################################################
+		self.samp_rate = samp_rate = 32000
+
+		##################################################
 		# Blocks
 		##################################################
 		self.psk_0 = qpsk.QPSK(5, 'TX/RX', 850000000.0, 15, "A:0", 15, "serial=E0R11Y4B1",  100000, 840000000.0, 0.25)	
 		self.packeterrors_0 = consumer.PacketErrors("blkname") 	
 		self.framer80211_0 = framer.Framer()	
-		self.eventsim_0 = simulator.EventSimulator(1, 100000, 'DataData', "bbbbbb", "aaaaaa", "1000")	
+		self.eventsim_0 = simulator.EventSimulator(1.0, 1, 'DataData', "aaaaaa", "bbbbbb", "100")	
 		self.deframer80211_0 = deframer.Deframer()	
 
 
