@@ -1,4 +1,5 @@
 GNUnetwork
 ==========
 
-The GNU network project, data networking on GNU Radio
+The GNU wireless network project, data networking on GNU Radio
+
