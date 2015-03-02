@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sat May 31 10:28:56 2014</timestamp>
+  <timestamp>Mon Mar  2 13:59:02 2015</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,6 +84,52 @@
     </param>
   </block>
   <block>
+    <key>framer80211</key>
+    <param>
+      <key>id</key>
+      <value>framer80211_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(385, 189)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventconsumer</key>
+    <param>
+      <key>id</key>
+      <value>eventconsumer_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>blkname</key>
+      <value>blkname</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(584, 185)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>timer</key>
     <param>
       <key>id</key>
@@ -91,7 +137,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>interval</key>
@@ -107,7 +153,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(50, 100)</value>
+      <value>(248, 23)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -129,6 +175,14 @@
       <value>DataData</value>
     </param>
     <param>
+      <key>interval</key>
+      <value>1.0</value>
+    </param>
+    <param>
+      <key>retry</key>
+      <value>3</value>
+    </param>
+    <param>
       <key>param1</key>
       <value>100</value>
     </param>
@@ -141,74 +195,18 @@
       <value>10</value>
     </param>
     <param>
-      <key>itype</key>
-      <value>Timer</value>
-    </param>
-    <param>
       <key>otype</key>
       <value>Event</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 114)</value>
+      <value>(131, 145)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
   </block>
-  <block>
-    <key>framer80211</key>
-    <param>
-      <key>id</key>
-      <value>framer80211_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(596, 147)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventconsumer</key>
-    <param>
-      <key>id</key>
-      <value>eventconsumer_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>nickname1</key>
-      <value>nickname1</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(873, 136)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <connection>
-    <source_block_id>timer_0</source_block_id>
-    <sink_block_id>eventsim_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
   <connection>
     <source_block_id>eventsim_0</source_block_id>
     <sink_block_id>framer80211_0</sink_block_id>

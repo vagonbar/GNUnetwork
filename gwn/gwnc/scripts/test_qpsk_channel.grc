@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Wed Oct 29 15:25:48 2014</timestamp>
+  <timestamp>Mon Mar  2 13:56:15 2015</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -61,29 +61,6 @@
     </param>
   </block>
   <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>32000</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(10, 170)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>eventsim</key>
     <param>
       <key>id</key>
@@ -131,87 +108,6 @@
     </param>
   </block>
   <block>
-    <key>qpsk_channel</key>
-    <param>
-      <key>id</key>
-      <value>qpsk_channel_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>noise_voltage</key>
-      <value>0.01</value>
-    </param>
-    <param>
-      <key>freq_offset</key>
-      <value>0.001</value>
-    </param>
-    <param>
-      <key>epsilon</key>
-      <value>1.001</value>
-    </param>
-    <param>
-      <key>taps</key>
-      <value>1.0 + 0.5j</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(174, 260)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>eventconsumer</key>
-    <param>
-      <key>id</key>
-      <value>eventconsumer_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>blkname</key>
-      <value>Number 2</value>
-    </param>
-    <param>
-      <key>itype</key>
-      <value>Event</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(764, 284)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>deframer80211</key>
-    <param>
-      <key>id</key>
-      <value>deframer80211_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(552, 288)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>framer80211</key>
     <param>
       <key>id</key>
@@ -224,6 +120,29 @@
     <param>
       <key>_coordinate</key>
       <value>(484, 56)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>32000</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 96)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -258,7 +177,88 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(421, 137)</value>
+      <value>(676, 28)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>eventconsumer</key>
+    <param>
+      <key>id</key>
+      <value>eventconsumer_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>blkname</key>
+      <value>Number 2</value>
+    </param>
+    <param>
+      <key>itype</key>
+      <value>Event</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(858, 247)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>deframer80211</key>
+    <param>
+      <key>id</key>
+      <value>deframer80211_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(648, 251)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>qpsk_channel</key>
+    <param>
+      <key>id</key>
+      <value>qpsk_channel_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>noise_voltage</key>
+      <value>0.01</value>
+    </param>
+    <param>
+      <key>freq_offset</key>
+      <value>0.001</value>
+    </param>
+    <param>
+      <key>epsilon</key>
+      <value>1.001</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>1.0 + 0.5j</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(271, 223)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -278,8 +278,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>qpsk_channel_0_0</source_block_id>
-    <sink_block_id>deframer80211_0_0</sink_block_id>
+    <source_block_id>qpsk_channel_0</source_block_id>
+    <sink_block_id>qpsk_channel_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -290,8 +290,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>qpsk_channel_0</source_block_id>
-    <sink_block_id>qpsk_channel_0_0</sink_block_id>
+    <source_block_id>qpsk_channel_0_0</source_block_id>
+    <sink_block_id>deframer80211_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
